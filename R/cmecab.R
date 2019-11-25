@@ -1,13 +1,14 @@
-#' Call CMECAB Tagger
+#' Call CMeCab Tagger
 #'
 #' @param str String to be tokenized
 #' @param opt String to be passed as tagger options (ex. "--partial").
-#' @param sep String used as separator.
+#' @param sep String used as separator with which it replaces tab.
 #' @return a list
 #'
 #' @import rJava
 #' @importFrom stringr str_replace_all
 #' @importFrom stringr str_split
+#' @importFrom stringr fixed
 #' @importFrom purrr flatten
 #' @export
 cmecab_c <- function(str = "", opt = "", sep = " ")

@@ -2,7 +2,7 @@
 % Please edit documentation in R/cmecab.R
 \name{cmecab_c}
 \alias{cmecab_c}
-\title{Call CMECAB Tagger}
+\title{Call CMeCab Tagger}
 \usage{
 cmecab_c(str = "", opt = "", sep = " ")
 }
@@ -11,11 +11,11 @@ cmecab_c(str = "", opt = "", sep = " ")
 
 \item{opt}{String to be passed as tagger options (ex. "--partial").}
 
-\item{sep}{String used as separator.}
+\item{sep}{String used as separator with which it replaces tab.}
 }
 \value{
 a list
 }
 \description{
-Call CMECAB Tagger
+Call CMeCab Tagger
 }

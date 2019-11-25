@@ -1,6 +1,6 @@
 Package: rjavacmecab
 Type: Package
-Title: rJava Interface to CMECAB
+Title: rJava Interface to CMeCab
 Version: 0.1.0
 Authors@R: person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre"))
 Author: paithiov909
@@ -17,9 +17,12 @@ BugReports: https://github.com/paithiov909/rjavacmecab/issues
 Encoding: UTF-8
 LazyData: true
 Suggests: 
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
 Imports: 
     rJava,
     stringr,
     purrr
 RoxygenNote: 6.1.1
+VignetteBuilder: knitr
