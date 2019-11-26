@@ -2,10 +2,15 @@
 % Please edit documentation in R/zzz.R
 \name{.onLoad}
 \alias{.onLoad}
-\title{Initialization}
+\title{onLoad}
 \usage{
 .onLoad(libname, pkgname)
 }
+\arguments{
+\item{libname}{libname}
+
+\item{pkgname}{pkgname}
+}
 \description{
-Initialization
+onLoad
 }

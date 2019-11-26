@@ -1,0 +1,69 @@
+---
+title: "About rjavacmecab"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+geometry: no
+header-includes:
+  - \usepackage[utf8]{inputenc}
+vignette: >
+  %\VignetteIndexEntry{About rjavacmecab}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r, setup, include = FALSE}
+require(microbenchmark)
+require(ggplot2)
+library(RMeCab)
+library(RcppMeCab)
+library(rjavacmecab)
+```
+
+## {rjavacmecab}パッケージについて
+
+[takscape/cmecab-java: A Java binding for MeCab](https://github.com/takscape/cmecab-java)をrJava経由で呼び出してMeCabを利用するためのパッケージです。
+
+{RMeCab}や{RcppMeCab}に比べて速いわけではないですが、Taggerに引数を渡すことができるため柔軟な使い方ができます。
+
+## 使い方
+
+あらかじめ[MeCab](https://taku910.github.io/mecab/)とJava実行環境が利用できるようになっている必要があります。
+
+MeCabの辞書はUTF-8を指定してインストールされている必要があります。Windows 64bitの場合、以下などを利用してください。
+
+- [Release MeCab 0.996 64bit version · ikegami-yukino/mecab](https://github.com/ikegami-yukino/mecab/releases/tag/v0.996.2)
+
+また、環境によっては{rJava}パッケージはソースからビルドしてインストールされている必要があります。`install.packages("rJava", type = "source")`を試してみてください。
+
+## ベンチマーク
+
+### 比較対象
+
+- RMeCab::RMeCabC() (ver 1.00)
+- RcppMeCab::pos() (ver 0.0.1.3)
+- rjavacmecab::cmecab_c() (ver 0.1.0)
+
+RcppMeCabは本家の`junhewk/RcppMeCab`からビルドできないため、`ltl-manabi/RcppMeCab`を利用しています。
+
+```{r}
+str <- "キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください"
+tm <- microbenchmark::microbenchmark(
+  RMeCab::RMeCabC(str),
+  RcppMeCab::pos(str),
+  rjavacmecab::cmecab_c(str),
+  times = 500L
+)
+summary(tm)
+```
+
+```{r}
+ggplot2::autoplot(tm)
+```
+
