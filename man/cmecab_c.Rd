@@ -9,7 +9,7 @@ cmecab_c(str = "", opt = "", sep = " ")
 \arguments{
 \item{str}{String to be tokenized}
 
-\item{opt}{String to be passed as tagger options (ex. "--partial").}
+\item{opt}{String to be passed as tagger options (ex. "-d").}
 
 \item{sep}{String used as separator with which it replaces tab.}
 }
