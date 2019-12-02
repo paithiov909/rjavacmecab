@@ -1,4 +1,5 @@
 #' onLoad
+#' @noRd
 #' @param libname libname
 #' @param pkgname pkgname
 #' @importFrom rJava .jpackage
@@ -8,6 +9,8 @@
 }
 
 #' onUnload
+#' @noRd
+#' @param libpath libpath
 .onUnload <- function(libpath)
 {
     # library.dynam.unload("rjavacmecab", libpath)

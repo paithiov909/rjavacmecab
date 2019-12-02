@@ -1,7 +1,7 @@
 Package: rjavacmecab
 Type: Package
 Title: rJava Interface to CMeCab
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre"))
 Author: paithiov909
 Maintainer: Kato Akiru <paithiov909@gmail.com>
@@ -19,10 +19,15 @@ LazyData: true
 Suggests: 
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    ggplot2,
+    microbenchmark
 Imports: 
     rJava,
     stringr,
-    purrr
+    stringi,
+    purrr,
+    dplyr,
+    utils
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr

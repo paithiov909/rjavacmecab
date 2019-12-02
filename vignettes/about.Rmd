@@ -66,4 +66,3 @@ summary(tm)
 ```{r}
 ggplot2::autoplot(tm)
 ```
-

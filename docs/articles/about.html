@@ -79,7 +79,7 @@
     <div class="page-header toc-ignore">
       <h1>About rjavacmecab</h1>
             
-            <h4 class="date">2019-11-27</h4>
+            <h4 class="date">2019-12-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/paithiov909/rjavacmecab/blob/master/vignettes/about.Rmd"><code>vignettes/about.Rmd</code></a></small>
       <div class="hidden name"><code>about.Rmd</code></div>
@@ -124,14 +124,14 @@
 <a class="sourceLine" id="cb1-6" title="6">  <span class="dt">times =</span> 500L</a>
 <a class="sourceLine" id="cb1-7" title="7">)</a>
 <a class="sourceLine" id="cb1-8" title="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary</a></span>(tm)</a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="co">#&gt;                         expr     min       lq      mean   median       uq</span></a>
-<a class="sourceLine" id="cb1-10" title="10"><span class="co">#&gt; 1       RMeCab::RMeCabC(str)  3.2751  3.55530  5.392624  3.71135  4.20255</span></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt; 2        RcppMeCab::pos(str)  3.5240  3.71720 43.157772  3.85230  4.38420</span></a>
-<a class="sourceLine" id="cb1-12" title="12"><span class="co">#&gt; 3 rjavacmecab::cmecab_c(str) 24.7695 26.18875 45.278172 28.53040 32.86670</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">#&gt;                         expr     min       lq     mean   median       uq</span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">#&gt; 1       RMeCab::RMeCabC(str) 11.6760 12.62695 16.39939 13.77125 16.43435</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt; 2        RcppMeCab::pos(str) 11.8433 12.75745 50.78265 13.95270 16.48575</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">#&gt; 3 rjavacmecab::cmecab_c(str) 37.4901 40.94930 89.68467 46.06565 53.76410</span></a>
 <a class="sourceLine" id="cb1-13" title="13"><span class="co">#&gt;          max neval</span></a>
-<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt; 1   692.8164   500</span></a>
-<a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt; 2 19469.1299   500</span></a>
-<a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt; 3  6821.5913   500</span></a></code></pre></div>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt; 1   465.4563   500</span></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt; 2 17808.7486   500</span></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt; 3 18751.0053   500</span></a></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">ggplot2<span class="op">::</span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span>(tm)</a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="co">#&gt; Coordinate system already present. Adding new coordinate system, which will replace the existing one.</span></a></code></pre></div>
 <p><img src="about_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>

@@ -1,6 +1,6 @@
 # rjavacmecab
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/rjavacmecab)](#) [![GitHub license](https://img.shields.io/github/license/paithiov909/rjavacmecab)](https://github.com/paithiov909/rjavacmecab/blob/master/LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/rjavacmecab)](#) [![Build Status](https://travis-ci.com/paithiov909/rjavacmecab.svg?branch=master)](https://travis-ci.com/paithiov909/rjavacmecab) [![GitHub license](https://img.shields.io/github/license/paithiov909/rjavacmecab)](https://github.com/paithiov909/rjavacmecab/blob/master/LICENSE)
 
 > rJava Interface to CMeCab
 
