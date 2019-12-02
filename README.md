@@ -2,7 +2,7 @@
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/rjavacmecab)](#) [![GitHub license](https://img.shields.io/github/license/paithiov909/rjavacmecab)](https://github.com/paithiov909/rjavacmecab/blob/master/LICENSE)
 
-rJava Interface to CMeCab
+> rJava Interface to CMeCab
 
 ## Installation
 
@@ -111,5 +111,5 @@ remotes::install_github("paithiov909/rjavacmecab")
 
 MIT license. 
 
-This software includes the works that are distributed in Public Domain and new BSD License. See https://github.com/takscape/cmecab-java/blob/master/README.txt for more details. 
+This software includes the works that are distributed in Public Domain and New BSD License. See https://github.com/takscape/cmecab-java/blob/master/README.txt for more details. 
 
