@@ -1,4 +1,4 @@
-#' Call CMeCab Tagger
+#' Call CMeCab tagger
 #'
 #' @param str String to be tokenized
 #' @param opt String to be passed as tagger options (ex. "-d").

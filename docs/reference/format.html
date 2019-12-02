@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • rjavacmecab</title>
+<title>Format cmecab_c() output — format • rjavacmecab</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Format cmecab_c() output — format" />
+
+<meta property="og:description" content="Format cmecab_c() output" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -47,7 +50,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -106,90 +109,48 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Format cmecab_c() output</h1>
+    <small class="dont-index">Source: <a href='https://github.com/paithiov909/rjavacmecab/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
+    <div class="hidden name"><code>format.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Format cmecab_c() output</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="aozora.html">aozora()</a></code> </p>
-        </td>
-        <td><p>Dowload text file from Aozora Bunko</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="AozoraBunkoSnapshot.html">AozoraBunkoSnapshot</a></code> </p>
-        </td>
-        <td><p>Meta data of text files published on Aozora Bunko</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="cmecab_c.html">cmecab_c()</a></code> </p>
-        </td>
-        <td><p>Call CMeCab tagger</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="emojiRegexp.html">emojiRegexp()</a></code> </p>
-        </td>
-        <td><p>Return emoji subset</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ExtendedLettersJp.html">ExtendedLettersJp</a></code> </p>
-        </td>
-        <td><p>List of letters known as "Kishu-ison-moji"</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="format.html">format()</a></code> </p>
-        </td>
-        <td><p>Format cmecab_c() output</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ngram_tokenizer.html">ngram_tokenizer()</a></code> </p>
-        </td>
-        <td><p>Ngrams tokenizer</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="OneLettersJp.html">OneLettersJp</a></code> </p>
-        </td>
-        <td><p>List of Japanese letters (Hiragana and Katakana)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="StopWordsJp.html">StopWordsJp</a></code> </p>
-        </td>
-        <td><p>Japanese stopwords list (Slothlib)</p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='fu'>format</span>(<span class='no'>list</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>" "</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>list</th>
+      <td><p>List that is output from cmecab_c()</p></td>
+    </tr>
+    <tr>
+      <th>sep</th>
+      <td><p>String used as separator with which it replaces tab.</p></td>
+    </tr>
     </table>
-  </div>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>a tibble</p>
+    
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
-    </ul>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
+
   </div>
 </div>
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/cmecab.R
 \name{cmecab_c}
 \alias{cmecab_c}
-\title{Call CMeCab Tagger}
+\title{Call CMeCab tagger}
 \usage{
 cmecab_c(str = "", opt = "", sep = " ")
 }
@@ -17,5 +17,5 @@ cmecab_c(str = "", opt = "", sep = " ")
 a list
 }
 \description{
-Call CMeCab Tagger
+Call CMeCab tagger
 }

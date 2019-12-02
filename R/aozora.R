@@ -12,6 +12,7 @@
 #' @return the path to the new file.
 #'
 #' @import stringr
+#' @importFrom readr write_lines
 #' @importFrom utils download.file
 #' @importFrom utils unzip
 #' @importFrom dplyr %>%
@@ -46,17 +47,18 @@ aozora <- function(url = NULL,
         reg4 <- enc2native("\U300A\U005B\U005E\U300B\U005D\U002A\U300B") %>% iconv(to = "CP932")
         reg5 <- enc2native("\UFF5C") %>% iconv(to = "CP932")
 
-        while (length(line <- readLines(connection, n = 1, encoding = "CP932")) > 0) {
+        lines <- readLines(connection, n = -1L, encoding = "CP932")
+        for (line in lines) {
                 if (stringr::str_detect(line, reg1)) break
                 if (stringr::str_detect(line, reg2)) break
-                if (str_detect(line, "^------")) flag <- !flag; next
-                if (!flag) {
+                if (str_detect(line, "^------")) { flag <- !flag; next }
+                if (flag) {
                         line <- line %>%
                                 stringr::str_replace("^[-]*", "") %>%
                                 stringr::str_replace_all(reg3, "") %>%
                                 stringr::str_replace_all(reg4, "") %>%
                                 stringr::str_replace_all(reg5, "")
-                        writeLines(line, con = outfile)
+                        readr::write_lines(line, outfile, append = TRUE)
                 }
         }
         close(connection)

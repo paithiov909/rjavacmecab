@@ -26,6 +26,7 @@ Imports:
     rJava,
     stringr,
     stringi,
+    readr,
     purrr,
     dplyr,
     utils

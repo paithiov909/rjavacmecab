@@ -1,3 +1,37 @@
+#' Format cmecab_c() output
+#'
+#' @param list List that is output from cmecab_c()
+#' @param sep String used as separator with which it replaces tab.
+#' @return a tibble
+#'
+#' @importFrom purrr map_dfr
+#' @importFrom stringr str_split_fixed
+#' @importFrom dplyr bind_cols
+#' @export
+format <- function(list, sep = " ") {
+    len <- length(list) - 1
+    purrr::map_dfr(list[1:len], function(el) {
+        split <- stringr::str_split_fixed(el, sep, 2L)
+        word <- data.frame(word = split[1, 1], stringsAsFactors = FALSE)
+        info <- stringr::str_split_fixed(split[1, 2], ",", Inf)
+        colnames(info) <- c(
+            "POS1",
+            "POS2",
+            "POS3",
+            "POS4",
+            "X5StageUse1",
+            "X5StageUse2",
+            "Original",
+            "Yomi1",
+            "Yomi2"
+        )
+        return(dplyr::bind_cols(
+            as.data.frame(word, stringsAsFactors = FALSE),
+            as.data.frame(info, stringsAsFactors = FALSE)
+        ))
+    })
+}
+
 #' Ngrams tokenizer
 #'
 #' Make n-gram tokenizer function.
@@ -32,7 +66,7 @@ ngram_tokenizer <- function(n = 1L,
                 # If we didn't detect any words or number of tokens is less than n return empty vector
                 character(0)
             } else {
-                sapply(1:max(1, len - n + 1), function(i) stringi::stri_join(tokens[i:min(len, i + n - 1)], collapse = " "))
+                sapply(1:max(1, len - n + 1), function(i) { stringi::stri_join(tokens[i:min(len, i + n - 1)], collapse = " ") })
             }
         }
     }
