@@ -1,4 +1,4 @@
-#' Format cmecab_c() output
+#' Prettify cmecab_c() output
 #'
 #' @param list List that is output from cmecab_c()
 #' @param sep String used as separator with which it replaces tab.
@@ -8,7 +8,7 @@
 #' @importFrom stringr str_split_fixed
 #' @importFrom dplyr bind_cols
 #' @export
-format <- function(list, sep = " ") {
+prettify <- function(list, sep = " ") {
     len <- length(list) - 1
     purrr::map_dfr(list[1:len], function(el) {
         split <- stringr::str_split_fixed(el, sep, 2L)

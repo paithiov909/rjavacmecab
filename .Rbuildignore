@@ -1,4 +1,5 @@
 ^packrat/
+^cache/
 ^\.Rprofile$
 ^.*\.Rproj$
 ^\.Rproj\.user$

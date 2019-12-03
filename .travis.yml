@@ -17,14 +17,6 @@ branches:
   only:
     - master
 
-os: osx
-
-addons:
-  homebrew:
-    packages:
-      - mecab
-      - mecab-ipadic
-
 env:
   global:
     - R_BUILD_ARGS="--no-build-vignettes --no-manual"
@@ -35,11 +27,38 @@ env:
 r_build_args: --no-build-vignettes --no-manual
 r_check_args: --no-build-vignettes --no-manual --timings
 
+jobs:
+  allow_failures:
+  - os: osx
+  include:
+  - os: linux
+    dist: bionic
+    before_install:
+      - sudo apt install mecab
+      - sudo apt install libmecab-dev
+      - sudo apt install mecab-ipadic-utf8
+      - export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
+  - os: osx
+    before_install:
+      - brew cask reinstall java
+      - brew cask info java
+      - brew install mecab
+      - brew install mecab-ipadic
+      - export LD_LIBRARY_PATH="/usr/local/Cellar/mecab/0.996/lib:$LD_LIBRARY_PATH"
+      - brew install llvm
+      - export CC="/usr/local/opt/llvm/bin/clang"
+      - export CXX="/usr/local/opt/llvm/bin/clang++"
+      - export CXX11="$CXX"
+      - export CXX14="$CXX"
+      - export CXX17="$CXX"
+      - export CXX1X="$CXX"
+      - export LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
+      - export CXXFLAGS="-I/usr/local/opt/llvm/include"
+
 before_script:
-  - brew cask reinstall java
-  - brew cask info java
   - R CMD javareconf
-  - R -e "install.packages('rJava', type = 'source')"
+  - export JFLAGS="-target 1.7 -source 1.7"
+  - R -e 'install.packages("rJava", type="source", repos="http://cran.us.r-project.org")'
 
 cache:
   packages: true
