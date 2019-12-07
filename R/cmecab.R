@@ -13,14 +13,6 @@
 #' @export
 cmecab_c <- function(str = "", opt = "", sep = " ")
 {
-    rJava::.jaddClassPath("inst/java/bridj-0.7.0.jar")
-    rJava::.jaddClassPath("inst/java/cmecab-java-2.1.0.jar")
-
-    rJava::javaImport(packages = "net.moraleboost.mecab.Lattice")
-    rJava::javaImport(packages = "net.moraleboost.mecab.Tagger")
-    rJava::javaImport(packages = "net.moraleboost.mecab.impl.StandardTagger")
-    rJava::javaImport(packages = "mecab.Node")
-
     tagger <- rJava::.jnew("net.moraleboost.mecab.impl.StandardTagger", opt)
     lattice <- tagger$createLattice()
 
@@ -39,7 +31,6 @@ cmecab_c <- function(str = "", opt = "", sep = " ")
     len <- length(res) - 1
 
     return(res[1:len])
-
 }
 
 
