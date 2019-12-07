@@ -1,0 +1,51 @@
+---
+title: "Benchmark"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Benchmark}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r, setup, include = FALSE}
+if(!require(microbenchmark)) stop()
+if(!require(ggplot2)) stop()
+if(!require(RMeCab)) stop()
+if(!require(RcppMeCab)) stop()
+if(!require(rjavacmecab)) stop()
+```
+
+## ベンチマーク
+
+### 比較対象
+
+- RMeCab::RMeCabC() (ver 1.00)
+- RcppMeCab::pos() (ver 0.0.1.3)
+- rjavacmecab::cmecab_c() (ver 0.1.0)
+
+RcppMeCabは本家の`junhewk/RcppMeCab`からビルドできないため、`ltl-manabi/RcppMeCab`を利用しています。
+
+### 結果
+
+```{r}
+str <- "キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください"
+tm <- microbenchmark::microbenchmark(
+  RMeCab::RMeCabC(str),
+  RcppMeCab::pos(str),
+  rjavacmecab::cmecab_c(str),
+  times = 500L
+)
+summary(tm)
+```
+
+```{r}
+ggplot2::autoplot(tm)
+```
+

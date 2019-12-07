@@ -66,3 +66,6 @@ aozora <- function(url = NULL,
 
         return(newFile)
 }
+
+
+

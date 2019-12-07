@@ -41,3 +41,6 @@ cmecab_c <- function(str = "", opt = "", sep = " ")
     return(res[1:len])
 
 }
+
+
+

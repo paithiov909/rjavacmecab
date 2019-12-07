@@ -1,8 +1,8 @@
 #' Prettify cmecab_c() output
 #'
-#' @param list List that is output from cmecab_c()
-#' @param sep String used as separator with which it replaces tab.
-#' @return a tibble
+#' @param list list that is output from cmecab_c().
+#' @param sep string used as separator with which it replaces tab.
+#' @return dataframe.
 #'
 #' @importFrom purrr map_dfr
 #' @importFrom stringr str_split_fixed
@@ -14,6 +14,16 @@ prettify <- function(list, sep = " ") {
         split <- stringr::str_split_fixed(el, sep, 2L)
         word <- data.frame(word = split[1, 1], stringsAsFactors = FALSE)
         info <- stringr::str_split_fixed(split[1, 2], ",", Inf)
+        if (length(info) == 7) {
+            info <- dplyr::bind_cols(
+                as.data.frame(info, stringsAsFactors = FALSE),
+                data.frame(
+                    a = c("*"),
+                    b = c("*"),
+                    stringsAsFactors = FALSE
+                )
+            )
+        }
         colnames(info) <- c(
             "POS1",
             "POS2",
@@ -88,3 +98,6 @@ emojiRegexp <- function(version = c(6.0, 7.0, 8.0)) {
     )
     return(subset)
 }
+
+
+

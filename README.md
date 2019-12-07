@@ -1,6 +1,7 @@
-# rjavacmecab
+# rjavacmecab <img src='man/figures/logo.png' align="right" height="139" />
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/rjavacmecab)](#) [![Build Status](https://travis-ci.com/paithiov909/rjavacmecab.svg?branch=master)](https://travis-ci.com/paithiov909/rjavacmecab) [![GitHub license](https://img.shields.io/github/license/paithiov909/rjavacmecab)](https://github.com/paithiov909/rjavacmecab/blob/master/LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/rjavacmecab)](#) [![Build Status](https://travis-ci.com/paithiov909/rjavacmecab.svg?branch=master)](https://travis-ci.com/paithiov909/rjavacmecab) [![GitHub license](https://img.shields.io/github/license/paithiov909/rjavacmecab)](https://github.com/paithiov909/rjavacmecab/blob/master/LICENSE) [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+
 
 > rJava Interface to CMeCab
 
@@ -109,7 +110,7 @@ remotes::install_github("paithiov909/rjavacmecab")
 
 ## License
 
-MIT license. 
+MIT license. Icons made by [Vectors Market](https://www.flaticon.com/authors/vectors-market) from [Flaticon](https://www.flaticon.com/).
 
 This software includes the works that are distributed in Public Domain and New BSD License. See https://github.com/takscape/cmecab-java/blob/master/README.txt for more details. 
 

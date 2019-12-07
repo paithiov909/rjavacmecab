@@ -13,5 +13,5 @@
 #' @param libpath libpath
 .onUnload <- function(libpath)
 {
-    # library.dynam.unload("rjavacmecab", libpath)
+    #
 }

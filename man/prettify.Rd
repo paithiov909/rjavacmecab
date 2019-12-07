@@ -7,12 +7,12 @@
 prettify(list, sep = " ")
 }
 \arguments{
-\item{list}{List that is output from cmecab_c()}
+\item{list}{list that is output from cmecab_c().}
 
-\item{sep}{String used as separator with which it replaces tab.}
+\item{sep}{string used as separator with which it replaces tab.}
 }
 \value{
-a tibble
+a tibble.
 }
 \description{
 Prettify cmecab_c() output

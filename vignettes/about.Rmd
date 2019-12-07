@@ -1,12 +1,12 @@
 ---
-title: "About rjavacmecab"
+title: "About rjavacmecab package"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 geometry: no
 header-includes:
   - \usepackage[utf8]{inputenc}
 vignette: >
-  %\VignetteIndexEntry{About rjavacmecab}
+  %\VignetteIndexEntry{About rjavacmecab package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -18,51 +18,83 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r, setup, include = FALSE}
-require(microbenchmark)
-require(ggplot2)
-library(RMeCab)
-library(RcppMeCab)
-library(rjavacmecab)
+```{r setup, include = FALSE}
+if(!require(rjvacmecab)) stop()
 ```
 
-## {rjavacmecab}パッケージについて
+## これは何？
 
-[takscape/cmecab-java: A Java binding for MeCab](https://github.com/takscape/cmecab-java)をrJava経由で呼び出してMeCabを利用するためのパッケージです。
+[paithiov909/rjavacmecab: rJava Interface to CMeCab](https://github.com/paithiov909/rjavacmecab)
 
-{RMeCab}や{RcppMeCab}に比べて速いわけではないですが、Taggerに引数を渡すことができるため柔軟な使い方ができます。
+{rjavacmecab}は、[takscape/cmecab-java: A Java binding for MeCab](https://github.com/takscape/cmecab-java)をrJava経由で呼び出してMeCabを利用するためのパッケージです。{RMeCab}や{RcppMeCab}に比べて速いわけではないですが、Taggerに引数を渡すことができるため、ほかのRのためのMeCabバインディングよりも低レベルなMeCab APIにアクセスすることができます。
 
 ## 使い方
 
-あらかじめ[MeCab](https://taku910.github.io/mecab/)とJava実行環境が利用できるようになっている必要があります。
+### インストール
 
-MeCabの辞書はUTF-8を指定してインストールされている必要があります。Windows 64bitの場合、以下などを利用してください。
+`remotes::install_github("paithiov909/rjavacmecab")`
+
+### 環境の準備
+
+あらかじめMeCabとJDKが利用できるようになっている必要があります。
+
+#### MeCabの準備
+
+MeCabの辞書はUTF-8を指定してインストールされていることを前提にしています。Windows 64bitの場合、以下などを利用してください。
 
 - [Release MeCab 0.996 64bit version · ikegami-yukino/mecab](https://github.com/ikegami-yukino/mecab/releases/tag/v0.996.2)
 
-また、環境によっては{rJava}パッケージはソースからビルドしてインストールされている必要があります。`install.packages("rJava", type = "source")`を試してみてください。
+{rjavacmecab}はcmecab-javaのrJavaラッパーライブラリです。cmecab-javaを利用するためにはMeCabのダイナミックライブラリにパスが通っている必要があります。
 
-## ベンチマーク
+Windowsの場合、インストールしたMeCabのディレクトリ以下の`bin`ディレクトリにパスを通します。LinuxやMacの場合、LD_LIBRARY_PATHに`libmecab.so`（Linuxの場合）や`libmecab.dylib`（Macの場合）のあるディレクトリを追加します。
 
-### 比較対象
+Ubuntuなどでaptを通じてMeCabを導入した場合、`libmecab.so`は`/usr/local/lib`以下にあるので、このディレクトリをLD_LIBRARY_PATHに追加します。
 
-- RMeCab::RMeCabC() (ver 1.00)
-- RcppMeCab::pos() (ver 0.0.1.3)
-- rjavacmecab::cmecab_c() (ver 0.1.0)
-
-RcppMeCabは本家の`junhewk/RcppMeCab`からビルドできないため、`ltl-manabi/RcppMeCab`を利用しています。
-
-```{r}
-str <- "キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください"
-tm <- microbenchmark::microbenchmark(
-  RMeCab::RMeCabC(str),
-  RcppMeCab::pos(str),
-  rjavacmecab::cmecab_c(str),
-  times = 500L
-)
-summary(tm)
+``` bash
+$ sudo apt install mecab
+$ sudo apt install libmecab-dev
+$ sudo apt install mecab-ipadic-utf8
+$ export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
 ```
 
-```{r}
-ggplot2::autoplot(tm)
+MacでHomebrewからMeCabを導入した場合だと、`libmecab.dylib`は`/usr/local/Cellar/mecab/0.996/lib`以下にあるので、このディレクトリをLD_LIBRARY_PATHに追加します。
+
+``` bash
+$ brew install mecab
+$ brew install mecab-ipadic
+$ export LD_LIBRARY_PATH="/usr/local/Cellar/mecab/0.996/lib:$LD_LIBRARY_PATH"
 ```
+
+#### rJava周りで問題が発生する場合
+
+環境によってはrJavaパッケージはソースからビルドされている必要があります。{rJava}をソースからビルドするには、多くの場合はJDKを適切にインストールしたあとに`R CMD javareconf`を実行したうえで、R上で`install.packages("rJava", type="source")`などとすれば解決します。
+
+rJavaの周辺は比較的問題が起こりやすく、たとえばパッケージの読みこみ時に`jvm`のロードに失敗したりするといったことがあります（古いバージョンのRstudioを使用している場合などに発生することが報告されています）。こうした場合は`dyn.load()`関数に使用したいJDKに付属しているダイナミックライブラリを明示的に渡すか、rJavaが読みにいっているファイルにシンボリックリンクを上書きするなどして対処します。
+
+また、パッケージのビルド時に`clang: error: unsupported option '-fopenmp`が発生してビルドに失敗する場合、Rパッケージのビルドに使用されるコンパイラの設定をしなおす必要があります。詳しくは以下に挙げる記事などを参考にしてください。
+
+- [Installing rJava on macOS | Zhiya Zuo](https://zhiyzuo.github.io/installation-rJava/)
+- [java - R, loading rJava error - Stack Overflow](https://stackoverflow.com/questions/44157869/r-loading-rjava-error)
+- [installation - rJava on MacOS Sierra 10.12.15: unsupported option fopenmp - Stack Overflow](https://stackoverflow.com/questions/44383668/rjava-on-macos-sierra-10-12-15-unsupported-option-fopenmp)
+- [java - rJava loading in R(3.4.1) with OS Sierra - Stack Overflow](https://stackoverflow.com/questions/45051275/rjava-loading-in-r3-4-1-with-os-sierra)
+
+## 使用例
+
+### cmecab-javaの呼び出し
+
+```{r}
+res <- rjavacmecab::cmecab_c("キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください")
+print(res)
+print(rjavacmecab::prettify(res)) # dataframeに整形します
+```
+
+### 辞書の差し替え
+
+確認できたかぎりでは`-d`オプションは動作します。
+
+```{r}
+str <- "きゃりーぱみゅぱみゅ"
+rjavacmecab::cmecab_c(str)
+rjavacmecab::cmecab_c(str, "-d /MeCab/dic/mecab-ipadic-neologd")
+```
+
