@@ -19,14 +19,14 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup, include = FALSE}
-if(!require(rjvacmecab)) stop()
+if(!require(rjavacmecab)) stop()
 ```
 
 ## これは何？
 
 [paithiov909/rjavacmecab: rJava Interface to CMeCab](https://github.com/paithiov909/rjavacmecab)
 
-{rjavacmecab}は、[takscape/cmecab-java: A Java binding for MeCab](https://github.com/takscape/cmecab-java)をrJava経由で呼び出してMeCabを利用するためのパッケージです。{RMeCab}や{RcppMeCab}に比べて速いわけではないですが、Taggerに引数を渡すことができるため、ほかのRのためのMeCabバインディングよりも低レベルなMeCab APIにアクセスすることができます。
+{rjavacmecab}は、[takscape/cmecab-java: A Java binding for MeCab](https://github.com/takscape/cmecab-java)をrJava経由で呼び出してMeCabを利用するためのパッケージです。
 
 ## 使い方
 

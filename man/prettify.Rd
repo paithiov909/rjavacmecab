@@ -12,7 +12,7 @@ prettify(list, sep = " ")
 \item{sep}{string used as separator with which it replaces tab.}
 }
 \value{
-a tibble.
+dataframe.
 }
 \description{
 Prettify cmecab_c() output

@@ -62,6 +62,9 @@
 <li>
       <a href="../articles/about.html">About rjavacmecab package</a>
     </li>
+    <li>
+      <a href="../articles/benchmark.html">Benchmark</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -95,53 +98,228 @@
 
     
     
-<div id="rjavacmecab" class="section level2">
-<h2 class="hasAnchor">
-<a href="#rjavacmecab" class="anchor"></a>{rjavacmecab}パッケージについて</h2>
-<p><a href="https://github.com/takscape/cmecab-java">takscape/cmecab-java: A Java binding for MeCab</a>をrJava経由で呼び出してMeCabを利用するためのパッケージです。</p>
-<p>{RMeCab}や{RcppMeCab}に比べて速いわけではないですが、Taggerに引数を渡すことができるため柔軟な使い方ができます。</p>
-</div>
 <div id="section" class="section level2">
 <h2 class="hasAnchor">
-<a href="#section" class="anchor"></a>使い方</h2>
-<p>あらかじめ<a href="https://taku910.github.io/mecab/">MeCab</a>とJava実行環境が利用できるようになっている必要があります。</p>
-<p>MeCabの辞書はUTF-8を指定してインストールされている必要があります。Windows 64bitの場合、以下などを利用してください。</p>
-<ul>
-<li><a href="https://github.com/ikegami-yukino/mecab/releases/tag/v0.996.2">Release MeCab 0.996 64bit version · ikegami-yukino/mecab</a></li>
-</ul>
-<p>また、環境によっては{rJava}パッケージはソースからビルドしてインストールされている必要があります。<code><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages("rJava", type = "source")</a></code>を試してみてください。</p>
+<a href="#section" class="anchor"></a>これは何？</h2>
+<p><a href="https://github.com/paithiov909/rjavacmecab">paithiov909/rjavacmecab: rJava Interface to CMeCab</a></p>
+<p>{rjavacmecab}は、<a href="https://github.com/takscape/cmecab-java">takscape/cmecab-java: A Java binding for MeCab</a>をrJava経由で呼び出してMeCabを利用するためのパッケージです。</p>
 </div>
 <div id="section-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#section-1" class="anchor"></a>ベンチマーク</h2>
+<a href="#section-1" class="anchor"></a>使い方</h2>
 <div id="section-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#section-2" class="anchor"></a>比較対象</h3>
+<a href="#section-2" class="anchor"></a>インストール</h3>
+<p><code><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">remotes::install_github("paithiov909/rjavacmecab")</a></code></p>
+</div>
+<div id="section-3" class="section level3">
+<h3 class="hasAnchor">
+<a href="#section-3" class="anchor"></a>環境の準備</h3>
+<p>あらかじめMeCabとJDKが利用できるようになっている必要があります。</p>
+<div id="mecab" class="section level4">
+<h4 class="hasAnchor">
+<a href="#mecab" class="anchor"></a>MeCabの準備</h4>
+<p>MeCabの辞書はUTF-8を指定してインストールされていることを前提にしています。Windows 64bitの場合、以下などを利用してください。</p>
 <ul>
-<li>RMeCab::RMeCabC() (ver 1.00)</li>
-<li>RcppMeCab::pos() (ver 0.0.1.3)</li>
-<li>rjavacmecab::cmecab_c() (ver 0.1.0)</li>
+<li><a href="https://github.com/ikegami-yukino/mecab/releases/tag/v0.996.2">Release MeCab 0.996 64bit version · ikegami-yukino/mecab</a></li>
 </ul>
-<p>RcppMeCabは本家の<code>junhewk/RcppMeCab</code>からビルドできないため、<code>ltl-manabi/RcppMeCab</code>を利用しています。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">str &lt;-<span class="st"> "キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください"</span></a>
-<a class="sourceLine" id="cb1-2" title="2">tm &lt;-<span class="st"> </span>microbenchmark<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(</a>
-<a class="sourceLine" id="cb1-3" title="3">  RMeCab<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/RMeCab/topics/RMeCabC">RMeCabC</a></span>(str),</a>
-<a class="sourceLine" id="cb1-4" title="4">  RcppMeCab<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/RcppMeCab/topics/pos">pos</a></span>(str),</a>
-<a class="sourceLine" id="cb1-5" title="5">  rjavacmecab<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/rjavacmecab/topics/cmecab_c">cmecab_c</a></span>(str),</a>
-<a class="sourceLine" id="cb1-6" title="6">  <span class="dt">times =</span> 500L</a>
-<a class="sourceLine" id="cb1-7" title="7">)</a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary</a></span>(tm)</a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="co">#&gt;                         expr     min       lq     mean   median       uq</span></a>
-<a class="sourceLine" id="cb1-10" title="10"><span class="co">#&gt; 1       RMeCab::RMeCabC(str) 12.0680 13.48265 17.13751 15.40140 17.90400</span></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt; 2        RcppMeCab::pos(str) 11.9999 13.51985 32.11284 15.77230 18.34785</span></a>
-<a class="sourceLine" id="cb1-12" title="12"><span class="co">#&gt; 3 rjavacmecab::cmecab_c(str) 38.3728 46.46490 91.70620 53.55075 64.39785</span></a>
-<a class="sourceLine" id="cb1-13" title="13"><span class="co">#&gt;          max neval</span></a>
-<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt; 1   346.4144   500</span></a>
-<a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt; 2  7778.5474   500</span></a>
-<a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt; 3 16946.5196   500</span></a></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">ggplot2<span class="op">::</span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span>(tm)</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="co">#&gt; Coordinate system already present. Adding new coordinate system, which will replace the existing one.</span></a></code></pre></div>
-<p><img src="about_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
+<p>{rjavacmecab}はcmecab-javaのrJavaラッパーライブラリです。cmecab-javaを利用するためにはMeCabのダイナミックライブラリにパスが通っている必要があります。</p>
+<p>Windowsの場合、インストールしたMeCabのディレクトリ以下の<code>bin</code>ディレクトリにパスを通します。LinuxやMacの場合、LD_LIBRARY_PATHに<code>libmecab.so</code>（Linuxの場合）や<code>libmecab.dylib</code>（Macの場合）のあるディレクトリを追加します。</p>
+<p>Ubuntuなどでaptを通じてMeCabを導入した場合、<code>libmecab.so</code>は<code>/usr/local/lib</code>以下にあるので、このディレクトリをLD_LIBRARY_PATHに追加します。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="fu">sudo</span> apt install mecab</a>
+<a class="sourceLine" id="cb1-2" title="2">$ <span class="fu">sudo</span> apt install libmecab-dev</a>
+<a class="sourceLine" id="cb1-3" title="3">$ <span class="fu">sudo</span> apt install mecab-ipadic-utf8</a>
+<a class="sourceLine" id="cb1-4" title="4">$ <span class="bu">export</span> <span class="va">LD_LIBRARY_PATH=</span><span class="st">"/usr/local/lib:</span><span class="va">$LD_LIBRARY_PATH</span><span class="st">"</span></a></code></pre></div>
+<p>MacでHomebrewからMeCabを導入した場合だと、<code>libmecab.dylib</code>は<code>/usr/local/Cellar/mecab/0.996/lib</code>以下にあるので、このディレクトリをLD_LIBRARY_PATHに追加します。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="ex">brew</span> install mecab</a>
+<a class="sourceLine" id="cb2-2" title="2">$ <span class="ex">brew</span> install mecab-ipadic</a>
+<a class="sourceLine" id="cb2-3" title="3">$ <span class="bu">export</span> <span class="va">LD_LIBRARY_PATH=</span><span class="st">"/usr/local/Cellar/mecab/0.996/lib:</span><span class="va">$LD_LIBRARY_PATH</span><span class="st">"</span></a></code></pre></div>
+</div>
+<div id="rjava" class="section level4">
+<h4 class="hasAnchor">
+<a href="#rjava" class="anchor"></a>rJava周りで問題が発生する場合</h4>
+<p>環境によってはrJavaパッケージはソースからビルドされている必要があります。{rJava}をソースからビルドするには、多くの場合はJDKを適切にインストールしたあとに<code>R CMD javareconf</code>を実行したうえで、R上で<code><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages("rJava", type="source")</a></code>などとすれば解決します。</p>
+<p>rJavaの周辺は比較的問題が起こりやすく、たとえばパッケージの読みこみ時に<code>jvm</code>のロードに失敗したりするといったことがあります（古いバージョンのRstudioを使用している場合などに発生することが報告されています）。こうした場合は<code><a href="https://www.rdocumentation.org/packages/base/topics/dynload">dyn.load()</a></code>関数に使用したいJDKに付属しているダイナミックライブラリを明示的に渡すか、rJavaが読みにいっているファイルにシンボリックリンクを上書きするなどして対処します。</p>
+<p>また、パッケージのビルド時に<code>clang: error: unsupported option '-fopenmp</code>が発生してビルドに失敗する場合、Rパッケージのビルドに使用されるコンパイラの設定をしなおす必要があります。詳しくは以下に挙げる記事などを参考にしてください。</p>
+<ul>
+<li><a href="https://zhiyzuo.github.io/installation-rJava/">Installing rJava on macOS | Zhiya Zuo</a></li>
+<li><a href="https://stackoverflow.com/questions/44157869/r-loading-rjava-error">java - R, loading rJava error - Stack Overflow</a></li>
+<li><a href="https://stackoverflow.com/questions/44383668/rjava-on-macos-sierra-10-12-15-unsupported-option-fopenmp">installation - rJava on MacOS Sierra 10.12.15: unsupported option fopenmp - Stack Overflow</a></li>
+<li><a href="https://stackoverflow.com/questions/45051275/rjava-loading-in-r3-4-1-with-os-sierra">java - rJava loading in R(3.4.1) with OS Sierra - Stack Overflow</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="section-4" class="section level2">
+<h2 class="hasAnchor">
+<a href="#section-4" class="anchor"></a>使用例</h2>
+<div id="cmecab-java" class="section level3">
+<h3 class="hasAnchor">
+<a href="#cmecab-java" class="anchor"></a>cmecab-javaの呼び出し</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">res &lt;-<span class="st"> </span>rjavacmecab<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/rjavacmecab/topics/cmecab_c">cmecab_c</a></span>(<span class="st">"キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください"</span>)</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(res)</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt; [[1]]</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt; [1] "キャピキャピ 名詞,一般,*,*,*,*,*"</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt; [[2]]</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co">#&gt; [1] "音 名詞,接尾,一般,*,*,*,音,オン,オン"</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="co">#&gt; [[3]]</span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="co">#&gt; [1] "が 助詞,格助詞,一般,*,*,*,が,ガ,ガ"</span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="co">#&gt; [[4]]</span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="co">#&gt; [1] "高く 形容詞,自立,*,*,形容詞・アウオ段,連用テ接続,高い,タカク,タカク"</span></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt; [[5]]</span></a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="co">#&gt; [1] "なっ 動詞,自立,*,*,五段・ラ行,連用タ接続,なる,ナッ,ナッ"</span></a>
+<a class="sourceLine" id="cb3-17" title="17"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-18" title="18"><span class="co">#&gt; [[6]]</span></a>
+<a class="sourceLine" id="cb3-19" title="19"><span class="co">#&gt; [1] "て 助詞,接続助詞,*,*,*,*,て,テ,テ"</span></a>
+<a class="sourceLine" id="cb3-20" title="20"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-21" title="21"><span class="co">#&gt; [[7]]</span></a>
+<a class="sourceLine" id="cb3-22" title="22"><span class="co">#&gt; [1] "き 動詞,非自立,*,*,カ変・クル,連用形,くる,キ,キ"</span></a>
+<a class="sourceLine" id="cb3-23" title="23"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-24" title="24"><span class="co">#&gt; [[8]]</span></a>
+<a class="sourceLine" id="cb3-25" title="25"><span class="co">#&gt; [1] "たら 助動詞,*,*,*,特殊・タ,仮定形,た,タラ,タラ"</span></a>
+<a class="sourceLine" id="cb3-26" title="26"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-27" title="27"><span class="co">#&gt; [[9]]</span></a>
+<a class="sourceLine" id="cb3-28" title="28"><span class="co">#&gt; [1] "、 記号,読点,*,*,*,*,、,、,、"</span></a>
+<a class="sourceLine" id="cb3-29" title="29"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-30" title="30"><span class="co">#&gt; [[10]]</span></a>
+<a class="sourceLine" id="cb3-31" title="31"><span class="co">#&gt; [1] "ほんとに 副詞,一般,*,*,*,*,ほんとに,ホントニ,ホントニ"</span></a>
+<a class="sourceLine" id="cb3-32" title="32"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-33" title="33"><span class="co">#&gt; [[11]]</span></a>
+<a class="sourceLine" id="cb3-34" title="34"><span class="co">#&gt; [1] "出し 動詞,自立,*,*,五段・サ行,連用形,出す,ダシ,ダシ"</span></a>
+<a class="sourceLine" id="cb3-35" title="35"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-36" title="36"><span class="co">#&gt; [[12]]</span></a>
+<a class="sourceLine" id="cb3-37" title="37"><span class="co">#&gt; [1] "て 助詞,接続助詞,*,*,*,*,て,テ,テ"</span></a>
+<a class="sourceLine" id="cb3-38" title="38"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-39" title="39"><span class="co">#&gt; [[13]]</span></a>
+<a class="sourceLine" id="cb3-40" title="40"><span class="co">#&gt; [1] "くれ 動詞,非自立,*,*,一段・クレル,連用形,くれる,クレ,クレ"</span></a>
+<a class="sourceLine" id="cb3-41" title="41"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-42" title="42"><span class="co">#&gt; [[14]]</span></a>
+<a class="sourceLine" id="cb3-43" title="43"><span class="co">#&gt; [1] "の 助詞,連体化,*,*,*,*,の,ノ,ノ"</span></a>
+<a class="sourceLine" id="cb3-44" title="44"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-45" title="45"><span class="co">#&gt; [[15]]</span></a>
+<a class="sourceLine" id="cb3-46" title="46"><span class="co">#&gt; [1] "合図 名詞,サ変接続,*,*,*,*,合図,アイズ,アイズ"</span></a>
+<a class="sourceLine" id="cb3-47" title="47"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-48" title="48"><span class="co">#&gt; [[16]]</span></a>
+<a class="sourceLine" id="cb3-49" title="49"><span class="co">#&gt; [1] "です 助動詞,*,*,*,特殊・デス,基本形,です,デス,デス"</span></a>
+<a class="sourceLine" id="cb3-50" title="50"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-51" title="51"><span class="co">#&gt; [[17]]</span></a>
+<a class="sourceLine" id="cb3-52" title="52"><span class="co">#&gt; [1] "！ 記号,一般,*,*,*,*,！,！,！"</span></a>
+<a class="sourceLine" id="cb3-53" title="53"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-54" title="54"><span class="co">#&gt; [[18]]</span></a>
+<a class="sourceLine" id="cb3-55" title="55"><span class="co">#&gt; [1] "　 記号,空白,*,*,*,*,　,　,　"</span></a>
+<a class="sourceLine" id="cb3-56" title="56"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-57" title="57"><span class="co">#&gt; [[19]]</span></a>
+<a class="sourceLine" id="cb3-58" title="58"><span class="co">#&gt; [1] "しっかり 副詞,助詞類接続,*,*,*,*,しっかり,シッカリ,シッカリ"</span></a>
+<a class="sourceLine" id="cb3-59" title="59"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-60" title="60"><span class="co">#&gt; [[20]]</span></a>
+<a class="sourceLine" id="cb3-61" title="61"><span class="co">#&gt; [1] "ここ 名詞,代名詞,一般,*,*,*,ここ,ココ,ココ"</span></a>
+<a class="sourceLine" id="cb3-62" title="62"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-63" title="63"><span class="co">#&gt; [[21]]</span></a>
+<a class="sourceLine" id="cb3-64" title="64"><span class="co">#&gt; [1] "で 助詞,格助詞,一般,*,*,*,で,デ,デ"</span></a>
+<a class="sourceLine" id="cb3-65" title="65"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-66" title="66"><span class="co">#&gt; [[22]]</span></a>
+<a class="sourceLine" id="cb3-67" title="67"><span class="co">#&gt; [1] "は 助詞,係助詞,*,*,*,*,は,ハ,ワ"</span></a>
+<a class="sourceLine" id="cb3-68" title="68"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-69" title="69"><span class="co">#&gt; [[23]]</span></a>
+<a class="sourceLine" id="cb3-70" title="70"><span class="co">#&gt; [1] "コミュニケーション 名詞,一般,*,*,*,*,コミュニケーション,コミュニケーション,コミュニケーション"</span></a>
+<a class="sourceLine" id="cb3-71" title="71"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-72" title="72"><span class="co">#&gt; [[24]]</span></a>
+<a class="sourceLine" id="cb3-73" title="73"><span class="co">#&gt; [1] "とっ 動詞,自立,*,*,五段・ラ行,連用タ接続,とる,トッ,トッ"</span></a>
+<a class="sourceLine" id="cb3-74" title="74"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-75" title="75"><span class="co">#&gt; [[25]]</span></a>
+<a class="sourceLine" id="cb3-76" title="76"><span class="co">#&gt; [1] "て 助詞,接続助詞,*,*,*,*,て,テ,テ"</span></a>
+<a class="sourceLine" id="cb3-77" title="77"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-78" title="78"><span class="co">#&gt; [[26]]</span></a>
+<a class="sourceLine" id="cb3-79" title="79"><span class="co">#&gt; [1] "ください 動詞,非自立,*,*,五段・ラ行特殊,命令ｉ,くださる,クダサイ,クダサイ"</span></a>
+<a class="sourceLine" id="cb3-80" title="80"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-81" title="81"><span class="co">#&gt; [[27]]</span></a>
+<a class="sourceLine" id="cb3-82" title="82"><span class="co">#&gt; [1] "EOS"</span></a>
+<a class="sourceLine" id="cb3-83" title="83"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(rjavacmecab<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/rjavacmecab/topics/prettify">prettify</a></span>(res)) <span class="co"># dataframeに整形します</span></a>
+<a class="sourceLine" id="cb3-84" title="84"><span class="co">#&gt;                  word   POS1       POS2 POS3 POS4      X5StageUse1</span></a>
+<a class="sourceLine" id="cb3-85" title="85"><span class="co">#&gt; 1        キャピキャピ   名詞       一般    *    *                *</span></a>
+<a class="sourceLine" id="cb3-86" title="86"><span class="co">#&gt; 2                  音   名詞       接尾 一般    *                *</span></a>
+<a class="sourceLine" id="cb3-87" title="87"><span class="co">#&gt; 3                  が   助詞     格助詞 一般    *                *</span></a>
+<a class="sourceLine" id="cb3-88" title="88"><span class="co">#&gt; 4                高く 形容詞       自立    *    * 形容詞・アウオ段</span></a>
+<a class="sourceLine" id="cb3-89" title="89"><span class="co">#&gt; 5                なっ   動詞       自立    *    *       五段・ラ行</span></a>
+<a class="sourceLine" id="cb3-90" title="90"><span class="co">#&gt; 6                  て   助詞   接続助詞    *    *                *</span></a>
+<a class="sourceLine" id="cb3-91" title="91"><span class="co">#&gt; 7                  き   動詞     非自立    *    *       カ変・クル</span></a>
+<a class="sourceLine" id="cb3-92" title="92"><span class="co">#&gt; 8                たら 助動詞          *    *    *         特殊・タ</span></a>
+<a class="sourceLine" id="cb3-93" title="93"><span class="co">#&gt; 9                  、   記号       読点    *    *                *</span></a>
+<a class="sourceLine" id="cb3-94" title="94"><span class="co">#&gt; 10           ほんとに   副詞       一般    *    *                *</span></a>
+<a class="sourceLine" id="cb3-95" title="95"><span class="co">#&gt; 11               出し   動詞       自立    *    *       五段・サ行</span></a>
+<a class="sourceLine" id="cb3-96" title="96"><span class="co">#&gt; 12                 て   助詞   接続助詞    *    *                *</span></a>
+<a class="sourceLine" id="cb3-97" title="97"><span class="co">#&gt; 13               くれ   動詞     非自立    *    *     一段・クレル</span></a>
+<a class="sourceLine" id="cb3-98" title="98"><span class="co">#&gt; 14                 の   助詞     連体化    *    *                *</span></a>
+<a class="sourceLine" id="cb3-99" title="99"><span class="co">#&gt; 15               合図   名詞   サ変接続    *    *                *</span></a>
+<a class="sourceLine" id="cb3-100" title="100"><span class="co">#&gt; 16               です 助動詞          *    *    *       特殊・デス</span></a>
+<a class="sourceLine" id="cb3-101" title="101"><span class="co">#&gt; 17                 ！   記号       一般    *    *                *</span></a>
+<a class="sourceLine" id="cb3-102" title="102"><span class="co">#&gt; 18                 　   記号       空白    *    *                *</span></a>
+<a class="sourceLine" id="cb3-103" title="103"><span class="co">#&gt; 19           しっかり   副詞 助詞類接続    *    *                *</span></a>
+<a class="sourceLine" id="cb3-104" title="104"><span class="co">#&gt; 20               ここ   名詞     代名詞 一般    *                *</span></a>
+<a class="sourceLine" id="cb3-105" title="105"><span class="co">#&gt; 21                 で   助詞     格助詞 一般    *                *</span></a>
+<a class="sourceLine" id="cb3-106" title="106"><span class="co">#&gt; 22                 は   助詞     係助詞    *    *                *</span></a>
+<a class="sourceLine" id="cb3-107" title="107"><span class="co">#&gt; 23 コミュニケーション   名詞       一般    *    *                *</span></a>
+<a class="sourceLine" id="cb3-108" title="108"><span class="co">#&gt; 24               とっ   動詞       自立    *    *       五段・ラ行</span></a>
+<a class="sourceLine" id="cb3-109" title="109"><span class="co">#&gt; 25                 て   助詞   接続助詞    *    *                *</span></a>
+<a class="sourceLine" id="cb3-110" title="110"><span class="co">#&gt; 26           ください   動詞     非自立    *    *   五段・ラ行特殊</span></a>
+<a class="sourceLine" id="cb3-111" title="111"><span class="co">#&gt;    X5StageUse2           Original              Yomi1              Yomi2</span></a>
+<a class="sourceLine" id="cb3-112" title="112"><span class="co">#&gt; 1            *                  *                  *                  *</span></a>
+<a class="sourceLine" id="cb3-113" title="113"><span class="co">#&gt; 2            *                 音               オン               オン</span></a>
+<a class="sourceLine" id="cb3-114" title="114"><span class="co">#&gt; 3            *                 が                 ガ                 ガ</span></a>
+<a class="sourceLine" id="cb3-115" title="115"><span class="co">#&gt; 4   連用テ接続               高い             タカク             タカク</span></a>
+<a class="sourceLine" id="cb3-116" title="116"><span class="co">#&gt; 5   連用タ接続               なる               ナッ               ナッ</span></a>
+<a class="sourceLine" id="cb3-117" title="117"><span class="co">#&gt; 6            *                 て                 テ                 テ</span></a>
+<a class="sourceLine" id="cb3-118" title="118"><span class="co">#&gt; 7       連用形               くる                 キ                 キ</span></a>
+<a class="sourceLine" id="cb3-119" title="119"><span class="co">#&gt; 8       仮定形                 た               タラ               タラ</span></a>
+<a class="sourceLine" id="cb3-120" title="120"><span class="co">#&gt; 9            *                 、                 、                 、</span></a>
+<a class="sourceLine" id="cb3-121" title="121"><span class="co">#&gt; 10           *           ほんとに           ホントニ           ホントニ</span></a>
+<a class="sourceLine" id="cb3-122" title="122"><span class="co">#&gt; 11      連用形               出す               ダシ               ダシ</span></a>
+<a class="sourceLine" id="cb3-123" title="123"><span class="co">#&gt; 12           *                 て                 テ                 テ</span></a>
+<a class="sourceLine" id="cb3-124" title="124"><span class="co">#&gt; 13      連用形             くれる               クレ               クレ</span></a>
+<a class="sourceLine" id="cb3-125" title="125"><span class="co">#&gt; 14           *                 の                 ノ                 ノ</span></a>
+<a class="sourceLine" id="cb3-126" title="126"><span class="co">#&gt; 15           *               合図             アイズ             アイズ</span></a>
+<a class="sourceLine" id="cb3-127" title="127"><span class="co">#&gt; 16      基本形               です               デス               デス</span></a>
+<a class="sourceLine" id="cb3-128" title="128"><span class="co">#&gt; 17           *                 ！                 ！                 ！</span></a>
+<a class="sourceLine" id="cb3-129" title="129"><span class="co">#&gt; 18           *                 　                 　                 　</span></a>
+<a class="sourceLine" id="cb3-130" title="130"><span class="co">#&gt; 19           *           しっかり           シッカリ           シッカリ</span></a>
+<a class="sourceLine" id="cb3-131" title="131"><span class="co">#&gt; 20           *               ここ               ココ               ココ</span></a>
+<a class="sourceLine" id="cb3-132" title="132"><span class="co">#&gt; 21           *                 で                 デ                 デ</span></a>
+<a class="sourceLine" id="cb3-133" title="133"><span class="co">#&gt; 22           *                 は                 ハ                 ワ</span></a>
+<a class="sourceLine" id="cb3-134" title="134"><span class="co">#&gt; 23           * コミュニケーション コミュニケーション コミュニケーション</span></a>
+<a class="sourceLine" id="cb3-135" title="135"><span class="co">#&gt; 24  連用タ接続               とる               トッ               トッ</span></a>
+<a class="sourceLine" id="cb3-136" title="136"><span class="co">#&gt; 25           *                 て                 テ                 テ</span></a>
+<a class="sourceLine" id="cb3-137" title="137"><span class="co">#&gt; 26      命令ｉ           くださる           クダサイ           クダサイ</span></a></code></pre></div>
+</div>
+<div id="section-5" class="section level3">
+<h3 class="hasAnchor">
+<a href="#section-5" class="anchor"></a>辞書の差し替え</h3>
+<p>確認できたかぎりでは<code>-d</code>オプションは動作します。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">str &lt;-<span class="st"> "きゃりーぱみゅぱみゅ"</span></a>
+<a class="sourceLine" id="cb4-2" title="2">rjavacmecab<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/rjavacmecab/topics/cmecab_c">cmecab_c</a></span>(str)</a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">#&gt; [[1]]</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">#&gt; [1] "きゃ 動詞,非自立,*,*,五段・カ行促音便,仮定縮約１,く,キャ,キャ"</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt; [[2]]</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="co">#&gt; [1] "り 助動詞,*,*,*,文語・リ,基本形,り,リ,リ"</span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="co">#&gt; [[3]]</span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="co">#&gt; [1] "ー 名詞,固有名詞,一般,*,*,*,*"</span></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-12" title="12"><span class="co">#&gt; [[4]]</span></a>
+<a class="sourceLine" id="cb4-13" title="13"><span class="co">#&gt; [1] "ぱみゅぱみゅ 名詞,一般,*,*,*,*,*"</span></a>
+<a class="sourceLine" id="cb4-14" title="14"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-15" title="15"><span class="co">#&gt; [[5]]</span></a>
+<a class="sourceLine" id="cb4-16" title="16"><span class="co">#&gt; [1] "EOS"</span></a>
+<a class="sourceLine" id="cb4-17" title="17">rjavacmecab<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/rjavacmecab/topics/cmecab_c">cmecab_c</a></span>(str, <span class="st">"-d /MeCab/dic/mecab-ipadic-neologd"</span>)</a>
+<a class="sourceLine" id="cb4-18" title="18"><span class="co">#&gt; [[1]]</span></a>
+<a class="sourceLine" id="cb4-19" title="19"><span class="co">#&gt; [1] "きゃりーぱみゅぱみゅ 名詞,固有名詞,人名,一般,*,*,きゃりーぱみゅぱみゅ,キャリーパミュパミュ,キャリーパミュパミュ"</span></a>
+<a class="sourceLine" id="cb4-20" title="20"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-21" title="21"><span class="co">#&gt; [[2]]</span></a>
+<a class="sourceLine" id="cb4-22" title="22"><span class="co">#&gt; [1] "EOS"</span></a></code></pre></div>
 </div>
 </div>
   </div>
@@ -151,9 +329,9 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#rjavacmecab">{rjavacmecab}パッケージについて</a></li>
-      <li><a href="#section">使い方</a></li>
-      <li><a href="#section-1">ベンチマーク</a></li>
+<li><a href="#section">これは何？</a></li>
+      <li><a href="#section-1">使い方</a></li>
+      <li><a href="#section-4">使用例</a></li>
       </ul>
 </div>
       </div>
