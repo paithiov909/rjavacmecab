@@ -78,9 +78,9 @@ rJavaの周辺は比較的問題が起こりやすく、たとえばパッケー
 - [installation - rJava on MacOS Sierra 10.12.15: unsupported option fopenmp - Stack Overflow](https://stackoverflow.com/questions/44383668/rjava-on-macos-sierra-10-12-15-unsupported-option-fopenmp)
 - [java - rJava loading in R(3.4.1) with OS Sierra - Stack Overflow](https://stackoverflow.com/questions/45051275/rjava-loading-in-r3-4-1-with-os-sierra)
 
-## 使用例
+### 使用例
 
-### cmecab-javaの呼び出し
+#### cmecab-javaの呼び出し
 
 ```{r}
 res <- rjavacmecab::cmecab_c("キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください")
@@ -88,7 +88,7 @@ print(res)
 print(rjavacmecab::prettify(res)) # dataframeに整形します
 ```
 
-### 辞書の差し替え
+#### 辞書の差し替え
 
 確認できたかぎりでは`-d`オプションは動作します。
 
