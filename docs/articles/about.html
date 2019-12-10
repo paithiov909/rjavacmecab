@@ -89,7 +89,7 @@
     <div class="page-header toc-ignore">
       <h1>About rjavacmecab package</h1>
             
-            <h4 class="date">2019-12-07</h4>
+            <h4 class="date">2019-12-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/paithiov909/rjavacmecab/blob/master/vignettes/about.Rmd"><code>vignettes/about.Rmd</code></a></small>
       <div class="hidden name"><code>about.Rmd</code></div>
@@ -149,13 +149,12 @@
 </ul>
 </div>
 </div>
-</div>
-<div id="section-4" class="section level2">
-<h2 class="hasAnchor">
-<a href="#section-4" class="anchor"></a>使用例</h2>
-<div id="cmecab-java" class="section level3">
+<div id="section-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#cmecab-java" class="anchor"></a>cmecab-javaの呼び出し</h3>
+<a href="#section-4" class="anchor"></a>使用例</h3>
+<div id="cmecab-java" class="section level4">
+<h4 class="hasAnchor">
+<a href="#cmecab-java" class="anchor"></a>cmecab-javaの呼び出し</h4>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">res &lt;-<span class="st"> </span>rjavacmecab<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/rjavacmecab/topics/cmecab_c">cmecab_c</a></span>(<span class="st">"キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください"</span>)</a>
 <a class="sourceLine" id="cb3-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(res)</a>
 <a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt; [[1]]</span></a>
@@ -294,9 +293,9 @@
 <a class="sourceLine" id="cb3-136" title="136"><span class="co">#&gt; 25           *                 て                 テ                 テ</span></a>
 <a class="sourceLine" id="cb3-137" title="137"><span class="co">#&gt; 26      命令ｉ           くださる           クダサイ           クダサイ</span></a></code></pre></div>
 </div>
-<div id="section-5" class="section level3">
-<h3 class="hasAnchor">
-<a href="#section-5" class="anchor"></a>辞書の差し替え</h3>
+<div id="section-5" class="section level4">
+<h4 class="hasAnchor">
+<a href="#section-5" class="anchor"></a>辞書の差し替え</h4>
 <p>確認できたかぎりでは<code>-d</code>オプションは動作します。</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">str &lt;-<span class="st"> "きゃりーぱみゅぱみゅ"</span></a>
 <a class="sourceLine" id="cb4-2" title="2">rjavacmecab<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/rjavacmecab/topics/cmecab_c">cmecab_c</a></span>(str)</a>
@@ -322,6 +321,7 @@
 <a class="sourceLine" id="cb4-22" title="22"><span class="co">#&gt; [1] "EOS"</span></a></code></pre></div>
 </div>
 </div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -331,7 +331,6 @@
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#section">これは何？</a></li>
       <li><a href="#section-1">使い方</a></li>
-      <li><a href="#section-4">使用例</a></li>
       </ul>
 </div>
       </div>
