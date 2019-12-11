@@ -14,16 +14,18 @@ fastestword(chr = c(""), outfile = file.path(getwd(), "output.txt"),
 
 \item{encoding}{encoding of tempfile that MeCab will read.}
 
-\item{...}{arguments passed to writeLines()}
+\item{opt}{options passed to mecab command.}
+
+\item{...}{arguments passed to writeLines().}
 }
 \value{
 return the value pased to `outfile` argument invisibly
 }
 \description{
 Call mecab command directly via system().
-It is useful especially when just tokenizing loads of text.
 }
 \details{
+It is useful especially when just tokenizing loads of text.
 Since `mecab -Owakati` command is specially-tuned,
 it is generally faster that you directly call mecab command
 than programmatically use mecab tagger
