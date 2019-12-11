@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rjavacmecab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2.3</span>
       </span>
     </div>
 
@@ -64,6 +64,9 @@
     </li>
     <li>
       <a href="articles/benchmark.html">Benchmark</a>
+    </li>
+    <li>
+      <a href="articles/datasets.html">Explore datasets</a>
     </li>
   </ul>
 </li>
@@ -195,61 +198,21 @@
 <a class="sourceLine" id="cb2-80" title="80"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb2-81" title="81"><span class="co">#&gt; [[27]]</span></a>
 <a class="sourceLine" id="cb2-82" title="82"><span class="co">#&gt; [1] "EOS"</span></a>
-<a class="sourceLine" id="cb2-83" title="83"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(rjavacmecab<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/rjavacmecab/topics/prettify">prettify</a></span>(res))</a>
-<a class="sourceLine" id="cb2-84" title="84"><span class="co">#&gt;                  word   POS1       POS2 POS3 POS4      X5StageUse1</span></a>
-<a class="sourceLine" id="cb2-85" title="85"><span class="co">#&gt; 1        キャピキャピ   名詞       一般    *    *                *</span></a>
-<a class="sourceLine" id="cb2-86" title="86"><span class="co">#&gt; 2                  音   名詞       接尾 一般    *                *</span></a>
-<a class="sourceLine" id="cb2-87" title="87"><span class="co">#&gt; 3                  が   助詞     格助詞 一般    *                *</span></a>
-<a class="sourceLine" id="cb2-88" title="88"><span class="co">#&gt; 4                高く 形容詞       自立    *    * 形容詞・アウオ段</span></a>
-<a class="sourceLine" id="cb2-89" title="89"><span class="co">#&gt; 5                なっ   動詞       自立    *    *       五段・ラ行</span></a>
-<a class="sourceLine" id="cb2-90" title="90"><span class="co">#&gt; 6                  て   助詞   接続助詞    *    *                *</span></a>
-<a class="sourceLine" id="cb2-91" title="91"><span class="co">#&gt; 7                  き   動詞     非自立    *    *       カ変・クル</span></a>
-<a class="sourceLine" id="cb2-92" title="92"><span class="co">#&gt; 8                たら 助動詞          *    *    *         特殊・タ</span></a>
-<a class="sourceLine" id="cb2-93" title="93"><span class="co">#&gt; 9                  、   記号       読点    *    *                *</span></a>
-<a class="sourceLine" id="cb2-94" title="94"><span class="co">#&gt; 10           ほんとに   副詞       一般    *    *                *</span></a>
-<a class="sourceLine" id="cb2-95" title="95"><span class="co">#&gt; 11               出し   動詞       自立    *    *       五段・サ行</span></a>
-<a class="sourceLine" id="cb2-96" title="96"><span class="co">#&gt; 12                 て   助詞   接続助詞    *    *                *</span></a>
-<a class="sourceLine" id="cb2-97" title="97"><span class="co">#&gt; 13               くれ   動詞     非自立    *    *     一段・クレル</span></a>
-<a class="sourceLine" id="cb2-98" title="98"><span class="co">#&gt; 14                 の   助詞     連体化    *    *                *</span></a>
-<a class="sourceLine" id="cb2-99" title="99"><span class="co">#&gt; 15               合図   名詞   サ変接続    *    *                *</span></a>
-<a class="sourceLine" id="cb2-100" title="100"><span class="co">#&gt; 16               です 助動詞          *    *    *       特殊・デス</span></a>
-<a class="sourceLine" id="cb2-101" title="101"><span class="co">#&gt; 17                 ！   記号       一般    *    *                *</span></a>
-<a class="sourceLine" id="cb2-102" title="102"><span class="co">#&gt; 18                 　   記号       空白    *    *                *</span></a>
-<a class="sourceLine" id="cb2-103" title="103"><span class="co">#&gt; 19           しっかり   副詞 助詞類接続    *    *                *</span></a>
-<a class="sourceLine" id="cb2-104" title="104"><span class="co">#&gt; 20               ここ   名詞     代名詞 一般    *                *</span></a>
-<a class="sourceLine" id="cb2-105" title="105"><span class="co">#&gt; 21                 で   助詞     格助詞 一般    *                *</span></a>
-<a class="sourceLine" id="cb2-106" title="106"><span class="co">#&gt; 22                 は   助詞     係助詞    *    *                *</span></a>
-<a class="sourceLine" id="cb2-107" title="107"><span class="co">#&gt; 23 コミュニケーション   名詞       一般    *    *                *</span></a>
-<a class="sourceLine" id="cb2-108" title="108"><span class="co">#&gt; 24               とっ   動詞       自立    *    *       五段・ラ行</span></a>
-<a class="sourceLine" id="cb2-109" title="109"><span class="co">#&gt; 25                 て   助詞   接続助詞    *    *                *</span></a>
-<a class="sourceLine" id="cb2-110" title="110"><span class="co">#&gt; 26           ください   動詞     非自立    *    *   五段・ラ行特殊</span></a>
-<a class="sourceLine" id="cb2-111" title="111"><span class="co">#&gt;    X5StageUse2           Original              Yomi1              Yomi2</span></a>
-<a class="sourceLine" id="cb2-112" title="112"><span class="co">#&gt; 1            *                  *                  *                  *</span></a>
-<a class="sourceLine" id="cb2-113" title="113"><span class="co">#&gt; 2            *                 音               オン               オン</span></a>
-<a class="sourceLine" id="cb2-114" title="114"><span class="co">#&gt; 3            *                 が                 ガ                 ガ</span></a>
-<a class="sourceLine" id="cb2-115" title="115"><span class="co">#&gt; 4   連用テ接続               高い             タカク             タカク</span></a>
-<a class="sourceLine" id="cb2-116" title="116"><span class="co">#&gt; 5   連用タ接続               なる               ナッ               ナッ</span></a>
-<a class="sourceLine" id="cb2-117" title="117"><span class="co">#&gt; 6            *                 て                 テ                 テ</span></a>
-<a class="sourceLine" id="cb2-118" title="118"><span class="co">#&gt; 7       連用形               くる                 キ                 キ</span></a>
-<a class="sourceLine" id="cb2-119" title="119"><span class="co">#&gt; 8       仮定形                 た               タラ               タラ</span></a>
-<a class="sourceLine" id="cb2-120" title="120"><span class="co">#&gt; 9            *                 、                 、                 、</span></a>
-<a class="sourceLine" id="cb2-121" title="121"><span class="co">#&gt; 10           *           ほんとに           ホントニ           ホントニ</span></a>
-<a class="sourceLine" id="cb2-122" title="122"><span class="co">#&gt; 11      連用形               出す               ダシ               ダシ</span></a>
-<a class="sourceLine" id="cb2-123" title="123"><span class="co">#&gt; 12           *                 て                 テ                 テ</span></a>
-<a class="sourceLine" id="cb2-124" title="124"><span class="co">#&gt; 13      連用形             くれる               クレ               クレ</span></a>
-<a class="sourceLine" id="cb2-125" title="125"><span class="co">#&gt; 14           *                 の                 ノ                 ノ</span></a>
-<a class="sourceLine" id="cb2-126" title="126"><span class="co">#&gt; 15           *               合図             アイズ             アイズ</span></a>
-<a class="sourceLine" id="cb2-127" title="127"><span class="co">#&gt; 16      基本形               です               デス               デス</span></a>
-<a class="sourceLine" id="cb2-128" title="128"><span class="co">#&gt; 17           *                 ！                 ！                 ！</span></a>
-<a class="sourceLine" id="cb2-129" title="129"><span class="co">#&gt; 18           *                 　                 　                 　</span></a>
-<a class="sourceLine" id="cb2-130" title="130"><span class="co">#&gt; 19           *           しっかり           シッカリ           シッカリ</span></a>
-<a class="sourceLine" id="cb2-131" title="131"><span class="co">#&gt; 20           *               ここ               ココ               ココ</span></a>
-<a class="sourceLine" id="cb2-132" title="132"><span class="co">#&gt; 21           *                 で                 デ                 デ</span></a>
-<a class="sourceLine" id="cb2-133" title="133"><span class="co">#&gt; 22           *                 は                 ハ                 ワ</span></a>
-<a class="sourceLine" id="cb2-134" title="134"><span class="co">#&gt; 23           * コミュニケーション コミュニケーション コミュニケーション</span></a>
-<a class="sourceLine" id="cb2-135" title="135"><span class="co">#&gt; 24  連用タ接続               とる               トッ               トッ</span></a>
-<a class="sourceLine" id="cb2-136" title="136"><span class="co">#&gt; 25           *                 て                 テ                 テ</span></a>
-<a class="sourceLine" id="cb2-137" title="137"><span class="co">#&gt; 26      命令ｉ           くださる           クダサイ           クダサイ</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-83" title="83"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(rjavacmecab<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/rjavacmecab/topics/prettify">prettify</a></span>(res))</a>
+<a class="sourceLine" id="cb2-84" title="84"><span class="co">#&gt;           word   POS1     POS2 POS3 POS4      X5StageUse1 X5StageUse2</span></a>
+<a class="sourceLine" id="cb2-85" title="85"><span class="co">#&gt; 1 キャピキャピ   名詞     一般    *    *                *           *</span></a>
+<a class="sourceLine" id="cb2-86" title="86"><span class="co">#&gt; 2           音   名詞     接尾 一般    *                *           *</span></a>
+<a class="sourceLine" id="cb2-87" title="87"><span class="co">#&gt; 3           が   助詞   格助詞 一般    *                *           *</span></a>
+<a class="sourceLine" id="cb2-88" title="88"><span class="co">#&gt; 4         高く 形容詞     自立    *    * 形容詞・アウオ段  連用テ接続</span></a>
+<a class="sourceLine" id="cb2-89" title="89"><span class="co">#&gt; 5         なっ   動詞     自立    *    *       五段・ラ行  連用タ接続</span></a>
+<a class="sourceLine" id="cb2-90" title="90"><span class="co">#&gt; 6           て   助詞 接続助詞    *    *                *           *</span></a>
+<a class="sourceLine" id="cb2-91" title="91"><span class="co">#&gt;   Original  Yomi1  Yomi2</span></a>
+<a class="sourceLine" id="cb2-92" title="92"><span class="co">#&gt; 1        *      *      *</span></a>
+<a class="sourceLine" id="cb2-93" title="93"><span class="co">#&gt; 2       音   オン   オン</span></a>
+<a class="sourceLine" id="cb2-94" title="94"><span class="co">#&gt; 3       が     ガ     ガ</span></a>
+<a class="sourceLine" id="cb2-95" title="95"><span class="co">#&gt; 4     高い タカク タカク</span></a>
+<a class="sourceLine" id="cb2-96" title="96"><span class="co">#&gt; 5     なる   ナッ   ナッ</span></a>
+<a class="sourceLine" id="cb2-97" title="97"><span class="co">#&gt; 6       て     テ     テ</span></a></code></pre></div>
 </div>
 <div id="change-dictionary" class="section level3">
 <h3 class="hasAnchor">
@@ -305,7 +268,7 @@
 <ul class="list-unstyled">
 <li>Browse source code at <br><a href="https://github.com/paithiov909/rjavacmecab">https://​github.com/​paithiov909/​rjavacmecab</a>
 </li>
-<li>Report a bug at <br><a href="https://github.com/paithiov909/rjavacmecab/issues%20">https://​github.com/​paithiov909/​rjavacmecab/​issues </a>
+<li>Report a bug at <br><a href="https://github.com/paithiov909/rjavacmecab/issues">https://​github.com/​paithiov909/​rjavacmecab/​issues</a>
 </li>
 </ul>
 </div>

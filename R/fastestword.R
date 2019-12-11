@@ -1,8 +1,8 @@
 #' Call mecab command directly
 #'
 #' Call mecab command directly via system().
-#' It is useful especially when just tokenizing loads of text.
 #'
+#' @details It is useful especially when just tokenizing loads of text.
 #' Since `mecab -Owakati` command is specially-tuned,
 #' it is generally faster that you directly call mecab command
 #' than programmatically use mecab tagger
@@ -11,7 +11,8 @@
 #' @param chr character vector.
 #' @param outfile fullpath to a file that MeCab will write output.
 #' @param encoding encoding of tempfile that MeCab will read.
-#' @param ... arguments passed to writeLines()
+#' @param opt options passed to mecab command.
+#' @param ... arguments passed to writeLines().
 #'
 #' @return return the value pased to `outfile` argument invisibly
 #'

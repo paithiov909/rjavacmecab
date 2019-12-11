@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rjavacmecab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2.3</span>
       </span>
     </div>
 
@@ -65,6 +65,9 @@
     <li>
       <a href="../articles/benchmark.html">Benchmark</a>
     </li>
+    <li>
+      <a href="../articles/datasets.html">Explore datasets</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -89,6 +92,7 @@
     <div class="page-header toc-ignore">
       <h1>Benchmark</h1>
             
+            <h4 class="date">2019-12-11</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/paithiov909/rjavacmecab/blob/master/vignettes/benchmark.Rmd"><code>vignettes/benchmark.Rmd</code></a></small>
       <div class="hidden name"><code>benchmark.Rmd</code></div>
@@ -108,7 +112,7 @@
 <li>RcppMeCab::pos() (ver 0.0.1.3)</li>
 <li>rjavacmecab::cmecab_c() (ver 0.1.0)</li>
 </ul>
-<p>RcppMeCabは本家の<code>junhewk/RcppMeCab</code>からビルドできないため、<code>ltl-manabi/RcppMeCab</code>を利用しています。</p>
+<p>RcppMeCabは本家の<a href="https://github.com/junhewk/RcppMeCab">junhewk/RcppMeCab</a>からビルドできないため、<a href="https://github.com/ltl-manabi/RcppMeCab">ltl-manabi/RcppMeCab</a>を利用しています。</p>
 </div>
 <div id="section-2" class="section level3">
 <h3 class="hasAnchor">
@@ -121,14 +125,14 @@
 <a class="sourceLine" id="cb1-6" title="6">  <span class="dt">times =</span> 500L</a>
 <a class="sourceLine" id="cb1-7" title="7">)</a>
 <a class="sourceLine" id="cb1-8" title="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary</a></span>(tm)</a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="co">#&gt;                         expr     min       lq     mean  median       uq</span></a>
-<a class="sourceLine" id="cb1-10" title="10"><span class="co">#&gt; 1       RMeCab::RMeCabC(str) 11.5679 12.92640 17.83673 15.2229 18.45240</span></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt; 2        RcppMeCab::pos(str) 12.2170 13.34220 18.81336 15.7305 19.95435</span></a>
-<a class="sourceLine" id="cb1-12" title="12"><span class="co">#&gt; 3 rjavacmecab::cmecab_c(str) 37.5085 42.34515 69.98500 51.5923 69.71885</span></a>
-<a class="sourceLine" id="cb1-13" title="13"><span class="co">#&gt;         max neval</span></a>
-<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt; 1  775.0195   500</span></a>
-<a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt; 2  629.8329   500</span></a>
-<a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt; 3 4619.9782   500</span></a></code></pre></div>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">#&gt;                         expr     min      lq      mean   median       uq</span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">#&gt; 1       RMeCab::RMeCabC(str)  3.0994  3.4697  3.906947  3.65130  4.21875</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt; 2        RcppMeCab::pos(str)  3.2946  3.6661  4.147267  3.84950  4.48785</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">#&gt; 3 rjavacmecab::cmecab_c(str) 14.7150 16.2988 21.393000 18.01625 21.34900</span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">#&gt;        max neval</span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt; 1   7.6523   500</span></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt; 2   7.6537   500</span></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt; 3 943.2779   500</span></a></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">ggplot2<span class="op">::</span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span>(tm)</a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="co">#&gt; Coordinate system already present. Adding new coordinate system, which will replace the existing one.</span></a></code></pre></div>
 <p><img src="benchmark_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
