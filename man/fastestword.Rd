@@ -17,6 +17,7 @@ fastestword(chr = c(""), outfile = file.path(getwd(), "output.txt"),
 \item{opt}{options passed to mecab command.}
 
 \item{...}{arguments passed to writeLines().}
+
 }
 \value{
 return the value pased to `outfile` argument invisibly
