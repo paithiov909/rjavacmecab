@@ -46,7 +46,7 @@ MeCabの辞書はUTF-8を指定してインストールされていることを�
 
 {rjavacmecab}はcmecab-javaのrJavaラッパーライブラリです。cmecab-javaを利用するためにはMeCabのダイナミックライブラリにパスが通っている必要があります。
 
-Windowsの場合、インストールしたMeCabのディレクトリ以下の`bin`ディレクトリにパスを通します。LinuxやMacの場合、LD_LIBRARY_PATHに`libmecab.so`（Linuxの場合）や`libmecab.dylib`（Macの場合）のあるディレクトリを追加します。
+Windowsの場合、Windowsの場合、インストールしたMeCabのディレクトリ以下の`bin`ディレクトリにパスを通します。LinuxやMacの場合、LD_LIBRARY_PATHに`libmecab.so`（Linuxの場合）や`libmecab.dylib`（Macの場合）のあるディレクトリを追加します。
 
 Ubuntuなどでaptを通じてMeCabを導入した場合、`libmecab.so`は`/usr/local/lib`以下にあるので、このディレクトリをLD_LIBRARY_PATHに追加します。
 
@@ -85,7 +85,7 @@ rJavaの周辺は比較的問題が起こりやすく、たとえばパッケー
 ```{r}
 res <- rjavacmecab::cmecab_c("キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください")
 print(res)
-print(rjavacmecab::prettify(res)) # dataframeに整形します
+head(rjavacmecab::prettify(res)) # dataframeに整形します
 ```
 
 #### 辞書の差し替え
