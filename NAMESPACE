@@ -3,6 +3,7 @@
 export(aozora)
 export(cmecab_c)
 export(emojiRegexp)
+export(fastestword)
 export(ngram_tokenizer)
 export(prettify)
 import(rJava)
