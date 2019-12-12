@@ -6,7 +6,7 @@
 #' Since `mecab -Owakati` command is specially-tuned,
 #' it is generally faster that you directly call mecab command
 #' than programmatically use mecab tagger
-#' if you would like to just tokenize (wakachi-gaki) of Japanese text.
+#' if you would like to just tokenize (wakachi-gaki) texts.
 #'
 #' @param chr character vector.
 #' @param outfile fullpath to a file that MeCab will write output.
