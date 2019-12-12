@@ -141,8 +141,8 @@
 <div id="rjava" class="section level4">
 <h4 class="hasAnchor">
 <a href="#rjava" class="anchor"></a>rJava周りで問題が発生する場合</h4>
-<p>環境によってはrJavaパッケージはソースからビルドされている必要があります。{rJava}をソースからビルドするには、多くの場合はJDKを適切にインストールしたあとに<code>R CMD javareconf</code>を実行したうえで、R上で<code><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages("rJava", type="source")</a></code>などとすれば解決します。</p>
-<p>rJavaの周辺は比較的問題が起こりやすく、たとえばパッケージの読みこみ時に<code>jvm</code>のロードに失敗したりするといったことがあります（古いバージョンのRstudioを使用している場合などに発生することが報告されています）。こうした場合は<code><a href="https://www.rdocumentation.org/packages/base/topics/dynload">dyn.load()</a></code>関数に使用したいJDKに付属しているダイナミックライブラリを明示的に渡すか、rJavaが読みにいっているファイルにシンボリックリンクを上書きするなどして対処します。</p>
+<p>環境によってはrJavaパッケージはソースからビルドされている必要があります。{rJava}をソースからビルドするには、多くの場合はJavaを適切にインストールしたあとに<code>R CMD javareconf</code>を実行したうえで、R上で<code><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages("rJava", type="source")</a></code>などとすれば解決します。</p>
+<p>rJavaの周辺は比較的問題が起こりやすく、たとえばパッケージの読みこみ時に<code>jvm</code>のロードに失敗したりするといったことがあります（古いバージョンのRstudioを使用している場合などに発生することが報告されています）。こうした場合は<code><a href="https://www.rdocumentation.org/packages/base/topics/dynload">dyn.load()</a></code>関数に使用したいJREに付属しているダイナミックライブラリを明示的に渡すか、rJavaが読みにいっているファイルにシンボリックリンクを上書きするなどして対処します。</p>
 <p>また、パッケージのビルド時に<code>clang: error: unsupported option '-fopenmp</code>が発生してビルドに失敗する場合、Rパッケージのビルドに使用されるコンパイラの設定をしなおす必要があります。詳しくは以下に挙げる記事などを参考にしてください。</p>
 <ul>
 <li><a href="https://zhiyzuo.github.io/installation-rJava/">Installing rJava on macOS | Zhiya Zuo</a></li>

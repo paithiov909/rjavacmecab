@@ -17,7 +17,6 @@ fastestword(chr = c(""), outfile = file.path(getwd(), "output.txt"),
 \item{opt}{options passed to mecab command.}
 
 \item{...}{arguments passed to writeLines().}
-
 }
 \value{
 return the value pased to `outfile` argument invisibly
@@ -30,5 +29,5 @@ It is useful especially when just tokenizing loads of text.
 Since `mecab -Owakati` command is specially-tuned,
 it is generally faster that you directly call mecab command
 than programmatically use mecab tagger
-if you would like to just tokenize (wakachi-gaki) of Japanese text.
+if you would like to just tokenize (wakachi-gaki) texts.
 }

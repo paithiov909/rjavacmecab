@@ -14,7 +14,7 @@ remotes::install_github("paithiov909/rjavacmecab")
 ## Requirements
 
 - MeCab
-- JDK
+- JRE
 
 ## Usage
 
