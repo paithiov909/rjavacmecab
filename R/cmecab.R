@@ -5,7 +5,7 @@
 #' @param sep String used as separator with which it replaces tab.
 #' @return a list
 #'
-#' @import rJava
+#' @importFrom rJava .jnew
 #' @importFrom stringr str_replace_all
 #' @importFrom stringr str_split
 #' @importFrom stringr fixed
@@ -13,18 +13,6 @@
 #' @export
 cmecab_c <- function(str = "", opt = "", sep = " ")
 {
-
-    rJava::.jaddClassPath("inst/java/bridj-0.7.0.jar")
-    rJava::.jaddClassPath("inst/java/cmecab-java-2.1.0.jar")
-
-    rJava::javaImport(packages = "net.moraleboost.mecab.Lattice")
-    rJava::javaImport(packages = "net.moraleboost.mecab.Tagger")
-    rJava::javaImport(packages = "net.moraleboost.mecab.impl.StandardTagger")
-
-    # rJava::javaImport(packages = "mecab.MECAB_TOKEN_BOUNDARY")
-    # rJava::javaImport(packages = "mecab.MECAB_ANY_BOUNDARY")
-    # rJava::javaImport(packages = "mecab.MECAB_INSIDE_TOKEN")
-
     tagger <- rJava::.jnew("net.moraleboost.mecab.impl.StandardTagger", opt)
     lattice <- tagger$createLattice()
 
