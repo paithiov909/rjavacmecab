@@ -6,6 +6,7 @@
 #' @return a list
 #'
 #' @importFrom rJava .jnew
+#' @importFrom stringr str_conv
 #' @importFrom stringr str_replace_all
 #' @importFrom stringr str_split
 #' @importFrom stringr fixed
@@ -16,7 +17,7 @@ cmecab_c <- function(str = "", opt = "", sep = " ")
     tagger <- rJava::.jnew("net.moraleboost.mecab.impl.StandardTagger", opt)
     lattice <- tagger$createLattice()
 
-    lattice$setSentence(paste0(iconv(str, to = "UTF-8"), "\n"))
+    lattice$setSentence(paste0(stringr::str_conv(str, encoding = "UTF-8"), "\n"))
     tagger$parse(lattice)
 
     parsed <- lattice$toString()
