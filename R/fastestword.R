@@ -22,15 +22,13 @@ fastestword <- function(chr = c(""),
                         encoding = "UTF-8",
                         opt = "-Owakati",
                         ...) {
+  desc <- tempfile(fileext = ".txt")
+  tempfile <- file(desc, open = "w+", encoding = encoding)
+  writeLines(chr, con = tempfile, ...)
+  close(tempfile)
 
-    desc <- tempfile(fileext = ".txt")
-    tempfile <- file(desc, open = "w+", encoding = encoding)
-    writeLines(chr, con = tempfile, ...)
-    close(tempfile)
+  try(system(command = paste("mecab", desc, "-o", outfile, opt)))
 
-    try(system(command = paste("mecab", desc, "-o", outfile, opt)))
-
-    unlink(desc)
-    invisible(outfile)
-
+  unlink(desc)
+  invisible(outfile)
 }
