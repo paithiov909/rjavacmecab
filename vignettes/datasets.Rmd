@@ -22,7 +22,9 @@ knitr::opts_chunk$set(
 ```{r setup, include = FALSE}
 library(dplyr)
 library(DT)
-library(rjavacmecab)
+if(!require(rjavacmecab)){
+  devtools::load_all()
+}
 ```
 
 ## AozoraBunkoSnapshot
@@ -30,27 +32,34 @@ library(rjavacmecab)
 ```{r}
 data("AozoraBunkoSnapshot")
 snapshot <- dplyr::sample_n(AozoraBunkoSnapshot, 20) # Because it is too large to show whole entries, sampling 20 rows.
-datatable(snapshot)
+DT::datatable(snapshot)
+```
+
+## MiyazawaKenji
+
+```{r}
+data("MiyazawaKenji")
+DT::datatable(MiyazawaKenji)
 ```
 
 ## ExtendedLettersJp
 
 ```{r}
 data("ExtendedLettersJp")
-datatable(ExtendedLettersJp)
+DT::datatable(ExtendedLettersJp)
 ```
 
 ## OneLettersJp
 
 ```{r}
 data("OneLettersJp")
-datatable(OneLettersJp)
+DT::datatable(OneLettersJp)
 ```
 
 ## StopWordsJp
 
 ```{r}
 data("StopWordsJp")
-datatable(StopWordsJp)
+DT::datatable(StopWordsJp)
 ```
 

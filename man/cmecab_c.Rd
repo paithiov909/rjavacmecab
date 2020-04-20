@@ -7,7 +7,7 @@
 cmecab_c(str = "", opt = "", sep = " ")
 }
 \arguments{
-\item{str}{String to be tokenized}
+\item{str}{String to be tokenized.}
 
 \item{opt}{String to be passed as tagger options (ex. "-d").}
 

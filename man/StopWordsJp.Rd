@@ -4,7 +4,7 @@
 \name{StopWordsJp}
 \alias{StopWordsJp}
 \title{Japanese stopwords list (Slothlib)}
-\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 328 rows and 2 columns.}
+\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 310 rows and 2 columns.}
 \source{
 \url{http://svn.sourceforge.jp/svnroot/slothlib/CSharp/Version1/SlothLib/NLP/Filter/StopWord/word/Japanese.txt}
 }

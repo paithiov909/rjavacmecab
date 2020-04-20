@@ -18,3 +18,7 @@
 #' @source \url{http://svn.sourceforge.jp/svnroot/slothlib/CSharp/Version1/SlothLib/NLP/Filter/StopWord/word/Japanese.txt}
 #'
 "StopWordsJp"
+
+#' List of Sinji-Sinkana works written by Miyazawa Kenji on Aozora Bunko
+#'
+"MiyazawaKenji"
