@@ -7,10 +7,10 @@
 emojiRegexp(version = c(6, 7, 8))
 }
 \arguments{
-\item{version}{version digit.}
+\item{version}{Version digit.}
 }
 \value{
-character representing regular expression that mactches emoji in Unicode code point order.
+character representing regular expression that mactches emoji in Unicode code point order
 }
 \description{
 Return emoji subset

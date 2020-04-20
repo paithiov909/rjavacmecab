@@ -1,8 +1,44 @@
+#' Call mecab command directly
+#'
+#' Call mecab command directly via system().
+#'
+#' @details It is useful especially when just tokenizing loads of text.
+#' Since `mecab -Owakati` command is specially-tuned,
+#' it is generally faster that you directly call mecab command
+#' than programmatically use mecab tagger
+#' if you would like to just tokenize (wakachi-gaki) texts.
+#'
+#' @param chr Character vector.
+#' @param outfile Fullpath to a file that MeCab will write output.
+#' @param encoding Encoding of tempfile that MeCab will read.
+#' @param opt Options passed to mecab command.
+#' @param ... Arguments passed to writeLines().
+#'
+#' @return return the value pased to `outfile` argument invisibly
+#'
+#' @export
+fastestword <- function(chr = c(""),
+                        outfile = file.path(getwd(), "output.txt"),
+                        encoding = "UTF-8",
+                        opt = "-Owakati",
+                        ...) {
+  desc <- tempfile(fileext = ".txt")
+  tempfile <- file(desc, open = "w+", encoding = encoding)
+  writeLines(chr, con = tempfile, ...)
+  close(tempfile)
+
+  try(system(command = paste("mecab", desc, "-o", outfile, opt)))
+
+  unlink(desc)
+  invisible(outfile)
+}
+
+
 #' Prettify cmecab_c() output
 #'
-#' @param list list that is output from cmecab_c().
-#' @param sep string used as separator with which it replaces tab.
-#' @return dataframe.
+#' @param list List that is output from cmecab_c().
+#' @param sep String used as separator with which it replaces tab.
+#' @return dataframe
 #'
 #' @importFrom purrr map_dfr
 #' @importFrom stringr str_split_fixed
@@ -49,11 +85,11 @@ prettify <- function(list, sep = " ") {
 #'
 #' @seealso \url{https://rpubs.com/brianzive/textmining}
 #'
-#' @param n integer.
-#' @param skip_word_none boolean.
-#' @param locale single string, NULL or "" for default locale.
+#' @param n Integer.
+#' @param skip_word_none Boolean.
+#' @param locale Single string, NULL or "" for default locale.
 #'
-#' @return n-gram tokenizer function.
+#' @return n-gram tokenizer function
 #'
 #' @import stringi
 #' @export
@@ -86,9 +122,9 @@ ngram_tokenizer <- function(n = 1L, skip_word_none = TRUE, locale = NULL) {
 
 #' Return emoji subset
 #'
-#' @param version version digit.
+#' @param version Version digit.
 #'
-#' @return character representing regular expression that mactches emoji in Unicode code point order.
+#' @return character representing regular expression that mactches emoji in Unicode code point order
 #'
 #' @importFrom dplyr case_when
 #' @export
@@ -101,3 +137,4 @@ emojiRegexp <- function(version = c(6.0, 7.0, 8.0)) {
   )
   return(subset)
 }
+

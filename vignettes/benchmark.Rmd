@@ -24,7 +24,9 @@ if(!require(microbenchmark)) stop()
 if(!require(ggplot2)) stop()
 if(!require(RMeCab)) stop()
 if(!require(RcppMeCab)) stop()
-if(!require(rjavacmecab)) stop()
+if(!require(rjavacmecab)){
+  devtools::load_all()
+}
 ```
 
 ## ベンチマーク

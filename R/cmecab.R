@@ -1,12 +1,12 @@
 #' Call CMeCab tagger
 #'
-#' @param str String to be tokenized
+#' @param str String to be tokenized.
 #' @param opt String to be passed as tagger options (ex. "-d").
 #' @param sep String used as separator with which it replaces tab.
 #' @return a list
 #'
 #' @importFrom rJava .jnew
-#' @importFrom stringr str_conv
+#' @importFrom stringi stri_enc_toutf8
 #' @importFrom stringr str_replace_all
 #' @importFrom stringr str_split
 #' @importFrom stringr fixed
@@ -16,7 +16,7 @@ cmecab_c <- function(str = "", opt = "", sep = " ") {
   tagger <- rJava::.jnew("net.moraleboost.mecab.impl.StandardTagger", opt)
   lattice <- tagger$createLattice()
 
-  lattice$setSentence(paste0(stringr::str_conv(str, encoding = "UTF-8"), "\n"))
+  lattice$setSentence(paste0(stringi::stri_enc_toutf8(str), "\n"))
   tagger$parse(lattice)
 
   parsed <- lattice$toString()

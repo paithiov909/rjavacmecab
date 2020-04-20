@@ -20,7 +20,9 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup, include = FALSE}
-if(!require(rjavacmecab)) stop()
+if(!require(rjavacmecab)){
+  devtools::load_all()
+}
 ```
 
 ## これは何？

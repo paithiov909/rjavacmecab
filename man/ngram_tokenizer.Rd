@@ -7,14 +7,14 @@
 ngram_tokenizer(n = 1L, skip_word_none = TRUE, locale = NULL)
 }
 \arguments{
-\item{n}{integer.}
+\item{n}{Integer.}
 
-\item{skip_word_none}{boolean.}
+\item{skip_word_none}{Boolean.}
 
-\item{locale}{single string, NULL or "" for default locale.}
+\item{locale}{Single string, NULL or "" for default locale.}
 }
 \value{
-n-gram tokenizer function.
+n-gram tokenizer function
 }
 \description{
 Make n-gram tokenizer function.

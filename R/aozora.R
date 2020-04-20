@@ -4,12 +4,12 @@
 #' convert it to UTF-8 format.
 #'
 #' @param url URL of text download link.
-#' @param txtname new file name as which text will be saved.
-#' @param directory direcotry name where new file will be saved.
+#' @param txtname New file name as which text will be saved.
+#' @param directory Direcotry name where new file will be saved.
 #'
 #' @seealso \url{https://gist.github.com/ishida-m/7969049}
 #'
-#' @return the path to the new file.
+#' @return the path to the new file
 #'
 #' @import stringr
 #' @importFrom readr write_lines

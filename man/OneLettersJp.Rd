@@ -4,7 +4,7 @@
 \name{OneLettersJp}
 \alias{OneLettersJp}
 \title{List of Japanese letters (Hiragana and Katakana)}
-\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 169 rows and 2 columns.}
+\format{An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 169 rows and 2 columns.}
 \usage{
 OneLettersJp
 }
