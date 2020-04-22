@@ -50,7 +50,7 @@ aozora <- function(url = NULL,
   for (line in lines) {
     if (stringr::str_detect(line, reg1)) break
     if (stringr::str_detect(line, reg2)) break
-    if (str_detect(line, "^------")) {
+    if (stringr::str_detect(line, "^(--)+")) {
       flag <- !flag
       next
     }
