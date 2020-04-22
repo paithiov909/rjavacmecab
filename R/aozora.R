@@ -47,6 +47,7 @@ aozora <- function(url = NULL,
   reg5 <- enc2utf8("\uff5c") # %>% iconv(to = "CP932", from = "UTF-8")
 
   lines <- readLines(connection, n = -1L, encoding = "CP932")
+  lines <- iconv(lines, from = "CP932", to = "UTF-8")
   for (line in lines) {
     if (stringr::str_detect(line, reg1)) break
     if (stringr::str_detect(line, reg2)) break
