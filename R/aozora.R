@@ -56,7 +56,7 @@ aozora <- function(url = NULL,
     }
     if (flag) {
       line <- line %>%
-        stringr::str_replace("^[-]*", "") %>%
+        stringr::str_replace("^[-]+", "") %>%
         stringr::str_replace_all(reg3, "") %>%
         stringr::str_replace_all(reg4, "") %>%
         stringr::str_replace_all(reg5, "")
