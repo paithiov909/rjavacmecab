@@ -43,9 +43,11 @@ RcppMeCabは本家の[junhewk/RcppMeCab](https://github.com/junhewk/RcppMeCab)�
 
 ```{r}
 str <- "キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください"
+str_utf8 <- iconv(str, from = "CP932", to = "UTF-8")
+
 tm <- microbenchmark::microbenchmark(
   RMeCab::RMeCabC(str),
-  RcppMeCab::pos(str),
+  RcppMeCab::pos(str_utf8), ## MeCabの辞書はUTF-8でコンパイルしています
   rjavacmecab::cmecab_c(str),
   times = 500L
 )
@@ -54,5 +56,11 @@ summary(tm)
 
 ```{r}
 ggplot2::autoplot(tm)
+```
+
+### セッション情報
+
+```{r}
+devtools::session_info()
 ```
 
