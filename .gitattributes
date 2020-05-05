@@ -2,7 +2,7 @@
 * text=auto
 
 *.rda	binary
-*.jar   binary
+*.jar	binary
 
 *.png	binary
 *.svg	binary
