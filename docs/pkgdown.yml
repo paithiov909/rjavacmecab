@@ -4,5 +4,6 @@ pkgdown_sha: ~
 articles:
   about: about.html
   benchmark: benchmark.html
+  colab: colab.html
   datasets: datasets.html
 
