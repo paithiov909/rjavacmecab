@@ -66,6 +66,9 @@
       <a href="../articles/benchmark.html">Benchmark</a>
     </li>
     <li>
+      <a href="../articles/colab.html">Setup for Google Colaboratory</a>
+    </li>
+    <li>
       <a href="../articles/datasets.html">Explore datasets</a>
     </li>
   </ul>
@@ -92,7 +95,7 @@
     <div class="page-header toc-ignore">
       <h1>Benchmark</h1>
             
-            <h4 class="date">2020-05-04</h4>
+            <h4 class="date">2020-05-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/paithiov909/rjavacmecab/blob/master/vignettes/benchmark.Rmd"><code>vignettes/benchmark.Rmd</code></a></small>
       <div class="hidden name"><code>benchmark.Rmd</code></div>
@@ -127,14 +130,14 @@
 <a class="sourceLine" id="cb1-8" title="8">  <span class="dt">times =</span> 500L</a>
 <a class="sourceLine" id="cb1-9" title="9">)</a>
 <a class="sourceLine" id="cb1-10" title="10"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary</a></span>(tm)</a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt;                         expr       min        lq      mean    median</span></a>
-<a class="sourceLine" id="cb1-12" title="12"><span class="co">#&gt; 1       RMeCab::RMeCabC(str)  1.882101  2.156151  2.406108  2.273801</span></a>
-<a class="sourceLine" id="cb1-13" title="13"><span class="co">#&gt; 2   RcppMeCab::pos(str_utf8)  1.910001  2.094101  2.353130  2.226450</span></a>
-<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt; 3 rjavacmecab::cmecab_c(str) 10.276202 10.993501 13.602528 11.441001</span></a>
-<a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt;          uq      max neval</span></a>
-<a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt; 1  2.467752   4.9612   500</span></a>
-<a class="sourceLine" id="cb1-17" title="17"><span class="co">#&gt; 2  2.415852   5.0256   500</span></a>
-<a class="sourceLine" id="cb1-18" title="18"><span class="co">#&gt; 3 13.920401 473.7646   500</span></a></code></pre></div>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt;                         expr     min       lq      mean   median       uq</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">#&gt; 1       RMeCab::RMeCabC(str)  1.8614  2.18540  4.593029  2.45100  3.22540</span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">#&gt; 2   RcppMeCab::pos(str_utf8)  1.8381  2.14755  4.326734  2.41930  3.29270</span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt; 3 rjavacmecab::cmecab_c(str) 10.4910 11.79600 21.706493 14.83985 18.79215</span></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt;         max neval</span></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt; 1  541.3011   500</span></a>
+<a class="sourceLine" id="cb1-17" title="17"><span class="co">#&gt; 2  740.7867   500</span></a>
+<a class="sourceLine" id="cb1-18" title="18"><span class="co">#&gt; 3 1343.6918   500</span></a></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">ggplot2<span class="op">::</span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span>(tm)</a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="co">#&gt; Coordinate system already present. Adding new coordinate system, which will replace the existing one.</span></a></code></pre></div>
 <p><img src="benchmark_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
@@ -153,7 +156,7 @@
 <a class="sourceLine" id="cb3-9" title="9"><span class="co">#&gt;  collate  Japanese_Japan.932          </span></a>
 <a class="sourceLine" id="cb3-10" title="10"><span class="co">#&gt;  ctype    Japanese_Japan.932          </span></a>
 <a class="sourceLine" id="cb3-11" title="11"><span class="co">#&gt;  tz       Asia/Tokyo                  </span></a>
-<a class="sourceLine" id="cb3-12" title="12"><span class="co">#&gt;  date     2020-05-04                  </span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="co">#&gt;  date     2020-05-07                  </span></a>
 <a class="sourceLine" id="cb3-13" title="13"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb3-14" title="14"><span class="co">#&gt; - Packages --------------------------------------------------------------</span></a>
 <a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt;  ! package        * version  date       lib</span></a>
@@ -200,7 +203,7 @@
 <a class="sourceLine" id="cb3-56" title="56"><span class="co">#&gt;    rematch2         2.0.1    2017-06-20 [1]</span></a>
 <a class="sourceLine" id="cb3-57" title="57"><span class="co">#&gt;    remotes          2.0.4    2019-04-10 [1]</span></a>
 <a class="sourceLine" id="cb3-58" title="58"><span class="co">#&gt;  D rJava            0.9-11   2019-03-29 [1]</span></a>
-<a class="sourceLine" id="cb3-59" title="59"><span class="co">#&gt;    rjavacmecab    * 0.1.3    2020-04-20 [1]</span></a>
+<a class="sourceLine" id="cb3-59" title="59"><span class="co">#&gt;    rjavacmecab    * 0.1.3-2  2020-05-06 [1]</span></a>
 <a class="sourceLine" id="cb3-60" title="60"><span class="co">#&gt;    rlang            0.3.4    2019-04-07 [1]</span></a>
 <a class="sourceLine" id="cb3-61" title="61"><span class="co">#&gt;    rmarkdown        1.12     2019-03-14 [1]</span></a>
 <a class="sourceLine" id="cb3-62" title="62"><span class="co">#&gt;    RMeCab         * 1.00     2018-04-26 [1]</span></a>
@@ -220,70 +223,70 @@
 <a class="sourceLine" id="cb3-76" title="76"><span class="co">#&gt;    xfun             0.6      2019-04-02 [1]</span></a>
 <a class="sourceLine" id="cb3-77" title="77"><span class="co">#&gt;    xml2             1.2.0    2018-01-24 [1]</span></a>
 <a class="sourceLine" id="cb3-78" title="78"><span class="co">#&gt;    yaml             2.2.0    2018-07-25 [1]</span></a>
-<a class="sourceLine" id="cb3-79" title="79"><span class="co">#&gt;  source                               </span></a>
-<a class="sourceLine" id="cb3-80" title="80"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-81" title="81"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-82" title="82"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-83" title="83"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-84" title="84"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-85" title="85"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-86" title="86"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-87" title="87"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-88" title="88"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-89" title="89"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-90" title="90"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-91" title="91"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-92" title="92"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-93" title="93"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-94" title="94"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-95" title="95"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-96" title="96"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-97" title="97"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-98" title="98"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-99" title="99"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-100" title="100"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-101" title="101"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-102" title="102"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-103" title="103"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-104" title="104"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-105" title="105"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-106" title="106"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-107" title="107"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-108" title="108"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-109" title="109"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-110" title="110"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-111" title="111"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-112" title="112"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-113" title="113"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-114" title="114"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-115" title="115"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-116" title="116"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-117" title="117"><span class="co">#&gt;  Github (ltl-manabi/RcppMeCab@ec45d9d)</span></a>
-<a class="sourceLine" id="cb3-118" title="118"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-119" title="119"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-120" title="120"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-121" title="121"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-122" title="122"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-123" title="123"><span class="co">#&gt;  local                                </span></a>
-<a class="sourceLine" id="cb3-124" title="124"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-125" title="125"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-126" title="126"><span class="co">#&gt;  local                                </span></a>
-<a class="sourceLine" id="cb3-127" title="127"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-128" title="128"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-129" title="129"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-130" title="130"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-131" title="131"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-132" title="132"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-133" title="133"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-134" title="134"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-135" title="135"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-136" title="136"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-137" title="137"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-138" title="138"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-139" title="139"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-140" title="140"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-141" title="141"><span class="co">#&gt;  CRAN (R 3.5.3)                       </span></a>
-<a class="sourceLine" id="cb3-142" title="142"><span class="co">#&gt;  CRAN (R 3.5.2)                       </span></a>
+<a class="sourceLine" id="cb3-79" title="79"><span class="co">#&gt;  source                                  </span></a>
+<a class="sourceLine" id="cb3-80" title="80"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-81" title="81"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-82" title="82"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-83" title="83"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-84" title="84"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-85" title="85"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-86" title="86"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-87" title="87"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-88" title="88"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-89" title="89"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-90" title="90"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-91" title="91"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-92" title="92"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-93" title="93"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-94" title="94"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-95" title="95"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-96" title="96"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-97" title="97"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-98" title="98"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-99" title="99"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-100" title="100"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-101" title="101"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-102" title="102"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-103" title="103"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-104" title="104"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-105" title="105"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-106" title="106"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-107" title="107"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-108" title="108"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-109" title="109"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-110" title="110"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-111" title="111"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-112" title="112"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-113" title="113"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-114" title="114"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-115" title="115"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-116" title="116"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-117" title="117"><span class="co">#&gt;  Github (ltl-manabi/RcppMeCab@ec45d9d)   </span></a>
+<a class="sourceLine" id="cb3-118" title="118"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-119" title="119"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-120" title="120"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-121" title="121"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-122" title="122"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-123" title="123"><span class="co">#&gt;  Github (paithiov909/rjavacmecab@c3fe40b)</span></a>
+<a class="sourceLine" id="cb3-124" title="124"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-125" title="125"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-126" title="126"><span class="co">#&gt;  local                                   </span></a>
+<a class="sourceLine" id="cb3-127" title="127"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-128" title="128"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-129" title="129"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-130" title="130"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-131" title="131"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-132" title="132"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-133" title="133"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-134" title="134"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-135" title="135"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-136" title="136"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-137" title="137"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-138" title="138"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-139" title="139"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-140" title="140"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-141" title="141"><span class="co">#&gt;  CRAN (R 3.5.3)                          </span></a>
+<a class="sourceLine" id="cb3-142" title="142"><span class="co">#&gt;  CRAN (R 3.5.2)                          </span></a>
 <a class="sourceLine" id="cb3-143" title="143"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb3-144" title="144"><span class="co">#&gt; [1] C:/Users/user/Documents/R/win-library/3.5</span></a>
 <a class="sourceLine" id="cb3-145" title="145"><span class="co">#&gt; [2] C:/Program Files/Microsoft/R Open/R-3.5.3/library</span></a>
