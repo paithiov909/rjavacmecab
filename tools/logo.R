@@ -23,5 +23,3 @@ hexSticker::sticker(
 
 use_logo("man/figures/logo-origin.png")
 
-
-

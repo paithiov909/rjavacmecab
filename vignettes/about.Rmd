@@ -10,15 +10,12 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   tidy = "styler",
   collapse = TRUE,
   comment = "#>"
 )
-```
-
-```{r setup, include = FALSE}
 if(!require(rjavacmecab)){
   devtools::load_all()
 }
@@ -42,7 +39,7 @@ if(!require(rjavacmecab)){
 
 #### MeCabの準備
 
-MeCabの辞書はUTF-8を指定してインストールされていることを前提にしています。Windows 64bitの場合、以下などを利用してください。
+MeCabの辞書はUTF-8を指定してインストールされていることを前提にしています。Windowsで64bit用のJDKを利用する場合、MeCabも64bit向けのものを用意する必要があります。Windows 64bitの場合、以下などを利用してください。
 
 - [Release MeCab 0.996 64bit version · ikegami-yukino/mecab](https://github.com/ikegami-yukino/mecab/releases/tag/v0.996.2)
 

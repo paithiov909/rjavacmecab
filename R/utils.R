@@ -42,6 +42,9 @@ fastestword <- function(chr = c(""),
 #'
 #' @importFrom purrr map_dfr
 #' @importFrom stringr str_split_fixed
+#' @importFrom tidyr separate
+#' @importFrom tidyr replace_na
+#' @importFrom dplyr summarise_all
 #' @importFrom dplyr bind_cols
 #' @export
 prettify <- function(list, sep = " ") {
@@ -49,31 +52,26 @@ prettify <- function(list, sep = " ") {
   purrr::map_dfr(list[1:len], function(el) {
     split <- stringr::str_split_fixed(el, sep, 2L)
     word <- data.frame(word = split[1, 1], stringsAsFactors = FALSE)
-    info <- stringr::str_split_fixed(split[1, 2], ",", Inf)
-    if (length(info) == 7) {
-      info <- dplyr::bind_cols(
-        as.data.frame(info, stringsAsFactors = FALSE),
-        data.frame(
-          a = c("*"),
-          b = c("*"),
-          stringsAsFactors = FALSE
-        )
-      )
-    }
-    colnames(info) <- c(
-      "POS1",
-      "POS2",
-      "POS3",
-      "POS4",
-      "X5StageUse1",
-      "X5StageUse2",
-      "Original",
-      "Yomi1",
-      "Yomi2"
+    info <- tidyr::separate(
+      data.frame(features = c(split[1, 2]), stringsAsFactors = FALSE),
+      col = features,
+      into = c(
+        "POS1",
+        "POS2",
+        "POS3",
+        "POS4",
+        "X5StageUse1",
+        "X5StageUse2",
+        "Original",
+        "Yomi1",
+        "Yomi2"
+      ),
+      sep = ",",
+      fill = "right"
     )
     return(dplyr::bind_cols(
       as.data.frame(word, stringsAsFactors = FALSE),
-      as.data.frame(info, stringsAsFactors = FALSE)
+      dplyr::summarise_all(info, ~ tidyr::replace_na(., "*"))
     ))
   })
 }
@@ -118,23 +116,3 @@ ngram_tokenizer <- function(n = 1L, skip_word_none = TRUE, locale = NULL) {
     }
   }
 }
-
-
-#' Return emoji subset
-#'
-#' @param version Version digit.
-#'
-#' @return character representing regular expression that mactches emoji in Unicode code point order
-#'
-#' @importFrom dplyr case_when
-#' @export
-emojiRegexp <- function(version = c(6.0, 7.0, 8.0)) {
-  subset <- dplyr::case_when(
-    version == 6.0 ~ "[\U0001F0CF-\U000207BF]",
-    version == 7.0 ~ "[\U0001F321-\U000203FA]",
-    version == 8.0 ~ "[\U0001F32D-\U0001F9C0]",
-    TRUE ~ "[\U0001F32D-\U0001F9C0]"
-  )
-  return(subset)
-}
-
