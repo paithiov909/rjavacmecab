@@ -4,7 +4,9 @@
 \name{MiyazawaKenji}
 \alias{MiyazawaKenji}
 \title{List of Sinji-Sinkana works written by Miyazawa Kenji on Aozora Bunko}
-\format{An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 83 rows and 2 columns.}
+\format{
+An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 83 rows and 2 columns.
+}
 \usage{
 MiyazawaKenji
 }

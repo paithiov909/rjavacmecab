@@ -8,9 +8,9 @@
 #'
 #' @importFrom rJava J
 #' @export
-tokenize <- function(str, max = 99L){
-    arr <- rJava::J("net.moraleboost.util.CSVUtil")$tokenize(str, max)
-    return(arr)
+tokenize <- function(str, max = 99L) {
+  arr <- rJava::J("net.moraleboost.util.CSVUtil")$tokenize(str, max)
+  return(arr)
 }
 
 #' Util for Handling CSV-like string
@@ -22,9 +22,9 @@ tokenize <- function(str, max = 99L){
 #'
 #' @importFrom rJava J
 #' @export
-escape <- function(str){
-    str <- rJava::J("net.moraleboost.util.CSVUtil")$escape(str)
-    return(str)
+escape <- function(str) {
+  str <- rJava::J("net.moraleboost.util.CSVUtil")$escape(str)
+  return(str)
 }
 
 #' Util for Handling CSV-like string
@@ -37,9 +37,8 @@ escape <- function(str){
 #' @importFrom rJava J
 #' @importFrom rJava .jarray
 #' @export
-join <- function(char){
-    elem <- c(char)
-    arr <- rJava::J("net.moraleboost.util.CSVUtil")$join(rJava::.jarray(elem))
-    return(arr)
+join <- function(char) {
+  elem <- c(char)
+  arr <- rJava::J("net.moraleboost.util.CSVUtil")$join(rJava::.jarray(elem))
+  return(arr)
 }
-

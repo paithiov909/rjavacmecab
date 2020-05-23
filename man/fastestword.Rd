@@ -4,8 +4,13 @@
 \alias{fastestword}
 \title{Call mecab command directly}
 \usage{
-fastestword(chr = c(""), outfile = file.path(getwd(), "output.txt"),
-  encoding = "UTF-8", opt = "-Owakati", ...)
+fastestword(
+  chr = c(""),
+  outfile = file.path(getwd(), "output.txt"),
+  encoding = "UTF-8",
+  opt = "-Owakati",
+  ...
+)
 }
 \arguments{
 \item{chr}{Character vector.}
