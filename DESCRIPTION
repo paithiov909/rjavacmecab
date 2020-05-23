@@ -23,8 +23,7 @@ Suggests:
     DT,
     ggplot2,
     microbenchmark,
-    RcppMeCab,
-    RMeCab
+    RcppMeCab
 Imports:
     rJava,
     stringr,
