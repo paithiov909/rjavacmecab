@@ -20,7 +20,7 @@ r_check_args: --no-build-vignettes --no-manual --timings
 
 r_github_packages:
   - jimhester/lintr
-  - r-lib/remotes
+  - r-lib/devtools
   - r-lib/pkgdown@v1.4.1
 
 jobs:
@@ -43,10 +43,6 @@ after_success:
 
 cache:
   packages: true
-
-before_deploy:
-  - R CMD javareconf
-  - Rscript -e 'remotes::install_github("paithiov909/rjavacmecab")'
 
 deploy:
   provider: script
