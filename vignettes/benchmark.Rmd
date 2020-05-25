@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 
 if(!require(microbenchmark)) stop()
 if(!require(ggplot2)) stop()
+if(!require(stringi)) stop()
 if(!require(RMeCab)) stop()
 if(!require(RcppMeCab)) stop()
 if(!require(rjavacmecab)){
@@ -32,7 +33,7 @@ if(!require(rjavacmecab)){
 
 - RMeCab::RMeCabC() (ver 1.00)
 - RcppMeCab::pos() (ver 0.0.1.3)
-- rjavacmecab::cmecab_c() (ver 0.1.0)
+- rjavacmecab::cmecab() (ver 0.1.4-1)
 
 RcppMeCabは本家の[junhewk/RcppMeCab](https://github.com/junhewk/RcppMeCab)からビルドできないため、[ltl-manabi/RcppMeCab](https://github.com/ltl-manabi/RcppMeCab)を利用しています。
 
@@ -40,12 +41,12 @@ RcppMeCabは本家の[junhewk/RcppMeCab](https://github.com/junhewk/RcppMeCab)�
 
 ```{r}
 str <- "キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください"
-str_utf8 <- iconv(str, from = "CP932", to = "UTF-8")
+str_utf8 <- stringi::stri_enc_toutf8(str)
 
 tm <- microbenchmark::microbenchmark(
   RMeCab::RMeCabC(str),
   RcppMeCab::pos(str_utf8), ## MeCabの辞書はUTF-8でコンパイルしています
-  rjavacmecab::cmecab_c(str),
+  rjavacmecab::cmecab(str),
   times = 500L
 )
 summary(tm)

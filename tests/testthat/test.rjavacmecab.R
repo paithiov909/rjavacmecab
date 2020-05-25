@@ -5,11 +5,11 @@ res2 <- enc2utf8("\u632f\u308a\u5411\u304f \u52d5\u8a5e,\u81ea\u7acb,*,*,\u4e94\
 describe("Output Verification", {
   describe("Check output", {
     it("Output is list?", {
-      res <- cmecab_c(str = sentence)
+      res <- cmecab(str = sentence)
       expect_type(res, "list")
     })
     it("Valid output?", {
-      res <- cmecab_c(str = sentence)
+      res <- cmecab(str = sentence)
       expect_equal(res[[2]], res2)
     })
   })

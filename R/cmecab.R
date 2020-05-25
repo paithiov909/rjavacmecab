@@ -12,7 +12,7 @@
 #' @importFrom stringr fixed
 #' @importFrom purrr flatten
 #' @export
-cmecab_c <- function(str = "", opt = "", sep = " ") {
+cmecab <- function(str = "", opt = "", sep = " ") {
   tagger <- rJava::.jnew("net.moraleboost.mecab.impl.StandardTagger", opt)
   lattice <- tagger$createLattice()
 

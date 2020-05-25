@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rjavacmecab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4.1</span>
       </span>
     </div>
 
@@ -75,7 +75,14 @@
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/paithiov909/rjavacmecab">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -90,9 +97,9 @@
     <div class="page-header toc-ignore">
       <h1>Setup for Google Colaboratory</h1>
             
-            <h4 class="date">2020-05-23</h4>
+            <h4 class="date">2020-05-26</h4>
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/paithiov909/rjavacmecab/blob/master/vignettes/colab.Rmd"><code>vignettes/colab.Rmd</code></a></small>
       <div class="hidden name"><code>colab.Rmd</code></div>
 
     </div>
@@ -168,7 +175,7 @@
 <p>ここまで正しくやってrJavaがちゃんと入っているとふつうに入れることができる。</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="op">%%</span>R</span>
 <span id="cb8-2"><a href="#cb8-2"></a>remotes<span class="op">::</span><span class="kw"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"paithiov909/rjavacmecab"</span>)</span>
-<span id="cb8-3"><a href="#cb8-3"></a>rjavacmecab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rjavacmecab/man/cmecab_c.html">cmecab_c</a></span>(<span class="st">"こんにちは"</span>)   <span class="co"># test use</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>rjavacmecab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rjavacmecab/man/cmecab.html">cmecab</a></span>(<span class="st">"こんにちは"</span>)   <span class="co"># test use</span></span>
 <span id="cb8-4"><a href="#cb8-4"></a><span class="co">#&gt; [[1]]</span></span>
 <span id="cb8-5"><a href="#cb8-5"></a><span class="co">#&gt; [1] "こんにちは 感動詞,*,*,*,*,*,こんにちは,コンニチハ,コンニチワ"</span></span>
 <span id="cb8-6"><a href="#cb8-6"></a><span class="co">#&gt; </span></span>

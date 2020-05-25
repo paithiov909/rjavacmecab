@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rjavacmecab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4.1</span>
       </span>
     </div>
 
@@ -75,7 +75,14 @@
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/paithiov909/rjavacmecab">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -114,7 +121,7 @@
 <div id="call-tagger" class="section level3">
 <h3 class="hasAnchor">
 <a href="#call-tagger" class="anchor"></a>Call tagger</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>res &lt;-<span class="st"> </span>rjavacmecab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rjavacmecab/man/cmecab_c.html">cmecab_c</a></span>(<span class="st">"キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください"</span>)</span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>res &lt;-<span class="st"> </span>rjavacmecab<span class="op">::</span><span class="kw">cmecab_c</span>(<span class="st">"キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(res)</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co">#&gt; [[1]]</span></span>
 <span id="cb2-4"><a href="#cb2-4"></a><span class="co">#&gt; [1] "キャピキャピ 名詞,一般,*,*,*,*,*"</span></span>
@@ -216,7 +223,7 @@
 <h3 class="hasAnchor">
 <a href="#change-dictionary" class="anchor"></a>Change dictionary</h3>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>str &lt;-<span class="st"> "きゃりーぱみゅぱみゅ"</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>rjavacmecab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rjavacmecab/man/cmecab_c.html">cmecab_c</a></span>(str)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>rjavacmecab<span class="op">::</span><span class="kw">cmecab_c</span>(str)</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt; [[1]]</span></span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt; [1] "きゃ 動詞,非自立,*,*,五段・カ行促音便,仮定縮約１,く,キャ,キャ"</span></span>
 <span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt; </span></span>
@@ -231,7 +238,7 @@
 <span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; </span></span>
 <span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt; [[5]]</span></span>
 <span id="cb3-16"><a href="#cb3-16"></a><span class="co">#&gt; [1] "EOS"</span></span>
-<span id="cb3-17"><a href="#cb3-17"></a>rjavacmecab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rjavacmecab/man/cmecab_c.html">cmecab_c</a></span>(str, <span class="st">"-d /MeCab/dic/mecab-ipadic-neologd"</span>)</span>
+<span id="cb3-17"><a href="#cb3-17"></a>rjavacmecab<span class="op">::</span><span class="kw">cmecab_c</span>(str, <span class="st">"-d /MeCab/dic/mecab-ipadic-neologd"</span>)</span>
 <span id="cb3-18"><a href="#cb3-18"></a><span class="co">#&gt; [[1]]</span></span>
 <span id="cb3-19"><a href="#cb3-19"></a><span class="co">#&gt; [1] "きゃりーぱみゅぱみゅ 名詞,固有名詞,人名,一般,*,*,きゃりーぱみゅぱみゅ,キャリーパミュパミュ,キャリーパミュパミュ"</span></span>
 <span id="cb3-20"><a href="#cb3-20"></a><span class="co">#&gt; </span></span>
@@ -264,6 +271,8 @@
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Browse source code at <br><a href="https://github.com/paithiov909/rjavacmecab">https://​github.com/​paithiov909/​rjavacmecab</a>
+</li>
 <li>Report a bug at <br><a href="https://github.com/paithiov909/rjavacmecab/issues">https://​github.com/​paithiov909/​rjavacmecab/​issues</a>
 </li>
 </ul>

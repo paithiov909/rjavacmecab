@@ -28,35 +28,35 @@ if(!require(rjavacmecab)){
 
 ```{r}
 data("AozoraBunkoSnapshot")
-snapshot <- dplyr::sample_n(AozoraBunkoSnapshot, 20) # Because it is too large to show whole entries, sampling 20 rows.
-DT::datatable(snapshot)
+snapshot <- dplyr::sample_n(AozoraBunkoSnapshot, 10) # Because it is too large to show whole entries, sampling 10 rows.
+knitr::kable(snapshot, "html")
 ```
 
 ## MiyazawaKenji
 
 ```{r}
 data("MiyazawaKenji")
-DT::datatable(MiyazawaKenji)
+DT::datatable(MiyazawaKenji, style = "bootstrap")
 ```
 
 ## ExtendedLettersJp
 
 ```{r}
 data("ExtendedLettersJp")
-DT::datatable(ExtendedLettersJp)
+DT::datatable(ExtendedLettersJp, style = "bootstrap")
 ```
 
 ## OneLettersJp
 
 ```{r}
 data("OneLettersJp")
-DT::datatable(OneLettersJp)
+DT::datatable(OneLettersJp, style = "bootstrap")
 ```
 
 ## StopWordsJp
 
 ```{r}
 data("StopWordsJp")
-DT::datatable(StopWordsJp)
+DT::datatable(StopWordsJp, style = "bootstrap")
 ```
 

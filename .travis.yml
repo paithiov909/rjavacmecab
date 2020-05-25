@@ -6,11 +6,7 @@ r:
 warnings_are_errors: false
 
 git:
-  depth: 2
-
-branches:
-  only:
-    - master
+  depth: 1
 
 env:
   global:
@@ -24,6 +20,7 @@ r_check_args: --no-build-vignettes --no-manual --timings
 
 r_github_packages:
   - jimhester/lintr
+  - r-lib/pkgdown@v1.4.1
 
 jobs:
   include:
@@ -38,10 +35,20 @@ jobs:
 before_script:
   - R CMD javareconf
   - R -e 'install.packages("rJava", type = "source")'
-  
+  - R -e 'install.packages("RMeCab", repos = "https://rmecab.jp/R", type = "source")'
+
 after_success:
   - R CMD INSTALL $PKG_TARBALL
   - Rscript -e 'lintr::lint_package()'
 
 cache:
   packages: true
+
+deploy:
+  provider: script
+  script: Rscript -e 'pkgdown::deploy_site_github()'
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  on:
+    branch: master
