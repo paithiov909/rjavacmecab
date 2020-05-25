@@ -40,11 +40,11 @@ aozora <- function(url = NULL,
   }
 
   flag <- TRUE
-  reg1 <- stringr::enc2utf8("^\u5e95\u672c")
-  reg2 <- stringr::enc2utf8("\u3010\u5165\u529b\u8005\u6ce8\u3011")
-  reg3 <- stringr::enc2utf8("\uff3b\uff03[^\uff3d]*\uff3d")
-  reg4 <- stringr::enc2utf8("\u300a[^\u300b]*\u300b")
-  reg5 <- stringr::enc2utf8("\uff5c")
+  reg1 <- enc2utf8("^\u5e95\u672c")
+  reg2 <- enc2utf8("\u3010\u5165\u529b\u8005\u6ce8\u3011")
+  reg3 <- enc2utf8("\uff3b\uff03[^\uff3d]*\uff3d")
+  reg4 <- enc2utf8("\u300a[^\u300b]*\u300b")
+  reg5 <- enc2utf8("\uff5c")
 
   lines <- readLines(connection, n = -1L, encoding = "CP932")
   lines <- iconv(lines, from = "CP932", to = "UTF-8")
