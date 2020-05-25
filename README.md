@@ -21,7 +21,7 @@ remotes::install_github("paithiov909/rjavacmecab")
 ### Call tagger
 
 ``` R
-res <- rjavacmecab::cmecab_c("キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください")
+res <- rjavacmecab::cmecab("キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください")
 print(res)
 #> [[1]]
 #> [1] "キャピキャピ 名詞,一般,*,*,*,*,*"
@@ -123,7 +123,7 @@ head(rjavacmecab::prettify(res))
 
 ``` R
 str <- "きゃりーぱみゅぱみゅ"
-rjavacmecab::cmecab_c(str)
+rjavacmecab::cmecab(str)
 #> [[1]]
 #> [1] "きゃ 動詞,非自立,*,*,五段・カ行促音便,仮定縮約１,く,キャ,キャ"
 #> 
@@ -138,7 +138,7 @@ rjavacmecab::cmecab_c(str)
 #> 
 #> [[5]]
 #> [1] "EOS"
-rjavacmecab::cmecab_c(str, "-d /MeCab/dic/mecab-ipadic-neologd")
+rjavacmecab::cmecab(str, "-d /MeCab/dic/mecab-ipadic-neologd")
 #> [[1]]
 #> [1] "きゃりーぱみゅぱみゅ 名詞,固有名詞,人名,一般,*,*,きゃりーぱみゅぱみゅ,キャリーパミュパミュ,キャリーパミュパミュ"
 #> 
