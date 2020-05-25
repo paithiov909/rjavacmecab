@@ -20,6 +20,7 @@ r_check_args: --no-build-vignettes --no-manual --timings
 
 r_github_packages:
   - jimhester/lintr
+  - r-lib/remotes
   - r-lib/pkgdown@v1.4.1
 
 jobs:
@@ -34,7 +35,6 @@ jobs:
 
 before_script:
   - R CMD javareconf
-  - Rscript -e 'install.packages("rJava", type = "source")'
   - Rscript -e 'install.packages("RMeCab", repos = "https://rmecab.jp/R", type = "source")'
 
 after_success:
@@ -43,6 +43,10 @@ after_success:
 
 cache:
   packages: true
+
+before_deploy:
+  - R CMD javareconf
+  - Rscript -e 'remotes::install_github("paithiov909/rjavacmecab")'
 
 deploy:
   provider: script
