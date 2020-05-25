@@ -59,6 +59,6 @@ ggplot2::autoplot(tm)
 ### セッション情報
 
 ```{r}
-devtools::session_info()
+sessioninfo::session_info()
 ```
 

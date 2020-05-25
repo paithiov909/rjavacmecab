@@ -20,7 +20,6 @@ r_check_args: --no-build-vignettes --no-manual --timings
 
 r_github_packages:
   - jimhester/lintr
-  - r-lib/devtools
   - r-lib/pkgdown@v1.4.1
 
 jobs:
