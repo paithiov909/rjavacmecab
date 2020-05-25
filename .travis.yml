@@ -1,7 +1,10 @@
 language: r
 
+os: linux
+dist: bionic
 r:
   - release
+  - devel
 
 warnings_are_errors: false
 
@@ -22,15 +25,11 @@ r_github_packages:
   - jimhester/lintr
   - r-lib/pkgdown@v1.4.1
 
-jobs:
-  include:
-  - os: linux
-    dist: bionic
-    before_install:
-      - sudo apt install mecab
-      - sudo apt install libmecab-dev
-      - sudo apt install mecab-ipadic-utf8
-      - export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
+before_install:
+  - sudo apt install mecab
+  - sudo apt install libmecab-dev
+  - sudo apt install mecab-ipadic-utf8
+  - export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
 
 before_script:
   - R CMD javareconf
@@ -46,7 +45,5 @@ cache:
 deploy:
   provider: script
   script: Rscript -e 'pkgdown::deploy_site_github(ssh_id = Sys.getenv("TRAVIS_DEPLOY_KEY"))'
-  skip_cleanup: true
-  keep_history: true
   on:
     branch: master
