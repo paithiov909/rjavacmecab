@@ -1,4 +1,1 @@
-library(testthat)
-library(rjavacmecab)
-
-test_check("rjavacmecab")
+testthat::test_check("rjavacmecab")
