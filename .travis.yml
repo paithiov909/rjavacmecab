@@ -46,7 +46,7 @@ cache:
 
 deploy:
   provider: script
-  script: Rscript -e 'pkgdown::deploy_site_github(Sys.getenv("TRAVIS_DEPLOY_KEY"))'
+  script: Rscript -e 'pkgdown::deploy_site_github(ssh_id = Sys.getenv("TRAVIS_DEPLOY_KEY"))'
   skip_cleanup: true
   keep_history: true
   on:
