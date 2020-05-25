@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rjavacmecab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4.1</span>
       </span>
     </div>
 
@@ -75,7 +75,14 @@
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/paithiov909/rjavacmecab">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -90,9 +97,9 @@
     <div class="page-header toc-ignore">
       <h1>Benchmark</h1>
             
-            <h4 class="date">2020-05-23</h4>
+            <h4 class="date">2020-05-26</h4>
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/paithiov909/rjavacmecab/blob/master/vignettes/benchmark.Rmd"><code>vignettes/benchmark.Rmd</code></a></small>
       <div class="hidden name"><code>benchmark.Rmd</code></div>
 
     </div>
@@ -108,7 +115,7 @@
 <ul>
 <li>RMeCab::RMeCabC() (ver 1.00)</li>
 <li>RcppMeCab::pos() (ver 0.0.1.3)</li>
-<li>rjavacmecab::cmecab_c() (ver 0.1.0)</li>
+<li>rjavacmecab::cmecab() (ver 0.1.4-1)</li>
 </ul>
 <p>RcppMeCabは本家の<a href="https://github.com/junhewk/RcppMeCab">junhewk/RcppMeCab</a>からビルドできないため、<a href="https://github.com/ltl-manabi/RcppMeCab">ltl-manabi/RcppMeCab</a>を利用しています。</p>
 </div>
@@ -116,23 +123,23 @@
 <h3 class="hasAnchor">
 <a href="#%E7%B5%90%E6%9E%9C" class="anchor"></a>結果</h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>str &lt;-<span class="st"> "キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください"</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>str_utf8 &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/iconv.html">iconv</a></span>(str, <span class="dt">from =</span> <span class="st">"CP932"</span>, <span class="dt">to =</span> <span class="st">"UTF-8"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>str_utf8 &lt;-<span class="st"> </span>stringi<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/stringi/man/stri_enc_toutf8.html">stri_enc_toutf8</a></span>(str)</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
 <span id="cb1-4"><a href="#cb1-4"></a>tm &lt;-<span class="st"> </span>microbenchmark<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span>(</span>
 <span id="cb1-5"><a href="#cb1-5"></a>  RMeCab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RMeCab/man/RMeCabC.html">RMeCabC</a></span>(str),</span>
 <span id="cb1-6"><a href="#cb1-6"></a>  RcppMeCab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RcppMeCab/man/pos.html">pos</a></span>(str_utf8), <span class="co">## MeCabの辞書はUTF-8でコンパイルしています</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>  rjavacmecab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rjavacmecab/man/cmecab_c.html">cmecab_c</a></span>(str),</span>
+<span id="cb1-7"><a href="#cb1-7"></a>  rjavacmecab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rjavacmecab/man/cmecab.html">cmecab</a></span>(str),</span>
 <span id="cb1-8"><a href="#cb1-8"></a>  <span class="dt">times =</span> 500L</span>
 <span id="cb1-9"><a href="#cb1-9"></a>)</span>
 <span id="cb1-10"><a href="#cb1-10"></a><span class="kw"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(tm)</span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#&gt;                         expr     min       lq      mean  median       uq</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#&gt; 1       RMeCab::RMeCabC(str)  2.0069  2.24115  2.561412  2.3600  2.52445</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="co">#&gt; 2   RcppMeCab::pos(str_utf8)  1.9566  2.15655  3.175179  2.2762  2.51150</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="co">#&gt; 3 rjavacmecab::cmecab_c(str) 10.0236 10.74800 13.381826 11.2790 13.23020</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#&gt;                       expr      min        lq      mean    median        uq</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#&gt; 1     RMeCab::RMeCabC(str) 1.926101  2.122951  2.452249  2.258152  2.372501</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="co">#&gt; 2 RcppMeCab::pos(str_utf8) 1.933301  2.100101  3.696922  2.219601  2.367151</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co">#&gt; 3 rjavacmecab::cmecab(str) 9.751101 10.442100 13.189776 10.910551 12.843201</span></span>
 <span id="cb1-15"><a href="#cb1-15"></a><span class="co">#&gt;        max neval</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="co">#&gt; 1  63.0386   500</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="co">#&gt; 2 390.9695   500</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="co">#&gt; 3 538.8643   500</span></span></code></pre></div>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="co">#&gt; 1  61.6782   500</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="co">#&gt; 2 677.5874   500</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co">#&gt; 3 473.8397   500</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>ggplot2<span class="op">::</span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span>(tm)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co">#&gt; Coordinate system already present. Adding new coordinate system, which will replace the existing one.</span></span></code></pre></div>
 <p><img src="benchmark_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
@@ -151,79 +158,79 @@
 <span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt;  collate  Japanese_Japan.932          </span></span>
 <span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt;  ctype    Japanese_Japan.932          </span></span>
 <span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt;  tz       Asia/Tokyo                  </span></span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt;  date     2020-05-23                  </span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt;  date     2020-05-26                  </span></span>
 <span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt; </span></span>
 <span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; - Packages -------------------------------------------------------------------</span></span>
 <span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt;  ! package        * version  date       lib</span></span>
-<span id="cb3-16"><a href="#cb3-16"></a><span class="co">#&gt;    assertthat       0.2.1    2019-03-21 [2]</span></span>
-<span id="cb3-17"><a href="#cb3-17"></a><span class="co">#&gt;    backports        1.1.7    2020-05-13 [2]</span></span>
-<span id="cb3-18"><a href="#cb3-18"></a><span class="co">#&gt;    callr            3.4.3    2020-03-28 [2]</span></span>
-<span id="cb3-19"><a href="#cb3-19"></a><span class="co">#&gt;    cli              2.0.2    2020-02-28 [2]</span></span>
-<span id="cb3-20"><a href="#cb3-20"></a><span class="co">#&gt;    colorspace       1.4-1    2019-03-18 [2]</span></span>
-<span id="cb3-21"><a href="#cb3-21"></a><span class="co">#&gt;    crayon           1.3.4    2017-09-16 [2]</span></span>
-<span id="cb3-22"><a href="#cb3-22"></a><span class="co">#&gt;    desc             1.2.0    2018-05-01 [2]</span></span>
-<span id="cb3-23"><a href="#cb3-23"></a><span class="co">#&gt;    devtools         2.3.0    2020-04-10 [2]</span></span>
-<span id="cb3-24"><a href="#cb3-24"></a><span class="co">#&gt;    digest           0.6.25   2020-02-23 [2]</span></span>
-<span id="cb3-25"><a href="#cb3-25"></a><span class="co">#&gt;    dplyr            0.8.5    2020-03-07 [2]</span></span>
-<span id="cb3-26"><a href="#cb3-26"></a><span class="co">#&gt;    ellipsis         0.3.1    2020-05-15 [2]</span></span>
-<span id="cb3-27"><a href="#cb3-27"></a><span class="co">#&gt;    evaluate         0.14     2019-05-28 [2]</span></span>
-<span id="cb3-28"><a href="#cb3-28"></a><span class="co">#&gt;    fansi            0.4.1    2020-01-08 [2]</span></span>
-<span id="cb3-29"><a href="#cb3-29"></a><span class="co">#&gt;    farver           2.0.3    2020-01-16 [2]</span></span>
-<span id="cb3-30"><a href="#cb3-30"></a><span class="co">#&gt;    fs               1.4.1    2020-04-04 [2]</span></span>
-<span id="cb3-31"><a href="#cb3-31"></a><span class="co">#&gt;    ggplot2        * 3.3.0    2020-03-05 [2]</span></span>
-<span id="cb3-32"><a href="#cb3-32"></a><span class="co">#&gt;    glue             1.4.1    2020-05-13 [2]</span></span>
-<span id="cb3-33"><a href="#cb3-33"></a><span class="co">#&gt;    gtable           0.3.0    2019-03-25 [2]</span></span>
-<span id="cb3-34"><a href="#cb3-34"></a><span class="co">#&gt;    hms              0.5.3    2020-01-08 [2]</span></span>
-<span id="cb3-35"><a href="#cb3-35"></a><span class="co">#&gt;    htmltools        0.4.0    2019-10-04 [2]</span></span>
-<span id="cb3-36"><a href="#cb3-36"></a><span class="co">#&gt;    knitr            1.28     2020-02-06 [2]</span></span>
-<span id="cb3-37"><a href="#cb3-37"></a><span class="co">#&gt;    lifecycle        0.2.0    2020-03-06 [2]</span></span>
-<span id="cb3-38"><a href="#cb3-38"></a><span class="co">#&gt;    magrittr         1.5      2014-11-22 [2]</span></span>
-<span id="cb3-39"><a href="#cb3-39"></a><span class="co">#&gt;    MASS             7.3-51.5 2019-12-20 [3]</span></span>
-<span id="cb3-40"><a href="#cb3-40"></a><span class="co">#&gt;    memoise          1.1.0    2017-04-21 [2]</span></span>
-<span id="cb3-41"><a href="#cb3-41"></a><span class="co">#&gt;    microbenchmark * 1.4-7    2019-09-24 [2]</span></span>
-<span id="cb3-42"><a href="#cb3-42"></a><span class="co">#&gt;    munsell          0.5.0    2018-06-12 [2]</span></span>
-<span id="cb3-43"><a href="#cb3-43"></a><span class="co">#&gt;    pillar           1.4.4    2020-05-05 [2]</span></span>
-<span id="cb3-44"><a href="#cb3-44"></a><span class="co">#&gt;    pkgbuild         1.0.8    2020-05-07 [2]</span></span>
-<span id="cb3-45"><a href="#cb3-45"></a><span class="co">#&gt;    pkgconfig        2.0.3    2019-09-22 [2]</span></span>
-<span id="cb3-46"><a href="#cb3-46"></a><span class="co">#&gt;    pkgdown          1.4.1    2020-05-23 [2]</span></span>
-<span id="cb3-47"><a href="#cb3-47"></a><span class="co">#&gt;    pkgload          1.0.2    2018-10-29 [2]</span></span>
-<span id="cb3-48"><a href="#cb3-48"></a><span class="co">#&gt;    prettyunits      1.1.1    2020-01-24 [2]</span></span>
-<span id="cb3-49"><a href="#cb3-49"></a><span class="co">#&gt;    processx         3.4.2    2020-02-09 [2]</span></span>
-<span id="cb3-50"><a href="#cb3-50"></a><span class="co">#&gt;    ps               1.3.3    2020-05-08 [2]</span></span>
-<span id="cb3-51"><a href="#cb3-51"></a><span class="co">#&gt;    purrr            0.3.4    2020-04-17 [2]</span></span>
-<span id="cb3-52"><a href="#cb3-52"></a><span class="co">#&gt;    R.cache          0.14.0   2019-12-06 [2]</span></span>
-<span id="cb3-53"><a href="#cb3-53"></a><span class="co">#&gt;    R.methodsS3      1.8.0    2020-02-14 [2]</span></span>
-<span id="cb3-54"><a href="#cb3-54"></a><span class="co">#&gt;    R.oo             1.23.0   2019-11-03 [2]</span></span>
-<span id="cb3-55"><a href="#cb3-55"></a><span class="co">#&gt;    R.utils          2.9.2    2019-12-08 [2]</span></span>
-<span id="cb3-56"><a href="#cb3-56"></a><span class="co">#&gt;    R6               2.4.1    2019-11-12 [2]</span></span>
-<span id="cb3-57"><a href="#cb3-57"></a><span class="co">#&gt;    Rcpp             1.0.4.6  2020-04-09 [2]</span></span>
-<span id="cb3-58"><a href="#cb3-58"></a><span class="co">#&gt;    RcppMeCab      * 0.0.1.3  2020-05-22 [2]</span></span>
-<span id="cb3-59"><a href="#cb3-59"></a><span class="co">#&gt;  D RcppParallel     5.0.1    2020-05-06 [2]</span></span>
-<span id="cb3-60"><a href="#cb3-60"></a><span class="co">#&gt;    readr            1.3.1    2018-12-21 [2]</span></span>
-<span id="cb3-61"><a href="#cb3-61"></a><span class="co">#&gt;    remotes          2.1.1    2020-02-15 [2]</span></span>
-<span id="cb3-62"><a href="#cb3-62"></a><span class="co">#&gt;  D rJava            0.9-12   2020-03-24 [2]</span></span>
-<span id="cb3-63"><a href="#cb3-63"></a><span class="co">#&gt;    rjavacmecab    * 0.1.4    2020-05-23 [1]</span></span>
-<span id="cb3-64"><a href="#cb3-64"></a><span class="co">#&gt;    rlang            0.4.6    2020-05-02 [2]</span></span>
-<span id="cb3-65"><a href="#cb3-65"></a><span class="co">#&gt;    rmarkdown        2.1      2020-01-20 [2]</span></span>
-<span id="cb3-66"><a href="#cb3-66"></a><span class="co">#&gt;    RMeCab         * 1.04     2019-12-23 [2]</span></span>
-<span id="cb3-67"><a href="#cb3-67"></a><span class="co">#&gt;    rprojroot        1.3-2    2018-01-03 [2]</span></span>
-<span id="cb3-68"><a href="#cb3-68"></a><span class="co">#&gt;    rstudioapi       0.11     2020-02-07 [2]</span></span>
-<span id="cb3-69"><a href="#cb3-69"></a><span class="co">#&gt;    scales           1.1.1    2020-05-11 [2]</span></span>
-<span id="cb3-70"><a href="#cb3-70"></a><span class="co">#&gt;    sessioninfo      1.1.1    2018-11-05 [2]</span></span>
-<span id="cb3-71"><a href="#cb3-71"></a><span class="co">#&gt;    stringi          1.4.6    2020-02-17 [2]</span></span>
-<span id="cb3-72"><a href="#cb3-72"></a><span class="co">#&gt;    stringr          1.4.0    2019-02-10 [2]</span></span>
-<span id="cb3-73"><a href="#cb3-73"></a><span class="co">#&gt;    styler           1.3.2    2020-02-23 [2]</span></span>
-<span id="cb3-74"><a href="#cb3-74"></a><span class="co">#&gt;    testthat         2.3.2    2020-03-02 [2]</span></span>
-<span id="cb3-75"><a href="#cb3-75"></a><span class="co">#&gt;    tibble           3.0.1    2020-04-20 [2]</span></span>
-<span id="cb3-76"><a href="#cb3-76"></a><span class="co">#&gt;    tidyr            1.0.3    2020-05-07 [2]</span></span>
-<span id="cb3-77"><a href="#cb3-77"></a><span class="co">#&gt;    tidyselect       1.1.0    2020-05-11 [2]</span></span>
-<span id="cb3-78"><a href="#cb3-78"></a><span class="co">#&gt;    usethis          1.6.1    2020-04-29 [2]</span></span>
-<span id="cb3-79"><a href="#cb3-79"></a><span class="co">#&gt;    vctrs            0.3.0    2020-05-11 [2]</span></span>
-<span id="cb3-80"><a href="#cb3-80"></a><span class="co">#&gt;    withr            2.2.0    2020-04-20 [2]</span></span>
-<span id="cb3-81"><a href="#cb3-81"></a><span class="co">#&gt;    xfun             0.14     2020-05-20 [2]</span></span>
-<span id="cb3-82"><a href="#cb3-82"></a><span class="co">#&gt;    yaml             2.2.1    2020-02-01 [2]</span></span>
-<span id="cb3-83"><a href="#cb3-83"></a><span class="co">#&gt;  source                               </span></span>
-<span id="cb3-84"><a href="#cb3-84"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="co">#&gt;    assertthat       0.2.1    2019-03-21 [1]</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="co">#&gt;    backports        1.1.7    2020-05-13 [1]</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="co">#&gt;    callr            3.4.3    2020-03-28 [1]</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="co">#&gt;    cli              2.0.2    2020-02-28 [1]</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a><span class="co">#&gt;    colorspace       1.4-1    2019-03-18 [1]</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a><span class="co">#&gt;    crayon           1.3.4    2017-09-16 [1]</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a><span class="co">#&gt;    desc             1.2.0    2018-05-01 [1]</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a><span class="co">#&gt;    devtools         2.3.0    2020-04-10 [1]</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a><span class="co">#&gt;    digest           0.6.25   2020-02-23 [1]</span></span>
+<span id="cb3-25"><a href="#cb3-25"></a><span class="co">#&gt;    dplyr            0.8.5    2020-03-07 [1]</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a><span class="co">#&gt;    ellipsis         0.3.1    2020-05-15 [1]</span></span>
+<span id="cb3-27"><a href="#cb3-27"></a><span class="co">#&gt;    evaluate         0.14     2019-05-28 [1]</span></span>
+<span id="cb3-28"><a href="#cb3-28"></a><span class="co">#&gt;    fansi            0.4.1    2020-01-08 [1]</span></span>
+<span id="cb3-29"><a href="#cb3-29"></a><span class="co">#&gt;    farver           2.0.3    2020-01-16 [1]</span></span>
+<span id="cb3-30"><a href="#cb3-30"></a><span class="co">#&gt;    fs               1.4.1    2020-04-04 [1]</span></span>
+<span id="cb3-31"><a href="#cb3-31"></a><span class="co">#&gt;    ggplot2        * 3.3.0    2020-03-05 [1]</span></span>
+<span id="cb3-32"><a href="#cb3-32"></a><span class="co">#&gt;    glue             1.4.1    2020-05-13 [1]</span></span>
+<span id="cb3-33"><a href="#cb3-33"></a><span class="co">#&gt;    gtable           0.3.0    2019-03-25 [1]</span></span>
+<span id="cb3-34"><a href="#cb3-34"></a><span class="co">#&gt;    hms              0.5.3    2020-01-08 [1]</span></span>
+<span id="cb3-35"><a href="#cb3-35"></a><span class="co">#&gt;    htmltools        0.4.0    2019-10-04 [1]</span></span>
+<span id="cb3-36"><a href="#cb3-36"></a><span class="co">#&gt;    knitr            1.28     2020-02-06 [1]</span></span>
+<span id="cb3-37"><a href="#cb3-37"></a><span class="co">#&gt;    lifecycle        0.2.0    2020-03-06 [1]</span></span>
+<span id="cb3-38"><a href="#cb3-38"></a><span class="co">#&gt;    magrittr         1.5      2014-11-22 [1]</span></span>
+<span id="cb3-39"><a href="#cb3-39"></a><span class="co">#&gt;    MASS             7.3-51.5 2019-12-20 [2]</span></span>
+<span id="cb3-40"><a href="#cb3-40"></a><span class="co">#&gt;    memoise          1.1.0    2017-04-21 [1]</span></span>
+<span id="cb3-41"><a href="#cb3-41"></a><span class="co">#&gt;    microbenchmark * 1.4-7    2019-09-24 [1]</span></span>
+<span id="cb3-42"><a href="#cb3-42"></a><span class="co">#&gt;    munsell          0.5.0    2018-06-12 [1]</span></span>
+<span id="cb3-43"><a href="#cb3-43"></a><span class="co">#&gt;    pillar           1.4.4    2020-05-05 [1]</span></span>
+<span id="cb3-44"><a href="#cb3-44"></a><span class="co">#&gt;    pkgbuild         1.0.8    2020-05-07 [1]</span></span>
+<span id="cb3-45"><a href="#cb3-45"></a><span class="co">#&gt;    pkgconfig        2.0.3    2019-09-22 [1]</span></span>
+<span id="cb3-46"><a href="#cb3-46"></a><span class="co">#&gt;    pkgdown          1.4.1    2020-05-23 [1]</span></span>
+<span id="cb3-47"><a href="#cb3-47"></a><span class="co">#&gt;    pkgload          1.0.2    2018-10-29 [1]</span></span>
+<span id="cb3-48"><a href="#cb3-48"></a><span class="co">#&gt;    prettyunits      1.1.1    2020-01-24 [1]</span></span>
+<span id="cb3-49"><a href="#cb3-49"></a><span class="co">#&gt;    processx         3.4.2    2020-02-09 [1]</span></span>
+<span id="cb3-50"><a href="#cb3-50"></a><span class="co">#&gt;    ps               1.3.3    2020-05-08 [1]</span></span>
+<span id="cb3-51"><a href="#cb3-51"></a><span class="co">#&gt;    purrr            0.3.4    2020-04-17 [1]</span></span>
+<span id="cb3-52"><a href="#cb3-52"></a><span class="co">#&gt;    R.cache          0.14.0   2019-12-06 [1]</span></span>
+<span id="cb3-53"><a href="#cb3-53"></a><span class="co">#&gt;    R.methodsS3      1.8.0    2020-02-14 [1]</span></span>
+<span id="cb3-54"><a href="#cb3-54"></a><span class="co">#&gt;    R.oo             1.23.0   2019-11-03 [1]</span></span>
+<span id="cb3-55"><a href="#cb3-55"></a><span class="co">#&gt;    R.utils          2.9.2    2019-12-08 [1]</span></span>
+<span id="cb3-56"><a href="#cb3-56"></a><span class="co">#&gt;    R6               2.4.1    2019-11-12 [1]</span></span>
+<span id="cb3-57"><a href="#cb3-57"></a><span class="co">#&gt;    Rcpp             1.0.4.6  2020-04-09 [1]</span></span>
+<span id="cb3-58"><a href="#cb3-58"></a><span class="co">#&gt;    RcppMeCab      * 0.0.1.3  2020-05-22 [1]</span></span>
+<span id="cb3-59"><a href="#cb3-59"></a><span class="co">#&gt;  D RcppParallel     5.0.1    2020-05-06 [1]</span></span>
+<span id="cb3-60"><a href="#cb3-60"></a><span class="co">#&gt;    readr            1.3.1    2018-12-21 [1]</span></span>
+<span id="cb3-61"><a href="#cb3-61"></a><span class="co">#&gt;    rematch2         2.1.2    2020-05-01 [1]</span></span>
+<span id="cb3-62"><a href="#cb3-62"></a><span class="co">#&gt;    remotes          2.1.1    2020-02-15 [1]</span></span>
+<span id="cb3-63"><a href="#cb3-63"></a><span class="co">#&gt;  D rJava            0.9-12   2020-03-24 [1]</span></span>
+<span id="cb3-64"><a href="#cb3-64"></a><span class="co">#&gt;    rjavacmecab    * 0.1.4-1  2020-05-25 [1]</span></span>
+<span id="cb3-65"><a href="#cb3-65"></a><span class="co">#&gt;    rlang            0.4.6    2020-05-02 [1]</span></span>
+<span id="cb3-66"><a href="#cb3-66"></a><span class="co">#&gt;    rmarkdown        2.1      2020-01-20 [1]</span></span>
+<span id="cb3-67"><a href="#cb3-67"></a><span class="co">#&gt;    RMeCab         * 1.04     2019-12-23 [1]</span></span>
+<span id="cb3-68"><a href="#cb3-68"></a><span class="co">#&gt;    rprojroot        1.3-2    2018-01-03 [1]</span></span>
+<span id="cb3-69"><a href="#cb3-69"></a><span class="co">#&gt;    rstudioapi       0.11     2020-02-07 [1]</span></span>
+<span id="cb3-70"><a href="#cb3-70"></a><span class="co">#&gt;    scales           1.1.1    2020-05-11 [1]</span></span>
+<span id="cb3-71"><a href="#cb3-71"></a><span class="co">#&gt;    sessioninfo      1.1.1    2018-11-05 [1]</span></span>
+<span id="cb3-72"><a href="#cb3-72"></a><span class="co">#&gt;    stringi        * 1.4.6    2020-02-17 [1]</span></span>
+<span id="cb3-73"><a href="#cb3-73"></a><span class="co">#&gt;    stringr          1.4.0    2019-02-10 [1]</span></span>
+<span id="cb3-74"><a href="#cb3-74"></a><span class="co">#&gt;    styler           1.3.2    2020-02-23 [1]</span></span>
+<span id="cb3-75"><a href="#cb3-75"></a><span class="co">#&gt;    testthat         2.3.2    2020-03-02 [1]</span></span>
+<span id="cb3-76"><a href="#cb3-76"></a><span class="co">#&gt;    tibble           3.0.1    2020-04-20 [1]</span></span>
+<span id="cb3-77"><a href="#cb3-77"></a><span class="co">#&gt;    tidyr            1.0.3    2020-05-07 [1]</span></span>
+<span id="cb3-78"><a href="#cb3-78"></a><span class="co">#&gt;    tidyselect       1.1.0    2020-05-11 [1]</span></span>
+<span id="cb3-79"><a href="#cb3-79"></a><span class="co">#&gt;    usethis          1.6.1    2020-04-29 [1]</span></span>
+<span id="cb3-80"><a href="#cb3-80"></a><span class="co">#&gt;    vctrs            0.3.0    2020-05-11 [1]</span></span>
+<span id="cb3-81"><a href="#cb3-81"></a><span class="co">#&gt;    withr            2.2.0    2020-04-20 [1]</span></span>
+<span id="cb3-82"><a href="#cb3-82"></a><span class="co">#&gt;    xfun             0.14     2020-05-20 [1]</span></span>
+<span id="cb3-83"><a href="#cb3-83"></a><span class="co">#&gt;    yaml             2.2.1    2020-02-01 [1]</span></span>
+<span id="cb3-84"><a href="#cb3-84"></a><span class="co">#&gt;  source                               </span></span>
 <span id="cb3-85"><a href="#cb3-85"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-86"><a href="#cb3-86"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-87"><a href="#cb3-87"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
@@ -253,34 +260,34 @@
 <span id="cb3-111"><a href="#cb3-111"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-112"><a href="#cb3-112"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-113"><a href="#cb3-113"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
-<span id="cb3-114"><a href="#cb3-114"></a><span class="co">#&gt;  Github (r-lib/pkgdown@cdd8340)       </span></span>
-<span id="cb3-115"><a href="#cb3-115"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
+<span id="cb3-114"><a href="#cb3-114"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
+<span id="cb3-115"><a href="#cb3-115"></a><span class="co">#&gt;  Github (r-lib/pkgdown@cdd8340)       </span></span>
 <span id="cb3-116"><a href="#cb3-116"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-117"><a href="#cb3-117"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-118"><a href="#cb3-118"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-119"><a href="#cb3-119"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-120"><a href="#cb3-120"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
-<span id="cb3-121"><a href="#cb3-121"></a><span class="co">#&gt;  CRAN (R 3.6.2)                       </span></span>
+<span id="cb3-121"><a href="#cb3-121"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-122"><a href="#cb3-122"></a><span class="co">#&gt;  CRAN (R 3.6.2)                       </span></span>
-<span id="cb3-123"><a href="#cb3-123"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
+<span id="cb3-123"><a href="#cb3-123"></a><span class="co">#&gt;  CRAN (R 3.6.2)                       </span></span>
 <span id="cb3-124"><a href="#cb3-124"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-125"><a href="#cb3-125"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
-<span id="cb3-126"><a href="#cb3-126"></a><span class="co">#&gt;  Github (ltl-manabi/RcppMeCab@ec45d9d)</span></span>
-<span id="cb3-127"><a href="#cb3-127"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
+<span id="cb3-126"><a href="#cb3-126"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
+<span id="cb3-127"><a href="#cb3-127"></a><span class="co">#&gt;  Github (ltl-manabi/RcppMeCab@ec45d9d)</span></span>
 <span id="cb3-128"><a href="#cb3-128"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-129"><a href="#cb3-129"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-130"><a href="#cb3-130"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
-<span id="cb3-131"><a href="#cb3-131"></a><span class="co">#&gt;  local                                </span></span>
+<span id="cb3-131"><a href="#cb3-131"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-132"><a href="#cb3-132"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
-<span id="cb3-133"><a href="#cb3-133"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
-<span id="cb3-134"><a href="#cb3-134"></a><span class="co">#&gt;  local                                </span></span>
+<span id="cb3-133"><a href="#cb3-133"></a><span class="co">#&gt;  local                                </span></span>
+<span id="cb3-134"><a href="#cb3-134"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-135"><a href="#cb3-135"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
-<span id="cb3-136"><a href="#cb3-136"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
+<span id="cb3-136"><a href="#cb3-136"></a><span class="co">#&gt;  local                                </span></span>
 <span id="cb3-137"><a href="#cb3-137"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-138"><a href="#cb3-138"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
-<span id="cb3-139"><a href="#cb3-139"></a><span class="co">#&gt;  CRAN (R 3.6.2)                       </span></span>
+<span id="cb3-139"><a href="#cb3-139"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-140"><a href="#cb3-140"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
-<span id="cb3-141"><a href="#cb3-141"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
+<span id="cb3-141"><a href="#cb3-141"></a><span class="co">#&gt;  CRAN (R 3.6.2)                       </span></span>
 <span id="cb3-142"><a href="#cb3-142"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-143"><a href="#cb3-143"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-144"><a href="#cb3-144"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
@@ -290,12 +297,13 @@
 <span id="cb3-148"><a href="#cb3-148"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-149"><a href="#cb3-149"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
 <span id="cb3-150"><a href="#cb3-150"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
-<span id="cb3-151"><a href="#cb3-151"></a><span class="co">#&gt; </span></span>
-<span id="cb3-152"><a href="#cb3-152"></a><span class="co">#&gt; [1] C:/Users/user/AppData/Local/Temp/RtmpgBPplv/temp_libpath2d0c9a0dca</span></span>
-<span id="cb3-153"><a href="#cb3-153"></a><span class="co">#&gt; [2] C:/Users/user/Documents/R/win-library/3.6</span></span>
-<span id="cb3-154"><a href="#cb3-154"></a><span class="co">#&gt; [3] C:/Program Files/R/R-3.6.3/library</span></span>
-<span id="cb3-155"><a href="#cb3-155"></a><span class="co">#&gt; </span></span>
-<span id="cb3-156"><a href="#cb3-156"></a><span class="co">#&gt;  D -- DLL MD5 mismatch, broken installation.</span></span></code></pre></div>
+<span id="cb3-151"><a href="#cb3-151"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
+<span id="cb3-152"><a href="#cb3-152"></a><span class="co">#&gt;  CRAN (R 3.6.3)                       </span></span>
+<span id="cb3-153"><a href="#cb3-153"></a><span class="co">#&gt; </span></span>
+<span id="cb3-154"><a href="#cb3-154"></a><span class="co">#&gt; [1] C:/Users/user/Documents/R/win-library/3.6</span></span>
+<span id="cb3-155"><a href="#cb3-155"></a><span class="co">#&gt; [2] C:/Program Files/R/R-3.6.3/library</span></span>
+<span id="cb3-156"><a href="#cb3-156"></a><span class="co">#&gt; </span></span>
+<span id="cb3-157"><a href="#cb3-157"></a><span class="co">#&gt;  D -- DLL MD5 mismatch, broken installation.</span></span></code></pre></div>
 </div>
 </div>
   </div>

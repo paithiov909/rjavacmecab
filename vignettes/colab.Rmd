@@ -91,7 +91,7 @@ install.packages("rJava")
 ``` r
 %%R
 remotes::install_github("paithiov909/rjavacmecab")
-rjavacmecab::cmecab_c("こんにちは")   # test use
+rjavacmecab::cmecab("こんにちは")   # test use
 #> [[1]]
 #> [1] "こんにちは 感動詞,*,*,*,*,*,こんにちは,コンニチハ,コンニチワ"
 #> 

@@ -34,9 +34,9 @@ fastestword <- function(chr = c(""),
 }
 
 
-#' Prettify cmecab_c() output
+#' Prettify cmecab() output
 #'
-#' @param list List that is output from cmecab_c().
+#' @param list List that is output from cmecab().
 #' @param sep String used as separator with which it replaces tab.
 #' @return dataframe
 #'

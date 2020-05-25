@@ -22,21 +22,21 @@ aozora <- function(url = NULL,
                    directory = "cache") {
   tmp <- tempfile()
   utils::download.file(url, tmp)
-  textF <- utils::unzip(tmp, exdir = tempdir())
+  text_file <- utils::unzip(tmp, exdir = tempdir())
   unlink(tmp)
 
-  if (length(textF) > 1) {
-    location <- stringr::str_which(textF, ".txt$")
-    textF <- textF[location]
+  if (length(text_file) > 1) {
+    location <- stringr::str_which(text_file, ".txt$")
+    text_file <- text_file[location]
   }
   if (is.null(txtname)) {
-    txtname <- stringr::str_split(basename(textF), ".txt$", simplify = TRUE)[1]
+    txtname <- stringr::str_split(basename(text_file), ".txt$", simplify = TRUE)[1]
   }
-  connection <- file(textF, open = "rt")
-  newDir <- file.path(getwd(), directory)
-  newFile <- paste0(file.path(newDir, "/"), paste0(txtname, ".txt"))
-  if (file.create(newFile)) {
-    outfile <- file(newFile, open = "at", encoding = "UTF-8")
+  connection <- file(text_file, open = "rt")
+  new_dir <- file.path(getwd(), directory)
+  new_file <- paste0(file.path(new_dir, "/"), paste0(txtname, ".txt"))
+  if (file.create(new_file)) {
+    outfile <- file(new_file, open = "at", encoding = "UTF-8")
   }
 
   flag <- TRUE
@@ -67,5 +67,5 @@ aozora <- function(url = NULL,
   close(connection)
   close(outfile)
 
-  return(newFile)
+  return(new_file)
 }
