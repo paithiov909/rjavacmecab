@@ -82,7 +82,7 @@ rJavaの周辺は比較的問題が起こりやすく、たとえばパッケー
 #### cmecab-javaの呼び出し
 
 ```{r}
-res <- rjavacmecab::cmecab_c("キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください")
+res <- rjavacmecab::cmecab("キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください")
 print(res)
 head(rjavacmecab::prettify(res)) # dataframeに整形します
 ```
@@ -93,7 +93,7 @@ head(rjavacmecab::prettify(res)) # dataframeに整形します
 
 ```{r}
 str <- "きゃりーぱみゅぱみゅ"
-rjavacmecab::cmecab_c(str)
-rjavacmecab::cmecab_c(str, "-d /MeCab/dic/mecab-ipadic-neologd")
+rjavacmecab::cmecab(str)
+rjavacmecab::cmecab(str, "-d /MeCab/dic/mecab-ipadic-neologd")
 ```
 

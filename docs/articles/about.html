@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rjavacmecab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4.1</span>
       </span>
     </div>
 
@@ -75,7 +75,14 @@
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/paithiov909/rjavacmecab">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -90,9 +97,9 @@
     <div class="page-header toc-ignore">
       <h1>About rjavacmecab package</h1>
             
-            <h4 class="date">2020-05-23</h4>
+            <h4 class="date">2020-05-26</h4>
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/paithiov909/rjavacmecab/blob/master/vignettes/about.Rmd"><code>vignettes/about.Rmd</code></a></small>
       <div class="hidden name"><code>about.Rmd</code></div>
 
     </div>
@@ -156,7 +163,7 @@
 <div id="cmecab-javaの呼び出し" class="section level4">
 <h4 class="hasAnchor">
 <a href="#cmecab-java%E3%81%AE%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97" class="anchor"></a>cmecab-javaの呼び出し</h4>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>res &lt;-<span class="st"> </span>rjavacmecab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rjavacmecab/man/cmecab_c.html">cmecab_c</a></span>(<span class="st">"キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください"</span>)</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>res &lt;-<span class="st"> </span>rjavacmecab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rjavacmecab/man/cmecab.html">cmecab</a></span>(<span class="st">"キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(res)</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt; [[1]]</span></span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt; [1] "キャピキャピ 名詞,一般,*,*,*,*,*"</span></span>
@@ -259,7 +266,7 @@
 <a href="#%E8%BE%9E%E6%9B%B8%E3%81%AE%E5%B7%AE%E3%81%97%E6%9B%BF%E3%81%88" class="anchor"></a>辞書の差し替え</h4>
 <p>確認できたかぎりでは<code>-d</code>オプションは動作します。</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>str &lt;-<span class="st"> "きゃりーぱみゅぱみゅ"</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>rjavacmecab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rjavacmecab/man/cmecab_c.html">cmecab_c</a></span>(str)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>rjavacmecab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rjavacmecab/man/cmecab.html">cmecab</a></span>(str)</span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt; [[1]]</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt; [1] "きゃ 動詞,非自立,*,*,五段・カ行促音便,仮定縮約１,く,キャ,キャ"</span></span>
 <span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt; </span></span>
@@ -274,7 +281,7 @@
 <span id="cb4-14"><a href="#cb4-14"></a><span class="co">#&gt; </span></span>
 <span id="cb4-15"><a href="#cb4-15"></a><span class="co">#&gt; [[5]]</span></span>
 <span id="cb4-16"><a href="#cb4-16"></a><span class="co">#&gt; [1] "EOS"</span></span>
-<span id="cb4-17"><a href="#cb4-17"></a>rjavacmecab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rjavacmecab/man/cmecab_c.html">cmecab_c</a></span>(str, <span class="st">"-d /MeCab/dic/mecab-ipadic-neologd"</span>)</span>
+<span id="cb4-17"><a href="#cb4-17"></a>rjavacmecab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rjavacmecab/man/cmecab.html">cmecab</a></span>(str, <span class="st">"-d /MeCab/dic/mecab-ipadic-neologd"</span>)</span>
 <span id="cb4-18"><a href="#cb4-18"></a><span class="co">#&gt; [[1]]</span></span>
 <span id="cb4-19"><a href="#cb4-19"></a><span class="co">#&gt; [1] "きゃりーぱみゅぱみゅ 名詞,固有名詞,人名,一般,*,*,きゃりーぱみゅぱみゅ,キャリーパミュパミュ,キャリーパミュパミュ"</span></span>
 <span id="cb4-20"><a href="#cb4-20"></a><span class="co">#&gt; </span></span>
