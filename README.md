@@ -20,7 +20,7 @@ remotes::install_github("paithiov909/rjavacmecab")
 
 ### Call tagger
 
-``` R
+``` r
 res <- rjavacmecab::cmecab("キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください")
 print(res)
 #> [[1]]
@@ -121,7 +121,7 @@ head(rjavacmecab::prettify(res))
 ```
 ### Change dictionary
 
-``` R
+``` r
 str <- "きゃりーぱみゅぱみゅ"
 rjavacmecab::cmecab(str)
 #> [[1]]
