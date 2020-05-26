@@ -4,7 +4,6 @@ os: linux
 dist: bionic
 r:
   - release
-  - devel
 
 warnings_are_errors: false
 
