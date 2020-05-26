@@ -91,7 +91,7 @@ head(rjavacmecab::prettify(res)) # dataframeに整形します
 
 確認できたかぎりでは`-d`オプションは動作します。
 
-``` R
+``` r
 str <- "きゃりーぱみゅぱみゅ"
 rjavacmecab::cmecab(str)
 #> [[1]]
