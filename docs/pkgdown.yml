@@ -6,4 +6,7 @@ articles:
   benchmark: benchmark.html
   colab: colab.html
   datasets: datasets.html
+urls:
+  reference: https://paithiov909.github.io/rjavacmecab/reference
+  article: https://paithiov909.github.io/rjavacmecab/articles
 
