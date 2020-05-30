@@ -1,5 +1,10 @@
 destination: docs
 
+template:
+  opengraph:
+    twitter:
+      creator: "@paithiov909"
+
 reference:
     - title: "{rjavacmecab} package"
       contents: rjavacmecab
