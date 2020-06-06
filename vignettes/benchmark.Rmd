@@ -16,15 +16,12 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-
-if(!require(microbenchmark)) stop()
-if(!require(ggplot2)) stop()
-if(!require(stringi)) stop()
-if(!require(RMeCab)) stop()
-if(!require(RcppMeCab)) stop()
-if(!require(rjavacmecab)){
-  devtools::load_all()
-}
+stopifnot(require(microbenchmark))
+stopifnot(require(ggplot2))
+stopifnot(require(stringi))
+stopifnot(require(RMeCab))
+stopifnot(require(RcppMeCab))
+stopifnot(require(rjavacmecab))
 ```
 
 ## ベンチマーク

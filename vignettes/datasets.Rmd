@@ -16,12 +16,9 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-
-library(dplyr)
-library(DT)
-if(!require(rjavacmecab)){
-  devtools::load_all()
-}
+stopifnot(require(dplyr))
+stopifnot(require(DT))
+stopifnot(require(rjavacmecab))
 ```
 
 ## AozoraBunkoSnapshot
