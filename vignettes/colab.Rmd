@@ -1,5 +1,5 @@
 ---
-title: "Setup for Google Colaboratory"
+title: "How to use on Colab"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 header-includes:

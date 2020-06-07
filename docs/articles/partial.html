@@ -67,7 +67,7 @@
       <a href="../articles/benchmark.html">Benchmark</a>
     </li>
     <li>
-      <a href="../articles/colab.html">Setup for Google Colaboratory</a>
+      <a href="../articles/colab.html">How to use on Colab</a>
     </li>
     <li>
       <a href="../articles/datasets.html">Explore datasets</a>
@@ -100,7 +100,7 @@
     <div class="page-header toc-ignore">
       <h1>Example of Partial Analysis</h1>
             
-            <h4 class="date">2020-06-06</h4>
+            <h4 class="date">2020-06-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/paithiov909/rjavacmecab/blob/master/vignettes/partial.Rmd"><code>vignettes/partial.Rmd</code></a></small>
       <div class="hidden name"><code>partial.Rmd</code></div>
@@ -309,8 +309,8 @@
 <span id="cb7-28"><a href="#cb7-28"></a>      <span class="st">"品詞細分類1"</span>,</span>
 <span id="cb7-29"><a href="#cb7-29"></a>      <span class="st">"品詞細分類2"</span>,</span>
 <span id="cb7-30"><a href="#cb7-30"></a>      <span class="st">"品詞細分類3"</span>,</span>
-<span id="cb7-31"><a href="#cb7-31"></a>      <span class="st">"活用形"</span>,</span>
-<span id="cb7-32"><a href="#cb7-32"></a>      <span class="st">"活用型"</span>,</span>
+<span id="cb7-31"><a href="#cb7-31"></a>      <span class="st">"活用型"</span>,</span>
+<span id="cb7-32"><a href="#cb7-32"></a>      <span class="st">"活用形"</span>,</span>
 <span id="cb7-33"><a href="#cb7-33"></a>      <span class="st">"原形"</span>,</span>
 <span id="cb7-34"><a href="#cb7-34"></a>      <span class="st">"読み"</span>,</span>
 <span id="cb7-35"><a href="#cb7-35"></a>      <span class="st">"発音"</span></span>
@@ -320,7 +320,7 @@
 <span id="cb7-39"><a href="#cb7-39"></a>  )</span>
 <span id="cb7-40"><a href="#cb7-40"></a>out</span>
 <span id="cb7-41"><a href="#cb7-41"></a><span class="co">#&gt; # A tibble: 8 x 10</span></span>
-<span id="cb7-42"><a href="#cb7-42"></a><span class="co">#&gt;   X1    品詞  品詞細分類1 品詞細分類2 品詞細分類3 活用形 活用型 原形  読み </span></span>
+<span id="cb7-42"><a href="#cb7-42"></a><span class="co">#&gt;   X1    品詞  品詞細分類1 品詞細分類2 品詞細分類3 活用型 活用形 原形  読み </span></span>
 <span id="cb7-43"><a href="#cb7-43"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;</span></span>
 <span id="cb7-44"><a href="#cb7-44"></a><span class="co">#&gt; 1 くぅ～~ 感動詞~ &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span></span>
 <span id="cb7-45"><a href="#cb7-45"></a><span class="co">#&gt; 2 きゃりー~ 名詞  固有名詞    人名        一般        *      *      *     &lt;NA&gt; </span></span>
@@ -363,8 +363,8 @@
 <span id="cb8-29"><a href="#cb8-29"></a>      <span class="st">"品詞細分類1"</span>,</span>
 <span id="cb8-30"><a href="#cb8-30"></a>      <span class="st">"品詞細分類2"</span>,</span>
 <span id="cb8-31"><a href="#cb8-31"></a>      <span class="st">"品詞細分類3"</span>,</span>
-<span id="cb8-32"><a href="#cb8-32"></a>      <span class="st">"活用形"</span>,</span>
-<span id="cb8-33"><a href="#cb8-33"></a>      <span class="st">"活用型"</span>,</span>
+<span id="cb8-32"><a href="#cb8-32"></a>      <span class="st">"活用型"</span>,</span>
+<span id="cb8-33"><a href="#cb8-33"></a>      <span class="st">"活用形"</span>,</span>
 <span id="cb8-34"><a href="#cb8-34"></a>      <span class="st">"原形"</span>,</span>
 <span id="cb8-35"><a href="#cb8-35"></a>      <span class="st">"読み"</span>,</span>
 <span id="cb8-36"><a href="#cb8-36"></a>      <span class="st">"発音"</span></span>
@@ -374,7 +374,7 @@
 <span id="cb8-40"><a href="#cb8-40"></a>  )</span>
 <span id="cb8-41"><a href="#cb8-41"></a>out</span>
 <span id="cb8-42"><a href="#cb8-42"></a><span class="co">#&gt; # A tibble: 9 x 10</span></span>
-<span id="cb8-43"><a href="#cb8-43"></a><span class="co">#&gt;   X1    品詞  品詞細分類1 品詞細分類2 品詞細分類3 活用形 活用型 原形  読み </span></span>
+<span id="cb8-43"><a href="#cb8-43"></a><span class="co">#&gt;   X1    品詞  品詞細分類1 品詞細分類2 品詞細分類3 活用型 活用形 原形  読み </span></span>
 <span id="cb8-44"><a href="#cb8-44"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;</span></span>
 <span id="cb8-45"><a href="#cb8-45"></a><span class="co">#&gt; 1 くぅ～~ 感動詞~ &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span></span>
 <span id="cb8-46"><a href="#cb8-46"></a><span class="co">#&gt; 2 きゃりー~ 名詞  固有名詞    人名        一般        *      *      *     &lt;NA&gt; </span></span>
