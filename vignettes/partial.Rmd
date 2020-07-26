@@ -26,7 +26,7 @@ stopifnot(require(rjavacmecab))
 
 ## MeCabにコマンドラインオプションを渡す
 
-`rjavacmecab::fastestword`は`system`関数からMeCabを外部コマンドとして直接実行することができるものです。このとき、MeCabのコマンドラインオプションをoptに引数として渡すことで、オプション付きでMeCabを実行することができます。
+`rjavacmecab::fastestword`は`base::system`関数からMeCabを外部コマンドとして直接実行することができるものです。このとき、MeCabのコマンドラインオプションをoptに引数として渡すことで、オプション付きでMeCabを実行することができます。
 
 ### -Owakati
 

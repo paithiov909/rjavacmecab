@@ -13,10 +13,3 @@
   rJava::javaImport(packages = "net.moraleboost.mecab.impl.StandardTagger")
   rJava::javaImport(packages = "net.moraleboost.util.CSVUtil")
 }
-
-#' onUnload
-#' @noRd
-#' @param libpath libpath
-.onUnload <- function(libpath) {
-  #### unload ####
-}

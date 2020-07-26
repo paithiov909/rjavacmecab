@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rjavacmecab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.2</span>
       </span>
     </div>
 
@@ -95,12 +95,12 @@
 
       
 
-      </header><script src="about_files/header-attrs-2.2/header-attrs.js"></script><div class="row">
+      </header><script src="about_files/header-attrs-2.3/header-attrs.js"></script><script src="about_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>About rjavacmecab package</h1>
             
-            <h4 class="date">2020-06-07</h4>
+            <h4 class="date">2020-07-27</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/paithiov909/rjavacmecab/blob/master/vignettes/about.Rmd"><code>vignettes/about.Rmd</code></a></small>
       <div class="hidden name"><code>about.Rmd</code></div>
@@ -135,7 +135,7 @@
 <li><a href="https://github.com/ikegami-yukino/mecab/releases/tag/v0.996.2">Release MeCab 0.996 64bit version · ikegami-yukino/mecab</a></li>
 </ul>
 <p>{rjavacmecab}はcmecab-javaのrJavaラッパーライブラリです。cmecab-javaを利用するためにはMeCabのダイナミックライブラリにパスが通っている必要があります。</p>
-<p>Windowsの場合、Windowsの場合、インストールしたMeCabのディレクトリ以下の<code>bin</code>ディレクトリにパスを通します。LinuxやMacの場合、LD_LIBRARY_PATHに<code>libmecab.so</code>（Linuxの場合）や<code>libmecab.dylib</code>（Macの場合）のあるディレクトリを追加します。</p>
+<p>Windowsの場合、インストールしたMeCabのディレクトリ以下の<code>bin</code>ディレクトリにパスを通します。LinuxやMacの場合、LD_LIBRARY_PATHに<code>libmecab.so</code>（Linuxの場合）や<code>libmecab.dylib</code>（Macの場合）のあるディレクトリを追加します。</p>
 <p>Ubuntuなどでaptを通じてMeCabを導入した場合、<code>libmecab.so</code>は<code>/usr/local/lib</code>以下にあるので、このディレクトリをLD_LIBRARY_PATHに追加します。</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a>$ <span class="fu">sudo</span> apt install mecab</span>
 <span id="cb1-2"><a href="#cb1-2"></a>$ <span class="fu">sudo</span> apt install libmecab-dev</span>

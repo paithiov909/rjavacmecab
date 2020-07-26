@@ -7,7 +7,7 @@
 prettify(list, sep = " ")
 }
 \arguments{
-\item{list}{List that is output from cmecab().}
+\item{list}{List that is output from rjavacmecab::cmecab().}
 
 \item{sep}{String used as separator with which it replaces tab.}
 }

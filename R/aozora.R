@@ -1,4 +1,4 @@
-#' Dowload text file from Aozora Bunko
+#' Download text file from Aozora Bunko
 #'
 #' Download a file from specified Aozora Bunko URL and unzip the file,
 #' convert it to UTF-8 format.
