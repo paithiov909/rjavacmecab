@@ -2,7 +2,7 @@
 % Please edit documentation in R/aozora.R
 \name{aozora}
 \alias{aozora}
-\title{Dowload text file from Aozora Bunko}
+\title{Download text file from Aozora Bunko}
 \usage{
 aozora(url = NULL, txtname = NULL, directory = "cache")
 }

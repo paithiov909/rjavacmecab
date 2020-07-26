@@ -21,13 +21,13 @@ fastestword(
 
 \item{opt}{Options passed to mecab command.}
 
-\item{...}{Arguments passed to writeLines().}
+\item{...}{Arguments passed to base::writeLines.}
 }
 \value{
 return the value pased to `outfile` argument invisibly
 }
 \description{
-Call mecab command directly via system().
+Call mecab command directly via base::system.
 }
 \details{
 It is useful especially when just tokenizing loads of text.

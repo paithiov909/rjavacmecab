@@ -1,6 +1,6 @@
 #' Call mecab command directly
 #'
-#' Call mecab command directly via system().
+#' Call mecab command directly via base::system.
 #'
 #' @details It is useful especially when just tokenizing loads of text.
 #' Since `mecab -Owakati` command is specially-tuned,
@@ -12,7 +12,7 @@
 #' @param outfile Fullpath to a file that MeCab will write output.
 #' @param encoding Encoding of tempfile that MeCab will read.
 #' @param opt Options passed to mecab command.
-#' @param ... Arguments passed to writeLines().
+#' @param ... Arguments passed to base::writeLines.
 #'
 #' @return return the value pased to `outfile` argument invisibly
 #'
@@ -34,9 +34,9 @@ fastestword <- function(chr = c(""),
 }
 
 
-#' Prettify cmecab() output
+#' Prettify cmecab output
 #'
-#' @param list List that is output from cmecab().
+#' @param list List that is output from rjavacmecab::cmecab.
 #' @param sep String used as separator with which it replaces tab.
 #' @return dataframe
 #'

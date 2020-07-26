@@ -2,12 +2,12 @@
 % Please edit documentation in R/utils.R
 \name{prettify}
 \alias{prettify}
-\title{Prettify cmecab() output}
+\title{Prettify cmecab output}
 \usage{
 prettify(list, sep = " ")
 }
 \arguments{
-\item{list}{List that is output from cmecab().}
+\item{list}{List that is output from rjavacmecab::cmecab.}
 
 \item{sep}{String used as separator with which it replaces tab.}
 }
@@ -15,5 +15,5 @@ prettify(list, sep = " ")
 dataframe
 }
 \description{
-Prettify cmecab() output
+Prettify cmecab output
 }
