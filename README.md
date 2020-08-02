@@ -1,14 +1,12 @@
 # rjavacmecab <a href='https://paithiov909.github.io/rjavacmecab'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
-
 [![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/rjavacmecab)](#) [![Build Status](https://travis-ci.org/paithiov909/rjavacmecab.svg?branch=master)](https://travis-ci.org/paithiov909/rjavacmecab) [![GitHub license](https://img.shields.io/github/license/paithiov909/rjavacmecab)](https://github.com/paithiov909/rjavacmecab/blob/master/LICENSE) [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
-
 
 > rJava Interface to CMeCab
 
 ## Installation
 
-``` R
+```r
 remotes::install_github("paithiov909/rjavacmecab")
 ```
 
@@ -21,7 +19,7 @@ remotes::install_github("paithiov909/rjavacmecab")
 
 ### Call tagger
 
-``` r
+```r
 res <- rjavacmecab::cmecab("キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください")
 print(res)
 #> [[1]]
@@ -122,7 +120,7 @@ head(rjavacmecab::prettify(res))
 ```
 ### Change dictionary
 
-``` r
+```r
 str <- "きゃりーぱみゅぱみゅ"
 rjavacmecab::cmecab(str)
 #> [[1]]
@@ -152,6 +150,10 @@ rjavacmecab::cmecab(str, "-d /MeCab/dic/mecab-ipadic-neologd")
 - [takscape/cmecab-java: A Java binding for MeCab](https://github.com/takscape/cmecab-java) (cmecab-java)
 - [s-u/rJava: R to Java interface](https://github.com/s-u/rJava) (rJava)
 - [ikegami-yukino/mecab: Yet another Japanese morphological analyzer](https://github.com/ikegami-yukino/mecab) (MeCab 野良ビルド)
+
+## Contributing
+
+issueを立ててくれたらやり方を考えます。
 
 ## License
 

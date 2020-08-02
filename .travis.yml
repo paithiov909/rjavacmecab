@@ -8,7 +8,7 @@ r:
 warnings_are_errors: false
 
 git:
-  depth: 2
+  depth: 1
 
 env:
   global:

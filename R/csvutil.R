@@ -13,6 +13,7 @@ tokenize <- function(str, max = 99L) {
   return(arr)
 }
 
+
 #' Util for Handling CSV-like string
 #'
 #' Escape space, tab, `"` and `,` in string
@@ -26,6 +27,7 @@ escape <- function(str) {
   str <- rJava::J("net.moraleboost.util.CSVUtil")$escape(str)
   return(str)
 }
+
 
 #' Util for Handling CSV-like string
 #'

@@ -3,6 +3,7 @@
 #' @param libname libname
 #' @param pkgname pkgname
 #' @import rJava
+#' @keywords internal
 .onLoad <- function(libname, pkgname) {
   rJava::.jpackage(pkgname, lib.loc = libname)
 

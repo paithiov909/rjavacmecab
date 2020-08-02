@@ -8,8 +8,6 @@ template:
       creator: "@paithiov909"
 
 reference:
-    - title: "{rjavacmecab} package"
-      contents: rjavacmecab
     - title: "Tokenizer"
       contents:
         - cmecab
