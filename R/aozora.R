@@ -34,38 +34,40 @@ aozora <- function(url = NULL,
   }
   connection <- file(text_file, open = "rt")
   new_dir <- file.path(getwd(), directory)
-  new_file <- paste0(file.path(new_dir, "/"), paste0(txtname, ".txt"))
+  new_file <- file.path(new_dir, paste0(txtname, ".txt"))
+
   if (file.create(new_file)) {
+
     outfile <- file(new_file, open = "at", encoding = "UTF-8")
+
+    flag <- TRUE
+    reg1 <- enc2utf8("^\u5e95\u672c")
+    reg2 <- enc2utf8("\u3010\u5165\u529b\u8005\u6ce8\u3011")
+    reg3 <- enc2utf8("\uff3b\uff03[^\uff3d]*\uff3d")
+    reg4 <- enc2utf8("\u300a[^\u300b]*\u300b")
+    reg5 <- enc2utf8("\uff5c")
+
+    lines <- readLines(connection, n = -1L, encoding = "CP932")
+    lines <- iconv(lines, from = "CP932", to = "UTF-8")
+    for (line in lines) {
+      if (stringr::str_detect(line, reg1)) break
+      if (stringr::str_detect(line, reg2)) break
+      if (stringr::str_detect(line, "^[-]+")) {
+        flag <- !flag
+        next
+      }
+      if (flag) {
+        line <- line %>%
+          stringr::str_replace("^[-]+", "") %>%
+          stringr::str_replace_all(reg3, "") %>%
+          stringr::str_replace_all(reg4, "") %>%
+          stringr::str_replace_all(reg5, "")
+        readr::write_lines(line, outfile, append = TRUE)
+      }
+    }
+    close(outfile)
   }
 
-  flag <- TRUE
-  reg1 <- enc2utf8("^\u5e95\u672c")
-  reg2 <- enc2utf8("\u3010\u5165\u529b\u8005\u6ce8\u3011")
-  reg3 <- enc2utf8("\uff3b\uff03[^\uff3d]*\uff3d")
-  reg4 <- enc2utf8("\u300a[^\u300b]*\u300b")
-  reg5 <- enc2utf8("\uff5c")
-
-  lines <- readLines(connection, n = -1L, encoding = "CP932")
-  lines <- iconv(lines, from = "CP932", to = "UTF-8")
-  for (line in lines) {
-    if (stringr::str_detect(line, reg1)) break
-    if (stringr::str_detect(line, reg2)) break
-    if (stringr::str_detect(line, "^[--]+")) {
-      flag <- !flag
-      next
-    }
-    if (flag) {
-      line <- line %>%
-        stringr::str_replace("^[-]+", "") %>%
-        stringr::str_replace_all(reg3, "") %>%
-        stringr::str_replace_all(reg4, "") %>%
-        stringr::str_replace_all(reg5, "")
-      readr::write_lines(line, outfile, append = TRUE)
-    }
-  }
   close(connection)
-  close(outfile)
-
   return(new_file)
 }
