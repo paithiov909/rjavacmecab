@@ -1,7 +1,7 @@
 Package: rjavacmecab
 Type: Package
 Title: rJava Interface to CMeCab
-Version: 0.1.5-3
+Version: 0.1.5-4
 Authors@R: person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre"))
 Author: paithiov909 [aut, cre]
 Maintainer: Kato Akiru <paithiov909@gmail.com>
@@ -24,7 +24,8 @@ Suggests:
     microbenchmark,
     DT,
     ggplot2,
-    RcppMeCab
+    RcppMeCab,
+    spelling
 Imports:
     rJava,
     stringr,
@@ -36,3 +37,4 @@ Imports:
     utils
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
+Language: en-US
