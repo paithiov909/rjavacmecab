@@ -12,7 +12,7 @@
 #' @param outfile Fullpath to a file that MeCab will write output.
 #' @param encoding Encoding of tempfile that MeCab will read.
 #' @param opt Options passed to mecab command.
-#' @param ... Arguments passed to base::writeLines.
+#' @param ... Arguments passed to base::writeLines().
 #'
 #' @return return the value pased to `outfile` argument invisibly
 #'

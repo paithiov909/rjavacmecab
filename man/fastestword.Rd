@@ -21,7 +21,7 @@ fastestword(
 
 \item{opt}{Options passed to mecab command.}
 
-\item{...}{Arguments passed to base::writeLines.}
+\item{...}{Arguments passed to base::writeLines().}
 }
 \value{
 return the value pased to `outfile` argument invisibly

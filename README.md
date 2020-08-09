@@ -151,9 +151,9 @@ rjavacmecab::cmecab(str, "-d /MeCab/dic/mecab-ipadic-neologd")
 - [s-u/rJava: R to Java interface](https://github.com/s-u/rJava) (rJava)
 - [ikegami-yukino/mecab: Yet another Japanese morphological analyzer](https://github.com/ikegami-yukino/mecab) (MeCab 野良ビルド)
 
-## Contributing
+## Code of Conduct
 
-issueを立ててくれたらやり方を考えます。
+Please note that the rjavacmecab project is released with a [Contributor Code of Conduct](https://paithiov909.github.io/rjavacmecab/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
 
 ## License
 
