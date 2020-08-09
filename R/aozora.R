@@ -37,6 +37,7 @@ aozora <- function(url = NULL,
   new_file <- file.path(new_dir, paste0(txtname, ".txt"))
 
   if (file.create(new_file)) {
+
     outfile <- file(new_file, open = "at", encoding = "UTF-8")
 
     flag <- TRUE
