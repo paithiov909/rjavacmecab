@@ -24,7 +24,7 @@ fastestword(
 \item{...}{Arguments passed to base::writeLines().}
 }
 \value{
-return the value pased to `outfile` argument invisibly
+return the value passed to `outfile` argument invisibly
 }
 \description{
 Call mecab command directly via base::system().

@@ -23,9 +23,11 @@ Suggests:
     rmarkdown,
     sessioninfo,
     microbenchmark,
+    vctrs,
+    readtext,
     DT,
     ggplot2,
-    RcppMeCab,
+    RcppMeCab
 Imports:
     rJava,
     stringr,

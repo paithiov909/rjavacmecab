@@ -3,7 +3,7 @@
 #' Parse a CSV-row-like string something like `"a,b,c"`
 #'
 #' @param str String.
-#' @param max Integer. The limit of column size.
+#' @param max Integer. The limitation of column size.
 #' @return vector
 #'
 #' @importFrom rJava J

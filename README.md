@@ -1,25 +1,35 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # rjavacmecab <a href='https://paithiov909.github.io/rjavacmecab'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/rjavacmecab)](#) [![Build Status](https://travis-ci.org/paithiov909/rjavacmecab.svg?branch=master)](https://travis-ci.org/paithiov909/rjavacmecab) [![GitHub license](https://img.shields.io/github/license/paithiov909/rjavacmecab)](https://github.com/paithiov909/rjavacmecab/blob/master/LICENSE) [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+<!-- badges: start -->
+
+[![GitHub last
+commit](https://img.shields.io/github/last-commit/paithiov909/rjavacmecab)](#)
+[![Build
+Status](https://travis-ci.org/paithiov909/rjavacmecab.svg?branch=master)](https://travis-ci.org/paithiov909/rjavacmecab)
+
+<!-- badges: end -->
 
 > rJava Interface to CMeCab
 
 ## Installation
 
-```r
+``` r
 remotes::install_github("paithiov909/rjavacmecab")
 ```
 
 ## Requirements
 
-- MeCab
-- JDK
+  - MeCab
+  - JDK
 
 ## Usage
 
 ### Call tagger
 
-```r
+``` r
 res <- rjavacmecab::cmecab("キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください")
 print(res)
 #> [[1]]
@@ -102,25 +112,31 @@ print(res)
 #> 
 #> [[27]]
 #> [1] "EOS"
-head(rjavacmecab::prettify(res))
-#>           word   POS1     POS2 POS3 POS4      X5StageUse1 X5StageUse2
-#> 1 キャピキャピ   名詞     一般    *    *                *           *
-#> 2           音   名詞     接尾 一般    *                *           *
-#> 3           が   助詞   格助詞 一般    *                *           *
-#> 4         高く 形容詞     自立    *    * 形容詞・アウオ段  連用テ接続
-#> 5         なっ   動詞     自立    *    *       五段・ラ行  連用タ接続
-#> 6           て   助詞 接続助詞    *    *                *           *
-#>   Original  Yomi1  Yomi2
-#> 1        *      *      *
-#> 2       音   オン   オン
-#> 3       が     ガ     ガ
-#> 4     高い タカク タカク
-#> 5     なる   ナッ   ナッ
-#> 6       て     テ     テ
 ```
+
+### Prettify output
+
+``` r
+head(rjavacmecab::prettify(res))
+#>           word   POS1     POS2 POS3 POS4      X5StageUse1 X5StageUse2 Original
+#> 1 キャピキャピ   名詞     一般    *    *                *           *        *
+#> 2           音   名詞     接尾 一般    *                *           *       音
+#> 3           が   助詞   格助詞 一般    *                *           *       が
+#> 4         高く 形容詞     自立    *    * 形容詞・アウオ段  連用テ接続     高い
+#> 5         なっ   動詞     自立    *    *       五段・ラ行  連用タ接続     なる
+#> 6           て   助詞 接続助詞    *    *                *           *       て
+#>    Yomi1  Yomi2
+#> 1      *      *
+#> 2   オン   オン
+#> 3     ガ     ガ
+#> 4 タカク タカク
+#> 5   ナッ   ナッ
+#> 6     テ     テ
+```
+
 ### Change dictionary
 
-```r
+``` r
 str <- "きゃりーぱみゅぱみゅ"
 rjavacmecab::cmecab(str)
 #> [[1]]
@@ -147,17 +163,27 @@ rjavacmecab::cmecab(str, "-d /MeCab/dic/mecab-ipadic-neologd")
 
 ## Related repositories
 
-- [takscape/cmecab-java: A Java binding for MeCab](https://github.com/takscape/cmecab-java) (cmecab-java)
-- [s-u/rJava: R to Java interface](https://github.com/s-u/rJava) (rJava)
-- [ikegami-yukino/mecab: Yet another Japanese morphological analyzer](https://github.com/ikegami-yukino/mecab) (MeCab 野良ビルド)
+  - [takscape/cmecab-java: A Java binding for
+    MeCab](https://github.com/takscape/cmecab-java) (cmecab-java)
+  - [s-u/rJava: R to Java interface](https://github.com/s-u/rJava)
+    (rJava)
+  - [ikegami-yukino/mecab: Yet another Japanese morphological
+    analyzer](https://github.com/ikegami-yukino/mecab) (MeCab 野良ビルド)
 
 ## Code of Conduct
 
-Please note that the rjavacmecab project is released with a [Contributor Code of Conduct](https://paithiov909.github.io/rjavacmecab/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+Please note that the rjavacmecab project is released with a [Contributor
+Code of
+Conduct](https://paithiov909.github.io/rjavacmecab/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
 
 ## License
 
-MIT license. Icons made by [Vectors Market](https://www.flaticon.com/authors/vectors-market) from [Flaticon](https://www.flaticon.com/).
+MIT license. Icons made by [Vectors
+Market](https://www.flaticon.com/authors/vectors-market) from
+[Flaticon](https://www.flaticon.com/).
 
-This software includes the works that are distributed in Public Domain and New BSD License. See https://github.com/takscape/cmecab-java/blob/master/README.txt for more details. 
-
+This software includes the works that are distributed in Public Domain
+and New BSD License. See
+<https://github.com/takscape/cmecab-java/blob/master/README.txt> for
+more details.

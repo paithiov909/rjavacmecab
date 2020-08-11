@@ -1,0 +1,235 @@
+---
+title: "Practice: POS tagging from NLP 100 Exercise 2020 (Rev1)"
+author: "Kato Akiru"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+header-includes:
+  - \usepackage[utf8]{inputenc}
+vignette: >
+  %\VignetteIndexEntry{Practice: POS tagging from NLP 100 Exercise 2020 (Rev1)}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  tidy = "styler",
+  collapse = TRUE,
+  comment = "#>"
+)
+
+stopifnot(require(rjavacmecab))
+stopifnot(require(tidyverse))
+stopifnot(require(vctrs))
+stopifnot(require(readtext))
+```
+
+## Overview
+
+### この記事について
+
+[言語処理100本ノック 2020 (Rev 1) ](https://nlp100.github.io/ja/)のうち、[第4章: 形態素解析](https://nlp100.github.io/ja/ch04.html)の回答例。
+
+### 言語処理100本ノック 2020について
+
+[2015年版](http://www.cl.ecei.tohoku.ac.jp/nlp100/)については以下の例がRで取り組んでいる。
+
+- [Rによる言語処理100本ノック前半まとめ - バイアスと戯れる](http://yamano357.hatenadiary.com/entry/2015/07/27/001728)
+- [Rによる言語処理100本ノック後半まとめと全体での総括 - バイアスと戯れる](http://yamano357.hatenadiary.com/entry/2015/10/22/193839)
+
+2020年版ではPythonで解いている記事はすでにたくさんある。Rで部分的に取り組んでいる例もあるが、とくに8章のディープ・ニューラルネットのあたりから現状のRを取り巻く環境では取り組みにくい課題になるためか、完走している例はまだ見つけられない。
+
+- [【R】言語処理100本ノック - Qiita](https://qiita.com/PiyoMoasa/items/7c1a6cca3f9cbcaf7773)
+- [R言語で「言語処理100本ノック 2020」/ NLP100 Rlang - Speaker Deck](https://speakerdeck.com/upura/nlp100-rlang)
+- [Rで言語処理100本ノックを解くわけがない（１） | WabbitsPunch](https://wabbitspunch.netlify.app/posts/100-knocks-2020-1/)
+
+### ファイルの読み込み
+
+9,210文ある。
+
+```{r}
+temp <- tempfile(fileext = ".txt")
+download.file("https://nlp100.github.io/data/neko.txt", temp)
+neko <- readtext::readtext(temp, encoding = "UTF-8")
+neko$text %>%
+  readr::read_lines(skip_empty_rows = TRUE) %>%
+  length()
+```
+
+## 回答集
+
+### 30. 形態素解析結果の読み込み
+
+- 解析結果はデータフレームにしてもちたい。
+- 文区切りが`\n\n`で与えられているが、`rjavacmecab::cmecab`はとくにvectorizedされていないため、文区切りにしたがって解析するにはタガーを9,210回呼ばなければならず、解析に時間を要してしまう。このため、ここでは文区切りを無視して一気に形態素解析する。
+- 文章を一気に形態素解析すると、解析自体はすぐ終わるものの、リストをパースしてデータフレームに変換するのにやや時間がかかる。以下では解析結果の冒頭のみ用いることにする。
+
+```{r knock_30}
+neko_txt_mecab <- neko$text %>%
+  rjavacmecab::cmecab() %>%
+  vctrs::vec_slice(1:900) %>%
+  purrr::map_dfr(function(line) {
+    row <- stringr::str_split(line, " ", simplify = TRUE)
+    attr <- rjavacmecab::tokenize(row[1, 2]) %>%
+      t() %>%
+      as.data.frame(stringsAsFactors = FALSE)
+    res <- row[1, 1] %>%
+      as.data.frame(stringsAsFactors = FALSE) %>%
+      dplyr::bind_cols(attr)
+    return(res)
+  })
+colnames(neko_txt_mecab) <- c(
+  "Surface",
+  "POS1",
+  "POS2",
+  "POS3",
+  "POS4",
+  "X5StageUse1",
+  "X5StageUse2",
+  "Base",
+  "Reading",
+  "Pronunciation"
+)
+head(neko_txt_mecab)
+```
+
+### 31. 動詞
+
+```{r knock_31}
+neko_txt_mecab %>%
+  dplyr::filter(POS1 == "動詞") %>%
+  dplyr::select(Surface) %>%
+  head()
+```
+
+### 32. 動詞の原形
+
+```{r knock_32}
+neko_txt_mecab %>%
+  dplyr::filter(POS1 == "動詞") %>%
+  dplyr::select(Base) %>%
+  head()
+```
+
+### 33. 「AのB」
+
+```{r knock_33}
+neko_txt_mecab %>%
+  tibble::rowid_to_column() %>%
+  dplyr::filter(Surface == "の") %>%
+  dplyr::pull(rowid) %>%
+  purrr::keep(~ neko_txt_mecab$POS1[. - 1] == "名詞" && neko_txt_mecab$POS1[. + 1] == "名詞") %>%
+  purrr::map_chr(~ stringr::str_c(
+    neko_txt_mecab$Surface[. - 1],
+    neko_txt_mecab$Surface[.],
+    neko_txt_mecab$Surface[. + 1],
+    collapse = ""
+  ))
+```
+
+### 34. 名詞の連接
+
+```{r knock_34}
+idx <- neko_txt_mecab %>%
+  tibble::rowid_to_column() %>%
+  dplyr::filter(POS1 == "名詞") %>%
+  dplyr::pull(rowid) %>%
+  purrr::discard(~ neko_txt_mecab$POS1[. + 1] != "名詞")
+
+search_in <- idx
+
+purrr::map_chr(search_in, function(idx) {
+  itr <- idx
+  res <- stringr::str_c(neko_txt_mecab$Surface[idx])
+  while (neko_txt_mecab$POS1[itr + 1] == "名詞") {
+    res <- stringr::str_c(res, neko_txt_mecab$Surface[itr + 1])
+    search_in <<- purrr::discard(search_in, ~ . == itr + 1)
+    itr <- itr + 1
+  }
+  return(res)
+})
+```
+
+### 35. 単語の出現頻度
+
+```{r knock_35}
+neko_txt_mecab %>%
+  dplyr::group_by(Base) %>%
+  dplyr::count(Base, sort = TRUE) %>%
+  head()
+```
+
+### 36. 頻度上位10語
+
+```{r knock_36}
+neko_txt_mecab %>%
+  dplyr::group_by(Base) %>%
+  dplyr::count(Base, sort = TRUE) %>%
+  head(10) %>%
+  ggplot(aes(x = reorder(Base, -n), y = n)) +
+  geom_col() +
+  labs(x = "Surface form") +
+  theme_light()
+```
+
+### 37. 「猫」と共起頻度の高い上位10語
+
+解釈のしかたが定まらないが、はじめに形態素解析する段階で文区切りを無視してしまったので、ここではbi-gramを数えている。
+
+```{r knock_37}
+neko_txt_mecab %>%
+  tibble::rowid_to_column() %>%
+  dplyr::filter(Surface == "猫") %>%
+  dplyr::mutate(
+    Colocation = stringr::str_c(
+      Surface,
+      neko_txt_mecab$Surface[rowid + 1],
+      sep = " - "
+    )
+  ) %>%
+  dplyr::group_by(Colocation) %>%
+  dplyr::count(Colocation, sort = TRUE) %>%
+  head(10) %>%
+  ggplot(aes(x = reorder(Colocation, -n), y = n)) +
+  geom_col() +
+  labs(x = "Colocation", y = "Freq") +
+  theme_light()
+```
+
+### 38. ヒストグラム
+
+```{r knock_38}
+neko_txt_mecab %>%
+  dplyr::group_by(Base) %>%
+  dplyr::count(Base) %>%
+  ggplot(aes(x = reorder(Base, -n), y = n)) +
+  geom_col() +
+  labs(x = "", y = "Freq") +
+  theme_light()
+```
+
+### 39. Zipfの法則
+
+```{r knock_39}
+count <- neko_txt_mecab %>%
+  dplyr::group_by(Base) %>%
+  dplyr::count(Base) %>%
+  dplyr::ungroup()
+count %>%
+  tibble::rowid_to_column() %>%
+  dplyr::mutate(
+    rank = nrow(count) + 1 - dplyr::min_rank(count$n)[rowid]
+  ) %>%
+  ggplot(aes(x = rank, y = n)) +
+  geom_point() +
+  labs(x = "Rank of Freq", y = "Freq") +
+  scale_x_log10() +
+  scale_y_log10() +
+  theme_light()
+```
+
+## セッション情報
+
+```{r session_info}
+sessioninfo::session_info()
+```
