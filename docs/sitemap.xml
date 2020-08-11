@@ -46,18 +46,21 @@
     <loc>https://paithiov909.github.io/rjavacmecab/reference/tokenize.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/articles/about.html</loc>
+    <loc>https://paithiov909.github.io/rjavacmecab/articles/00_about.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/articles/benchmark.html</loc>
+    <loc>https://paithiov909.github.io/rjavacmecab/articles/01_colab.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/articles/colab.html</loc>
+    <loc>https://paithiov909.github.io/rjavacmecab/articles/02_datasets.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/articles/datasets.html</loc>
+    <loc>https://paithiov909.github.io/rjavacmecab/articles/03_benchmark.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/articles/partial.html</loc>
+    <loc>https://paithiov909.github.io/rjavacmecab/articles/04_100-knocks-2020.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/rjavacmecab/articles/05_partial.html</loc>
   </url>
 </urlset>

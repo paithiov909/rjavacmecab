@@ -24,6 +24,8 @@ r_github_packages:
   - jimhester/lintr
 
 before_install:
+  - sudo add-apt-repository -y ppa:cran/poppler
+  - sudo apt-get install -y libpoppler-cpp-dev
   - sudo apt install mecab
   - sudo apt install libmecab-dev
   - sudo apt install mecab-ipadic-utf8

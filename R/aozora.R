@@ -5,7 +5,7 @@
 #'
 #' @param url URL of text download link.
 #' @param txtname New file name as which text will be saved.
-#' @param directory Direcotry name where new file will be saved.
+#' @param directory Directory name where new file will be saved.
 #'
 #' @seealso \url{https://gist.github.com/ishida-m/7969049}
 #'
@@ -37,7 +37,6 @@ aozora <- function(url = NULL,
   new_file <- file.path(new_dir, paste0(txtname, ".txt"))
 
   if (file.create(new_file)) {
-
     outfile <- file(new_file, open = "at", encoding = "UTF-8")
 
     flag <- TRUE

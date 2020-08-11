@@ -11,7 +11,7 @@ aozora(url = NULL, txtname = NULL, directory = "cache")
 
 \item{txtname}{New file name as which text will be saved.}
 
-\item{directory}{Direcotry name where new file will be saved.}
+\item{directory}{Directory name where new file will be saved.}
 }
 \value{
 the path to the new file

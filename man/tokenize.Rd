@@ -9,7 +9,7 @@ tokenize(str, max = 99L)
 \arguments{
 \item{str}{String.}
 
-\item{max}{Integer. The limit of column size.}
+\item{max}{Integer. The limitation of column size.}
 }
 \value{
 vector

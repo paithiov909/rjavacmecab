@@ -14,7 +14,7 @@
 #' @param opt Options passed to mecab command.
 #' @param ... Arguments passed to base::writeLines().
 #'
-#' @return return the value pased to `outfile` argument invisibly
+#' @return return the value passed to `outfile` argument invisibly
 #'
 #' @export
 fastestword <- function(chr = c(""),
@@ -54,7 +54,7 @@ prettify <- function(list, sep = " ") {
     word <- data.frame(word = split[1, 1], stringsAsFactors = FALSE)
     info <- tidyr::separate(
       data.frame(features = c(split[1, 2]), stringsAsFactors = FALSE),
-      col = features,
+      col = "features",
       into = c(
         "POS1",
         "POS2",
