@@ -8,7 +8,7 @@
 [![GitHub last
 commit](https://img.shields.io/github/last-commit/paithiov909/rjavacmecab)](#)
 [![Build
-Status](https://travis-ci.org/paithiov909/rjavacmecab.svg?branch=master)](https://travis-ci.org/paithiov909/rjavacmecab)
+Status](https://travis-ci.com/paithiov909/rjavacmecab.svg?branch=master)](https://travis-ci.com/paithiov909/rjavacmecab)
 
 <!-- badges: end -->
 

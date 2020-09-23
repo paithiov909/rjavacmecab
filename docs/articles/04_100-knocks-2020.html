@@ -104,7 +104,7 @@
       <h1>Practice: POS tagging from NLP 100 Exercise 2020 (Rev1)</h1>
                         <h4 class="author">Kato Akiru</h4>
             
-            <h4 class="date">2020-08-11</h4>
+            <h4 class="date">2020-09-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/paithiov909/rjavacmecab/blob/master/vignettes/04_100-knocks-2020.Rmd"><code>vignettes/04_100-knocks-2020.Rmd</code></a></small>
       <div class="hidden name"><code>04_100-knocks-2020.Rmd</code></div>
@@ -133,7 +133,6 @@
 <ul>
 <li><a href="https://qiita.com/PiyoMoasa/items/7c1a6cca3f9cbcaf7773">【R】言語処理100本ノック - Qiita</a></li>
 <li><a href="https://speakerdeck.com/upura/nlp100-rlang">R言語で「言語処理100本ノック 2020」/ NLP100 Rlang - Speaker Deck</a></li>
-<li><a href="https://wabbitspunch.netlify.app/posts/100-knocks-2020-1/">Rで言語処理100本ノックを解くわけがない（１） | WabbitsPunch</a></li>
 </ul>
 </div>
 <div id="ファイルの読み込み" class="section level3">
@@ -376,12 +375,12 @@
 <span id="cb12-9"><a href="#cb12-9"></a><span class="co">#&gt;  collate  Japanese_Japan.932          </span></span>
 <span id="cb12-10"><a href="#cb12-10"></a><span class="co">#&gt;  ctype    Japanese_Japan.932          </span></span>
 <span id="cb12-11"><a href="#cb12-11"></a><span class="co">#&gt;  tz       Asia/Tokyo                  </span></span>
-<span id="cb12-12"><a href="#cb12-12"></a><span class="co">#&gt;  date     2020-08-11                  </span></span>
+<span id="cb12-12"><a href="#cb12-12"></a><span class="co">#&gt;  date     2020-09-23                  </span></span>
 <span id="cb12-13"><a href="#cb12-13"></a><span class="co">#&gt; </span></span>
 <span id="cb12-14"><a href="#cb12-14"></a><span class="co">#&gt; - Packages -------------------------------------------------------------------</span></span>
 <span id="cb12-15"><a href="#cb12-15"></a><span class="co">#&gt;  ! package     * version  date       lib</span></span>
 <span id="cb12-16"><a href="#cb12-16"></a><span class="co">#&gt;    assertthat    0.2.1    2019-03-21 [2]</span></span>
-<span id="cb12-17"><a href="#cb12-17"></a><span class="co">#&gt;    backports     1.1.8    2020-06-17 [2]</span></span>
+<span id="cb12-17"><a href="#cb12-17"></a><span class="co">#&gt;    backports     1.1.10   2020-09-15 [2]</span></span>
 <span id="cb12-18"><a href="#cb12-18"></a><span class="co">#&gt;    blob          1.2.1    2020-01-20 [2]</span></span>
 <span id="cb12-19"><a href="#cb12-19"></a><span class="co">#&gt;    broom         0.7.0    2020-07-09 [2]</span></span>
 <span id="cb12-20"><a href="#cb12-20"></a><span class="co">#&gt;    cellranger    1.1.0    2016-07-27 [2]</span></span>
@@ -393,7 +392,7 @@
 <span id="cb12-26"><a href="#cb12-26"></a><span class="co">#&gt;    dbplyr        1.4.4    2020-05-27 [2]</span></span>
 <span id="cb12-27"><a href="#cb12-27"></a><span class="co">#&gt;    desc          1.2.0    2018-05-01 [2]</span></span>
 <span id="cb12-28"><a href="#cb12-28"></a><span class="co">#&gt;    digest        0.6.25   2020-02-23 [2]</span></span>
-<span id="cb12-29"><a href="#cb12-29"></a><span class="co">#&gt;    dplyr       * 1.0.1    2020-07-31 [2]</span></span>
+<span id="cb12-29"><a href="#cb12-29"></a><span class="co">#&gt;    dplyr       * 1.0.2    2020-08-18 [2]</span></span>
 <span id="cb12-30"><a href="#cb12-30"></a><span class="co">#&gt;    ellipsis      0.3.1    2020-05-15 [2]</span></span>
 <span id="cb12-31"><a href="#cb12-31"></a><span class="co">#&gt;    evaluate      0.14     2019-05-28 [2]</span></span>
 <span id="cb12-32"><a href="#cb12-32"></a><span class="co">#&gt;    fansi         0.4.1    2020-01-08 [2]</span></span>
@@ -402,14 +401,14 @@
 <span id="cb12-35"><a href="#cb12-35"></a><span class="co">#&gt;    fs            1.5.0    2020-07-31 [2]</span></span>
 <span id="cb12-36"><a href="#cb12-36"></a><span class="co">#&gt;    generics      0.0.2    2018-11-29 [2]</span></span>
 <span id="cb12-37"><a href="#cb12-37"></a><span class="co">#&gt;    ggplot2     * 3.3.2    2020-06-19 [2]</span></span>
-<span id="cb12-38"><a href="#cb12-38"></a><span class="co">#&gt;    glue          1.4.1    2020-05-13 [2]</span></span>
+<span id="cb12-38"><a href="#cb12-38"></a><span class="co">#&gt;    glue          1.4.2    2020-08-27 [2]</span></span>
 <span id="cb12-39"><a href="#cb12-39"></a><span class="co">#&gt;    gtable        0.3.0    2019-03-25 [2]</span></span>
 <span id="cb12-40"><a href="#cb12-40"></a><span class="co">#&gt;    haven         2.3.1    2020-06-01 [2]</span></span>
 <span id="cb12-41"><a href="#cb12-41"></a><span class="co">#&gt;    hms           0.5.3    2020-01-08 [2]</span></span>
 <span id="cb12-42"><a href="#cb12-42"></a><span class="co">#&gt;    htmltools     0.5.0    2020-06-16 [2]</span></span>
 <span id="cb12-43"><a href="#cb12-43"></a><span class="co">#&gt;    httr          1.4.2    2020-07-20 [2]</span></span>
-<span id="cb12-44"><a href="#cb12-44"></a><span class="co">#&gt;    jsonlite      1.7.0    2020-06-25 [2]</span></span>
-<span id="cb12-45"><a href="#cb12-45"></a><span class="co">#&gt;    knitr         1.29     2020-06-23 [2]</span></span>
+<span id="cb12-44"><a href="#cb12-44"></a><span class="co">#&gt;    jsonlite      1.7.1    2020-09-07 [2]</span></span>
+<span id="cb12-45"><a href="#cb12-45"></a><span class="co">#&gt;    knitr         1.30     2020-09-22 [2]</span></span>
 <span id="cb12-46"><a href="#cb12-46"></a><span class="co">#&gt;    labeling      0.3      2014-08-23 [2]</span></span>
 <span id="cb12-47"><a href="#cb12-47"></a><span class="co">#&gt;    lifecycle     0.2.0    2020-03-06 [2]</span></span>
 <span id="cb12-48"><a href="#cb12-48"></a><span class="co">#&gt;    lubridate     1.7.9    2020-06-08 [2]</span></span>
@@ -420,16 +419,16 @@
 <span id="cb12-53"><a href="#cb12-53"></a><span class="co">#&gt;    munsell       0.5.0    2018-06-12 [2]</span></span>
 <span id="cb12-54"><a href="#cb12-54"></a><span class="co">#&gt;    pillar        1.4.6    2020-07-10 [2]</span></span>
 <span id="cb12-55"><a href="#cb12-55"></a><span class="co">#&gt;    pkgconfig     2.0.3    2019-09-22 [2]</span></span>
-<span id="cb12-56"><a href="#cb12-56"></a><span class="co">#&gt;    pkgdown       1.4.1    2020-07-15 [2]</span></span>
+<span id="cb12-56"><a href="#cb12-56"></a><span class="co">#&gt;    pkgdown       1.4.1    2020-09-23 [2]</span></span>
 <span id="cb12-57"><a href="#cb12-57"></a><span class="co">#&gt;    purrr       * 0.3.4    2020-04-17 [2]</span></span>
 <span id="cb12-58"><a href="#cb12-58"></a><span class="co">#&gt;    R.cache       0.14.0   2019-12-06 [2]</span></span>
-<span id="cb12-59"><a href="#cb12-59"></a><span class="co">#&gt;    R.methodsS3   1.8.0    2020-02-14 [2]</span></span>
-<span id="cb12-60"><a href="#cb12-60"></a><span class="co">#&gt;    R.oo          1.23.0   2019-11-03 [2]</span></span>
-<span id="cb12-61"><a href="#cb12-61"></a><span class="co">#&gt;    R.utils       2.9.2    2019-12-08 [2]</span></span>
+<span id="cb12-59"><a href="#cb12-59"></a><span class="co">#&gt;    R.methodsS3   1.8.1    2020-08-26 [2]</span></span>
+<span id="cb12-60"><a href="#cb12-60"></a><span class="co">#&gt;    R.oo          1.24.0   2020-08-26 [2]</span></span>
+<span id="cb12-61"><a href="#cb12-61"></a><span class="co">#&gt;    R.utils       2.10.1   2020-08-26 [2]</span></span>
 <span id="cb12-62"><a href="#cb12-62"></a><span class="co">#&gt;    R6            2.4.1    2019-11-12 [2]</span></span>
 <span id="cb12-63"><a href="#cb12-63"></a><span class="co">#&gt;    Rcpp          1.0.5    2020-07-06 [2]</span></span>
 <span id="cb12-64"><a href="#cb12-64"></a><span class="co">#&gt;    readr       * 1.3.1    2018-12-21 [2]</span></span>
-<span id="cb12-65"><a href="#cb12-65"></a><span class="co">#&gt;    readtext    * 0.76     2020-03-04 [2]</span></span>
+<span id="cb12-65"><a href="#cb12-65"></a><span class="co">#&gt;    readtext    * 0.80     2020-09-22 [2]</span></span>
 <span id="cb12-66"><a href="#cb12-66"></a><span class="co">#&gt;    readxl        1.3.1    2019-03-13 [2]</span></span>
 <span id="cb12-67"><a href="#cb12-67"></a><span class="co">#&gt;    reprex        0.3.0    2019-05-16 [2]</span></span>
 <span id="cb12-68"><a href="#cb12-68"></a><span class="co">#&gt;  D rJava         0.9-13   2020-07-06 [2]</span></span>
@@ -441,17 +440,17 @@
 <span id="cb12-74"><a href="#cb12-74"></a><span class="co">#&gt;    rvest         0.3.6    2020-07-25 [2]</span></span>
 <span id="cb12-75"><a href="#cb12-75"></a><span class="co">#&gt;    scales        1.1.1    2020-05-11 [2]</span></span>
 <span id="cb12-76"><a href="#cb12-76"></a><span class="co">#&gt;    sessioninfo   1.1.1    2018-11-05 [2]</span></span>
-<span id="cb12-77"><a href="#cb12-77"></a><span class="co">#&gt;    stringi       1.4.6    2020-02-17 [2]</span></span>
+<span id="cb12-77"><a href="#cb12-77"></a><span class="co">#&gt;    stringi       1.5.3    2020-09-09 [2]</span></span>
 <span id="cb12-78"><a href="#cb12-78"></a><span class="co">#&gt;    stringr     * 1.4.0    2019-02-10 [2]</span></span>
 <span id="cb12-79"><a href="#cb12-79"></a><span class="co">#&gt;    styler        1.3.2    2020-02-23 [2]</span></span>
 <span id="cb12-80"><a href="#cb12-80"></a><span class="co">#&gt;    tibble      * 3.0.3    2020-07-10 [2]</span></span>
-<span id="cb12-81"><a href="#cb12-81"></a><span class="co">#&gt;    tidyr       * 1.1.1    2020-07-31 [2]</span></span>
+<span id="cb12-81"><a href="#cb12-81"></a><span class="co">#&gt;    tidyr       * 1.1.2    2020-08-27 [2]</span></span>
 <span id="cb12-82"><a href="#cb12-82"></a><span class="co">#&gt;    tidyselect    1.1.0    2020-05-11 [2]</span></span>
 <span id="cb12-83"><a href="#cb12-83"></a><span class="co">#&gt;    tidyverse   * 1.3.0    2019-11-21 [2]</span></span>
 <span id="cb12-84"><a href="#cb12-84"></a><span class="co">#&gt;    utf8          1.1.4    2018-05-24 [2]</span></span>
-<span id="cb12-85"><a href="#cb12-85"></a><span class="co">#&gt;    vctrs       * 0.3.2    2020-07-15 [2]</span></span>
-<span id="cb12-86"><a href="#cb12-86"></a><span class="co">#&gt;    withr         2.2.0    2020-04-20 [2]</span></span>
-<span id="cb12-87"><a href="#cb12-87"></a><span class="co">#&gt;    xfun          0.16     2020-07-24 [2]</span></span>
+<span id="cb12-85"><a href="#cb12-85"></a><span class="co">#&gt;    vctrs       * 0.3.4    2020-08-29 [2]</span></span>
+<span id="cb12-86"><a href="#cb12-86"></a><span class="co">#&gt;    withr         2.3.0    2020-09-22 [2]</span></span>
+<span id="cb12-87"><a href="#cb12-87"></a><span class="co">#&gt;    xfun          0.17     2020-09-09 [2]</span></span>
 <span id="cb12-88"><a href="#cb12-88"></a><span class="co">#&gt;    xml2          1.3.2    2020-04-23 [2]</span></span>
 <span id="cb12-89"><a href="#cb12-89"></a><span class="co">#&gt;    yaml          2.2.1    2020-02-01 [2]</span></span>
 <span id="cb12-90"><a href="#cb12-90"></a><span class="co">#&gt;  source                                  </span></span>
@@ -498,8 +497,8 @@
 <span id="cb12-131"><a href="#cb12-131"></a><span class="co">#&gt;  Github (r-lib/pkgdown@cdd8340)          </span></span>
 <span id="cb12-132"><a href="#cb12-132"></a><span class="co">#&gt;  CRAN (R 4.0.2)                          </span></span>
 <span id="cb12-133"><a href="#cb12-133"></a><span class="co">#&gt;  CRAN (R 4.0.2)                          </span></span>
-<span id="cb12-134"><a href="#cb12-134"></a><span class="co">#&gt;  CRAN (R 4.0.0)                          </span></span>
-<span id="cb12-135"><a href="#cb12-135"></a><span class="co">#&gt;  CRAN (R 4.0.0)                          </span></span>
+<span id="cb12-134"><a href="#cb12-134"></a><span class="co">#&gt;  CRAN (R 4.0.2)                          </span></span>
+<span id="cb12-135"><a href="#cb12-135"></a><span class="co">#&gt;  CRAN (R 4.0.2)                          </span></span>
 <span id="cb12-136"><a href="#cb12-136"></a><span class="co">#&gt;  CRAN (R 4.0.2)                          </span></span>
 <span id="cb12-137"><a href="#cb12-137"></a><span class="co">#&gt;  CRAN (R 4.0.2)                          </span></span>
 <span id="cb12-138"><a href="#cb12-138"></a><span class="co">#&gt;  CRAN (R 4.0.2)                          </span></span>
@@ -516,7 +515,7 @@
 <span id="cb12-149"><a href="#cb12-149"></a><span class="co">#&gt;  CRAN (R 4.0.2)                          </span></span>
 <span id="cb12-150"><a href="#cb12-150"></a><span class="co">#&gt;  CRAN (R 4.0.2)                          </span></span>
 <span id="cb12-151"><a href="#cb12-151"></a><span class="co">#&gt;  CRAN (R 4.0.2)                          </span></span>
-<span id="cb12-152"><a href="#cb12-152"></a><span class="co">#&gt;  CRAN (R 4.0.0)                          </span></span>
+<span id="cb12-152"><a href="#cb12-152"></a><span class="co">#&gt;  CRAN (R 4.0.2)                          </span></span>
 <span id="cb12-153"><a href="#cb12-153"></a><span class="co">#&gt;  CRAN (R 4.0.2)                          </span></span>
 <span id="cb12-154"><a href="#cb12-154"></a><span class="co">#&gt;  CRAN (R 4.0.2)                          </span></span>
 <span id="cb12-155"><a href="#cb12-155"></a><span class="co">#&gt;  CRAN (R 4.0.2)                          </span></span>
@@ -530,7 +529,7 @@
 <span id="cb12-163"><a href="#cb12-163"></a><span class="co">#&gt;  CRAN (R 4.0.2)                          </span></span>
 <span id="cb12-164"><a href="#cb12-164"></a><span class="co">#&gt;  CRAN (R 4.0.0)                          </span></span>
 <span id="cb12-165"><a href="#cb12-165"></a><span class="co">#&gt; </span></span>
-<span id="cb12-166"><a href="#cb12-166"></a><span class="co">#&gt; [1] C:/Users/user/AppData/Local/Temp/RtmpQx3vGO/temp_libpatheb06e186a4</span></span>
+<span id="cb12-166"><a href="#cb12-166"></a><span class="co">#&gt; [1] C:/Users/user/AppData/Local/Temp/Rtmp6JA4fv/temp_libpath158c213c6fd4</span></span>
 <span id="cb12-167"><a href="#cb12-167"></a><span class="co">#&gt; [2] C:/Users/user/Documents/R/win-library/4.0</span></span>
 <span id="cb12-168"><a href="#cb12-168"></a><span class="co">#&gt; [3] C:/Program Files/R/R-4.0.2/library</span></span>
 <span id="cb12-169"><a href="#cb12-169"></a><span class="co">#&gt; </span></span>

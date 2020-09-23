@@ -31,7 +31,7 @@ escape <- function(str) {
 
 #' Util for Handling CSV-like string
 #'
-#' Equivalent to `paste(char, collapse = ",")`
+#' Equivalent to \code{paste(char, collapse = ",")}
 #'
 #' @param char Character vector.
 #' @return String

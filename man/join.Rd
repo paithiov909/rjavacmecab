@@ -13,5 +13,5 @@ join(char)
 String
 }
 \description{
-Equivalent to `paste(char, collapse = ",")`
+Equivalent to \code{paste(char, collapse = ",")}
 }
