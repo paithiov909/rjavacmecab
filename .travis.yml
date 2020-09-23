@@ -32,7 +32,7 @@ before_install:
   - export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
 
 before_script:
-  - sudo R CMD javareconf
+  # - R CMD javareconf
   - Rscript -e 'install.packages("RMeCab", repos = "https://rmecab.jp/R", type = "source")'
 
 after_success:
