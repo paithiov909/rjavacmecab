@@ -1,11 +1,11 @@
 #' Download text file from Aozora Bunko
 #'
-#' Download a file from specified Aozora Bunko URL and unzip the file,
+#' download a file from specified Aozora Bunko URL and unzip the file,
 #' convert it to UTF-8 format.
 #'
 #' @param url URL of text download link.
-#' @param txtname New file name as which text will be saved.
-#' @param directory Directory name where new file will be saved.
+#' @param txtname new file name as which text is saved.
+#' @param directory directory name where new file is saved.
 #'
 #' @seealso \url{https://gist.github.com/ishida-m/7969049}
 #'

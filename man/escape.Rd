@@ -7,11 +7,11 @@
 escape(str)
 }
 \arguments{
-\item{str}{String.}
+\item{str}{character scalar.}
 }
 \value{
-String
+character scalar.
 }
 \description{
-Escape space, tab, `"` and `,` in string
+escape space, tab, `"` and `,` in string
 }

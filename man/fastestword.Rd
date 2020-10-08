@@ -13,21 +13,21 @@ fastestword(
 )
 }
 \arguments{
-\item{chr}{Character vector.}
+\item{chr}{character vector.}
 
-\item{outfile}{Fullpath to a file that MeCab will write output.}
+\item{outfile}{path to a file that MeCab writes output.}
 
-\item{encoding}{Encoding of tempfile that MeCab will read.}
+\item{encoding}{encoding of tempfile that MeCab reads.}
 
-\item{opt}{Options passed to mecab command.}
+\item{opt}{options passed to mecab command.}
 
-\item{...}{Arguments passed to base::writeLines().}
+\item{...}{any other arguments are passed to \code{base::writeLines()}.}
 }
 \value{
-return the value passed to `outfile` argument invisibly
+the function returns the value passed to `outfile` argument invisibly
 }
 \description{
-Call mecab command directly via base::system().
+call mecab command directly via \code{base::system()}.
 }
 \details{
 It is useful especially when just tokenizing loads of text.

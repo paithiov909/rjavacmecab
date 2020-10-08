@@ -7,11 +7,12 @@
 cmecab(str = "", opt = "", sep = " ")
 }
 \arguments{
-\item{str}{String to be tokenized.}
+\item{str}{character vector to be tokenized.}
 
-\item{opt}{String to be passed as tagger options (ex. "-d").}
+\item{opt}{character scalar to be passed as tagger options (ex. "-d").}
 
-\item{sep}{String used as separator with which it replaces tab.}
+\item{sep}{character scalar to be used as separator
+with which the function replaces tab.}
 }
 \value{
 a list

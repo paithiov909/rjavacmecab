@@ -7,12 +7,13 @@
 prettify(list, sep = " ")
 }
 \arguments{
-\item{list}{List that is output from rjavacmecab::cmecab().}
+\item{list}{list that comes out of \code{rjavacmecab::cmecab()}.}
 
-\item{sep}{String used as separator with which it replaces tab.}
+\item{sep}{character scalar that is used as separator
+with which the function replaces tab.}
 }
 \value{
-dataframe
+data.frame
 }
 \description{
 Prettify cmecab() output
