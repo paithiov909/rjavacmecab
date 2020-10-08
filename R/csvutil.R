@@ -1,10 +1,10 @@
 #' Util for Handling CSV-like string
 #'
-#' Parse a CSV-row-like string something like `"a,b,c"`
+#' parse a CSV-row-like string something like `"a,b,c"`
 #'
-#' @param str String.
-#' @param max Integer. The limitation of column size.
-#' @return vector
+#' @param str character scalar..
+#' @param max integer. the limitation of column size.
+#' @return character vector
 #'
 #' @importFrom rJava J
 #' @export
@@ -13,13 +13,12 @@ tokenize <- function(str, max = 99L) {
   return(arr)
 }
 
-
 #' Util for Handling CSV-like string
 #'
-#' Escape space, tab, `"` and `,` in string
+#' escape space, tab, `"` and `,` in string
 #'
-#' @param str String.
-#' @return String
+#' @param str character scalar.
+#' @return character scalar.
 #'
 #' @importFrom rJava J
 #' @export
@@ -28,13 +27,12 @@ escape <- function(str) {
   return(str)
 }
 
-
 #' Util for Handling CSV-like string
 #'
-#' Equivalent to \code{paste(char, collapse = ",")}
+#' equivalent to \code{paste(char, collapse = ",")}
 #'
-#' @param char Character vector.
-#' @return String
+#' @param char character vector.
+#' @return character scalar
 #'
 #' @importFrom rJava J
 #' @importFrom rJava .jarray

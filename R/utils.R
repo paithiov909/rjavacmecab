@@ -1,6 +1,6 @@
 #' Call mecab command directly
 #'
-#' Call mecab command directly via base::system().
+#' call mecab command directly via \code{base::system()}.
 #'
 #' @details It is useful especially when just tokenizing loads of text.
 #' Since `mecab -Owakati` command is specially-tuned,
@@ -8,13 +8,13 @@
 #' than programmatically use mecab tagger
 #' if you would like to just tokenize (wakachi-gaki) texts.
 #'
-#' @param chr Character vector.
-#' @param outfile Fullpath to a file that MeCab will write output.
-#' @param encoding Encoding of tempfile that MeCab will read.
-#' @param opt Options passed to mecab command.
-#' @param ... Arguments passed to base::writeLines().
+#' @param chr character vector.
+#' @param outfile path to a file that MeCab writes output.
+#' @param encoding encoding of tempfile that MeCab reads.
+#' @param opt options passed to mecab command.
+#' @param ... any other arguments are passed to \code{base::writeLines()}.
 #'
-#' @return return the value passed to `outfile` argument invisibly
+#' @return the function returns the value passed to `outfile` argument invisibly
 #'
 #' @export
 fastestword <- function(chr = c(""),
@@ -36,9 +36,10 @@ fastestword <- function(chr = c(""),
 
 #' Prettify cmecab() output
 #'
-#' @param list List that is output from rjavacmecab::cmecab().
-#' @param sep String used as separator with which it replaces tab.
-#' @return dataframe
+#' @param list list that comes out of \code{rjavacmecab::cmecab()}.
+#' @param sep character scalar that is used as separator
+#' with which the function replaces tab.
+#' @return data.frame
 #'
 #' @importFrom purrr map_dfr
 #' @importFrom stringr str_split_fixed
@@ -79,13 +80,13 @@ prettify <- function(list, sep = " ") {
 
 #' Ngrams tokenizer
 #'
-#' Make n-gram tokenizer function.
+#' make n-gram tokenizer function.
 #'
 #' @seealso \url{https://rpubs.com/brianzive/textmining}
 #'
-#' @param n Integer.
-#' @param skip_word_none Boolean.
-#' @param locale Single string, NULL or "" for default locale.
+#' @param n integer.
+#' @param skip_word_none boolean.
+#' @param locale character scalar, NULL or "" for default locale.
 #'
 #' @return n-gram tokenizer function
 #'

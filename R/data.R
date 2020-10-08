@@ -19,6 +19,6 @@
 #'
 "StopWordsJp"
 
-#' List of Sinji-Sinkana works written by Miyazawa Kenji on Aozora Bunko
+#' List of Shinji-Shinkana works written by Miyazawa Kenji on Aozora Bunko
 #'
 "MiyazawaKenji"

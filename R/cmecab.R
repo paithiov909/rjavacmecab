@@ -1,8 +1,9 @@
 #' Call CMeCab tagger
 #'
-#' @param str String to be tokenized.
-#' @param opt String to be passed as tagger options (ex. "-d").
-#' @param sep String used as separator with which it replaces tab.
+#' @param str character vector to be tokenized.
+#' @param opt character scalar to be passed as tagger options (ex. "-d").
+#' @param sep character scalar to be used as separator
+#' with which the function replaces tab.
 #' @return a list
 #'
 #' @importFrom rJava .jnew

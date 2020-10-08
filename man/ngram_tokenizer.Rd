@@ -7,17 +7,17 @@
 ngram_tokenizer(n = 1L, skip_word_none = TRUE, locale = NULL)
 }
 \arguments{
-\item{n}{Integer.}
+\item{n}{integer.}
 
-\item{skip_word_none}{Boolean.}
+\item{skip_word_none}{boolean.}
 
-\item{locale}{Single string, NULL or "" for default locale.}
+\item{locale}{character scalar, NULL or "" for default locale.}
 }
 \value{
 n-gram tokenizer function
 }
 \description{
-Make n-gram tokenizer function.
+make n-gram tokenizer function.
 }
 \seealso{
 \url{https://rpubs.com/brianzive/textmining}

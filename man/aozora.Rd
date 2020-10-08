@@ -9,15 +9,15 @@ aozora(url = NULL, txtname = NULL, directory = "cache")
 \arguments{
 \item{url}{URL of text download link.}
 
-\item{txtname}{New file name as which text will be saved.}
+\item{txtname}{new file name as which text is saved.}
 
-\item{directory}{Directory name where new file will be saved.}
+\item{directory}{directory name where new file is saved.}
 }
 \value{
 the path to the new file
 }
 \description{
-Download a file from specified Aozora Bunko URL and unzip the file,
+download a file from specified Aozora Bunko URL and unzip the file,
 convert it to UTF-8 format.
 }
 \seealso{
