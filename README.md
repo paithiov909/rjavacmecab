@@ -20,10 +20,10 @@ Status](https://travis-ci.com/paithiov909/rjavacmecab.svg?branch=master)](https:
 remotes::install_github("paithiov909/rjavacmecab")
 ```
 
-## Requirements
+## System Requirements
 
   - MeCab
-  - JDK
+  - Java
 
 ## Usage
 

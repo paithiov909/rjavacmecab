@@ -2,8 +2,6 @@ Aozora
 Bunko
 cmecab
 CMeCab
-Fullpath
-gaki
 ison
 Kenji
 Kishu
@@ -16,8 +14,8 @@ outfile
 Owakati
 programmatically
 rJava
-Sinji
-Sinkana
+Shinji
+Shinkana
 Slothlib
 stopwords
 tempfile
@@ -27,4 +25,4 @@ tokenizer
 tokenizing
 Util
 wakachi
-writeLines
+gaki

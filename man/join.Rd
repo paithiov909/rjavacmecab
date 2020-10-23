@@ -7,11 +7,11 @@
 join(char)
 }
 \arguments{
-\item{char}{character vector.}
+\item{char}{Character vector.}
 }
 \value{
-character scalar
+Character scalar.
 }
 \description{
-equivalent to \code{paste(char, collapse = ",")}
+Equivalent to \code{paste(char, collapse = ",")}.
 }

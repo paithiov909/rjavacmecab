@@ -1,6 +1,6 @@
 #' Call mecab command directly
 #'
-#' call mecab command directly via \code{base::system()}.
+#' Call mecab command directly via \code{base::system()}.
 #'
 #' @details It is useful especially when just tokenizing loads of text.
 #' Since `mecab -Owakati` command is specially-tuned,
@@ -8,20 +8,22 @@
 #' than programmatically use mecab tagger
 #' if you would like to just tokenize (wakachi-gaki) texts.
 #'
-#' @param chr character vector.
-#' @param outfile path to a file that MeCab writes output.
-#' @param encoding encoding of tempfile that MeCab reads.
-#' @param opt options passed to mecab command.
-#' @param ... any other arguments are passed to \code{base::writeLines()}.
+#' @param chr Character vector.
+#' @param outfile Path to a file that MeCab writes output.
+#' @param encoding Encoding of tempfile that MeCab reads.
+#' @param opt Options passed to mecab command.
+#' @param ... Any other arguments are passed to \code{base::writeLines()}.
 #'
-#' @return the function returns the value passed to `outfile` argument invisibly
+#' @return The function returns the value passed to `outfile` argument invisibly.
 #'
 #' @export
-fastestword <- function(chr = c(""),
+fastestword <- function(chr,
                         outfile = file.path(getwd(), "output.txt"),
                         encoding = "UTF-8",
                         opt = "-Owakati",
                         ...) {
+  stopifnot(is.character(chr))
+
   desc <- tempfile(fileext = ".txt")
   tempfile <- file(desc, open = "w+", encoding = encoding)
   writeLines(chr, con = tempfile, ...)
@@ -34,12 +36,12 @@ fastestword <- function(chr = c(""),
 }
 
 
-#' Prettify cmecab() output
+#' Prettify cmecab output
 #'
-#' @param list list that comes out of \code{rjavacmecab::cmecab()}.
-#' @param sep character scalar that is used as separator
+#' @param list List that comes out of \code{rjavacmecab::cmecab()}.
+#' @param sep Character scalar that is used as separator
 #' with which the function replaces tab.
-#' @return data.frame
+#' @return data.frame.
 #'
 #' @importFrom purrr map_dfr
 #' @importFrom stringr str_split_fixed
@@ -50,7 +52,7 @@ fastestword <- function(chr = c(""),
 #' @export
 prettify <- function(list, sep = " ") {
   len <- length(list) - 1
-  purrr::map_dfr(list[1:len], function(el) {
+  res <- purrr::map_dfr(list[1:len], function(el) {
     split <- stringr::str_split_fixed(el, sep, 2L)
     word <- data.frame(word = split[1, 1], stringsAsFactors = FALSE)
     info <- tidyr::separate(
@@ -75,32 +77,34 @@ prettify <- function(list, sep = " ") {
       dplyr::summarise_all(info, ~ tidyr::replace_na(., "*"))
     ))
   })
+  return(res)
 }
 
 
-#' Ngrams tokenizer
+#' Ngrams tokenize
 #'
-#' make n-gram tokenizer function.
+#' Make N-gram tokenizer function.
 #'
 #' @seealso \url{https://rpubs.com/brianzive/textmining}
 #'
-#' @param n integer.
-#' @param skip_word_none boolean.
-#' @param locale character scalar, NULL or "" for default locale.
+#' @param n Integer.
+#' @param skip_word_none Boolean.
+#' @param locale Character scalar, NULL or "" for default locale.
 #'
-#' @return n-gram tokenizer function
+#' @return N-gram tokenizer function.
 #'
 #' @import stringi
 #' @export
 ngram_tokenizer <- function(n = 1L, skip_word_none = TRUE, locale = NULL) {
   stopifnot(is.numeric(n), is.finite(n), n > 0)
+
   options <- stringi::stri_opts_brkiter(
     type = "word",
     locale = locale,
     skip_word_none = skip_word_none
   )
 
-  function(x) {
+  func <- function(x) {
     stopifnot(is.character(x))
 
     # Split into word tokens
@@ -116,4 +120,5 @@ ngram_tokenizer <- function(n = 1L, skip_word_none = TRUE, locale = NULL) {
       })
     }
   }
+  return(func)
 }

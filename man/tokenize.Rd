@@ -7,13 +7,13 @@
 tokenize(str, max = 99L)
 }
 \arguments{
-\item{str}{character scalar..}
+\item{str}{Character scalar.}
 
-\item{max}{integer. the limitation of column size.}
+\item{max}{Limitation of column size.}
 }
 \value{
-character vector
+Character vector
 }
 \description{
-parse a CSV-row-like string something like `"a,b,c"`
+Parse a CSV-row-like string something like `"a,b,c"`.
 }

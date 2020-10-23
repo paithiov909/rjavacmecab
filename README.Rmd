@@ -30,10 +30,10 @@ knitr::opts_chunk$set(
 remotes::install_github("paithiov909/rjavacmecab")
 ```
 
-## Requirements
+## System Requirements
 
 - MeCab
-- JDK
+- Java
 
 ## Usage
 

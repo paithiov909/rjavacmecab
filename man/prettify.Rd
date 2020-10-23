@@ -2,19 +2,19 @@
 % Please edit documentation in R/utils.R
 \name{prettify}
 \alias{prettify}
-\title{Prettify cmecab() output}
+\title{Prettify cmecab output}
 \usage{
 prettify(list, sep = " ")
 }
 \arguments{
-\item{list}{list that comes out of \code{rjavacmecab::cmecab()}.}
+\item{list}{List that comes out of \code{rjavacmecab::cmecab()}.}
 
-\item{sep}{character scalar that is used as separator
+\item{sep}{Character scalar that is used as separator
 with which the function replaces tab.}
 }
 \value{
-data.frame
+data.frame.
 }
 \description{
-Prettify cmecab() output
+Prettify cmecab output
 }
