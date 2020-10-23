@@ -14,11 +14,11 @@
 #' @importFrom purrr flatten
 #' @export
 cmecab <- function(chr, opt = "", sep = " ") {
-  stopifnot(is.character(chr))
-  tagger <- rJava::.jnew("net.moraleboost.mecab.impl.StandardTagger", opt)
+  stopifnot(is.character(chr), is.character(opt))
+  tagger <- rJava::.jnew("net.moraleboost.mecab.impl.StandardTagger", paste(opt, collapse = " "))
   lattice <- tagger$createLattice()
 
-  lattice$setSentence(paste0(stringi::stri_enc_toutf8(chr), "\n"))
+  lattice$setSentence(paste(stringi::stri_enc_toutf8(chr), collapse = "\n"))
   tagger$parse(lattice)
 
   parsed <- lattice$toString()

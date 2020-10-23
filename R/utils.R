@@ -52,12 +52,12 @@ fastestword <- function(chr,
 #' @export
 prettify <- function(list, sep = " ") {
   len <- length(list) - 1
-  res <- purrr::map_dfr(list[1:len], function(el) {
-    split <- stringr::str_split_fixed(el, sep, 2L)
-    word <- data.frame(word = split[1, 1], stringsAsFactors = FALSE)
+  res <- purrr::map_dfr(list[1:len], function(elem) {
+    split <- stringr::str_split_fixed(elem, sep, 2L)
+    words <- data.frame(Surface = split[1, 1], stringsAsFactors = FALSE)
     info <- tidyr::separate(
-      data.frame(features = c(split[1, 2]), stringsAsFactors = FALSE),
-      col = "features",
+      data.frame(Features = c(split[1, 2]), stringsAsFactors = FALSE),
+      col = "Features",
       into = c(
         "POS1",
         "POS2",
@@ -73,7 +73,7 @@ prettify <- function(list, sep = " ") {
       fill = "right"
     )
     return(dplyr::bind_cols(
-      as.data.frame(word, stringsAsFactors = FALSE),
+      as.data.frame(words, stringsAsFactors = FALSE),
       dplyr::summarise_all(info, ~ tidyr::replace_na(., "*"))
     ))
   })
