@@ -2,22 +2,22 @@
 % Please edit documentation in R/utils.R
 \name{ngram_tokenizer}
 \alias{ngram_tokenizer}
-\title{Ngrams tokenizer}
+\title{Ngrams tokenize}
 \usage{
 ngram_tokenizer(n = 1L, skip_word_none = TRUE, locale = NULL)
 }
 \arguments{
-\item{n}{integer.}
+\item{n}{Integer.}
 
-\item{skip_word_none}{boolean.}
+\item{skip_word_none}{Boolean.}
 
-\item{locale}{character scalar, NULL or "" for default locale.}
+\item{locale}{Character scalar, NULL or "" for default locale.}
 }
 \value{
-n-gram tokenizer function
+N-gram tokenizer function.
 }
 \description{
-make n-gram tokenizer function.
+Make N-gram tokenizer function.
 }
 \seealso{
 \url{https://rpubs.com/brianzive/textmining}

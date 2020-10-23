@@ -4,18 +4,18 @@
 \alias{cmecab}
 \title{Call CMeCab tagger}
 \usage{
-cmecab(str = "", opt = "", sep = " ")
+cmecab(chr, opt = "", sep = " ")
 }
 \arguments{
-\item{str}{character vector to be tokenized.}
+\item{chr}{Character vector to be tokenized.}
 
-\item{opt}{character scalar to be passed as tagger options (ex. "-d").}
+\item{opt}{Character scalar to be passed as tagger options (ex. "-d").}
 
-\item{sep}{character scalar to be used as separator
+\item{sep}{Character scalar to be used as separator
 with which the function replaces tab.}
 }
 \value{
-a list
+List.
 }
 \description{
 Call CMeCab tagger

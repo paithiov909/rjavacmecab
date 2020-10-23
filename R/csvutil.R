@@ -1,44 +1,54 @@
 #' Util for Handling CSV-like string
 #'
-#' parse a CSV-row-like string something like `"a,b,c"`
+#' Parse a CSV-row-like string something like `"a,b,c"`.
 #'
-#' @param str character scalar..
-#' @param max integer. the limitation of column size.
-#' @return character vector
+#' @param str Character scalar.
+#' @param max Limitation of column size.
+#' @return Character vector
 #'
 #' @importFrom rJava J
 #' @export
 tokenize <- function(str, max = 99L) {
-  arr <- rJava::J("net.moraleboost.util.CSVUtil")$tokenize(str, max)
-  return(arr)
+  if (!is.character(str) || length(str) != 1L || is.na(str)) {
+    message("Invalid string provided. String must be a character scalar, not NA_character_.")
+    stop()
+  } else {
+    arr <- rJava::J("net.moraleboost.util.CSVUtil")$tokenize(str, as.integer(max))
+    return(arr)
+  }
 }
 
 #' Util for Handling CSV-like string
 #'
-#' escape space, tab, `"` and `,` in string
+#' Escape space, tab, `"` and `,` in string.
 #'
-#' @param str character scalar.
-#' @return character scalar.
+#' @param str Character scalar.
+#' @return Character scalar.
 #'
 #' @importFrom rJava J
 #' @export
 escape <- function(str) {
-  str <- rJava::J("net.moraleboost.util.CSVUtil")$escape(str)
-  return(str)
+  if (!is.character(str) || length(str) != 1L || is.na(str)) {
+    message("Invalid string provided. String must be a character scalar, not NA_character_.")
+    stop()
+  } else {
+    str <- rJava::J("net.moraleboost.util.CSVUtil")$escape(str)
+    return(str)
+  }
 }
 
 #' Util for Handling CSV-like string
 #'
-#' equivalent to \code{paste(char, collapse = ",")}
+#' Equivalent to \code{paste(char, collapse = ",")}.
 #'
-#' @param char character vector.
-#' @return character scalar
+#' @param char Character vector.
+#' @return Character scalar.
 #'
 #' @importFrom rJava J
 #' @importFrom rJava .jarray
 #' @export
 join <- function(char) {
-  elem <- c(char)
-  arr <- rJava::J("net.moraleboost.util.CSVUtil")$join(rJava::.jarray(elem))
+  stopifnot(is.character(char), !is.na(char))
+  arr <- rJava::J("net.moraleboost.util.CSVUtil")$join(rJava::.jarray(char))
   return(arr)
 }

@@ -5,7 +5,7 @@
 \title{Call mecab command directly}
 \usage{
 fastestword(
-  chr = c(""),
+  chr,
   outfile = file.path(getwd(), "output.txt"),
   encoding = "UTF-8",
   opt = "-Owakati",
@@ -13,21 +13,21 @@ fastestword(
 )
 }
 \arguments{
-\item{chr}{character vector.}
+\item{chr}{Character vector.}
 
-\item{outfile}{path to a file that MeCab writes output.}
+\item{outfile}{Path to a file that MeCab writes output.}
 
-\item{encoding}{encoding of tempfile that MeCab reads.}
+\item{encoding}{Encoding of tempfile that MeCab reads.}
 
-\item{opt}{options passed to mecab command.}
+\item{opt}{Options passed to mecab command.}
 
-\item{...}{any other arguments are passed to \code{base::writeLines()}.}
+\item{...}{Any other arguments are passed to \code{base::writeLines()}.}
 }
 \value{
-the function returns the value passed to `outfile` argument invisibly
+The function returns the value passed to `outfile` argument invisibly.
 }
 \description{
-call mecab command directly via \code{base::system()}.
+Call mecab command directly via \code{base::system()}.
 }
 \details{
 It is useful especially when just tokenizing loads of text.

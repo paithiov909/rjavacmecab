@@ -20,10 +20,10 @@ Status](https://travis-ci.com/paithiov909/rjavacmecab.svg?branch=master)](https:
 remotes::install_github("paithiov909/rjavacmecab")
 ```
 
-## Requirements
+## System Requirements
 
   - MeCab
-  - JDK
+  - Java
 
 ## Usage
 
@@ -118,7 +118,7 @@ print(res)
 
 ``` r
 head(rjavacmecab::prettify(res))
-#>           word   POS1     POS2 POS3 POS4      X5StageUse1 X5StageUse2 Original
+#>        Surface   POS1     POS2 POS3 POS4      X5StageUse1 X5StageUse2 Original
 #> 1 キャピキャピ   名詞     一般    *    *                *           *        *
 #> 2           音   名詞     接尾 一般    *                *           *       音
 #> 3           が   助詞   格助詞 一般    *                *           *       が
