@@ -20,7 +20,7 @@
 aozora <- function(url = NULL,
                    txtname = NULL,
                    directory = "cache") {
-  tmp <- tempfile()
+  tmp <- tempfile(fileext = ".zip")
   utils::download.file(url, tmp)
   text_file <- utils::unzip(tmp, exdir = tempdir())
   unlink(tmp)
@@ -37,7 +37,7 @@ aozora <- function(url = NULL,
   new_file <- file.path(new_dir, paste0(txtname, ".txt"))
 
   if (file.create(new_file)) {
-    outfile <- file(new_file, open = "at", encoding = "UTF-8")
+    outfile <- file(new_file, open = "ab", encoding = "UTF-8")
 
     flag <- TRUE
     reg1 <- enc2utf8("^\u5e95\u672c")
