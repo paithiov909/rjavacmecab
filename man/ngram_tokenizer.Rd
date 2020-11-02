@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{ngram_tokenizer}
 \alias{ngram_tokenizer}
-\title{Ngrams tokenize}
+\title{Ngrams tokenizer}
 \usage{
 ngram_tokenizer(n = 1L, skip_word_none = TRUE, locale = NULL)
 }
@@ -17,7 +17,7 @@ ngram_tokenizer(n = 1L, skip_word_none = TRUE, locale = NULL)
 N-gram tokenizer function.
 }
 \description{
-Make N-gram tokenizer function.
+Makes N-gram tokenizer function.
 }
 \seealso{
 \url{https://rpubs.com/brianzive/textmining}

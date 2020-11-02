@@ -9,7 +9,7 @@ prettify(list, sep = " ")
 \arguments{
 \item{list}{List that comes out of \code{rjavacmecab::cmecab()}.}
 
-\item{sep}{Character scalar that is used as separator
+\item{sep}{Character scalar that is used as separators
 with which the function replaces tab.}
 }
 \value{

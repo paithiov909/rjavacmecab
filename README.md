@@ -14,16 +14,16 @@ Status](https://travis-ci.com/paithiov909/rjavacmecab.svg?branch=master)](https:
 
 > rJava Interface to CMeCab
 
+## System Requirements
+
+  - MeCab
+  - Java
+
 ## Installation
 
 ``` r
 remotes::install_github("paithiov909/rjavacmecab")
 ```
-
-## System Requirements
-
-  - MeCab
-  - Java
 
 ## Usage
 
@@ -161,7 +161,7 @@ rjavacmecab::cmecab(str, "-d /MeCab/dic/mecab-ipadic-neologd")
 #> [1] "EOS"
 ```
 
-## Related repositories
+## Related Repositories
 
   - [takscape/cmecab-java: A Java binding for
     MeCab](https://github.com/takscape/cmecab-java) (cmecab-java)
@@ -179,11 +179,11 @@ By contributing to this project, you agree to abide by its terms.
 
 ## License
 
-MIT license. Icons made by [Vectors
+Under the MIT license | AGPL-3. Icons made by [Vectors
 Market](https://www.flaticon.com/authors/vectors-market) from
 [Flaticon](https://www.flaticon.com/).
 
-This software includes the works that are distributed in Public Domain
-and New BSD License. See
+This software includes works that are distributed in Public Domain and
+New BSD License. See
 <https://github.com/takscape/cmecab-java/blob/master/README.txt> for
 more details.

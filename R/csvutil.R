@@ -1,6 +1,6 @@
-#' Util for Handling CSV-like string
+#' Utility for handling CSV-like string
 #'
-#' Parse a CSV-row-like string something like `"a,b,c"`.
+#' Parses a CSV-row-like string something like `"a,b,c"`.
 #'
 #' @param str Character scalar.
 #' @param max Limitation of column size.
@@ -18,9 +18,9 @@ tokenize <- function(str, max = 99L) {
   }
 }
 
-#' Util for Handling CSV-like string
+#' Utility for handling CSV-like string
 #'
-#' Escape space, tab, `"` and `,` in string.
+#' Escapes space, tab, `"` and `,` in string.
 #'
 #' @param str Character scalar.
 #' @return Character scalar.
@@ -37,9 +37,9 @@ escape <- function(str) {
   }
 }
 
-#' Util for Handling CSV-like string
+#' Utility for handling CSV-like string
 #'
-#' Equivalent to \code{paste(char, collapse = ",")}.
+#' Equivalent to \code{paste(chr, collapse = ",")}.
 #'
 #' @param char Character vector.
 #' @return Character scalar.
@@ -47,8 +47,8 @@ escape <- function(str) {
 #' @importFrom rJava J
 #' @importFrom rJava .jarray
 #' @export
-join <- function(char) {
-  stopifnot(is.character(char), !is.na(char))
-  arr <- rJava::J("net.moraleboost.util.CSVUtil")$join(rJava::.jarray(char))
+join <- function(chr) {
+  stopifnot(is.character(chr), !is.na(chr))
+  arr <- rJava::J("net.moraleboost.util.CSVUtil")$join(rJava::.jarray(chr))
   return(arr)
 }
