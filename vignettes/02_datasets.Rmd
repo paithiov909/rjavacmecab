@@ -16,9 +16,11 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-stopifnot(require(dplyr))
-stopifnot(require(DT))
-stopifnot(require(rjavacmecab))
+stopifnot(
+  require(dplyr),
+  require(DT),
+  require(rjavacmecab)
+)
 ```
 
 ## AozoraBunkoSnapshot

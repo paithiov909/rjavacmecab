@@ -1,10 +1,9 @@
 Package: rjavacmecab
 Type: Package
 Title: rJava Interface to CMeCab
-Version: 0.1.6-2
+Version: 0.1.7
 Authors@R: c(
     person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre")))
-Author: paithiov909 [aut, cre]
 Maintainer: Kato Akiru <paithiov909@gmail.com>
 Description: A simple rJava interface to cmecab-java.
 Depends:
@@ -12,7 +11,7 @@ Depends:
 SystemRequirements:
     MeCab,
     Java
-License: MIT + file LICENSE
+License: MIT + file LICENSE | AGPL-3
 URL: https://github.com/paithiov909/rjavacmecab
 BugReports: https://github.com/paithiov909/rjavacmecab/issues
 Encoding: UTF-8

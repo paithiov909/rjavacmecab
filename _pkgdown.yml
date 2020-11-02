@@ -19,6 +19,8 @@ reference:
         - tokenize
         - escape
         - join
+        - is_blank
+        - is_mecab_available
     - title: "Tools"
       contents:
         - aozora

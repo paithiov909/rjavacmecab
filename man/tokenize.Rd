@@ -2,7 +2,7 @@
 % Please edit documentation in R/csvutil.R
 \name{tokenize}
 \alias{tokenize}
-\title{Util for Handling CSV-like string}
+\title{Utility for handling CSV-like string}
 \usage{
 tokenize(str, max = 99L)
 }
@@ -15,5 +15,5 @@ tokenize(str, max = 99L)
 Character vector
 }
 \description{
-Parse a CSV-row-like string something like `"a,b,c"`.
+Parses a CSV-row-like string something like `"a,b,c"`.
 }

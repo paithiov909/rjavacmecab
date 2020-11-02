@@ -16,12 +16,14 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-stopifnot(require(dplyr))
-stopifnot(require(purrr))
-stopifnot(require(tidyr))
-stopifnot(require(stringr))
-stopifnot(require(readr))
-stopifnot(require(rjavacmecab))
+stopifnot(
+  require(dplyr),
+  require(purrr),
+  require(tidyr),
+  require(stringr),
+  require(readr),
+  require(rjavacmecab)
+)
 ```
 
 ## MeCabにコマンドラインオプションを渡す

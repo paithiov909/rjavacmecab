@@ -18,10 +18,12 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-stopifnot(require(rjavacmecab))
-stopifnot(require(tidyverse))
-stopifnot(require(vctrs))
-stopifnot(require(readtext))
+stopifnot(
+  require(rjavacmecab),
+  require(tidyverse),
+  require(vctrs),
+  require(readtext)
+)
 ```
 
 ## Overview

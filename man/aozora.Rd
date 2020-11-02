@@ -4,21 +4,22 @@
 \alias{aozora}
 \title{Download text file from Aozora Bunko}
 \usage{
-aozora(url = NULL, txtname = NULL, directory = "cache")
+aozora(url, txtname = NULL, directory = file.path(getwd(), "cache"))
 }
 \arguments{
 \item{url}{URL of text download link.}
 
-\item{txtname}{New file name as which text is saved.}
+\item{txtname}{New file name as which text is saved.
+If `NULL` provided, keeps name of the source file.}
 
-\item{directory}{Directory name where new file is saved.}
+\item{directory}{Path where new file is saved.}
 }
 \value{
 The path to the new file.
 }
 \description{
 Download a file from specified URL, unzip the file
-and convert it to UTF-8 format.
+and convert it to UTF-8.
 }
 \seealso{
 \url{https://gist.github.com/ishida-m/7969049}

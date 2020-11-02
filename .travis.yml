@@ -21,7 +21,7 @@ r_build_args: --no-build-vignettes --no-manual
 r_check_args: --no-build-vignettes --no-manual --timings
 
 r_github_packages:
-  - jimhester/lintr
+  - r-lib/covr
 
 before_install:
   - sudo add-apt-repository -y ppa:cran/poppler
@@ -35,8 +35,7 @@ before_script:
   - Rscript -e 'install.packages("RMeCab", repos = "https://rmecab.jp/R", type = "source")'
 
 after_success:
-  - R CMD INSTALL $PKG_TARBALL
-  - Rscript -e 'lintr::lint_package()'
+  - Rscript -e 'covr::codecov()'
 
 cache:
   packages: true

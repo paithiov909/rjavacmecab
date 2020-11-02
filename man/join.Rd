@@ -2,9 +2,9 @@
 % Please edit documentation in R/csvutil.R
 \name{join}
 \alias{join}
-\title{Util for Handling CSV-like string}
+\title{Utility for handling CSV-like string}
 \usage{
-join(char)
+join(chr)
 }
 \arguments{
 \item{char}{Character vector.}
@@ -13,5 +13,5 @@ join(char)
 Character scalar.
 }
 \description{
-Equivalent to \code{paste(char, collapse = ",")}.
+Equivalent to \code{paste(chr, collapse = ",")}.
 }

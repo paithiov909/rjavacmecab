@@ -1,6 +1,14 @@
+#' Check if mecab command is available
+#' @return Logical.
+#' @export
+is_mecab_available <- function() {
+  return(!is_blank(Sys.which("mecab")))
+}
+
+
 #' Call mecab command directly
 #'
-#' Call mecab command directly via \code{base::system()}.
+#' Calls mecab command directly via \code{base::system()}.
 #'
 #' @details It is useful especially when just tokenizing loads of text.
 #' Since `mecab -Owakati` command is specially-tuned,
@@ -22,7 +30,10 @@ fastestword <- function(chr,
                         encoding = "UTF-8",
                         opt = "-Owakati",
                         ...) {
-  stopifnot(is.character(chr))
+  stopifnot(
+    is.character(chr),
+    is_mecab_available()
+  )
 
   desc <- tempfile(fileext = ".txt")
   tempfile <- file(desc, open = "w+", encoding = encoding)
@@ -32,14 +43,14 @@ fastestword <- function(chr,
   try(system(command = paste("mecab", desc, "-o", outfile, opt)))
 
   unlink(desc)
-  invisible(outfile)
+  return(invisible(outfile))
 }
 
 
 #' Prettify cmecab output
 #'
 #' @param list List that comes out of \code{rjavacmecab::cmecab()}.
-#' @param sep Character scalar that is used as separator
+#' @param sep Character scalar that is used as separators
 #' with which the function replaces tab.
 #' @return data.frame.
 #'
@@ -51,6 +62,7 @@ fastestword <- function(chr,
 #' @importFrom dplyr bind_cols
 #' @export
 prettify <- function(list, sep = " ") {
+  stopifnot(is.list(list), !is_blank(list), is.character(sep))
   len <- length(list) - 1
   res <- purrr::map_dfr(list[1:len], function(elem) {
     split <- stringr::str_split_fixed(elem, sep, 2L)
@@ -81,9 +93,9 @@ prettify <- function(list, sep = " ") {
 }
 
 
-#' Ngrams tokenize
+#' Ngrams tokenizer
 #'
-#' Make N-gram tokenizer function.
+#' Makes N-gram tokenizer function.
 #'
 #' @seealso \url{https://rpubs.com/brianzive/textmining}
 #'
@@ -112,7 +124,8 @@ ngram_tokenizer <- function(n = 1L, skip_word_none = TRUE, locale = NULL) {
     len <- length(tokens)
 
     if (all(is.na(tokens)) || len < n) {
-      # If we didn't detect any words or number of tokens is less than n return empty vector
+      # If we didn't detect any words or number of tokens
+      # is less than n return empty vector
       character(0)
     } else {
       sapply(1:max(1, len - n + 1), function(i) {

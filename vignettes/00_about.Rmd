@@ -16,7 +16,9 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-stopifnot(require(rjavacmecab))
+stopifnot(
+  require(rjavacmecab)
+)
 ```
 
 ## これは何？

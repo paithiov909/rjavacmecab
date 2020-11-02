@@ -1,13 +1,14 @@
 #' Download text file from Aozora Bunko
 #'
 #' Download a file from specified URL, unzip the file
-#' and convert it to UTF-8 format.
+#' and convert it to UTF-8.
+#'
+#' @seealso \url{https://gist.github.com/ishida-m/7969049}
 #'
 #' @param url URL of text download link.
 #' @param txtname New file name as which text is saved.
-#' @param directory Directory name where new file is saved.
-#'
-#' @seealso \url{https://gist.github.com/ishida-m/7969049}
+#' If `NULL` provided, keeps name of the source file.
+#' @param directory Path where new file is saved.
 #'
 #' @return The path to the new file.
 #'
@@ -17,9 +18,15 @@
 #' @importFrom utils unzip
 #' @importFrom dplyr %>%
 #' @export
-aozora <- function(url = NULL,
+aozora <- function(url,
                    txtname = NULL,
-                   directory = "cache") {
+                   directory = file.path(getwd(), "cache")) {
+  stopifnot(
+    is.null(txtname) || (is.character(txtname) && !is_blank(txtname)),
+    is.character(url),
+    !is_blank(url)
+  )
+
   tmp <- tempfile(fileext = ".zip")
   utils::download.file(url, tmp)
   text_file <- utils::unzip(tmp, exdir = tempdir())
@@ -33,8 +40,7 @@ aozora <- function(url = NULL,
     txtname <- stringr::str_split(basename(text_file), ".txt$", simplify = TRUE)[1]
   }
   connection <- file(text_file, open = "rt")
-  new_dir <- file.path(getwd(), directory)
-  new_file <- file.path(new_dir, paste0(txtname, ".txt"))
+  new_file <- file.path(directory, paste0(txtname, ".txt"))
 
   if (file.create(new_file)) {
     outfile <- file(new_file, open = "ab", encoding = "UTF-8")

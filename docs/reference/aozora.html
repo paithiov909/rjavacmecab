@@ -44,7 +44,7 @@
 
 <meta property="og:title" content="Download text file from Aozora Bunko — aozora" />
 <meta property="og:description" content="Download a file from specified URL, unzip the file
-and convert it to UTF-8 format." />
+and convert it to UTF-8." />
 <meta property="og:image" content="https://paithiov909.github.io/rjavacmecab/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -78,7 +78,7 @@ and convert it to UTF-8 format." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rjavacmecab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.7</span>
       </span>
     </div>
 
@@ -148,10 +148,10 @@ and convert it to UTF-8 format." />
 
     <div class="ref-description">
     <p>Download a file from specified URL, unzip the file
-and convert it to UTF-8 format.</p>
+and convert it to UTF-8.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>aozora</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>txtname</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>directory</span> <span class='kw'>=</span> <span class='st'>"cache"</span>)</pre>
+    <pre class="usage"><span class='fu'>aozora</span>(<span class='no'>url</span>, <span class='kw'>txtname</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>directory</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(), <span class='st'>"cache"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,11 +162,12 @@ and convert it to UTF-8 format.</p>
     </tr>
     <tr>
       <th>txtname</th>
-      <td><p>New file name as which text is saved.</p></td>
+      <td><p>New file name as which text is saved.
+If `NULL` provided, keeps name of the source file.</p></td>
     </tr>
     <tr>
       <th>directory</th>
-      <td><p>Directory name where new file is saved.</p></td>
+      <td><p>Path where new file is saved.</p></td>
     </tr>
     </table>
 

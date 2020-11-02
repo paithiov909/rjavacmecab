@@ -27,7 +27,7 @@ fastestword(
 The function returns the value passed to `outfile` argument invisibly.
 }
 \description{
-Call mecab command directly via \code{base::system()}.
+Calls mecab command directly via \code{base::system()}.
 }
 \details{
 It is useful especially when just tokenizing loads of text.

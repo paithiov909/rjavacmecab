@@ -2,7 +2,7 @@
 % Please edit documentation in R/csvutil.R
 \name{escape}
 \alias{escape}
-\title{Util for Handling CSV-like string}
+\title{Utility for handling CSV-like string}
 \usage{
 escape(str)
 }
@@ -13,5 +13,5 @@ escape(str)
 Character scalar.
 }
 \description{
-Escape space, tab, `"` and `,` in string.
+Escapes space, tab, `"` and `,` in string.
 }
