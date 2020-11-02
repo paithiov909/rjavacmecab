@@ -180,7 +180,9 @@ By contributing to this project, you agree to abide by its terms.
 
 ## License
 
-Under the MIT license | AGPL-3. Icons made by [Vectors
+Under the MIT license | AGPL-3.
+
+Icons made by [Vectors
 Market](https://www.flaticon.com/authors/vectors-market) from
 [Flaticon](https://www.flaticon.com/).
 

@@ -41,7 +41,7 @@ escape <- function(str) {
 #'
 #' Equivalent to \code{paste(chr, collapse = ",")}.
 #'
-#' @param char Character vector.
+#' @param chr Character vector.
 #' @return Character scalar.
 #'
 #' @importFrom rJava J

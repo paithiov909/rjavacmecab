@@ -39,9 +39,9 @@ rsconnect/
 packrat/lib*/
 packrat/src/
 
+doc
 inst/doc
 Meta
 
 *.log
 output.txt
-

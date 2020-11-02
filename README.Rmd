@@ -89,6 +89,8 @@ Please note that the rjavacmecab project is released with a [Contributor Code of
 
 ## License
 
-Under the MIT license | AGPL-3. Icons made by [Vectors Market](https://www.flaticon.com/authors/vectors-market) from [Flaticon](https://www.flaticon.com/).
+Under the MIT license | AGPL-3.
+
+Icons made by [Vectors Market](https://www.flaticon.com/authors/vectors-market) from [Flaticon](https://www.flaticon.com/).
 
 This software includes works that are distributed in Public Domain and New BSD License. See https://github.com/takscape/cmecab-java/blob/master/README.txt for more details. 

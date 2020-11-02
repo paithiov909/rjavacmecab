@@ -7,7 +7,7 @@
 join(chr)
 }
 \arguments{
-\item{char}{Character vector.}
+\item{chr}{Character vector.}
 }
 \value{
 Character scalar.
