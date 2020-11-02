@@ -22,14 +22,15 @@ sentence <- enc2utf8(
 res <- cmecab(sentence)
 
 
-describe("Check output of cmecab", {
-  it("Does the function stop properly?", {
+describe("Check cmecab", {
+  it("Stop properly?", {
     expect_error(cmecab(NA))
     expect_error(cmecab(NULL))
     expect_error(cmecab(NA_character_, NULL))
     expect_error(cmecab(NA_character_, "", NULL))
   })
   it("Output is list?", {
+    expect_type(cmecab(NA_character_), "list")
     expect_type(res, "list")
   })
   it("Valid output?", {

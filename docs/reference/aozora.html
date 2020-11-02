@@ -151,7 +151,7 @@ and convert it to UTF-8." />
 and convert it to UTF-8.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>aozora</span>(<span class='no'>url</span>, <span class='kw'>txtname</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>directory</span> <span class='kw'>=</span> <span class='st'>"cache"</span>)</pre>
+    <pre class="usage"><span class='fu'>aozora</span>(<span class='no'>url</span>, <span class='kw'>txtname</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>directory</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(), <span class='st'>"cache"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -167,7 +167,7 @@ If `NULL` provided, keeps name of the source file.</p></td>
     </tr>
     <tr>
       <th>directory</th>
-      <td><p>Directory name where new file is saved.</p></td>
+      <td><p>Path where new file is saved.</p></td>
     </tr>
     </table>
 

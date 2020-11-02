@@ -18,10 +18,44 @@ sentence <- enc2utf8(
     "\u671D\u306E\u3053\u3068\u3067\u3057\u305F"
   )
 )
-
 res <- prettify(cmecab(sentence))
 
 
-test_that("Prettify", {
+#### fastestword ####
+describe("Check fastestword", {
+  it("Stop properly?", {
+    expect_error(
+      fastestword(
+        NULL,
+        outfile = file.path(tempfile(fileext = ".txt"))
+      )
+    )
+  })
+  it("Valid output", {
+    res <- fastestword(
+      sentence,
+      outfile = file.path(tempfile(fileext = ".txt"))
+    )
+    expect_type(readLines(res), "character")
+  })
+})
+
+
+#### prettify ####
+test_that("Check prettify", {
   expect_s3_class(res, "data.frame")
+})
+
+
+#### ngram_tokenizer ####
+test_that("Check ngram_tokenizer", {
+  expect_type(ngram_tokenizer(3L), "closure")
+  expect_type(
+    ngram_tokenizer(2L)(NA_character_),
+    "character"
+  )
+  expect_equal(
+    ngram_tokenizer(2L)(c("a", "b", "c", "d")),
+    c("a b", "b c", "c d")
+  )
 })

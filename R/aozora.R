@@ -8,7 +8,7 @@
 #' @param url URL of text download link.
 #' @param txtname New file name as which text is saved.
 #' If `NULL` provided, keeps name of the source file.
-#' @param directory Directory name where new file is saved.
+#' @param directory Path where new file is saved.
 #'
 #' @return The path to the new file.
 #'
@@ -20,7 +20,7 @@
 #' @export
 aozora <- function(url,
                    txtname = NULL,
-                   directory = "cache") {
+                   directory = file.path(getwd(), "cache")) {
   stopifnot(
     is.null(txtname) || (is.character(txtname) && !is_blank(txtname)),
     is.character(url),
@@ -40,8 +40,7 @@ aozora <- function(url,
     txtname <- stringr::str_split(basename(text_file), ".txt$", simplify = TRUE)[1]
   }
   connection <- file(text_file, open = "rt")
-  new_dir <- file.path(getwd(), directory)
-  new_file <- file.path(new_dir, paste0(txtname, ".txt"))
+  new_file <- file.path(directory, paste0(txtname, ".txt"))
 
   if (file.create(new_file)) {
     outfile <- file(new_file, open = "ab", encoding = "UTF-8")

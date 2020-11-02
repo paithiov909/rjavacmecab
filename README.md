@@ -9,7 +9,8 @@
 commit](https://img.shields.io/github/last-commit/paithiov909/rjavacmecab)](#)
 [![Build
 Status](https://travis-ci.com/paithiov909/rjavacmecab.svg?branch=master)](https://travis-ci.com/paithiov909/rjavacmecab)
-
+[![Codecov test
+coverage](https://codecov.io/gh/paithiov909/rjavacmecab/branch/master/graph/badge.svg)](https://codecov.io/gh/paithiov909/rjavacmecab?branch=master)
 <!-- badges: end -->
 
 > rJava Interface to CMeCab
