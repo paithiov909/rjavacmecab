@@ -24,14 +24,14 @@ fastestword(
 \item{...}{Any other arguments are passed to \code{base::writeLines()}.}
 }
 \value{
-The function returns the value passed to `outfile` argument invisibly.
+The function returns the value passed to \code{outfile} argument invisibly.
 }
 \description{
 Calls mecab command directly via \code{base::system()}.
 }
 \details{
 It is useful especially when just tokenizing loads of text.
-Since `mecab -Owakati` command is specially-tuned,
+Since \code{mecab -Owakati} command is specially-tuned,
 it is generally faster that you directly call mecab command
 than programmatically use mecab tagger
 if you would like to just tokenize (wakachi-gaki) texts.

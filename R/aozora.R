@@ -12,11 +12,9 @@
 #'
 #' @return The path to the new file.
 #'
-#' @import stringr
 #' @importFrom readr write_lines
 #' @importFrom utils download.file
 #' @importFrom utils unzip
-#' @importFrom dplyr %>%
 #' @export
 aozora <- function(url,
                    txtname = NULL,
