@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rjavacmecab <a href='https://paithiov909.github.io/rjavacmecab'><img src='man/figures/logo.png' align="right" height="139" /></a>
+# rjavacmecab <a href='https://paithiov909.github.io/rjavacmecab'><img src='https://raw.githack.com/paithiov909/rjavacmecab/master/man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 

@@ -37,10 +37,19 @@
     <loc>https://paithiov909.github.io/rjavacmecab/reference/ngram_tokenizer.html</loc>
   </url>
   <url>
+    <loc>https://paithiov909.github.io/rjavacmecab/reference/normalize.html</loc>
+  </url>
+  <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/OneLettersJp.html</loc>
   </url>
   <url>
+    <loc>https://paithiov909.github.io/rjavacmecab/reference/pipe.html</loc>
+  </url>
+  <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/prettify.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/rjavacmecab/reference/rebuild_tagger.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/rjavacmecab.html</loc>
