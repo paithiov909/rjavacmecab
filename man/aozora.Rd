@@ -10,7 +10,7 @@ aozora(url, txtname = NULL, directory = file.path(getwd(), "cache"))
 \item{url}{URL of text download link.}
 
 \item{txtname}{New file name as which text is saved.
-If `NULL` provided, keeps name of the source file.}
+If \code{NULL} provided, keeps name of the source file.}
 
 \item{directory}{Path where new file is saved.}
 }

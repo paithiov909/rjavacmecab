@@ -31,7 +31,7 @@ describe("Check fastestword", {
       )
     )
   })
-  it("Valid output", {
+  it("Valid output?", {
     res <- fastestword(
       sentence,
       outfile = file.path(tempfile(fileext = ".txt"))
@@ -44,6 +44,15 @@ describe("Check fastestword", {
 #### prettify ####
 test_that("Check prettify", {
   expect_s3_class(res, "data.frame")
+})
+
+
+#### normalize ####
+test_that("Check normalize", { ## TODO: check more letters
+  expect_equal(
+    normalize(enc2utf8("\u3001.")),
+    ""
+  )
 })
 
 

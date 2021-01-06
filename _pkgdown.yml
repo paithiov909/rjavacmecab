@@ -14,7 +14,9 @@ reference:
         - fastestword
     - title: "Utilities"
       contents:
+        - rebuild_tagger
         - prettify
+        - normalize
         - ngram_tokenizer
         - tokenize
         - escape

@@ -4,9 +4,9 @@
 #'
 #' @param str Character scalar.
 #' @param max Limitation of column size.
+#'
 #' @return Character vector
 #'
-#' @importFrom rJava J
 #' @export
 tokenize <- function(str, max = 99L) {
   if (!is.character(str) || length(str) != 1L || is.na(str)) {
@@ -23,9 +23,9 @@ tokenize <- function(str, max = 99L) {
 #' Escapes space, tab, `"` and `,` in string.
 #'
 #' @param str Character scalar.
+#'
 #' @return Character scalar.
 #'
-#' @importFrom rJava J
 #' @export
 escape <- function(str) {
   if (!is.character(str) || length(str) != 1L || is.na(str)) {
@@ -42,10 +42,9 @@ escape <- function(str) {
 #' Equivalent to \code{paste(chr, collapse = ",")}.
 #'
 #' @param chr Character vector.
+#'
 #' @return Character scalar.
 #'
-#' @importFrom rJava J
-#' @importFrom rJava .jarray
 #' @export
 join <- function(chr) {
   stopifnot(is.character(chr), !is.na(chr))

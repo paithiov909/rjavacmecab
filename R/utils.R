@@ -1,11 +1,3 @@
-#' Check if mecab command is available
-#' @return Logical.
-#' @export
-is_mecab_available <- function() {
-  return(!is_blank(Sys.which("mecab")))
-}
-
-
 #' Call mecab command directly
 #'
 #' Calls mecab command directly via \code{base::system()}.
@@ -52,12 +44,9 @@ fastestword <- function(chr,
 #' @param list List that comes out of \code{rjavacmecab::cmecab()}.
 #' @param sep Character scalar that is used as separators
 #' with which the function replaces tab.
+#'
 #' @return data.frame.
 #'
-#' @importFrom purrr map_dfr
-#' @importFrom stringr str_split_fixed
-#' @importFrom tidyr separate
-#' @importFrom tidyr replace_na
 #' @importFrom dplyr summarise_all
 #' @importFrom dplyr bind_cols
 #' @export
@@ -92,6 +81,32 @@ prettify <- function(list, sep = " ") {
   return(res)
 }
 
+#' Normalize CJK text
+#'
+#' Normalize text into neologd-style.
+#'
+#' @seealso \url{https://github.com/neologd/mecab-ipadic-neologd/wiki/Regexp}
+#'
+#' @param str Character vector.
+#'
+#' @return Normalized text.
+#'
+#' @importFrom zipangu str_conv_normalize
+#' @export
+normalize <- function(str) {
+  res <- str %>%
+    stringr::str_replace_all("\u2019", "\'") %>%
+    stringr::str_replace_all("\u201d", "\"") %>%
+    stringr::str_replace_all("[\u02d7\u058a\u2010\u2011\u2012\u2013\u2043\u207b\u208b\u2212]", "-") %>%
+    stringr::str_replace_all("[\ufe63\uff0d\uff70\u2014\u2015\u2500\u2501\u30fc]", enc2utf8("\u30fc")) %>%
+    stringr::str_replace_all("[~\u223c\u223e\u301c\u3030\uff5e]", "~") %>%
+    stringr::str_remove_all("[[:punct:]]+") %>%
+    stringr::str_remove_all("[[:blank:]]+") %>%
+    stringr::str_remove_all("[[:cntrl:]]+") %>%
+    zipangu::str_conv_normalize()
+  return(res)
+}
+
 
 #' Ngrams tokenizer
 #'
@@ -105,7 +120,6 @@ prettify <- function(list, sep = " ") {
 #'
 #' @return N-gram tokenizer function.
 #'
-#' @import stringi
 #' @export
 ngram_tokenizer <- function(n = 1L, skip_word_none = TRUE, locale = NULL) {
   stopifnot(is.numeric(n), is.finite(n), n > 0)

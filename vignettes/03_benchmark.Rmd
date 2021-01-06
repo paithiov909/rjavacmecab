@@ -19,10 +19,7 @@ knitr::opts_chunk$set(
 stopifnot(
   require(microbenchmark),
   require(ggplot2),
-  require(stringi),
-  require(RMeCab),
-  require(RcppMeCab),
-  require(rjavacmecab)
+  require(stringi)
 )
 ```
 
@@ -30,9 +27,9 @@ stopifnot(
 
 ### 比較対象
 
-- RMeCab::RMeCabC
-- RcppMeCab::pos
-- rjavacmecab::cmecab
+- `RMeCab::RMeCabC`
+- `RcppMeCab::pos`
+- `rjavacmecab::cmecab`
 
 ### 結果
 
@@ -41,10 +38,15 @@ str <- "キャピキャピ音が高くなってきたら、ほんとに出して
 str_utf8 <- stringi::stri_enc_toutf8(str)
 
 tm <- microbenchmark::microbenchmark(
-  RMeCab = RMeCab::RMeCabC(str),
-  RcppMeCab = RcppMeCab::pos(str_utf8), ## MeCabの辞書はUTF-8でコンパイルしています
-  rjavacmecab = rjavacmecab::cmecab(str),
-  times = 500L
+  RMeCab = RMeCabC(str),
+  RcppMeCab = pos(str_utf8), ## MeCabの辞書はUTF-8でコンパイルしています
+  rjavacmecab = cmecab(str),
+  times = 500L,
+  setup = (function() {
+    require(RMeCab)
+    require(RcppMeCab)
+    require(rjavacmecab)
+  })()
 )
 summary(tm)
 ```

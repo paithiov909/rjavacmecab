@@ -5,11 +5,11 @@
 #' @seealso \url{https://github.com/Rapporter/rapportools/blob/master/R/utils.R#L334}
 #'
 #' @param x Object to check its emptiness.
-#' @param trim Boolean.
+#' @param trim Logical.
 #' @param ... Additional arguments for \code{base::sapply()}.
+#'
 #' @return Logical values.
 #'
-#' @importFrom stringr str_trim
 #' @export
 is_blank <- function(x, trim = TRUE, ...) {
   if (!is.list(x) && length(x) <= 1) {
