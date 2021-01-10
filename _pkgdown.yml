@@ -2,11 +2,6 @@ destination: docs
 
 url: https://paithiov909.github.io/rjavacmecab
 
-template:
-  opengraph:
-    twitter:
-      creator: "@paithiov909"
-
 reference:
     - title: "Tokenizer"
       contents:

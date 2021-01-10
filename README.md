@@ -7,6 +7,8 @@
 
 [![GitHub last
 commit](https://img.shields.io/github/last-commit/paithiov909/rjavacmecab)](#)
+[![Lifecycle:
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Build
 Status](https://travis-ci.com/paithiov909/rjavacmecab.svg?branch=master)](https://travis-ci.com/paithiov909/rjavacmecab)
 [![Codecov test

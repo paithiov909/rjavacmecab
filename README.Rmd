@@ -16,8 +16,8 @@ knitr::opts_chunk$set(
 # rjavacmecab <a href='https://paithiov909.github.io/rjavacmecab'><img src='https://raw.githack.com/paithiov909/rjavacmecab/master/man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
-
 [![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/rjavacmecab)](#)
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Build Status](https://travis-ci.com/paithiov909/rjavacmecab.svg?branch=master)](https://travis-ci.com/paithiov909/rjavacmecab)
 [![Codecov test coverage](https://codecov.io/gh/paithiov909/rjavacmecab/branch/master/graph/badge.svg)](https://codecov.io/gh/paithiov909/rjavacmecab?branch=master)
 <!-- badges: end -->
