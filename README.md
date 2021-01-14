@@ -30,7 +30,7 @@ remotes::install_github("paithiov909/rjavacmecab")
 
 ## Usage
 
-### Call tagger
+### Call Tagger
 
 ``` r
 res <- rjavacmecab::cmecab("キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください")
@@ -117,7 +117,7 @@ print(res)
 #> [1] "EOS"
 ```
 
-### Prettify output
+### Prettify Output
 
 ``` r
 head(rjavacmecab::prettify(res))
@@ -140,14 +140,14 @@ head(rjavacmecab::prettify(res))
 If you use IPA-styled dictionary, the output has these columns.
 
   - Surface: 表層形
-  - POS1\~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3,
+  - POS1\~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3
   - X5StageUse1: 活用型（ex. 五段, 下二段…）
   - X5StageUse2: 活用形（ex. 連用形, 終止形…）
   - Original: 原形（lemmatised form）
   - Yomi1: 読み（readings）
   - Yomi2: 発音（pronunciation）
 
-### Change dictionary
+### Change Dictionary
 
 ``` r
 str <- "きゃりーぱみゅぱみゅ"
