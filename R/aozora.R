@@ -12,6 +12,7 @@
 #'
 #' @return The path to the new file.
 #'
+#' @import stringr
 #' @importFrom readr write_lines
 #' @importFrom utils download.file
 #' @importFrom utils unzip

@@ -44,38 +44,44 @@ fastestword <- function(chr,
 #' @param list List that comes out of \code{rjavacmecab::cmecab()}.
 #' @param sep Character scalar that is used as separators
 #' with which the function replaces tab.
+#' @param into Character vector that is used as column names of
+#' features.
 #'
 #' @return data.frame.
 #'
-#' @importFrom dplyr summarise_all
-#' @importFrom dplyr bind_cols
+#' @import dplyr
+#' @import stringr
+#' @importFrom furrr future_map_dfr
+#' @importFrom tidyr separate
 #' @export
-prettify <- function(list, sep = " ") {
+prettify <- function(list,
+                     sep = " ",
+                     into = c(
+                       "POS1",
+                       "POS2",
+                       "POS3",
+                       "POS4",
+                       "X5StageUse1",
+                       "X5StageUse2",
+                       "Original",
+                       "Yomi1",
+                       "Yomi2"
+                     )) {
   stopifnot(is.list(list), !is_blank(list), is.character(sep))
-  len <- length(list) - 1
-  res <- purrr::map_dfr(list[1:len], function(elem) {
+  len <- length(list) - 1L
+  res <- furrr::future_map_dfr(list[1:len], function(elem) {
     split <- stringr::str_split_fixed(elem, sep, 2L)
     words <- data.frame(Surface = split[1, 1], stringsAsFactors = FALSE)
     info <- tidyr::separate(
       data.frame(Features = c(split[1, 2]), stringsAsFactors = FALSE),
       col = "Features",
-      into = c(
-        "POS1",
-        "POS2",
-        "POS3",
-        "POS4",
-        "X5StageUse1",
-        "X5StageUse2",
-        "Original",
-        "Yomi1",
-        "Yomi2"
-      ),
+      into = into,
       sep = ",",
       fill = "right"
     )
     return(dplyr::bind_cols(
       as.data.frame(words, stringsAsFactors = FALSE),
-      dplyr::summarise_all(info, ~ tidyr::replace_na(., "*"))
+      dplyr::summarise_all(info, ~ dplyr::if_else(. == "*", NA_character_, .))
     ))
   })
   return(res)
@@ -91,7 +97,8 @@ prettify <- function(list, sep = " ") {
 #'
 #' @return Normalized text.
 #'
-#' @importFrom zipangu str_conv_normalize
+#' @import stringr
+#' @import stringi
 #' @export
 normalize <- function(str) {
   res <- str %>%
@@ -103,7 +110,7 @@ normalize <- function(str) {
     stringr::str_remove_all("[[:punct:]]+") %>%
     stringr::str_remove_all("[[:blank:]]+") %>%
     stringr::str_remove_all("[[:cntrl:]]+") %>%
-    zipangu::str_conv_normalize()
+    stringi::stri_trans_nfkc()
   return(res)
 }
 
@@ -120,6 +127,7 @@ normalize <- function(str) {
 #'
 #' @return N-gram tokenizer function.
 #'
+#' @import stringi
 #' @export
 ngram_tokenizer <- function(n = 1L, skip_word_none = TRUE, locale = NULL) {
   stopifnot(is.numeric(n), is.finite(n), n > 0)

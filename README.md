@@ -122,20 +122,30 @@ print(res)
 ``` r
 head(rjavacmecab::prettify(res))
 #>        Surface   POS1     POS2 POS3 POS4      X5StageUse1 X5StageUse2 Original
-#> 1 キャピキャピ   名詞     一般    *    *                *           *        *
-#> 2           音   名詞     接尾 一般    *                *           *       音
-#> 3           が   助詞   格助詞 一般    *                *           *       が
-#> 4         高く 形容詞     自立    *    * 形容詞・アウオ段  連用テ接続     高い
-#> 5         なっ   動詞     自立    *    *       五段・ラ行  連用タ接続     なる
-#> 6           て   助詞 接続助詞    *    *                *           *       て
+#> 1 キャピキャピ   名詞     一般 <NA> <NA>             <NA>        <NA>     <NA>
+#> 2           音   名詞     接尾 一般 <NA>             <NA>        <NA>       音
+#> 3           が   助詞   格助詞 一般 <NA>             <NA>        <NA>       が
+#> 4         高く 形容詞     自立 <NA> <NA> 形容詞・アウオ段  連用テ接続     高い
+#> 5         なっ   動詞     自立 <NA> <NA>       五段・ラ行  連用タ接続     なる
+#> 6           て   助詞 接続助詞 <NA> <NA>             <NA>        <NA>       て
 #>    Yomi1  Yomi2
-#> 1      *      *
+#> 1   <NA>   <NA>
 #> 2   オン   オン
 #> 3     ガ     ガ
 #> 4 タカク タカク
 #> 5   ナッ   ナッ
 #> 6     テ     テ
 ```
+
+If you use IPA-styled dictionary, the output has these columns.
+
+  - Surface: 表層形
+  - POS1\~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3,
+  - X5StageUse1: 活用型（ex. 五段, 下二段…）
+  - X5StageUse2: 活用形（ex. 連用形, 終止形…）
+  - Original: 原形（lemmatised form）
+  - Yomi1: 読み（readings）
+  - Yomi2: 発音（pronunciation）
 
 ### Change dictionary
 

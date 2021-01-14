@@ -4,13 +4,21 @@
 \alias{prettify}
 \title{Prettify cmecab output}
 \usage{
-prettify(list, sep = " ")
+prettify(
+  list,
+  sep = " ",
+  into = c("POS1", "POS2", "POS3", "POS4", "X5StageUse1", "X5StageUse2", "Original",
+    "Yomi1", "Yomi2")
+)
 }
 \arguments{
 \item{list}{List that comes out of \code{rjavacmecab::cmecab()}.}
 
 \item{sep}{Character scalar that is used as separators
 with which the function replaces tab.}
+
+\item{into}{Character vector that is used as column names of
+features.}
 }
 \value{
 data.frame.

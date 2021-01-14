@@ -6,6 +6,7 @@
 #'
 #' @return return the stored tagger instance invisibly.
 #'
+#' @import rJava
 #' @export
 rebuild_tagger <- function(opt = "") {
   standard_tagger(rJava::.jnew(
@@ -24,6 +25,9 @@ rebuild_tagger <- function(opt = "") {
 #'
 #' @return List.
 #'
+#' @import purrr
+#' @import stringr
+#' @import stringi
 #' @export
 cmecab <- function(chr, opt = "", sep = " ") {
   stopifnot(

@@ -216,19 +216,29 @@
 <a href="#prettify-output" class="anchor"></a>Prettify output</h3>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(rjavacmecab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rjavacmecab/man/prettify.html">prettify</a></span>(res))</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt;        Surface   POS1     POS2 POS3 POS4      X5StageUse1 X5StageUse2 Original</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt; 1 キャピキャピ   名詞     一般    *    *                *           *        *</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt; 2           音   名詞     接尾 一般    *                *           *       音</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt; 3           が   助詞   格助詞 一般    *                *           *       が</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt; 4         高く 形容詞     自立    *    * 形容詞・アウオ段  連用テ接続     高い</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt; 5         なっ   動詞     自立    *    *       五段・ラ行  連用タ接続     なる</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt; 6           て   助詞 接続助詞    *    *                *           *       て</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt; 1 キャピキャピ   名詞     一般 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;     &lt;NA&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt; 2           音   名詞     接尾 一般 &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;       音</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt; 3           が   助詞   格助詞 一般 &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;       が</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt; 4         高く 形容詞     自立 &lt;NA&gt; &lt;NA&gt; 形容詞・アウオ段  連用テ接続     高い</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt; 5         なっ   動詞     自立 &lt;NA&gt; &lt;NA&gt;       五段・ラ行  連用タ接続     なる</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt; 6           て   助詞 接続助詞 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;       て</span></span>
 <span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt;    Yomi1  Yomi2</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt; 1      *      *</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt; 1   &lt;NA&gt;   &lt;NA&gt;</span></span>
 <span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt; 2   オン   オン</span></span>
 <span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt; 3     ガ     ガ</span></span>
 <span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt; 4 タカク タカク</span></span>
 <span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; 5   ナッ   ナッ</span></span>
 <span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt; 6     テ     テ</span></span></code></pre></div>
+<p>If you use IPA-styled dictionary, the output has these columns.</p>
+<ul>
+<li>Surface: 表層形</li>
+<li>POS1~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3,</li>
+<li>X5StageUse1: 活用型（ex. 五段, 下二段…）</li>
+<li>X5StageUse2: 活用形（ex. 連用形, 終止形…）</li>
+<li>Original: 原形（lemmatised form）</li>
+<li>Yomi1: 読み（readings）</li>
+<li>Yomi2: 発音（pronunciation）</li>
+</ul>
 </div>
 <div id="change-dictionary" class="section level3">
 <h3 class="hasAnchor">

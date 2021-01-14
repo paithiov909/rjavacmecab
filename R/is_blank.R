@@ -10,6 +10,7 @@
 #'
 #' @return Logical values.
 #'
+#' @import stringr
 #' @export
 is_blank <- function(x, trim = TRUE, ...) {
   if (!is.list(x) && length(x) <= 1) {

@@ -37,8 +37,8 @@ Imports:
     rJava,
     dplyr,
     purrr,
+    furrr,
     readr,
     stringi,
     stringr,
-    tidyr,
-    zipangu,
+    tidyr
