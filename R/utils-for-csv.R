@@ -7,6 +7,7 @@
 #'
 #' @return Character vector
 #'
+#' @import rJava
 #' @export
 tokenize <- function(str, max = 99L) {
   if (!is.character(str) || length(str) != 1L || is.na(str)) {
@@ -26,6 +27,7 @@ tokenize <- function(str, max = 99L) {
 #'
 #' @return Character scalar.
 #'
+#' @import rJava
 #' @export
 escape <- function(str) {
   if (!is.character(str) || length(str) != 1L || is.na(str)) {
@@ -45,6 +47,7 @@ escape <- function(str) {
 #'
 #' @return Character scalar.
 #'
+#' @import rJava
 #' @export
 join <- function(chr) {
   stopifnot(is.character(chr), !is.na(chr))

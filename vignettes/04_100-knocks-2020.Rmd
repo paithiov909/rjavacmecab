@@ -87,7 +87,7 @@ colnames(neko_txt_mecab) <- c(
   "POS4",
   "X5StageUse1",
   "X5StageUse2",
-  "Base",
+  "Lemma",
   "Reading",
   "Pronunciation"
 )
@@ -108,7 +108,7 @@ neko_txt_mecab %>%
 ```{r knock_32}
 neko_txt_mecab %>%
   dplyr::filter(POS1 == "動詞") %>%
-  dplyr::select(Base) %>%
+  dplyr::select(Lemma) %>%
   head()
 ```
 
@@ -155,8 +155,8 @@ purrr::map_chr(search_in, function(idx) {
 
 ```{r knock_35}
 neko_txt_mecab %>%
-  dplyr::group_by(Base) %>%
-  dplyr::count(Base, sort = TRUE) %>%
+  dplyr::group_by(Lemma) %>%
+  dplyr::count(Lemma, sort = TRUE) %>%
   head()
 ```
 
@@ -164,10 +164,10 @@ neko_txt_mecab %>%
 
 ```{r knock_36}
 neko_txt_mecab %>%
-  dplyr::group_by(Base) %>%
-  dplyr::count(Base, sort = TRUE) %>%
+  dplyr::group_by(Lemma) %>%
+  dplyr::count(Lemma, sort = TRUE) %>%
   head(10) %>%
-  ggplot(aes(x = reorder(Base, -n), y = n)) +
+  ggplot(aes(x = reorder(Lemma, -n), y = n)) +
   geom_col() +
   labs(x = "Surface form") +
   theme_light()
@@ -201,9 +201,9 @@ neko_txt_mecab %>%
 
 ```{r knock_38}
 neko_txt_mecab %>%
-  dplyr::group_by(Base) %>%
-  dplyr::count(Base) %>%
-  ggplot(aes(x = reorder(Base, -n), y = n)) +
+  dplyr::group_by(Lemma) %>%
+  dplyr::count(Lemma) %>%
+  ggplot(aes(x = reorder(Lemma, -n), y = n)) +
   geom_col() +
   labs(x = "", y = "Freq") +
   theme_light()
@@ -213,8 +213,8 @@ neko_txt_mecab %>%
 
 ```{r knock_39}
 count <- neko_txt_mecab %>%
-  dplyr::group_by(Base) %>%
-  dplyr::count(Base) %>%
+  dplyr::group_by(Lemma) %>%
+  dplyr::count(Lemma) %>%
   dplyr::ungroup()
 count %>%
   tibble::rowid_to_column() %>%

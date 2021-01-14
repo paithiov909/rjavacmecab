@@ -20,10 +20,6 @@ standard_tagger <- (function() {
 #' @param libname libname
 #' @param pkgname pkgname
 #' @import rJava
-#' @import purrr
-#' @import stringi
-#' @import stringr
-#' @import tidyr
 #' @keywords internal
 .onLoad <- function(libname, pkgname) {
   rJava::.jpackage(pkgname,

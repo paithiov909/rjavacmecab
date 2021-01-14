@@ -149,7 +149,12 @@
     <p>Prettify cmecab output</p>
     </div>
 
-    <pre class="usage"><span class='fu'>prettify</span>(<span class='no'>list</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>" "</span>)</pre>
+    <pre class="usage"><span class='fu'>prettify</span>(
+  <span class='no'>list</span>,
+  <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>" "</span>,
+  <span class='kw'>into</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"POS1"</span>, <span class='st'>"POS2"</span>, <span class='st'>"POS3"</span>, <span class='st'>"POS4"</span>, <span class='st'>"X5StageUse1"</span>, <span class='st'>"X5StageUse2"</span>, <span class='st'>"Original"</span>,
+    <span class='st'>"Yomi1"</span>, <span class='st'>"Yomi2"</span>)
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,6 +167,11 @@
       <th>sep</th>
       <td><p>Character scalar that is used as separators
 with which the function replaces tab.</p></td>
+    </tr>
+    <tr>
+      <th>into</th>
+      <td><p>Character vector that is used as column names of
+features.</p></td>
     </tr>
     </table>
 
