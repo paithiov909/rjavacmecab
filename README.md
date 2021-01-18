@@ -19,8 +19,8 @@ coverage](https://codecov.io/gh/paithiov909/rjavacmecab/branch/master/graph/badg
 
 ## System Requirements
 
-  - MeCab
-  - Java
+-   MeCab
+-   Java
 
 ## Installation
 
@@ -120,32 +120,84 @@ print(res)
 ### Prettify Output
 
 ``` r
-head(rjavacmecab::prettify(res))
-#>        Surface   POS1     POS2 POS3 POS4      X5StageUse1 X5StageUse2 Original
-#> 1 キャピキャピ   名詞     一般 <NA> <NA>             <NA>        <NA>     <NA>
-#> 2           音   名詞     接尾 一般 <NA>             <NA>        <NA>       音
-#> 3           が   助詞   格助詞 一般 <NA>             <NA>        <NA>       が
-#> 4         高く 形容詞     自立 <NA> <NA> 形容詞・アウオ段  連用テ接続     高い
-#> 5         なっ   動詞     自立 <NA> <NA>       五段・ラ行  連用タ接続     なる
-#> 6           て   助詞 接続助詞 <NA> <NA>             <NA>        <NA>       て
-#>    Yomi1  Yomi2
-#> 1   <NA>   <NA>
-#> 2   オン   オン
-#> 3     ガ     ガ
-#> 4 タカク タカク
-#> 5   ナッ   ナッ
-#> 6     テ     テ
+res <- rjavacmecab::prettify(res)
+print(res)
+#>               Surface   POS1       POS2 POS3 POS4      X5StageUse1 X5StageUse2
+#> 1        キャピキャピ   名詞       一般 <NA> <NA>             <NA>        <NA>
+#> 2                  音   名詞       接尾 一般 <NA>             <NA>        <NA>
+#> 3                  が   助詞     格助詞 一般 <NA>             <NA>        <NA>
+#> 4                高く 形容詞       自立 <NA> <NA> 形容詞・アウオ段  連用テ接続
+#> 5                なっ   動詞       自立 <NA> <NA>       五段・ラ行  連用タ接続
+#> 6                  て   助詞   接続助詞 <NA> <NA>             <NA>        <NA>
+#> 7                  き   動詞     非自立 <NA> <NA>       カ変・クル      連用形
+#> 8                たら 助動詞       <NA> <NA> <NA>         特殊・タ      仮定形
+#> 9                  、   記号       読点 <NA> <NA>             <NA>        <NA>
+#> 10           ほんとに   副詞       一般 <NA> <NA>             <NA>        <NA>
+#> 11               出し   動詞       自立 <NA> <NA>       五段・サ行      連用形
+#> 12                 て   助詞   接続助詞 <NA> <NA>             <NA>        <NA>
+#> 13               くれ   動詞     非自立 <NA> <NA>     一段・クレル      連用形
+#> 14                 の   助詞     連体化 <NA> <NA>             <NA>        <NA>
+#> 15               合図   名詞   サ変接続 <NA> <NA>             <NA>        <NA>
+#> 16               です 助動詞       <NA> <NA> <NA>       特殊・デス      基本形
+#> 17                 ！   記号       一般 <NA> <NA>             <NA>        <NA>
+#> 18                 　   記号       空白 <NA> <NA>             <NA>        <NA>
+#> 19           しっかり   副詞 助詞類接続 <NA> <NA>             <NA>        <NA>
+#> 20               ここ   名詞     代名詞 一般 <NA>             <NA>        <NA>
+#> 21                 で   助詞     格助詞 一般 <NA>             <NA>        <NA>
+#> 22                 は   助詞     係助詞 <NA> <NA>             <NA>        <NA>
+#> 23 コミュニケーション   名詞       一般 <NA> <NA>             <NA>        <NA>
+#> 24               とっ   動詞       自立 <NA> <NA>       五段・ラ行  連用タ接続
+#> 25                 て   助詞   接続助詞 <NA> <NA>             <NA>        <NA>
+#> 26           ください   動詞     非自立 <NA> <NA>   五段・ラ行特殊      命令ｉ
+#>              Original              Yomi1              Yomi2
+#> 1                <NA>               <NA>               <NA>
+#> 2                  音               オン               オン
+#> 3                  が                 ガ                 ガ
+#> 4                高い             タカク             タカク
+#> 5                なる               ナッ               ナッ
+#> 6                  て                 テ                 テ
+#> 7                くる                 キ                 キ
+#> 8                  た               タラ               タラ
+#> 9                  、                 、                 、
+#> 10           ほんとに           ホントニ           ホントニ
+#> 11               出す               ダシ               ダシ
+#> 12                 て                 テ                 テ
+#> 13             くれる               クレ               クレ
+#> 14                 の                 ノ                 ノ
+#> 15               合図             アイズ             アイズ
+#> 16               です               デス               デス
+#> 17                 ！                 ！                 ！
+#> 18                 　                 　                 　
+#> 19           しっかり           シッカリ           シッカリ
+#> 20               ここ               ココ               ココ
+#> 21                 で                 デ                 デ
+#> 22                 は                 ハ                 ワ
+#> 23 コミュニケーション コミュニケーション コミュニケーション
+#> 24               とる               トッ               トッ
+#> 25                 て                 テ                 テ
+#> 26           くださる           クダサイ           クダサイ
 ```
 
 If you use IPA-styled dictionary, the output has these columns.
 
-  - Surface: 表層形
-  - POS1\~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3
-  - X5StageUse1: 活用型（ex. 五段, 下二段…）
-  - X5StageUse2: 活用形（ex. 連用形, 終止形…）
-  - Original: 原形（lemmatised form）
-  - Yomi1: 読み（readings）
-  - Yomi2: 発音（pronunciation）
+-   Surface: 表層形
+-   POS1\~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3
+-   X5StageUse1: 活用型（ex. 五段, 下二段…）
+-   X5StageUse2: 活用形（ex. 連用形, 基本形…）
+-   Original: 原形（lemmatised form）
+-   Yomi1: 読み（readings）
+-   Yomi2: 発音（pronunciation）
+
+### Pack Output
+
+``` r
+res <- rjavacmecab::pack(res)
+print(res)
+#>   Sid
+#> 1   1
+#>                                                                                                                                          Text
+#> 1 キャピキャピ 音 が 高く なっ て き たら 、 ほんとに 出し て くれ の 合図 です ！ 　 しっかり ここ で は コミュニケーション とっ て ください
+```
 
 ### Change Dictionary
 
@@ -176,12 +228,13 @@ rjavacmecab::cmecab(str, "-d /MeCab/dic/mecab-ipadic-neologd")
 
 ## Related Repositories
 
-  - [takscape/cmecab-java: A Java binding for
+-   [takscape/cmecab-java: A Java binding for
     MeCab](https://github.com/takscape/cmecab-java) (cmecab-java)
-  - [s-u/rJava: R to Java interface](https://github.com/s-u/rJava)
+-   [s-u/rJava: R to Java interface](https://github.com/s-u/rJava)
     (rJava)
-  - [ikegami-yukino/mecab: Yet another Japanese morphological
-    analyzer](https://github.com/ikegami-yukino/mecab) (MeCab 野良ビルド)
+-   [ikegami-yukino/mecab: Yet another Japanese morphological
+    analyzer](https://github.com/ikegami-yukino/mecab) (MeCab
+    野良ビルド)
 
 ## Code of Conduct
 
@@ -192,7 +245,7 @@ By contributing to this project, you agree to abide by its terms.
 
 ## License
 
-Under the MIT license | AGPL-3.
+Under the MIT license \| AGPL-3.
 
 Icons made by [Vectors
 Market](https://www.flaticon.com/authors/vectors-market) from

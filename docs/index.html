@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rjavacmecab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
       </span>
     </div>
 
@@ -70,13 +70,10 @@
       <a href="articles/02_datasets.html">Explore datasets</a>
     </li>
     <li>
-      <a href="articles/03_benchmark.html">Benchmark</a>
+      <a href="articles/03_100-knocks-2020.html">Practice: POS tagging from NLP 100 Exercise 2020</a>
     </li>
     <li>
-      <a href="articles/04_100-knocks-2020.html">Practice: POS tagging from NLP 100 Exercise 2020 (Rev1)</a>
-    </li>
-    <li>
-      <a href="articles/05_partial.html">Practice: Example of Partial Analysis</a>
+      <a href="articles/04_partial.html">Practice: Example of Partial Analysis</a>
     </li>
   </ul>
 </li>
@@ -120,7 +117,7 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>remotes<span class="op">::</span><span class="kw"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"paithiov909/rjavacmecab"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"paithiov909/rjavacmecab"</span>)</span></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -128,143 +125,194 @@
 <div id="call-tagger" class="section level3">
 <h3 class="hasAnchor">
 <a href="#call-tagger" class="anchor"></a>Call Tagger</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>res &lt;-<span class="st"> </span>rjavacmecab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rjavacmecab/man/cmecab.html">cmecab</a></span>(<span class="st">"キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(res)</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#&gt; [1] "キャピキャピ 名詞,一般,*,*,*,*,*"</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#&gt; </span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#&gt; [1] "音 名詞,接尾,一般,*,*,*,音,オン,オン"</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#&gt; </span></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#&gt; [1] "が 助詞,格助詞,一般,*,*,*,が,ガ,ガ"</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="co">#&gt; </span></span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="co">#&gt; [[4]]</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="co">#&gt; [1] "高く 形容詞,自立,*,*,形容詞・アウオ段,連用テ接続,高い,タカク,タカク"</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="co">#&gt; </span></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="co">#&gt; [[5]]</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="co">#&gt; [1] "なっ 動詞,自立,*,*,五段・ラ行,連用タ接続,なる,ナッ,ナッ"</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a><span class="co">#&gt; </span></span>
-<span id="cb2-18"><a href="#cb2-18"></a><span class="co">#&gt; [[6]]</span></span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="co">#&gt; [1] "て 助詞,接続助詞,*,*,*,*,て,テ,テ"</span></span>
-<span id="cb2-20"><a href="#cb2-20"></a><span class="co">#&gt; </span></span>
-<span id="cb2-21"><a href="#cb2-21"></a><span class="co">#&gt; [[7]]</span></span>
-<span id="cb2-22"><a href="#cb2-22"></a><span class="co">#&gt; [1] "き 動詞,非自立,*,*,カ変・クル,連用形,くる,キ,キ"</span></span>
-<span id="cb2-23"><a href="#cb2-23"></a><span class="co">#&gt; </span></span>
-<span id="cb2-24"><a href="#cb2-24"></a><span class="co">#&gt; [[8]]</span></span>
-<span id="cb2-25"><a href="#cb2-25"></a><span class="co">#&gt; [1] "たら 助動詞,*,*,*,特殊・タ,仮定形,た,タラ,タラ"</span></span>
-<span id="cb2-26"><a href="#cb2-26"></a><span class="co">#&gt; </span></span>
-<span id="cb2-27"><a href="#cb2-27"></a><span class="co">#&gt; [[9]]</span></span>
-<span id="cb2-28"><a href="#cb2-28"></a><span class="co">#&gt; [1] "、 記号,読点,*,*,*,*,、,、,、"</span></span>
-<span id="cb2-29"><a href="#cb2-29"></a><span class="co">#&gt; </span></span>
-<span id="cb2-30"><a href="#cb2-30"></a><span class="co">#&gt; [[10]]</span></span>
-<span id="cb2-31"><a href="#cb2-31"></a><span class="co">#&gt; [1] "ほんとに 副詞,一般,*,*,*,*,ほんとに,ホントニ,ホントニ"</span></span>
-<span id="cb2-32"><a href="#cb2-32"></a><span class="co">#&gt; </span></span>
-<span id="cb2-33"><a href="#cb2-33"></a><span class="co">#&gt; [[11]]</span></span>
-<span id="cb2-34"><a href="#cb2-34"></a><span class="co">#&gt; [1] "出し 動詞,自立,*,*,五段・サ行,連用形,出す,ダシ,ダシ"</span></span>
-<span id="cb2-35"><a href="#cb2-35"></a><span class="co">#&gt; </span></span>
-<span id="cb2-36"><a href="#cb2-36"></a><span class="co">#&gt; [[12]]</span></span>
-<span id="cb2-37"><a href="#cb2-37"></a><span class="co">#&gt; [1] "て 助詞,接続助詞,*,*,*,*,て,テ,テ"</span></span>
-<span id="cb2-38"><a href="#cb2-38"></a><span class="co">#&gt; </span></span>
-<span id="cb2-39"><a href="#cb2-39"></a><span class="co">#&gt; [[13]]</span></span>
-<span id="cb2-40"><a href="#cb2-40"></a><span class="co">#&gt; [1] "くれ 動詞,非自立,*,*,一段・クレル,連用形,くれる,クレ,クレ"</span></span>
-<span id="cb2-41"><a href="#cb2-41"></a><span class="co">#&gt; </span></span>
-<span id="cb2-42"><a href="#cb2-42"></a><span class="co">#&gt; [[14]]</span></span>
-<span id="cb2-43"><a href="#cb2-43"></a><span class="co">#&gt; [1] "の 助詞,連体化,*,*,*,*,の,ノ,ノ"</span></span>
-<span id="cb2-44"><a href="#cb2-44"></a><span class="co">#&gt; </span></span>
-<span id="cb2-45"><a href="#cb2-45"></a><span class="co">#&gt; [[15]]</span></span>
-<span id="cb2-46"><a href="#cb2-46"></a><span class="co">#&gt; [1] "合図 名詞,サ変接続,*,*,*,*,合図,アイズ,アイズ"</span></span>
-<span id="cb2-47"><a href="#cb2-47"></a><span class="co">#&gt; </span></span>
-<span id="cb2-48"><a href="#cb2-48"></a><span class="co">#&gt; [[16]]</span></span>
-<span id="cb2-49"><a href="#cb2-49"></a><span class="co">#&gt; [1] "です 助動詞,*,*,*,特殊・デス,基本形,です,デス,デス"</span></span>
-<span id="cb2-50"><a href="#cb2-50"></a><span class="co">#&gt; </span></span>
-<span id="cb2-51"><a href="#cb2-51"></a><span class="co">#&gt; [[17]]</span></span>
-<span id="cb2-52"><a href="#cb2-52"></a><span class="co">#&gt; [1] "！ 記号,一般,*,*,*,*,！,！,！"</span></span>
-<span id="cb2-53"><a href="#cb2-53"></a><span class="co">#&gt; </span></span>
-<span id="cb2-54"><a href="#cb2-54"></a><span class="co">#&gt; [[18]]</span></span>
-<span id="cb2-55"><a href="#cb2-55"></a><span class="co">#&gt; [1] "　 記号,空白,*,*,*,*,　,　,　"</span></span>
-<span id="cb2-56"><a href="#cb2-56"></a><span class="co">#&gt; </span></span>
-<span id="cb2-57"><a href="#cb2-57"></a><span class="co">#&gt; [[19]]</span></span>
-<span id="cb2-58"><a href="#cb2-58"></a><span class="co">#&gt; [1] "しっかり 副詞,助詞類接続,*,*,*,*,しっかり,シッカリ,シッカリ"</span></span>
-<span id="cb2-59"><a href="#cb2-59"></a><span class="co">#&gt; </span></span>
-<span id="cb2-60"><a href="#cb2-60"></a><span class="co">#&gt; [[20]]</span></span>
-<span id="cb2-61"><a href="#cb2-61"></a><span class="co">#&gt; [1] "ここ 名詞,代名詞,一般,*,*,*,ここ,ココ,ココ"</span></span>
-<span id="cb2-62"><a href="#cb2-62"></a><span class="co">#&gt; </span></span>
-<span id="cb2-63"><a href="#cb2-63"></a><span class="co">#&gt; [[21]]</span></span>
-<span id="cb2-64"><a href="#cb2-64"></a><span class="co">#&gt; [1] "で 助詞,格助詞,一般,*,*,*,で,デ,デ"</span></span>
-<span id="cb2-65"><a href="#cb2-65"></a><span class="co">#&gt; </span></span>
-<span id="cb2-66"><a href="#cb2-66"></a><span class="co">#&gt; [[22]]</span></span>
-<span id="cb2-67"><a href="#cb2-67"></a><span class="co">#&gt; [1] "は 助詞,係助詞,*,*,*,*,は,ハ,ワ"</span></span>
-<span id="cb2-68"><a href="#cb2-68"></a><span class="co">#&gt; </span></span>
-<span id="cb2-69"><a href="#cb2-69"></a><span class="co">#&gt; [[23]]</span></span>
-<span id="cb2-70"><a href="#cb2-70"></a><span class="co">#&gt; [1] "コミュニケーション 名詞,一般,*,*,*,*,コミュニケーション,コミュニケーション,コミュニケーション"</span></span>
-<span id="cb2-71"><a href="#cb2-71"></a><span class="co">#&gt; </span></span>
-<span id="cb2-72"><a href="#cb2-72"></a><span class="co">#&gt; [[24]]</span></span>
-<span id="cb2-73"><a href="#cb2-73"></a><span class="co">#&gt; [1] "とっ 動詞,自立,*,*,五段・ラ行,連用タ接続,とる,トッ,トッ"</span></span>
-<span id="cb2-74"><a href="#cb2-74"></a><span class="co">#&gt; </span></span>
-<span id="cb2-75"><a href="#cb2-75"></a><span class="co">#&gt; [[25]]</span></span>
-<span id="cb2-76"><a href="#cb2-76"></a><span class="co">#&gt; [1] "て 助詞,接続助詞,*,*,*,*,て,テ,テ"</span></span>
-<span id="cb2-77"><a href="#cb2-77"></a><span class="co">#&gt; </span></span>
-<span id="cb2-78"><a href="#cb2-78"></a><span class="co">#&gt; [[26]]</span></span>
-<span id="cb2-79"><a href="#cb2-79"></a><span class="co">#&gt; [1] "ください 動詞,非自立,*,*,五段・ラ行特殊,命令ｉ,くださる,クダサイ,クダサイ"</span></span>
-<span id="cb2-80"><a href="#cb2-80"></a><span class="co">#&gt; </span></span>
-<span id="cb2-81"><a href="#cb2-81"></a><span class="co">#&gt; [[27]]</span></span>
-<span id="cb2-82"><a href="#cb2-82"></a><span class="co">#&gt; [1] "EOS"</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> rjavacmecab<span class="sc">::</span><span class="fu">cmecab</span>(<span class="st">"キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(res)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "キャピキャピ 名詞,一般,*,*,*,*,*"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "音 名詞,接尾,一般,*,*,*,音,オン,オン"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "が 助詞,格助詞,一般,*,*,*,が,ガ,ガ"</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[4]]</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "高く 形容詞,自立,*,*,形容詞・アウオ段,連用テ接続,高い,タカク,タカク"</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[5]]</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "なっ 動詞,自立,*,*,五段・ラ行,連用タ接続,なる,ナッ,ナッ"</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[6]]</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "て 助詞,接続助詞,*,*,*,*,て,テ,テ"</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[7]]</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "き 動詞,非自立,*,*,カ変・クル,連用形,くる,キ,キ"</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[8]]</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "たら 助動詞,*,*,*,特殊・タ,仮定形,た,タラ,タラ"</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[9]]</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "、 記号,読点,*,*,*,*,、,、,、"</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[10]]</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "ほんとに 副詞,一般,*,*,*,*,ほんとに,ホントニ,ホントニ"</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[11]]</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "出し 動詞,自立,*,*,五段・サ行,連用形,出す,ダシ,ダシ"</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[12]]</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "て 助詞,接続助詞,*,*,*,*,て,テ,テ"</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[13]]</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "くれ 動詞,非自立,*,*,一段・クレル,連用形,くれる,クレ,クレ"</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[14]]</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "の 助詞,連体化,*,*,*,*,の,ノ,ノ"</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[15]]</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "合図 名詞,サ変接続,*,*,*,*,合図,アイズ,アイズ"</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[16]]</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "です 助動詞,*,*,*,特殊・デス,基本形,です,デス,デス"</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[17]]</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "！ 記号,一般,*,*,*,*,！,！,！"</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[18]]</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "　 記号,空白,*,*,*,*,　,　,　"</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[19]]</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "しっかり 副詞,助詞類接続,*,*,*,*,しっかり,シッカリ,シッカリ"</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[20]]</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "ここ 名詞,代名詞,一般,*,*,*,ここ,ココ,ココ"</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[21]]</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "で 助詞,格助詞,一般,*,*,*,で,デ,デ"</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[22]]</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "は 助詞,係助詞,*,*,*,*,は,ハ,ワ"</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[23]]</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "コミュニケーション 名詞,一般,*,*,*,*,コミュニケーション,コミュニケーション,コミュニケーション"</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[24]]</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "とっ 動詞,自立,*,*,五段・ラ行,連用タ接続,とる,トッ,トッ"</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[25]]</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "て 助詞,接続助詞,*,*,*,*,て,テ,テ"</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[26]]</span></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "ください 動詞,非自立,*,*,五段・ラ行特殊,命令ｉ,くださる,クダサイ,クダサイ"</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[27]]</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "EOS"</span></span></code></pre></div>
 </div>
 <div id="prettify-output" class="section level3">
 <h3 class="hasAnchor">
 <a href="#prettify-output" class="anchor"></a>Prettify Output</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(rjavacmecab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rjavacmecab/man/prettify.html">prettify</a></span>(res))</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt;        Surface   POS1     POS2 POS3 POS4      X5StageUse1 X5StageUse2 Original</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt; 1 キャピキャピ   名詞     一般 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;     &lt;NA&gt;</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt; 2           音   名詞     接尾 一般 &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;       音</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt; 3           が   助詞   格助詞 一般 &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;       が</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt; 4         高く 形容詞     自立 &lt;NA&gt; &lt;NA&gt; 形容詞・アウオ段  連用テ接続     高い</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt; 5         なっ   動詞     自立 &lt;NA&gt; &lt;NA&gt;       五段・ラ行  連用タ接続     なる</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt; 6           て   助詞 接続助詞 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;       て</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt;    Yomi1  Yomi2</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt; 1   &lt;NA&gt;   &lt;NA&gt;</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt; 2   オン   オン</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt; 3     ガ     ガ</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt; 4 タカク タカク</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; 5   ナッ   ナッ</span></span>
-<span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt; 6     テ     テ</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> rjavacmecab<span class="sc">::</span><span class="fu">prettify</span>(res)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(res)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               Surface   POS1       POS2 POS3 POS4      X5StageUse1 X5StageUse2</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        キャピキャピ   名詞       一般 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                  音   名詞       接尾 一般 &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                  が   助詞     格助詞 一般 &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                高く 形容詞       自立 &lt;NA&gt; &lt;NA&gt; 形容詞・アウオ段  連用テ接続</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                なっ   動詞       自立 &lt;NA&gt; &lt;NA&gt;       五段・ラ行  連用タ接続</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6                  て   助詞   接続助詞 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7                  き   動詞     非自立 &lt;NA&gt; &lt;NA&gt;       カ変・クル      連用形</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8                たら 助動詞       &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;         特殊・タ      仮定形</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9                  、   記号       読点 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10           ほんとに   副詞       一般 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11               出し   動詞       自立 &lt;NA&gt; &lt;NA&gt;       五段・サ行      連用形</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12                 て   助詞   接続助詞 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13               くれ   動詞     非自立 &lt;NA&gt; &lt;NA&gt;     一段・クレル      連用形</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14                 の   助詞     連体化 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15               合図   名詞   サ変接続 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16               です 助動詞       &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;       特殊・デス      基本形</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17                 ！   記号       一般 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18                 　   記号       空白 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19           しっかり   副詞 助詞類接続 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20               ここ   名詞     代名詞 一般 &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21                 で   助詞     格助詞 一般 &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22                 は   助詞     係助詞 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23 コミュニケーション   名詞       一般 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24               とっ   動詞       自立 &lt;NA&gt; &lt;NA&gt;       五段・ラ行  連用タ接続</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25                 て   助詞   接続助詞 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26           ください   動詞     非自立 &lt;NA&gt; &lt;NA&gt;   五段・ラ行特殊      命令ｉ</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;              Original              Yomi1              Yomi2</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                  音               オン               オン</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                  が                 ガ                 ガ</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                高い             タカク             タカク</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                なる               ナッ               ナッ</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6                  て                 テ                 テ</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7                くる                 キ                 キ</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8                  た               タラ               タラ</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9                  、                 、                 、</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10           ほんとに           ホントニ           ホントニ</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11               出す               ダシ               ダシ</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12                 て                 テ                 テ</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13             くれる               クレ               クレ</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14                 の                 ノ                 ノ</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15               合図             アイズ             アイズ</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16               です               デス               デス</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17                 ！                 ！                 ！</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18                 　                 　                 　</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19           しっかり           シッカリ           シッカリ</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20               ここ               ココ               ココ</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21                 で                 デ                 デ</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22                 は                 ハ                 ワ</span></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23 コミュニケーション コミュニケーション コミュニケーション</span></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24               とる               トッ               トッ</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25                 て                 テ                 テ</span></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26           くださる           クダサイ           クダサイ</span></span></code></pre></div>
 <p>If you use IPA-styled dictionary, the output has these columns.</p>
 <ul>
 <li>Surface: 表層形</li>
 <li>POS1~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3</li>
 <li>X5StageUse1: 活用型（ex. 五段, 下二段…）</li>
-<li>X5StageUse2: 活用形（ex. 連用形, 終止形…）</li>
+<li>X5StageUse2: 活用形（ex. 連用形, 基本形…）</li>
 <li>Original: 原形（lemmatised form）</li>
 <li>Yomi1: 読み（readings）</li>
 <li>Yomi2: 発音（pronunciation）</li>
 </ul>
 </div>
+<div id="pack-output" class="section level3">
+<h3 class="hasAnchor">
+<a href="#pack-output" class="anchor"></a>Pack Output</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> rjavacmecab<span class="sc">::</span><span class="fu">pack</span>(res)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(res)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Sid</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   1</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                                                                                                          Text</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 キャピキャピ 音 が 高く なっ て き たら 、 ほんとに 出し て くれ の 合図 です ！ 　 しっかり ここ で は コミュニケーション とっ て ください</span></span></code></pre></div>
+</div>
 <div id="change-dictionary" class="section level3">
 <h3 class="hasAnchor">
 <a href="#change-dictionary" class="anchor"></a>Change Dictionary</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>str &lt;-<span class="st"> "きゃりーぱみゅぱみゅ"</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>rjavacmecab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rjavacmecab/man/cmecab.html">cmecab</a></span>(str)</span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt; [1] "きゃ 動詞,非自立,*,*,五段・カ行促音便,仮定縮約１,く,キャ,キャ"</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt; </span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt; [1] "り 助動詞,*,*,*,文語・リ,基本形,り,リ,リ"</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt; </span></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt; [1] "ー 名詞,固有名詞,一般,*,*,*,*"</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#&gt; </span></span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="co">#&gt; [[4]]</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a><span class="co">#&gt; [1] "ぱみゅぱみゅ 名詞,一般,*,*,*,*,*"</span></span>
-<span id="cb4-14"><a href="#cb4-14"></a><span class="co">#&gt; </span></span>
-<span id="cb4-15"><a href="#cb4-15"></a><span class="co">#&gt; [[5]]</span></span>
-<span id="cb4-16"><a href="#cb4-16"></a><span class="co">#&gt; [1] "EOS"</span></span>
-<span id="cb4-17"><a href="#cb4-17"></a>rjavacmecab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rjavacmecab/man/cmecab.html">cmecab</a></span>(str, <span class="st">"-d /MeCab/dic/mecab-ipadic-neologd"</span>)</span>
-<span id="cb4-18"><a href="#cb4-18"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb4-19"><a href="#cb4-19"></a><span class="co">#&gt; [1] "きゃりーぱみゅぱみゅ 名詞,固有名詞,人名,一般,*,*,きゃりーぱみゅぱみゅ,キャリーパミュパミュ,キャリーパミュパミュ"</span></span>
-<span id="cb4-20"><a href="#cb4-20"></a><span class="co">#&gt; </span></span>
-<span id="cb4-21"><a href="#cb4-21"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb4-22"><a href="#cb4-22"></a><span class="co">#&gt; [1] "EOS"</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>str <span class="ot">&lt;-</span> <span class="st">"きゃりーぱみゅぱみゅ"</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>rjavacmecab<span class="sc">::</span><span class="fu">cmecab</span>(str)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "きゃ 動詞,非自立,*,*,五段・カ行促音便,仮定縮約１,く,キャ,キャ"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "り 助動詞,*,*,*,文語・リ,基本形,り,リ,リ"</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "ー 名詞,固有名詞,一般,*,*,*,*"</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[4]]</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "ぱみゅぱみゅ 名詞,一般,*,*,*,*,*"</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[5]]</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "EOS"</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>rjavacmecab<span class="sc">::</span><span class="fu">cmecab</span>(str, <span class="st">"-d /MeCab/dic/mecab-ipadic-neologd"</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "きゃりーぱみゅぱみゅ 名詞,固有名詞,人名,一般,*,*,きゃりーぱみゅぱみゅ,キャリーパミュパミュ,キャリーパミュパミュ"</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "EOS"</span></span></code></pre></div>
 </div>
 </div>
 <div id="related-repositories" class="section level2">

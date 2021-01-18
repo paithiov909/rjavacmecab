@@ -87,6 +87,26 @@ prettify <- function(list,
   return(res)
 }
 
+
+#' Pack prettified output
+#'
+#' @param df output of \code{rjavacmecab::prettify}
+#' @return data.frame
+#'
+#' @import dplyr
+#' @import stringr
+#' @importFrom furrr future_map_dfr
+#' @importFrom tibble rowid_to_column
+#' @export
+pack <- function(df) {
+  res <- df %>%
+    dplyr::group_map(~ stringr::str_c(.x$Surface, collapse = " ")) %>%
+    furrr::future_map_dfr(~ data.frame(Text = .)) %>%
+    tibble::rowid_to_column("Sid")
+  return(res)
+}
+
+
 #' Normalize CJK text
 #'
 #' Normalize text into neologd-style.

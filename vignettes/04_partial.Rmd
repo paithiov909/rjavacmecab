@@ -17,11 +17,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 stopifnot(
-  require(dplyr),
-  require(purrr),
-  require(tidyr),
-  require(stringr),
-  require(readr),
+  require(tidyverse),
   require(rjavacmecab)
 )
 ```
@@ -34,9 +30,9 @@ stopifnot(
 
 ```{r wakati}
 output_path <- rjavacmecab::fastestword(
-    "みなさまが、焼き餃子だと居間で噂するクラッチを持たせていただきました",
-    opt = "-Owakati", ## equal to default.
-    encoding = "CP932"
+  "みなさまが、焼き餃子だと居間で噂するクラッチを持たせていただきました",
+  opt = "-Owakati", ## equal to default.
+  encoding = "CP932"
 )
 readLines(output_path)
 ```
@@ -45,9 +41,9 @@ readLines(output_path)
 
 ```{r yomi}
 output_path <- rjavacmecab::fastestword(
-    "みなさまが、焼き餃子だと居間で噂するクラッチを持たせていただきました",
-    opt = "-Oyomi",
-    encoding = "CP932"
+  "みなさまが、焼き餃子だと居間で噂するクラッチを持たせていただきました",
+  opt = "-Oyomi",
+  encoding = "CP932"
 )
 readLines(output_path)
 ```
@@ -56,16 +52,16 @@ readLines(output_path)
 
 ```{r chasen}
 output_path <- rjavacmecab::fastestword(
-    "みなさまが、焼き餃子だと居間で噂するクラッチを持たせていただきました",
-    opt = "-Ochasen",
-    encoding = "CP932"
+  "みなさまが、焼き餃子だと居間で噂するクラッチを持たせていただきました",
+  opt = "-Ochasen",
+  encoding = "CP932"
 )
 file <- readLines(output_path)
 readr::read_tsv(
-    file,
-    col_names = FALSE,
-    quote = "",
-    n_max = length(file) - 1L ## Suppress warning message that EOS line can't be parsed.
+  file,
+  col_names = FALSE,
+  quote = "",
+  n_max = length(file) - 1L ## Suppress warning message that EOS line can't be parsed.
 )
 ```
 
@@ -86,16 +82,16 @@ MeCabのやや発展的な使い方のひとつとして、[制約付き解析](
 ```{r}
 input_text <- c("くぅ～きゃりーぱみゅぱみゅたそのぴーぶいぐうかわっすよ～")
 output_path <- rjavacmecab::fastestword(
-    input_text,
-    opt = "", ## MeCab標準の形式で出力させるために空文字をオプションとして渡す
-    encoding = "CP932"
+  input_text,
+  opt = "", ## MeCab標準の形式で出力させるために空文字をオプションとして渡す
+  encoding = "CP932"
 )
 file <- readLines(output_path)
 readr::read_tsv(
-    file,
-    col_names = FALSE,
-    quote = "",
-    n_max = length(file) - 1L
+  file,
+  col_names = FALSE,
+  quote = "",
+  n_max = length(file) - 1L
 )
 ```
 
@@ -104,16 +100,16 @@ MeCabはデフォルトだと未知語についても品詞推定をおこない
 ```{r}
 input_text <- c("くぅ～きゃりーぱみゅぱみゅたそのぴーぶいぐうかわっすよ～")
 output_path <- rjavacmecab::fastestword(
-    input_text,
-    opt = "--unk-feature Unknown",
-    encoding = "CP932"
+  input_text,
+  opt = "--unk-feature Unknown",
+  encoding = "CP932"
 )
 file <- readLines(output_path)
 readr::read_tsv(
-    file,
-    col_names = FALSE,
-    quote = "",
-    n_max = length(file) - 1L
+  file,
+  col_names = FALSE,
+  quote = "",
+  n_max = length(file) - 1L
 )
 ```
 
@@ -123,22 +119,22 @@ readr::read_tsv(
 
 ```{r}
 input_text <- c(
-    "くぅ～\t感動詞", ## 形態素断片とその素性パターンは"\t"で区切る
-    "きゃりーぱみゅぱみゅたそのぴーぶいぐうかわっすよ～", ## 通常の文字列は文断片として処理される
-    "EOS" ## 改行を含む文を部分解析モードで解析する場合、文末記号として"EOS"を与える
+  "くぅ～\t感動詞", ## 形態素断片とその素性パターンは"\t"で区切る
+  "きゃりーぱみゅぱみゅたそのぴーぶいぐうかわっすよ～", ## 通常の文字列は文断片として処理される
+  "EOS" ## 改行を含む文を部分解析モードで解析する場合、文末記号として"EOS"を与える
 )
 
 output_path <- rjavacmecab::fastestword(
-    input_text,
-    opt = "--partial --unk-feature Unknown",
-    encoding = "CP932"
+  input_text,
+  opt = "--partial --unk-feature Unknown",
+  encoding = "CP932"
 )
 file <- readLines(output_path)
 readr::read_tsv(
-    file,
-    col_names = FALSE,
-    quote = "",
-    n_max = length(file) - 1L
+  file,
+  col_names = FALSE,
+  quote = "",
+  n_max = length(file) - 1L
 )
 ```
 
@@ -146,44 +142,44 @@ readr::read_tsv(
 
 ```{r}
 input_text <- c("くぅ～きゃりーぱみゅぱみゅたそのぴーぶいぐうかわっすよ～") %>%
-    purrr::map_chr(function(str) {
-        str %>%
-            stringr::str_replace_all("くぅ～", "くぅ～\t感動詞\n") %>%
-            stringr::str_replace_all("きゃりーぱみゅぱみゅ", "きゃりーぱみゅぱみゅ\t名詞,固有名詞,人名,一般\n") %>%
-            stringr::str_replace_all("たそ", "たそ\t名詞,接尾,人名\n") %>%
-            stringr::str_replace_all("ぴーぶい", "ぴーぶい\t名詞,一般\n") %>%
-            stringr::str_replace_all("ぐうかわ", "ぐうかわ\t名詞,形容動詞語幹\n")
-    }) %>%
-    c("EOS")
+  purrr::map_chr(function(str) {
+    str %>%
+      stringr::str_replace_all("くぅ～", "くぅ～\t感動詞\n") %>%
+      stringr::str_replace_all("きゃりーぱみゅぱみゅ", "きゃりーぱみゅぱみゅ\t名詞,固有名詞,人名,一般\n") %>%
+      stringr::str_replace_all("たそ", "たそ\t名詞,接尾,人名\n") %>%
+      stringr::str_replace_all("ぴーぶい", "ぴーぶい\t名詞,一般\n") %>%
+      stringr::str_replace_all("ぐうかわ", "ぐうかわ\t名詞,形容動詞語幹\n")
+  }) %>%
+  c("EOS")
 
 output_path <- rjavacmecab::fastestword(
-    input_text,
-    opt = "--partial",
-    encoding = "CP932"
+  input_text,
+  opt = "--partial",
+  encoding = "CP932"
 )
 file <- readLines(output_path)
 out <- file %>%
-    readr::read_tsv(
-        col_names = FALSE,
-        quote = "",
-        n_max = length(file) - 1L
-    ) %>%
-    tidyr::separate(
-        col = X2,
-        into = c(
-            "品詞",
-            "品詞細分類1",
-            "品詞細分類2",
-            "品詞細分類3",
-            "活用型",
-            "活用形",
-            "原形",
-            "読み",
-            "発音"
-        ),
-        sep = ",",
-        fill = "right"
-    )
+  readr::read_tsv(
+    col_names = FALSE,
+    quote = "",
+    n_max = length(file) - 1L
+  ) %>%
+  tidyr::separate(
+    col = X2,
+    into = c(
+      "品詞",
+      "品詞細分類1",
+      "品詞細分類2",
+      "品詞細分類3",
+      "活用型",
+      "活用形",
+      "原形",
+      "読み",
+      "発音"
+    ),
+    sep = ",",
+    fill = "right"
+  )
 out
 ```
 
@@ -191,45 +187,45 @@ out
 
 ```{r}
 input_text <- c("くぅ～きゃりーぱみゅぱみゅたそのぴーぶいぐうかわっすよ～") %>%
-    purrr::map_chr(function(str) {
-        str %>%
-            stringr::str_replace_all("くぅ～", "くぅ～\t感動詞\n") %>%
-            stringr::str_replace_all("きゃりーぱみゅぱみゅ", "きゃりーぱみゅぱみゅ\t名詞,固有名詞,人名,一般\n") %>%
-            stringr::str_replace_all("たそ", "たそ\t名詞,接尾,人名\n") %>%
-            stringr::str_replace_all("の", "の\t*\n") %>%
-            stringr::str_replace_all("ぴーぶい", "ぴーぶい\t*\n") %>%
-            stringr::str_replace_all("ぐうかわ", "ぐうかわ\t名詞,形容動詞語幹\n")
-    }) %>%
-    c("EOS")
+  purrr::map_chr(function(str) {
+    str %>%
+      stringr::str_replace_all("くぅ～", "くぅ～\t感動詞\n") %>%
+      stringr::str_replace_all("きゃりーぱみゅぱみゅ", "きゃりーぱみゅぱみゅ\t名詞,固有名詞,人名,一般\n") %>%
+      stringr::str_replace_all("たそ", "たそ\t名詞,接尾,人名\n") %>%
+      stringr::str_replace_all("の", "の\t*\n") %>%
+      stringr::str_replace_all("ぴーぶい", "ぴーぶい\t*\n") %>%
+      stringr::str_replace_all("ぐうかわ", "ぐうかわ\t名詞,形容動詞語幹\n")
+  }) %>%
+  c("EOS")
 
 output_path <- rjavacmecab::fastestword(
-    input_text,
-    opt = "--partial",
-    encoding = "CP932"
+  input_text,
+  opt = "--partial",
+  encoding = "CP932"
 )
 file <- readLines(output_path)
 out <- file %>%
-    readr::read_tsv(
-        col_names = FALSE,
-        quote = "",
-        n_max = length(file) - 1L
-    ) %>%
-    tidyr::separate(
-        col = X2,
-        into = c(
-            "品詞",
-            "品詞細分類1",
-            "品詞細分類2",
-            "品詞細分類3",
-            "活用型",
-            "活用形",
-            "原形",
-            "読み",
-            "発音"
-        ),
-        sep = ",",
-        fill = "right"
-    )
+  readr::read_tsv(
+    col_names = FALSE,
+    quote = "",
+    n_max = length(file) - 1L
+  ) %>%
+  tidyr::separate(
+    col = X2,
+    into = c(
+      "品詞",
+      "品詞細分類1",
+      "品詞細分類2",
+      "品詞細分類3",
+      "活用型",
+      "活用形",
+      "原形",
+      "読み",
+      "発音"
+    ),
+    sep = ",",
+    fill = "right"
+  )
 out
 ```
 

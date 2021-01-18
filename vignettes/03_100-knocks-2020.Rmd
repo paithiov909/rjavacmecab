@@ -1,12 +1,12 @@
 ---
-title: "Practice: POS tagging from NLP 100 Exercise 2020 (Rev1)"
+title: "Practice: POS tagging from NLP 100 Exercise 2020"
 author: "Kato Akiru"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 header-includes:
   - \usepackage[utf8]{inputenc}
 vignette: >
-  %\VignetteIndexEntry{Practice: POS tagging from NLP 100 Exercise 2020 (Rev1)}
+  %\VignetteIndexEntry{Practice: POS tagging from NLP 100 Exercise 2020}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -30,7 +30,7 @@ stopifnot(
 
 ### この記事について
 
-[言語処理100本ノック 2020 (Rev 1) ](https://nlp100.github.io/ja/)のうち、[第4章: 形態素解析](https://nlp100.github.io/ja/ch04.html)の回答例。
+[言語処理100本ノック 2020](https://nlp100.github.io/ja/)のうち、[第4章: 形態素解析](https://nlp100.github.io/ja/ch04.html)の回答例。
 
 ### 言語処理100本ノック 2020について
 
@@ -67,18 +67,12 @@ neko$text %>%
 
 ```{r knock_30}
 neko_txt_mecab <- neko$text %>%
+  readr::read_lines(skip_empty_rows = TRUE) %>%
+  vctrs::vec_slice(1:30) %>%
+  rjavacmecab::normalize() %>%
   rjavacmecab::cmecab() %>%
-  vctrs::vec_slice(1:900) %>%
-  purrr::map_dfr(function(line) {
-    row <- stringr::str_split(line, " ", simplify = TRUE)
-    attr <- rjavacmecab::tokenize(row[1, 2]) %>%
-      t() %>%
-      as.data.frame(stringsAsFactors = FALSE)
-    res <- row[1, 1] %>%
-      as.data.frame(stringsAsFactors = FALSE) %>%
-      dplyr::bind_cols(attr)
-    return(res)
-  })
+  rjavacmecab::prettify()
+
 colnames(neko_txt_mecab) <- c(
   "Surface",
   "POS1",
@@ -146,6 +140,7 @@ purrr::map_chr(search_in, function(idx) {
     res <- stringr::str_c(res, neko_txt_mecab$Surface[itr + 1])
     search_in <<- purrr::discard(search_in, ~ . == itr + 1)
     itr <- itr + 1
+    next
   }
   return(res)
 })

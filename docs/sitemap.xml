@@ -43,6 +43,9 @@
     <loc>https://paithiov909.github.io/rjavacmecab/reference/OneLettersJp.html</loc>
   </url>
   <url>
+    <loc>https://paithiov909.github.io/rjavacmecab/reference/pack.html</loc>
+  </url>
+  <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/pipe.html</loc>
   </url>
   <url>
@@ -70,12 +73,9 @@
     <loc>https://paithiov909.github.io/rjavacmecab/articles/02_datasets.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/articles/03_benchmark.html</loc>
+    <loc>https://paithiov909.github.io/rjavacmecab/articles/03_100-knocks-2020.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/articles/04_100-knocks-2020.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/articles/05_partial.html</loc>
+    <loc>https://paithiov909.github.io/rjavacmecab/articles/04_partial.html</loc>
   </url>
 </urlset>

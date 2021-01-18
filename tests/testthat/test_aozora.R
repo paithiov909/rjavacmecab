@@ -5,8 +5,9 @@ describe("Check aozora", {
     path <- aozora(
       MiyazawaKenji[1, ]$url,
       NULL,
-      tempdir()
+      file.path(getwd())
     )
-    expect_type(readLines(path), "character")
+    content <- readLines(path, encoding = "UTF-8")
+    expect_type(content, "character")
   })
 })

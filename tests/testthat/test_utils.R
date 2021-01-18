@@ -18,7 +18,8 @@ sentence <- enc2utf8(
     "\u671D\u306E\u3053\u3068\u3067\u3057\u305F"
   )
 )
-res <- prettify(cmecab(sentence))
+res1 <- prettify(cmecab(sentence))
+res2 <- pack(res1)
 
 
 #### fastestword ####
@@ -43,7 +44,13 @@ describe("Check fastestword", {
 
 #### prettify ####
 test_that("Check prettify", {
-  expect_s3_class(res, "data.frame")
+  expect_s3_class(res1, "data.frame")
+})
+
+
+#### pack ####
+test_that("Check pack", {
+  expect_s3_class(res2, "data.frame")
 })
 
 

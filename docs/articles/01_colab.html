@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rjavacmecab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
       </span>
     </div>
 
@@ -70,13 +70,10 @@
       <a href="../articles/02_datasets.html">Explore datasets</a>
     </li>
     <li>
-      <a href="../articles/03_benchmark.html">Benchmark</a>
+      <a href="../articles/03_100-knocks-2020.html">Practice: POS tagging from NLP 100 Exercise 2020</a>
     </li>
     <li>
-      <a href="../articles/04_100-knocks-2020.html">Practice: POS tagging from NLP 100 Exercise 2020 (Rev1)</a>
-    </li>
-    <li>
-      <a href="../articles/05_partial.html">Practice: Example of Partial Analysis</a>
+      <a href="../articles/04_partial.html">Practice: Example of Partial Analysis</a>
     </li>
   </ul>
 </li>
@@ -98,12 +95,12 @@
 
       
 
-      </header><script src="01_colab_files/header-attrs-2.6/header-attrs.js"></script><script src="01_colab_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="01_colab_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>How to use on Colaboratory</h1>
             
-            <h4 class="date">2021-01-14</h4>
+            <h4 class="date">2021-01-19</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/paithiov909/rjavacmecab/blob/master/vignettes/01_colab.Rmd"><code>vignettes/01_colab.Rmd</code></a></small>
       <div class="hidden name"><code>01_colab.Rmd</code></div>
@@ -138,55 +135,55 @@
 <h3 class="hasAnchor">
 <a href="#mecab%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" class="anchor"></a>MeCabのインストール</h3>
 <p>aptで入るので、こう。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">%%bash</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="ex">apt</span> install mecab libmecab-dev mecab-ipadic-utf8</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%%bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> install mecab libmecab-dev mecab-ipadic-utf8</span></code></pre></div>
 </div>
 <div id="javaのアップデート" class="section level3">
 <h3 class="hasAnchor">
 <a href="#java%E3%81%AE%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88" class="anchor"></a>Javaのアップデート</h3>
 <p>たぶんもとから入っているので必要ないかもしれない。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">%%bash</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="ex">apt-get</span> install default-jre</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="ex">apt-get</span> install default-jdk</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="ex">java</span> -version   <span class="co"># check java version</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%%bash</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install default-jre</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install default-jdk</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">java</span> -version   # check java version</span></code></pre></div>
 </div>
 <div id="java_homeの設定" class="section level3">
 <h3 class="hasAnchor">
 <a href="#java_home%E3%81%AE%E8%A8%AD%E5%AE%9A" class="anchor"></a>JAVA_HOMEの設定</h3>
 <p>Pythonから設定してしまう。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> os</span>
-<span id="cb4-2"><a href="#cb4-2"></a>os.environ[<span class="st">"JAVA_HOME"</span>] <span class="op">=</span> <span class="st">"/usr/lib/jvm/java-11-openjdk-amd64"</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">"JAVA_HOME"</span>] <span class="op">=</span> <span class="st">"/usr/lib/jvm/java-11-openjdk-amd64"</span></span></code></pre></div>
 </div>
 <div id="r-cmd-javareconf" class="section level3">
 <h3 class="hasAnchor">
 <a href="#r-cmd-javareconf" class="anchor"></a>R CMD javareconf</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">%%bash</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="ex">R</span> CMD javareconf</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%%bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD javareconf</span></code></pre></div>
 </div>
 <div id="rjavaのインストール" class="section level3">
 <h3 class="hasAnchor">
 <a href="#rjava%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" class="anchor"></a>rJavaのインストール</h3>
 <p>aptからも入るが、これだと動かないかもしれない（よく確かめていない）。</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="ex">%%bash</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="ex">apt-get</span> install r-cran-rjava</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%%bash</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install r-cran-rjava</span></code></pre></div>
 <p>Rの<code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>から入れる場合、libjvm.soを<code><a href="https://rdrr.io/r/base/dynload.html">dyn.load()</a></code>で明示的に指定して読み込まないとパッケージのインストールに失敗する。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">%%</span>R   <span class="co"># このマジックコマンドをコードブロックの先頭に付けるとそのブロックにRが書ける</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="kw"><a href="https://rdrr.io/r/base/dynload.html">dyn.load</a></span>(<span class="st">"/usr/lib/jvm/java-11-openjdk-amd64/lib/server/libjvm.so"</span>)</span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"rJava"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="sc">%%</span>R   <span class="co"># このマジックコマンドをコードブロックの先頭に付けるとそのブロックにRが書ける</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dyn.load</span>(<span class="st">"/usr/lib/jvm/java-11-openjdk-amd64/lib/server/libjvm.so"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"rJava"</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="rjavaに依存するパッケージのインストール" class="section level2">
 <h2 class="hasAnchor">
 <a href="#rjava%E3%81%AB%E4%BE%9D%E5%AD%98%E3%81%99%E3%82%8B%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" class="anchor"></a>rJavaに依存するパッケージのインストール</h2>
 <p>ここまで正しくやってrJavaがちゃんと入っているとふつうに入れることができる。</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="op">%%</span>R</span>
-<span id="cb8-2"><a href="#cb8-2"></a>remotes<span class="op">::</span><span class="kw"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"paithiov909/rjavacmecab"</span>)</span>
-<span id="cb8-3"><a href="#cb8-3"></a>rjavacmecab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rjavacmecab/man/cmecab.html">cmecab</a></span>(<span class="st">"こんにちは"</span>)   <span class="co"># test use</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="co">#&gt; [1] "こんにちは 感動詞,*,*,*,*,*,こんにちは,コンニチハ,コンニチワ"</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="co">#&gt; </span></span>
-<span id="cb8-7"><a href="#cb8-7"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a><span class="co">#&gt; [1] "EOS"</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="sc">%%</span>R</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"paithiov909/rjavacmecab"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>rjavacmecab<span class="sc">::</span><span class="fu">cmecab</span>(<span class="st">"こんにちは"</span>)   <span class="co"># test use</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "こんにちは 感動詞,*,*,*,*,*,こんにちは,コンニチハ,コンニチワ"</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "EOS"</span></span></code></pre></div>
 </div>
 <div id="おまけ" class="section level2">
 <h2 class="hasAnchor">
@@ -195,23 +192,23 @@
 <h3 class="hasAnchor">
 <a href="#rcppmecab%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" class="anchor"></a>RcppMeCabのインストール</h3>
 <p>rpy2をロード後にふつうに入れることができる。MeCabのインストールは必要。</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="op">%%</span>R</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="kw"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span>(<span class="dt">MECAB_LANG =</span> <span class="st">'ja'</span>) <span class="co"># for installing Japanese developmental version</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"RcppMeCab"</span>, <span class="dt">type =</span> <span class="st">"source"</span>) <span class="co"># build from source</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="kw">RcppMeCab</span>(<span class="st">"こんにちは"</span>)   <span class="co"># test use</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt; $こんにちは</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt; [1] "こんにちは/感動詞"</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="sc">%%</span>R</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">MECAB_LANG =</span> <span class="st">'ja'</span>) <span class="co"># for installing Japanese developmental version</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"RcppMeCab"</span>, <span class="at">type =</span> <span class="st">"source"</span>) <span class="co"># build from source</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">RcppMeCab</span>(<span class="st">"こんにちは"</span>)   <span class="co"># test use</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $こんにちは</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "こんにちは/感動詞"</span></span></code></pre></div>
 </div>
 <div id="rmecabのインストール" class="section level3">
 <h3 class="hasAnchor">
 <a href="#rmecab%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" class="anchor"></a>RMeCabのインストール</h3>
 <p>こちらもふつうに入る。</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="op">%%</span>R</span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"RMeCab"</span>, <span class="dt">repos =</span> <span class="st">"https://rmecab.jp/R"</span>, <span class="dt">type =</span> <span class="st">"source"</span>) </span>
-<span id="cb10-3"><a href="#cb10-3"></a>RMeCab<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RMeCab/man/RMeCabC.html">RMeCabC</a></span>(<span class="st">"こんにちは"</span>)</span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="co">#&gt;       感動詞 </span></span>
-<span id="cb10-6"><a href="#cb10-6"></a><span class="co">#&gt; "こんにちは" </span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="sc">%%</span>R</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"RMeCab"</span>, <span class="at">repos =</span> <span class="st">"https://rmecab.jp/R"</span>, <span class="at">type =</span> <span class="st">"source"</span>) </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>RMeCab<span class="sc">::</span><span class="fu">RMeCabC</span>(<span class="st">"こんにちは"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       感動詞 </span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; "こんにちは" </span></span></code></pre></div>
 </div>
 </div>
 <div id="参考にした記事" class="section level2">
