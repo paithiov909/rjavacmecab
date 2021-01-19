@@ -90,8 +90,8 @@ prettify <- function(list,
 
 #' Pack prettified output
 #'
-#' @param df output of \code{rjavacmecab::prettify}
-#' @return data.frame
+#' @param df Output of \code{rjavacmecab::prettify}
+#' @return data.frame.
 #'
 #' @import dplyr
 #' @import stringr
