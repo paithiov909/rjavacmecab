@@ -174,7 +174,7 @@ rjavacmecab::cmecab(str, "-d /MeCab/dic/mecab-ipadic-neologd")
 #> [1] "EOS"
 ```
 
-## Related Repositories
+## Related Products
 
 -   [takscape/cmecab-java: A Java binding for
     MeCab](https://github.com/takscape/cmecab-java) (cmecab-java)
