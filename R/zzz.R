@@ -32,3 +32,4 @@ standard_tagger <- (function() {
   ## Initialize
   rebuild_tagger(opt = "")
 }
+

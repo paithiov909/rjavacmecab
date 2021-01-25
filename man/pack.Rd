@@ -7,10 +7,10 @@
 pack(df)
 }
 \arguments{
-\item{df}{output of \code{rjavacmecab::prettify}}
+\item{df}{Output of \code{rjavacmecab::prettify}}
 }
 \value{
-data.frame
+data.frame.
 }
 \description{
 Pack prettified output
