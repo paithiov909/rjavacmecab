@@ -31,7 +31,7 @@ knitr::opts_chunk$set(
 
 ## Installation
 
-```r
+``` r
 remotes::install_github("paithiov909/rjavacmecab")
 ```
 
@@ -39,14 +39,14 @@ remotes::install_github("paithiov909/rjavacmecab")
 
 ### Call Tagger
 
-```{r cmecab1}
+```{r cmecab_1}
 res <- rjavacmecab::cmecab("キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください")
-print(res)
+str(res)
 ```
 
 ### Prettify Output
 
-```{r cmecab2}
+```{r cmecab_2}
 res <- rjavacmecab::prettify(res)
 print(res)
 ```
@@ -63,14 +63,14 @@ If you use IPA-styled dictionary, the output has these columns.
 
 ### Pack Output
 
-```{r cmecab3}
+```{r cmecab_3}
 res <- rjavacmecab::pack(res)
 print(res)
 ```
 
 ### Change Dictionary
 
-```r
+``` r
 str <- "きゃりーぱみゅぱみゅ"
 rjavacmecab::cmecab(str)
 #> [[1]]
@@ -107,7 +107,7 @@ Please note that the rjavacmecab project is released with a [Contributor Code of
 
 ## License
 
-Under the MIT license | AGPL-3.
+Under the MIT license
 
 Icons made by [Vectors Market](https://www.flaticon.com/authors/vectors-market) from [Flaticon](https://www.flaticon.com/).
 

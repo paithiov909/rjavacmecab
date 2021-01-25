@@ -1,7 +1,7 @@
 Package: rjavacmecab
 Type: Package
 Title: rJava Interface to CMeCab
-Version: 0.1.9
+Version: 0.2.0
 Authors@R: c(
     person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre")))
 Maintainer: Kato Akiru <paithiov909@gmail.com>
@@ -11,7 +11,7 @@ Depends:
 SystemRequirements:
     MeCab,
     Java
-License: MIT + file LICENSE | AGPL-3
+License: MIT + file LICENSE
 URL: https://github.com/paithiov909/rjavacmecab
 BugReports: https://github.com/paithiov909/rjavacmecab/issues
 Encoding: UTF-8
@@ -26,12 +26,8 @@ Suggests:
     sessioninfo,
     spelling,
     testthat,
-    DT,
-    ggplot2,
-    readtext,
-    vctrs
+    DT
 Imports:
-    utils,
     rJava,
     dplyr,
     purrr,

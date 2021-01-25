@@ -19,13 +19,8 @@ reference:
         - join
         - is_blank
         - is_mecab_available
-    - title: "Tools"
-      contents:
-        - aozora
     - title: "Dataset"
       contents:
-        - AozoraBunkoSnapshot
-        - MiyazawaKenji
         - StopWordsJp
         - OneLettersJp
         - ExtendedLettersJp

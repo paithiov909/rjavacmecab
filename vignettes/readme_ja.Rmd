@@ -23,7 +23,7 @@ stopifnot(
 
 ## これは何？
 
-{rjavacmecab}は、[takscape/cmecab-java: A Java binding for MeCab](https://github.com/takscape/cmecab-java)をrJava経由で呼び出してMeCabを利用するためのパッケージです。
+rjavacmecabは、[takscape/cmecab-java](https://github.com/takscape/cmecab-java)をrJava経由で呼び出してMeCabを利用するためのパッケージです。
 
 ## インストール
 
@@ -39,7 +39,7 @@ MeCabの辞書はUTF-8を指定してインストールされていることを�
 
 - [Release MeCab 0.996 64bit version · ikegami-yukino/mecab](https://github.com/ikegami-yukino/mecab/releases/tag/v0.996.2)
 
-{rjavacmecab}はcmecab-javaのrJavaラッパーライブラリです。cmecab-javaを利用するためにはMeCabのダイナミックライブラリにパスが通っている必要があります。
+***rjavacmecabはcmecab-javaのrJavaラッパーライブラリです。cmecab-javaを利用するためにはMeCabのダイナミックライブラリにパスが通っている必要があります。***
 
 Windowsの場合、インストールしたMeCabのディレクトリ以下の`bin`ディレクトリにパスを通します。LinuxやMacの場合、LD_LIBRARY_PATHに`libmecab.so`（Linuxの場合）や`libmecab.dylib`（Macの場合）のあるディレクトリを追加します。
 
@@ -62,9 +62,9 @@ $ export LD_LIBRARY_PATH="/usr/local/Cellar/mecab/0.996/lib:$LD_LIBRARY_PATH"
 
 ### rJava周りで問題が発生する場合
 
-環境によってはrJavaパッケージはソースからビルドされている必要があります。{rJava}をソースからビルドするには、多くの場合はJavaを適切にインストールしたあとに`R CMD javareconf`を実行したうえで、R上で`install.packages("rJava", type="source")`などとすれば解決します。
+環境によってはrJavaパッケージはソースからビルドされている必要があります。rJavaをソースからビルドするには、多くの場合はJavaを適切にインストールしたあとに`R CMD javareconf`を実行したうえで、R上で`install.packages("rJava", type="source")`などとすれば解決します。
 
-rJavaの周辺は比較的問題が起こりやすく、たとえばパッケージの読みこみ時に`jvm`のロードに失敗したりするといったことがあります（古いバージョンのRstudioを使用している場合などに発生することが報告されています）。こうした場合は`dyn.load()`関数に使用したいJREに付属しているダイナミックライブラリを明示的に渡すか、rJavaが読みにいっているファイルにシンボリックリンクを上書きするなどして対処します。
+rJavaの周辺は比較的問題が起こりやすく、たとえばパッケージの読みこみ時に`jvm`のロードに失敗したりするといったことがあります（古いバージョンのRStudioを使用している場合などに発生することが報告されています）。こうした場合は`dyn.load()`関数に使用したいJREに付属しているダイナミックライブラリを明示的に渡すか、rJavaが読みにいっているファイルにシンボリックリンクを上書きするなどして対処します。
 
 また、パッケージのビルド時に`clang: error: unsupported option '-fopenmp`が発生してビルドに失敗する場合、Rパッケージのビルドに使用されるコンパイラの設定をしなおす必要があります。詳しくは以下に挙げる記事などを参考にしてください。
 
@@ -77,13 +77,13 @@ rJavaの周辺は比較的問題が起こりやすく、たとえばパッケー
 
 ### cmecab-javaの呼び出し
 
-```{r cmecab1}
+```{r cmecab_1}
 res <- rjavacmecab::cmecab("キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください")
-print(res)
+str(res)
 ```
 
-```{r cmecab2}
-res <- rjavacmecab::prettify(res) ## dataframeに整形します
+```{r cmecab_2}
+res <- rjavacmecab::prettify(res) ## データフレームに整形します
 print(res)
 ```
 
@@ -97,7 +97,7 @@ print(res)
 - Yomi1: 読み（readings）
 - Yomi2: 発音（pronunciation）
 
-```{r cmecab3}
+```{r cmecab_3}
 res <- rjavacmecab::pack(res) ## さらに整形して分かち書きにします
 print(res)
 ```
@@ -130,4 +130,123 @@ rjavacmecab::cmecab(str, "-d /MeCab/dic/mecab-ipadic-neologd")
 #> [[2]]
 #> [1] "EOS"
 ```
+
+## Google Colaboratoryで試す方法
+
+あらかじめ次のようなことをすればColabで試すことができます。
+
+- rpy2のロード
+- MeCab(+IPAdic)のインストール
+- Java(JRE/JDK)のアップデート
+- JAVA_HOMEの設定
+- R CMD javareconf
+- rJavaのインストール
+
+### セットアップ
+
+#### rpy2のロード
+
+Rのランタイムはデフォルトで入っているので、rpy2経由でRを利用できます。マジックコマンドでロードします。
+
+``` ipynb
+%load_ext rpy2.ipython
+```
+
+#### MeCabのインストール
+
+aptやaptitudeで入れることができます。
+
+``` bash
+%%bash
+apt install mecab libmecab-dev mecab-ipadic-utf8
+```
+
+#### Javaのアップデート
+
+``` bash
+%%bash
+apt-get install default-jre
+apt-get install default-jdk
+java -version   # check java version
+```
+
+#### JAVA_HOMEの設定
+
+Pythonから設定してしまうと簡単です。
+
+``` py
+import os
+os.environ["JAVA_HOME"] = "/usr/lib/jvm/java-11-openjdk-amd64"
+```
+
+#### R CMD javareconf
+
+``` bash
+%%bash
+R CMD javareconf
+```
+
+#### rJavaのインストール
+
+aptから入れることができます。
+
+``` bash
+%%bash
+apt-get install r-cran-rjava
+```
+
+Rの`install.packages()`から入れる場合、libjvm.soを`dyn.load()`で明示的に指定して読み込まないとパッケージのインストールに失敗するため、先に`dyn.load()`を呼びます。
+
+``` r
+%%R   # このマジックコマンドをコードブロックの先頭に付けるとそのブロックにRが書ける
+dyn.load("/usr/lib/jvm/java-11-openjdk-amd64/lib/server/libjvm.so")
+install.packages("rJava")
+```
+
+### rJavaに依存するパッケージのインストール
+
+ここまでの手順を踏んでrJavaがちゃんと入っていると、ふつうに入れることができます。
+
+``` r
+%%R
+remotes::install_github("paithiov909/rjavacmecab")
+rjavacmecab::cmecab("こんにちは")
+#> [[1]]
+#> [1] "こんにちは 感動詞,*,*,*,*,*,こんにちは,コンニチハ,コンニチワ"
+#> 
+#> [[2]]
+#> [1] "EOS"
+```
+
+### おまけ
+
+#### RcppMeCabのインストール
+
+rpy2をロード後にふつうに入れることができます。MeCabのインストールは必要です。
+
+``` r
+%%R
+Sys.setenv(MECAB_LANG = "ja") # for installing Japanese developmental version
+install.packages("RcppMeCab", type = "source") # build from source
+RcppMeCab("こんにちは")
+#> $こんにちは
+#> [1] "こんにちは/感動詞"
+```
+
+#### RMeCabのインストール
+
+こちらもふつうに入れることができます。
+
+``` r
+%%R
+install.packages("RMeCab", repos = "https://rmecab.jp/R", type = "source") 
+RMeCab::RMeCabC("こんにちは")
+#> [[1]]
+#>       感動詞 
+#> "こんにちは" 
+```
+
+### 参考にした記事
+
+- [Google ColaboratoryでRを使う | marketechlabo](https://www.marketechlabo.com/google-colaboratory-with-r/)
 

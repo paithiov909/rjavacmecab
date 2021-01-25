@@ -4,12 +4,6 @@
     <loc>https://paithiov909.github.io/rjavacmecab/index.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/reference/aozora.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/reference/AozoraBunkoSnapshot.html</loc>
-  </url>
-  <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/cmecab.html</loc>
   </url>
   <url>
@@ -29,9 +23,6 @@
   </url>
   <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/join.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/reference/MiyazawaKenji.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/ngram_tokenizer.html</loc>
@@ -64,18 +55,12 @@
     <loc>https://paithiov909.github.io/rjavacmecab/reference/tokenize.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/articles/00_about.html</loc>
+    <loc>https://paithiov909.github.io/rjavacmecab/articles/datasets.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/articles/01_colab.html</loc>
+    <loc>https://paithiov909.github.io/rjavacmecab/articles/partial_analysis.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/articles/02_datasets.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/articles/03_100-knocks-2020.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/articles/04_partial.html</loc>
+    <loc>https://paithiov909.github.io/rjavacmecab/articles/readme_ja.html</loc>
   </url>
 </urlset>

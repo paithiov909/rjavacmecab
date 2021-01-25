@@ -31,9 +31,6 @@ before_install:
   - sudo apt install mecab-ipadic-utf8
   - export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
 
-before_script:
-  - Rscript -e 'install.packages("RMeCab", repos = "https://rmecab.jp/R", type = "source")'
-
 after_success:
   - Rscript -e 'covr::codecov()'
 

@@ -23,21 +23,6 @@ stopifnot(
 )
 ```
 
-## AozoraBunkoSnapshot
-
-```{r}
-data("AozoraBunkoSnapshot")
-snapshot <- dplyr::sample_n(AozoraBunkoSnapshot, 10) # Because it is too large to show whole entries, sampling 10 rows.
-knitr::kable(snapshot, "html")
-```
-
-## MiyazawaKenji
-
-```{r}
-data("MiyazawaKenji")
-DT::datatable(MiyazawaKenji, style = "bootstrap")
-```
-
 ## ExtendedLettersJp
 
 ```{r}

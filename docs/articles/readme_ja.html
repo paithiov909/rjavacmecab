@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rjavacmecab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -61,19 +61,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/00_about.html">About rjavacmecab package</a>
+      <a href="../articles/datasets.html">Explore datasets</a>
     </li>
     <li>
-      <a href="../articles/01_colab.html">How to use on Colaboratory</a>
+      <a href="../articles/partial_analysis.html">Practice: Example of Partial Analysis</a>
     </li>
     <li>
-      <a href="../articles/02_datasets.html">Explore datasets</a>
-    </li>
-    <li>
-      <a href="../articles/03_100-knocks-2020.html">Practice: POS tagging from NLP 100 Exercise 2020</a>
-    </li>
-    <li>
-      <a href="../articles/04_partial.html">Practice: Example of Partial Analysis</a>
+      <a href="../articles/readme_ja.html">About rjavacmecab package</a>
     </li>
   </ul>
 </li>
@@ -95,15 +89,15 @@
 
       
 
-      </header><script src="00_about_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
+      </header><script src="readme_ja_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>About rjavacmecab package</h1>
             
-            <h4 class="date">2021-01-19</h4>
+            <h4 class="date">2021-01-25</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/paithiov909/rjavacmecab/blob/master/vignettes/00_about.Rmd"><code>vignettes/00_about.Rmd</code></a></small>
-      <div class="hidden name"><code>00_about.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/paithiov909/rjavacmecab/blob/master/vignettes/readme_ja.Rmd"><code>vignettes/readme_ja.Rmd</code></a></small>
+      <div class="hidden name"><code>readme_ja.Rmd</code></div>
 
     </div>
 
@@ -112,7 +106,7 @@
 <div id="これは何" class="section level2">
 <h2 class="hasAnchor">
 <a href="#%E3%81%93%E3%82%8C%E3%81%AF%E4%BD%95" class="anchor"></a>これは何？</h2>
-<p>{rjavacmecab}は、<a href="https://github.com/takscape/cmecab-java">takscape/cmecab-java: A Java binding for MeCab</a>をrJava経由で呼び出してMeCabを利用するためのパッケージです。</p>
+<p>rjavacmecabは、<a href="https://github.com/takscape/cmecab-java">takscape/cmecab-java</a>をrJava経由で呼び出してMeCabを利用するためのパッケージです。</p>
 </div>
 <div id="インストール" class="section level2">
 <h2 class="hasAnchor">
@@ -130,7 +124,7 @@
 <ul>
 <li><a href="https://github.com/ikegami-yukino/mecab/releases/tag/v0.996.2">Release MeCab 0.996 64bit version · ikegami-yukino/mecab</a></li>
 </ul>
-<p>{rjavacmecab}はcmecab-javaのrJavaラッパーライブラリです。cmecab-javaを利用するためにはMeCabのダイナミックライブラリにパスが通っている必要があります。</p>
+<p><strong><em>rjavacmecabはcmecab-javaのrJavaラッパーライブラリです。cmecab-javaを利用するためにはMeCabのダイナミックライブラリにパスが通っている必要があります。</em></strong></p>
 <p>Windowsの場合、インストールしたMeCabのディレクトリ以下の<code>bin</code>ディレクトリにパスを通します。LinuxやMacの場合、LD_LIBRARY_PATHに<code>libmecab.so</code>（Linuxの場合）や<code>libmecab.dylib</code>（Macの場合）のあるディレクトリを追加します。</p>
 <p>Ubuntuなどでaptを通じてMeCabを導入した場合、<code>libmecab.so</code>は<code>/usr/local/lib</code>以下にあるので、このディレクトリをLD_LIBRARY_PATHに追加します。</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>$ <span class="fu">sudo</span> apt install mecab</span>
@@ -145,8 +139,8 @@
 <div id="rjava周りで問題が発生する場合" class="section level3">
 <h3 class="hasAnchor">
 <a href="#rjava%E5%91%A8%E3%82%8A%E3%81%A7%E5%95%8F%E9%A1%8C%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88" class="anchor"></a>rJava周りで問題が発生する場合</h3>
-<p>環境によってはrJavaパッケージはソースからビルドされている必要があります。{rJava}をソースからビルドするには、多くの場合はJavaを適切にインストールしたあとに<code>R CMD javareconf</code>を実行したうえで、R上で<code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("rJava", type="source")</a></code>などとすれば解決します。</p>
-<p>rJavaの周辺は比較的問題が起こりやすく、たとえばパッケージの読みこみ時に<code>jvm</code>のロードに失敗したりするといったことがあります（古いバージョンのRstudioを使用している場合などに発生することが報告されています）。こうした場合は<code><a href="https://rdrr.io/r/base/dynload.html">dyn.load()</a></code>関数に使用したいJREに付属しているダイナミックライブラリを明示的に渡すか、rJavaが読みにいっているファイルにシンボリックリンクを上書きするなどして対処します。</p>
+<p>環境によってはrJavaパッケージはソースからビルドされている必要があります。rJavaをソースからビルドするには、多くの場合はJavaを適切にインストールしたあとに<code>R CMD javareconf</code>を実行したうえで、R上で<code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("rJava", type="source")</a></code>などとすれば解決します。</p>
+<p>rJavaの周辺は比較的問題が起こりやすく、たとえばパッケージの読みこみ時に<code>jvm</code>のロードに失敗したりするといったことがあります（古いバージョンのRStudioを使用している場合などに発生することが報告されています）。こうした場合は<code><a href="https://rdrr.io/r/base/dynload.html">dyn.load()</a></code>関数に使用したいJREに付属しているダイナミックライブラリを明示的に渡すか、rJavaが読みにいっているファイルにシンボリックリンクを上書きするなどして対処します。</p>
 <p>また、パッケージのビルド時に<code>clang: error: unsupported option '-fopenmp</code>が発生してビルドに失敗する場合、Rパッケージのビルドに使用されるコンパイラの設定をしなおす必要があります。詳しくは以下に挙げる記事などを参考にしてください。</p>
 <ul>
 <li><a href="https://zhiyzuo.github.io/installation-rJava/">Installing rJava on macOS | Zhiya Zuo</a></li>
@@ -163,88 +157,36 @@
 <h3 class="hasAnchor">
 <a href="#cmecab-java%E3%81%AE%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97" class="anchor"></a>cmecab-javaの呼び出し</h3>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> rjavacmecab<span class="sc">::</span><span class="fu">cmecab</span>(<span class="st">"キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(res)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "キャピキャピ 名詞,一般,*,*,*,*,*"</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "音 名詞,接尾,一般,*,*,*,音,オン,オン"</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "が 助詞,格助詞,一般,*,*,*,が,ガ,ガ"</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[4]]</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "高く 形容詞,自立,*,*,形容詞・アウオ段,連用テ接続,高い,タカク,タカク"</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[5]]</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "なっ 動詞,自立,*,*,五段・ラ行,連用タ接続,なる,ナッ,ナッ"</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[6]]</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "て 助詞,接続助詞,*,*,*,*,て,テ,テ"</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[7]]</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "き 動詞,非自立,*,*,カ変・クル,連用形,くる,キ,キ"</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[8]]</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "たら 助動詞,*,*,*,特殊・タ,仮定形,た,タラ,タラ"</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[9]]</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "、 記号,読点,*,*,*,*,、,、,、"</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[10]]</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "ほんとに 副詞,一般,*,*,*,*,ほんとに,ホントニ,ホントニ"</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[11]]</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "出し 動詞,自立,*,*,五段・サ行,連用形,出す,ダシ,ダシ"</span></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[12]]</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "て 助詞,接続助詞,*,*,*,*,て,テ,テ"</span></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[13]]</span></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "くれ 動詞,非自立,*,*,一段・クレル,連用形,くれる,クレ,クレ"</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[14]]</span></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "の 助詞,連体化,*,*,*,*,の,ノ,ノ"</span></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[15]]</span></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "合図 名詞,サ変接続,*,*,*,*,合図,アイズ,アイズ"</span></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[16]]</span></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "です 助動詞,*,*,*,特殊・デス,基本形,です,デス,デス"</span></span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[17]]</span></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "！ 記号,一般,*,*,*,*,！,！,！"</span></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[18]]</span></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "　 記号,空白,*,*,*,*,　,　,　"</span></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[19]]</span></span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "しっかり 副詞,助詞類接続,*,*,*,*,しっかり,シッカリ,シッカリ"</span></span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[20]]</span></span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "ここ 名詞,代名詞,一般,*,*,*,ここ,ココ,ココ"</span></span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[21]]</span></span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "で 助詞,格助詞,一般,*,*,*,で,デ,デ"</span></span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[22]]</span></span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "は 助詞,係助詞,*,*,*,*,は,ハ,ワ"</span></span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[23]]</span></span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "コミュニケーション 名詞,一般,*,*,*,*,コミュニケーション,コミュニケーション,コミュニケーション"</span></span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[24]]</span></span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "とっ 動詞,自立,*,*,五段・ラ行,連用タ接続,とる,トッ,トッ"</span></span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[25]]</span></span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "て 助詞,接続助詞,*,*,*,*,て,テ,テ"</span></span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[26]]</span></span>
-<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "ください 動詞,非自立,*,*,五段・ラ行特殊,命令ｉ,くださる,クダサイ,クダサイ"</span></span>
-<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[27]]</span></span>
-<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "EOS"</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> rjavacmecab<span class="sc">::</span><span class="fu">prettify</span>(res) <span class="do">## dataframeに整形します</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(res)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 27</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "キャピキャピ 名詞,一般,*,*,*,*,*"</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "音 名詞,接尾,一般,*,*,*,音,オン,オン"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "が 助詞,格助詞,一般,*,*,*,が,ガ,ガ"</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "高く 形容詞,自立,*,*,形容詞・アウオ段,連用テ接続,高い,タカク,タカク"</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "なっ 動詞,自立,*,*,五段・ラ行,連用タ接続,なる,ナッ,ナッ"</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "て 助詞,接続助詞,*,*,*,*,て,テ,テ"</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "き 動詞,非自立,*,*,カ変・クル,連用形,くる,キ,キ"</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "たら 助動詞,*,*,*,特殊・タ,仮定形,た,タラ,タラ"</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "、 記号,読点,*,*,*,*,、,、,、"</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "ほんとに 副詞,一般,*,*,*,*,ほんとに,ホントニ,ホントニ"</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "出し 動詞,自立,*,*,五段・サ行,連用形,出す,ダシ,ダシ"</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "て 助詞,接続助詞,*,*,*,*,て,テ,テ"</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "くれ 動詞,非自立,*,*,一段・クレル,連用形,くれる,クレ,クレ"</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "の 助詞,連体化,*,*,*,*,の,ノ,ノ"</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "合図 名詞,サ変接続,*,*,*,*,合図,アイズ,アイズ"</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "です 助動詞,*,*,*,特殊・デス,基本形,です,デス,デス"</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "！ 記号,一般,*,*,*,*,！,！,！"</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "　 記号,空白,*,*,*,*,　,　,　"</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "しっかり 副詞,助詞類接続,*,*,*,*,しっかり,シッカリ,シッカリ"</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "ここ 名詞,代名詞,一般,*,*,*,ここ,ココ,ココ"</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "で 助詞,格助詞,一般,*,*,*,で,デ,デ"</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "は 助詞,係助詞,*,*,*,*,は,ハ,ワ"</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "コミュニケーション 名詞,一般,*,*,*,*,コミュニケーション,コミュニケーション,コミュニケーション"</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "とっ 動詞,自立,*,*,五段・ラ行,連用タ接続,とる,トッ,トッ"</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "て 助詞,接続助詞,*,*,*,*,て,テ,テ"</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "ください 動詞,非自立,*,*,五段・ラ行特殊,命令ｉ,くださる,クダサイ,クダサイ"</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr "EOS"</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> rjavacmecab<span class="sc">::</span><span class="fu">prettify</span>(res) <span class="do">## データフレームに整形します</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(res)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               Surface   POS1       POS2 POS3 POS4      X5StageUse1 X5StageUse2</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        キャピキャピ   名詞       一般 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span></span>
@@ -345,6 +287,114 @@
 <span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "EOS"</span></span></code></pre></div>
 </div>
 </div>
+<div id="google-colaboratoryで試す方法" class="section level2">
+<h2 class="hasAnchor">
+<a href="#google-colaboratory%E3%81%A7%E8%A9%A6%E3%81%99%E6%96%B9%E6%B3%95" class="anchor"></a>Google Colaboratoryで試す方法</h2>
+<p>あらかじめ次のようなことをすればColabで試すことができます。</p>
+<ul>
+<li>rpy2のロード</li>
+<li>MeCab(+IPAdic)のインストール</li>
+<li>Java(JRE/JDK)のアップデート</li>
+<li>JAVA_HOMEの設定</li>
+<li>R CMD javareconf</li>
+<li>rJavaのインストール</li>
+</ul>
+<div id="セットアップ" class="section level3">
+<h3 class="hasAnchor">
+<a href="#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97" class="anchor"></a>セットアップ</h3>
+<div id="rpy2のロード" class="section level4">
+<h4 class="hasAnchor">
+<a href="#rpy2%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89" class="anchor"></a>rpy2のロード</h4>
+<p>Rのランタイムはデフォルトで入っているので、rpy2経由でRを利用できます。マジックコマンドでロードします。</p>
+<pre class="ipynb"><code>%load_ext rpy2.ipython</code></pre>
+</div>
+<div id="mecabのインストール" class="section level4">
+<h4 class="hasAnchor">
+<a href="#mecab%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" class="anchor"></a>MeCabのインストール</h4>
+<p>aptやaptitudeで入れることができます。</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%%bash</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> install mecab libmecab-dev mecab-ipadic-utf8</span></code></pre></div>
+</div>
+<div id="javaのアップデート" class="section level4">
+<h4 class="hasAnchor">
+<a href="#java%E3%81%AE%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88" class="anchor"></a>Javaのアップデート</h4>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%%bash</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install default-jre</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install default-jdk</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">java</span> -version   # check java version</span></code></pre></div>
+</div>
+<div id="java_homeの設定" class="section level4">
+<h4 class="hasAnchor">
+<a href="#java_home%E3%81%AE%E8%A8%AD%E5%AE%9A" class="anchor"></a>JAVA_HOMEの設定</h4>
+<p>Pythonから設定してしまうと簡単です。</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">"JAVA_HOME"</span>] <span class="op">=</span> <span class="st">"/usr/lib/jvm/java-11-openjdk-amd64"</span></span></code></pre></div>
+</div>
+<div id="r-cmd-javareconf" class="section level4">
+<h4 class="hasAnchor">
+<a href="#r-cmd-javareconf" class="anchor"></a>R CMD javareconf</h4>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%%bash</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD javareconf</span></code></pre></div>
+</div>
+<div id="rjavaのインストール" class="section level4">
+<h4 class="hasAnchor">
+<a href="#rjava%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" class="anchor"></a>rJavaのインストール</h4>
+<p>aptから入れることができます。</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%%bash</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install r-cran-rjava</span></code></pre></div>
+<p>Rの<code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>から入れる場合、libjvm.soを<code><a href="https://rdrr.io/r/base/dynload.html">dyn.load()</a></code>で明示的に指定して読み込まないとパッケージのインストールに失敗するため、先に<code><a href="https://rdrr.io/r/base/dynload.html">dyn.load()</a></code>を呼びます。</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="sc">%%</span>R   <span class="co"># このマジックコマンドをコードブロックの先頭に付けるとそのブロックにRが書ける</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dyn.load</span>(<span class="st">"/usr/lib/jvm/java-11-openjdk-amd64/lib/server/libjvm.so"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"rJava"</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="rjavaに依存するパッケージのインストール" class="section level3">
+<h3 class="hasAnchor">
+<a href="#rjava%E3%81%AB%E4%BE%9D%E5%AD%98%E3%81%99%E3%82%8B%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" class="anchor"></a>rJavaに依存するパッケージのインストール</h3>
+<p>ここまでの手順を踏んでrJavaがちゃんと入っていると、ふつうに入れることができます。</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="sc">%%</span>R</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"paithiov909/rjavacmecab"</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>rjavacmecab<span class="sc">::</span><span class="fu">cmecab</span>(<span class="st">"こんにちは"</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "こんにちは 感動詞,*,*,*,*,*,こんにちは,コンニチハ,コンニチワ"</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "EOS"</span></span></code></pre></div>
+</div>
+<div id="おまけ" class="section level3">
+<h3 class="hasAnchor">
+<a href="#%E3%81%8A%E3%81%BE%E3%81%91" class="anchor"></a>おまけ</h3>
+<div id="rcppmecabのインストール" class="section level4">
+<h4 class="hasAnchor">
+<a href="#rcppmecab%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" class="anchor"></a>RcppMeCabのインストール</h4>
+<p>rpy2をロード後にふつうに入れることができます。MeCabのインストールは必要です。</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="sc">%%</span>R</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">MECAB_LANG =</span> <span class="st">"ja"</span>) <span class="co"># for installing Japanese developmental version</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"RcppMeCab"</span>, <span class="at">type =</span> <span class="st">"source"</span>) <span class="co"># build from source</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">RcppMeCab</span>(<span class="st">"こんにちは"</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $こんにちは</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "こんにちは/感動詞"</span></span></code></pre></div>
+</div>
+<div id="rmecabのインストール" class="section level4">
+<h4 class="hasAnchor">
+<a href="#rmecab%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" class="anchor"></a>RMeCabのインストール</h4>
+<p>こちらもふつうに入れることができます。</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="sc">%%</span>R</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"RMeCab"</span>, <span class="at">repos =</span> <span class="st">"https://rmecab.jp/R"</span>, <span class="at">type =</span> <span class="st">"source"</span>) </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>RMeCab<span class="sc">::</span><span class="fu">RMeCabC</span>(<span class="st">"こんにちは"</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       感動詞 </span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; "こんにちは" </span></span></code></pre></div>
+</div>
+</div>
+<div id="参考にした記事" class="section level3">
+<h3 class="hasAnchor">
+<a href="#%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%9F%E8%A8%98%E4%BA%8B" class="anchor"></a>参考にした記事</h3>
+<ul>
+<li><a href="https://www.marketechlabo.com/google-colaboratory-with-r/">Google ColaboratoryでRを使う | marketechlabo</a></li>
+</ul>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -357,6 +407,7 @@
       <li><a href="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">インストール</a></li>
       <li><a href="#%E7%92%B0%E5%A2%83%E3%81%AE%E6%BA%96%E5%82%99">環境の準備</a></li>
       <li><a href="#%E4%BD%BF%E7%94%A8%E4%BE%8B">使用例</a></li>
+      <li><a href="#google-colaboratory%E3%81%A7%E8%A9%A6%E3%81%99%E6%96%B9%E6%B3%95">Google Colaboratoryで試す方法</a></li>
       </ul>
 </div>
       </div>
