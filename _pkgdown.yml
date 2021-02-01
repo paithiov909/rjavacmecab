@@ -2,6 +2,10 @@ destination: docs
 
 url: https://paithiov909.github.io/rjavacmecab
 
+template:
+  params:
+    ganalytics: UA-73417314-25
+
 reference:
     - title: "Tokenizer"
       contents:

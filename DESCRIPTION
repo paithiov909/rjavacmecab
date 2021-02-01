@@ -6,11 +6,8 @@ Authors@R: c(
     person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre")))
 Maintainer: Kato Akiru <paithiov909@gmail.com>
 Description: A simple rJava interface to cmecab-java.
-Depends:
-    R (>= 4.0.0)
-SystemRequirements:
-    MeCab,
-    Java
+Depends: R (>= 4.0.0)
+SystemRequirements: MeCab, Java
 License: MIT + file LICENSE
 URL: https://github.com/paithiov909/rjavacmecab
 BugReports: https://github.com/paithiov909/rjavacmecab/issues
