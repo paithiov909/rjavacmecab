@@ -56,8 +56,7 @@ fastestword <- function(chr,
                         opt = "-Owakati",
                         ...) {
   stopifnot(
-    is.character(chr),
-    is_mecab_available()
+    is.character(chr)
   )
 
   desc <- tempfile(fileext = ".txt")
@@ -104,7 +103,7 @@ prettify <- function(list,
   len <- length(list) - 1L
   res <- furrr::future_map_dfr(list[1:len], function(elem) {
     split <- stringr::str_split_fixed(elem, sep, 2L)
-    words <- data.frame(Surface = split[1, 1], stringsAsFactors = FALSE)
+    words <- data.frame(token = split[1, 1], stringsAsFactors = FALSE)
     info <- tidyr::separate(
       data.frame(Features = c(split[1, 2]), stringsAsFactors = FALSE),
       col = "Features",
@@ -133,7 +132,7 @@ prettify <- function(list,
 #' @export
 pack <- function(df) {
   res <- df %>%
-    dplyr::group_map(~ stringr::str_c(.x$Surface, collapse = " ")) %>%
+    dplyr::group_map(~ stringr::str_c(.x$token, collapse = " ")) %>%
     furrr::future_map_dfr(~ data.frame(Text = .)) %>%
     tibble::rowid_to_column("Sid")
   return(res)

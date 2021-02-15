@@ -1,4 +1,4 @@
-skip_if_not(is_mecab_available())
+skip_if_not(is_dyn_available())
 
 sentence <- enc2utf8(
   paste0(

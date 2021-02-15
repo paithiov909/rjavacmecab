@@ -34,7 +34,7 @@ cmecab <- function(chr, opt = "", sep = " ") {
     is.character(chr),
     is.character(opt),
     is.character(sep),
-    is_mecab_available()
+    is_dyn_available()
   )
   if (!is_blank(opt)) {
     rebuild_tagger(opt = opt)

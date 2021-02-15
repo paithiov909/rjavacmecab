@@ -7,8 +7,6 @@
 ^Meta$
 ^docs$
 ^pkgdown$
-^_pkgdown\.yml$
 ^\.travis\.yml$
 ^codecov\.yml$
-^CODE_OF_CONDUCT\.md$
 ^README\.Rmd$

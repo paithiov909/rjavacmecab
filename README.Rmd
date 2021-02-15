@@ -53,7 +53,7 @@ print(res)
 
 If you use IPA-styled dictionary, the output has these columns.
 
-- Surface: 表層形
+- token: 表層形（surface form）
 - POS1~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3
 - X5StageUse1: 活用型（ex. 五段, 下二段...）
 - X5StageUse2: 活用形（ex. 連用形, 基本形...）
@@ -105,10 +105,11 @@ rjavacmecab::cmecab(str, "-d /MeCab/dic/mecab-ipadic-neologd")
 
 Please note that the rjavacmecab project is released with a [Contributor Code of Conduct](https://paithiov909.github.io/rjavacmecab/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
 
-## License
+## Licenses
 
-Under the MIT license
+MIT license.
+
+This software includes works that are distributed in Public Domain and New BSD License. See https://github.com/takscape/cmecab-java/blob/master/README.txt for more details. 
 
 Icons made by [Vectors Market](https://www.flaticon.com/authors/vectors-market) from [Flaticon](https://www.flaticon.com/).
 
-This software includes works that are distributed in Public Domain and New BSD License. See https://github.com/takscape/cmecab-java/blob/master/README.txt for more details. 

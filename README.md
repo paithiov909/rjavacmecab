@@ -70,7 +70,7 @@ str(res)
 ``` r
 res <- rjavacmecab::prettify(res)
 print(res)
-#>               Surface   POS1       POS2 POS3 POS4      X5StageUse1 X5StageUse2
+#>                 token   POS1       POS2 POS3 POS4      X5StageUse1 X5StageUse2
 #> 1        キャピキャピ   名詞       一般 <NA> <NA>             <NA>        <NA>
 #> 2                  音   名詞       接尾 一般 <NA>             <NA>        <NA>
 #> 3                  が   助詞     格助詞 一般 <NA>             <NA>        <NA>
@@ -128,7 +128,7 @@ print(res)
 
 If you use IPA-styled dictionary, the output has these columns.
 
--   Surface: 表層形
+-   token: 表層形（surface form）
 -   POS1\~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3
 -   X5StageUse1: 活用型（ex. 五段, 下二段…）
 -   X5StageUse2: 活用形（ex. 連用形, 基本形…）
@@ -191,15 +191,15 @@ Code of
 Conduct](https://paithiov909.github.io/rjavacmecab/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
 
-## License
+## Licenses
 
-Under the MIT license
-
-Icons made by [Vectors
-Market](https://www.flaticon.com/authors/vectors-market) from
-[Flaticon](https://www.flaticon.com/).
+MIT license.
 
 This software includes works that are distributed in Public Domain and
 New BSD License. See
 <https://github.com/takscape/cmecab-java/blob/master/README.txt> for
 more details.
+
+Icons made by [Vectors
+Market](https://www.flaticon.com/authors/vectors-market) from
+[Flaticon](https://www.flaticon.com/).

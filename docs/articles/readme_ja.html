@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rjavacmecab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -100,7 +100,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>About rjavacmecab package</h1>
             
-            <h4 class="date">2021-02-02</h4>
+            <h4 class="date">2021-02-16</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/paithiov909/rjavacmecab/blob/master/vignettes/readme_ja.Rmd"><code>vignettes/readme_ja.Rmd</code></a></small>
       <div class="hidden name"><code>readme_ja.Rmd</code></div>
@@ -196,7 +196,7 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/prettify.html">prettify</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span> <span class="co">## データフレームに整形します</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
-<span class="co">#&gt;               Surface   POS1       POS2 POS3 POS4      X5StageUse1 X5StageUse2</span>
+<span class="co">#&gt;                 token   POS1       POS2 POS3 POS4      X5StageUse1 X5StageUse2</span>
 <span class="co">#&gt; 1        キャピキャピ   名詞       一般 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span>
 <span class="co">#&gt; 2                  音   名詞       接尾 一般 &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span>
 <span class="co">#&gt; 3                  が   助詞     格助詞 一般 &lt;NA&gt;             &lt;NA&gt;        &lt;NA&gt;</span>
@@ -252,7 +252,7 @@
 <span class="co">#&gt; 26           くださる           クダサイ           クダサイ</span></code></pre></div>
 <p>整形されたデータフレームは次のカラムからなります。IPA辞書とは異なる品詞体系の辞書を使っている場合は、素性情報を<code>into</code>引数に渡してください。</p>
 <ul>
-<li>Surface: 表層形</li>
+<li>token: 表層形（surface form）</li>
 <li>POS1~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3</li>
 <li>X5StageUse1: 活用型（ex. 五段, 下二段…）</li>
 <li>X5StageUse2: 活用形（ex. 連用形, 基本形…）</li>
@@ -418,7 +418,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Kato Akiru.</p>
+  <p>Developed by Akiru Kato.</p>
 </div>
 
 <div class="pkgdown">
