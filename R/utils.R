@@ -63,7 +63,7 @@ normalize <- function(str) {
       paste0(
         "([\uff10-\uff19\u3041-\u3093\u30a1-\u30f6\u30fc\u4e00-\u9fa0[:punct:]]*)",
         "[[:blank:]]+",
-        "([[\uff10-\uff19\u3041-\u3093\u30a1-\u30f6\u30fc\u4e00-\u9fa0][:punct:]]+)"
+        "([\uff10-\uff19\u3041-\u3093\u30a1-\u30f6\u30fc\u4e00-\u9fa0[:punct:]]+)"
       ),
       "\\1\\2") %>%
     stringr::str_remove_all("[~\u223c\u223e\u301c\u3030\uff5e]+") %>%
