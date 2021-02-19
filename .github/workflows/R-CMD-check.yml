@@ -38,7 +38,7 @@ jobs:
           sudo apt install mecab-ipadic-utf8
           sudo ldconfig
       - name: R CMD javareconf
-        run: R CMD javareconf
+        run: sudo R CMD javareconf
       - name: Install dependencies
         run: |
           install.packages(c("remotes", "rcmdcheck"))
