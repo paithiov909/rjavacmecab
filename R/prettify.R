@@ -16,32 +16,32 @@
 prettify <- function(list,
                      sep = " ",
                      into = c(
-                         "POS1",
-                         "POS2",
-                         "POS3",
-                         "POS4",
-                         "X5StageUse1",
-                         "X5StageUse2",
-                         "Original",
-                         "Yomi1",
-                         "Yomi2"
+                       "POS1",
+                       "POS2",
+                       "POS3",
+                       "POS4",
+                       "X5StageUse1",
+                       "X5StageUse2",
+                       "Original",
+                       "Yomi1",
+                       "Yomi2"
                      )) {
-    stopifnot(is.list(list), !is_blank(list), is.character(sep))
-    len <- length(list) - 1L
-    res <- furrr::future_map_dfr(list[1:len], function(elem) {
-        split <- stringr::str_split_fixed(elem, sep, 2L)
-        words <- data.frame(token = split[1, 1], stringsAsFactors = FALSE)
-        info <- tidyr::separate(
-            data.frame(Features = c(split[1, 2]), stringsAsFactors = FALSE),
-            col = "Features",
-            into = into,
-            sep = ",",
-            fill = "right"
-        )
-        return(dplyr::bind_cols(
-            as.data.frame(words, stringsAsFactors = FALSE),
-            dplyr::summarise_all(info, ~ dplyr::na_if(., "*"))
-        ))
-    })
-    return(res)
+  stopifnot(is.list(list), !is_blank(list), is.character(sep))
+  len <- length(list) - 1L
+  res <- furrr::future_map_dfr(list[1:len], function(elem) {
+    split <- stringr::str_split_fixed(elem, sep, 2L)
+    words <- data.frame(token = split[1, 1], stringsAsFactors = FALSE)
+    info <- tidyr::separate(
+      data.frame(Features = c(split[1, 2]), stringsAsFactors = FALSE),
+      col = "Features",
+      into = into,
+      sep = ",",
+      fill = "right"
+    )
+    return(dplyr::bind_cols(
+      as.data.frame(words, stringsAsFactors = FALSE),
+      dplyr::summarise_all(info, ~ dplyr::na_if(., "*"))
+    ))
+  })
+  return(res)
 }

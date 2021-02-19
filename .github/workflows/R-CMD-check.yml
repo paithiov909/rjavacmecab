@@ -42,6 +42,7 @@ jobs:
       - name: Install dependencies
         run: |
           install.packages(c("remotes", "rcmdcheck"))
+          install.packages("rJava", type = "source")
           remotes::install_github("r-lib/covr")
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}

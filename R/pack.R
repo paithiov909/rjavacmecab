@@ -11,11 +11,12 @@
 #' @importFrom tibble rowid_to_column
 #' @export
 pack <- function(df, pull = "token", .collapse = " ") {
-    res <- df %>%
-        dplyr::group_map(
-        ~ dplyr::pull({{ pull }}) %>%
-          stringr::str_c(collapse = .collapse)) %>%
-        furrr::future_map_dfr(~ data.frame(text = .)) %>%
-        tibble::rowid_to_column("doc_id")
-    return(res)
+  res <- df %>%
+    dplyr::group_map(
+      ~ dplyr::pull({{ pull }}) %>%
+        stringr::str_c(collapse = .collapse)
+    ) %>%
+    furrr::future_map_dfr(~ data.frame(text = .)) %>%
+    tibble::rowid_to_column("doc_id")
+  return(res)
 }
