@@ -23,20 +23,6 @@ stopifnot(
 )
 ```
 
-## ExtendedLettersJp
-
-```{r}
-data("ExtendedLettersJp")
-DT::datatable(ExtendedLettersJp, style = "bootstrap")
-```
-
-## OneLettersJp
-
-```{r}
-data("OneLettersJp")
-DT::datatable(OneLettersJp, style = "bootstrap")
-```
-
 ## StopWordsJp
 
 ```{r}

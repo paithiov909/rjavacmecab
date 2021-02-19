@@ -1,36 +1,3 @@
-#' Check if scalars are blank
-#'
-#' A port of \code{rapportools::is.empty()}.
-#'
-#' @param x Object to check its emptiness.
-#' @param trim Logical.
-#' @param ... Additional arguments for \code{base::sapply()}.
-#'
-#' @return Logical values.
-#'
-#' @import dplyr
-#' @import stringr
-#' @export
-is_blank <- function(x, trim = TRUE, ...) {
-  if (!is.list(x) && length(x) <= 1) {
-    if (is.null(x)) {
-      return(TRUE)
-    }
-    dplyr::case_when(
-      is.na(x) ~ TRUE,
-      is.nan(x) ~ TRUE,
-      is.character(x) && nchar(ifelse(trim, stringr::str_trim(x), x)) == 0 ~ TRUE,
-      TRUE ~ FALSE
-    )
-  } else {
-    if (length(x) == 0) {
-      return(TRUE)
-    }
-    sapply(x, is_blank, trim = trim, ...)
-  }
-}
-
-
 #' Call mecab command directly
 #'
 #' Calls mecab command directly via \code{base::system()}.
@@ -71,74 +38,6 @@ fastestword <- function(chr,
 }
 
 
-#' Prettify cmecab output
-#'
-#' @param list List that comes out of \code{rjavacmecab::cmecab()}.
-#' @param sep Character scalar that is used as separators
-#' with which the function replaces tab.
-#' @param into Character vector that is used as column names of
-#' features.
-#'
-#' @return data.frame.
-#'
-#' @import dplyr
-#' @import stringr
-#' @importFrom furrr future_map_dfr
-#' @importFrom tidyr separate
-#' @export
-prettify <- function(list,
-                     sep = " ",
-                     into = c(
-                       "POS1",
-                       "POS2",
-                       "POS3",
-                       "POS4",
-                       "X5StageUse1",
-                       "X5StageUse2",
-                       "Original",
-                       "Yomi1",
-                       "Yomi2"
-                     )) {
-  stopifnot(is.list(list), !is_blank(list), is.character(sep))
-  len <- length(list) - 1L
-  res <- furrr::future_map_dfr(list[1:len], function(elem) {
-    split <- stringr::str_split_fixed(elem, sep, 2L)
-    words <- data.frame(token = split[1, 1], stringsAsFactors = FALSE)
-    info <- tidyr::separate(
-      data.frame(Features = c(split[1, 2]), stringsAsFactors = FALSE),
-      col = "Features",
-      into = into,
-      sep = ",",
-      fill = "right"
-    )
-    return(dplyr::bind_cols(
-      as.data.frame(words, stringsAsFactors = FALSE),
-      dplyr::summarise_all(info, ~ dplyr::if_else(. == "*", NA_character_, .))
-    ))
-  })
-  return(res)
-}
-
-
-#' Pack prettified output
-#'
-#' @param df Output of \code{rjavacmecab::prettify}
-#' @return data.frame.
-#'
-#' @import dplyr
-#' @import stringr
-#' @importFrom furrr future_map_dfr
-#' @importFrom tibble rowid_to_column
-#' @export
-pack <- function(df) {
-  res <- df %>%
-    dplyr::group_map(~ stringr::str_c(.x$token, collapse = " ")) %>%
-    furrr::future_map_dfr(~ data.frame(Text = .)) %>%
-    tibble::rowid_to_column("Sid")
-  return(res)
-}
-
-
 #' Normalize CJK text
 #'
 #' Normalize text into neologd-style.
@@ -158,8 +57,7 @@ normalize <- function(str) {
     stringr::str_replace_all("\u201d", "\"") %>%
     stringr::str_replace_all("[\u02d7\u058a\u2010\u2011\u2012\u2013\u2043\u207b\u208b\u2212]", "-") %>%
     stringr::str_replace_all("[\ufe63\uff0d\uff70\u2014\u2015\u2500\u2501\u30fc]", enc2utf8("\u30fc")) %>%
-    stringr::str_replace_all("[~\u223c\u223e\u301c\u3030\uff5e]", "~") %>%
-    stringr::str_remove_all("[[:punct:]]+") %>%
+    stringr::str_replace_all("[\u223c\u223e\u301c\u3030\uff5e]", enc2utf8("\uff5e")) %>%
     stringr::str_remove_all("[[:blank:]]+") %>%
     stringr::str_remove_all("[[:cntrl:]]+") %>%
     stringi::stri_trans_nfkc()
