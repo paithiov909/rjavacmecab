@@ -13,7 +13,7 @@
 pack <- function(df, pull = "token", .collapse = " ") {
   res <- df %>%
     dplyr::group_map(
-      ~ dplyr::pull({{ pull }}) %>%
+      ~ dplyr::pull(.x, {{ pull }}) %>%
         stringr::str_c(collapse = .collapse)
     ) %>%
     furrr::future_map_dfr(~ data.frame(text = .)) %>%

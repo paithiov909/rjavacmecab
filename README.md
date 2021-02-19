@@ -9,10 +9,9 @@
 commit](https://img.shields.io/github/last-commit/paithiov909/rjavacmecab)](#)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![Build
-Status](https://travis-ci.com/paithiov909/rjavacmecab.svg?branch=master)](https://travis-ci.com/paithiov909/rjavacmecab)
+[![R-CMD-check](https://github.com/paithiov909/rjavacmecab/actions/workflows/R-CMD-check.yml/badge.svg)](https://github.com/paithiov909/rjavacmecab/actions/workflows/R-CMD-check.yml)
 [![Codecov test
-coverage](https://codecov.io/gh/paithiov909/rjavacmecab/branch/master/graph/badge.svg)](https://codecov.io/gh/paithiov909/rjavacmecab?branch=master)
+coverage](https://codecov.io/gh/paithiov909/rjavacmecab/branch/main/graph/badge.svg)](https://codecov.io/gh/paithiov909/rjavacmecab?branch=main)
 <!-- badges: end -->
 
 > rJava Interface to CMeCab
@@ -141,9 +140,9 @@ If you use IPA-styled dictionary, the output has these columns.
 ``` r
 res <- rjavacmecab::pack(res)
 print(res)
-#>   Sid
-#> 1   1
-#>                                                                                                                                          Text
+#>   doc_id
+#> 1      1
+#>                                                                                                                                          text
 #> 1 キャピキャピ 音 が 高く なっ て き たら 、 ほんとに 出し て くれ の 合図 です ！ 　 しっかり ここ で は コミュニケーション とっ て ください
 ```
 
@@ -176,13 +175,15 @@ rjavacmecab::cmecab(str, "-d /MeCab/dic/mecab-ipadic-neologd")
 
 ## Related Products
 
--   [takscape/cmecab-java: A Java binding for
-    MeCab](https://github.com/takscape/cmecab-java) (cmecab-java)
--   [s-u/rJava: R to Java interface](https://github.com/s-u/rJava)
-    (rJava)
--   [ikegami-yukino/mecab: Yet another Japanese morphological
-    analyzer](https://github.com/ikegami-yukino/mecab) (MeCab
-    野良ビルド)
+-   [IshidaMotohiro/RMeCab: Interface to
+    MeCab](https://github.com/IshidaMotohiro/RMeCab)
+-   [junhewk/RcppMeCab: RcppMeCab: Rcpp Interface of CJK Morpheme
+    Analyzer MeCab](https://github.com/junhewk/RcppMeCab)
+-   [paithiov909/tangela: rJava Interface to
+    atilika/kuromoji](https://github.com/paithiov909/tangela)
+-   [paithiov909/krikinton: rJava wrapper of Kintoki (a port of the
+    CaboCha to Java) and
+    Sudachi](https://github.com/paithiov909/krikinton)
 
 ## Code of Conduct
 

@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         platform: [ubuntu-latest]
-        java: [14]
+        java: [8]
         r-version: ['4.0.0']
     runs-on: ${{ matrix.platform }}
     steps:
