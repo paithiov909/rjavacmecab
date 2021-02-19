@@ -49,7 +49,7 @@ test_that("Check normalize", { ## TODO: check more letters
         )
       )
     ),
-    enc2utf8("\u5168\u89d2\u8a18\u53f7!?@#\u30cf\u30f3-\u30ab\u30af\u30ab~\u30ca")
+    enc2utf8("\u5168\u89d2\u8a18\u53f7!?@#\u30cf\u30f3-\u30ab\u30af\u30ab\u30ca")
   )
 })
 
