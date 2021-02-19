@@ -58,7 +58,6 @@ normalize <- function(str) {
     stringr::str_replace_all("\u201d", "\"") %>%
     stringr::str_replace_all("[\\-\u02d7\u058a\u2010\u2011\u2012\u2013\u2043\u207b\u208b\u2212]+", "-") %>%
     stringr::str_replace_all("[\ufe63\uff0d\uff70\u2014\u2015\u2500\u2501\u30fc]+", enc2utf8("\u30fc")) %>%
-    stringr::str_replace_all("([\u3000-\u303f\uff00-\uffef'])+", "\\1") %>%
     stringr::str_replace_all("([:blank:]){2,}", " ") %>%
     stringr::str_replace_all(
       paste0(
