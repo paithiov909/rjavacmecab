@@ -37,7 +37,7 @@ jobs:
           sudo apt install libmecab-dev
           sudo apt install mecab-ipadic-utf8
           sudo ldconfig
-      - name R CMD javareconf
+      - name: R CMD javareconf
         run: R CMD javareconf
       - name: Install dependencies
         run: |
