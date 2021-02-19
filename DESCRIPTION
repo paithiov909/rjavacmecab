@@ -32,4 +32,5 @@ Imports:
     readr,
     stringi,
     stringr,
+    tibble,
     tidyr

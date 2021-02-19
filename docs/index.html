@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rjavacmecab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -235,9 +235,9 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="reference/pack.html">pack</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
-<span class="co">#&gt;   Sid</span>
-<span class="co">#&gt; 1   1</span>
-<span class="co">#&gt;                                                                                                                                          Text</span>
+<span class="co">#&gt;   doc_id</span>
+<span class="co">#&gt; 1      1</span>
+<span class="co">#&gt;                                                                                                                                          text</span>
 <span class="co">#&gt; 1 キャピキャピ 音 が 高く なっ て き たら 、 ほんとに 出し て くれ の 合図 です ！ 　 しっかり ここ で は コミュニケーション とっ て ください</span></code></pre></div>
 </div>
 <div id="change-dictionary" class="section level3">
@@ -272,12 +272,10 @@
 <h2 class="hasAnchor">
 <a href="#related-products" class="anchor"></a>Related Products</h2>
 <ul>
-<li>
-<a href="https://github.com/takscape/cmecab-java">takscape/cmecab-java: A Java binding for MeCab</a> (cmecab-java)</li>
-<li>
-<a href="https://github.com/s-u/rJava">s-u/rJava: R to Java interface</a> (rJava)</li>
-<li>
-<a href="https://github.com/ikegami-yukino/mecab">ikegami-yukino/mecab: Yet another Japanese morphological analyzer</a> (MeCab 野良ビルド)</li>
+<li><a href="https://github.com/IshidaMotohiro/RMeCab">IshidaMotohiro/RMeCab: Interface to MeCab</a></li>
+<li><a href="https://github.com/junhewk/RcppMeCab">junhewk/RcppMeCab: RcppMeCab: Rcpp Interface of CJK Morpheme Analyzer MeCab</a></li>
+<li><a href="https://github.com/paithiov909/tangela">paithiov909/tangela: rJava Interface to atilika/kuromoji</a></li>
+<li><a href="https://github.com/paithiov909/krikinton">paithiov909/krikinton: rJava wrapper of Kintoki (a port of the CaboCha to Java) and Sudachi</a></li>
 </ul>
 </div>
 <div id="code-of-conduct" class="section level2">
@@ -332,8 +330,8 @@
 <ul class="list-unstyled">
 <li><a href="#"><img src="https://img.shields.io/github/last-commit/paithiov909/rjavacmecab" alt="GitHub last commit"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
-<li><a href="https://travis-ci.com/paithiov909/rjavacmecab"><img src="https://travis-ci.com/paithiov909/rjavacmecab.svg?branch=master" alt="Build Status"></a></li>
-<li><a href="https://codecov.io/gh/paithiov909/rjavacmecab?branch=master"><img src="https://codecov.io/gh/paithiov909/rjavacmecab/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/paithiov909/rjavacmecab/actions/workflows/R-CMD-check.yml"><img src="https://github.com/paithiov909/rjavacmecab/actions/workflows/R-CMD-check.yml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://codecov.io/gh/paithiov909/rjavacmecab?branch=main"><img src="https://codecov.io/gh/paithiov909/rjavacmecab/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
 </div>
