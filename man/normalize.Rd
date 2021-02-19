@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{normalize}
 \alias{normalize}
-\title{Normalize CJK text}
+\title{Normalize Japanese text}
 \usage{
 normalize(str)
 }
@@ -13,7 +13,7 @@ normalize(str)
 Normalized text.
 }
 \description{
-Normalize text into neologd-style.
+Normalize text into neologd-like-style.
 }
 \seealso{
 \url{https://github.com/neologd/mecab-ipadic-neologd/wiki/Regexp}

@@ -38,9 +38,9 @@ fastestword <- function(chr,
 }
 
 
-#' Normalize CJK text
+#' Normalize Japanese text
 #'
-#' Normalize text into neologd-style.
+#' Normalize text into neologd-like-style.
 #'
 #' @seealso \url{https://github.com/neologd/mecab-ipadic-neologd/wiki/Regexp}
 #'
