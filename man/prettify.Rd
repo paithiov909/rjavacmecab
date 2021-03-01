@@ -2,7 +2,7 @@
 % Please edit documentation in R/prettify.R
 \name{prettify}
 \alias{prettify}
-\title{Prettify cmecab output}
+\title{Prettifies cmecab output}
 \usage{
 prettify(
   list,
@@ -24,5 +24,5 @@ features.}
 data.frame.
 }
 \description{
-Prettify cmecab output
+Prettifies cmecab output
 }

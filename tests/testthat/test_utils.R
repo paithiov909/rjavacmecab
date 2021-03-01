@@ -37,25 +37,8 @@ describe("Check fastestword", {
 })
 
 
-#### normalize ####
-test_that("Check normalize", { ## TODO: check more letters
-  expect_equal(
-    normalize(
-      enc2utf8(
-        paste0(
-          "\u5168\u89d2\u8a18\u53f7\uff01\uff1f\uff20\uff03\uff8a",
-          "\uff9d\u02d7\u058a\u2010\u2011\u2012\u2013\u2043\u207b",
-          "\u208b\u2212\uff76\uff78\uff76~\u223c\u223e\u301c\u3030\uff5e\uff85"
-        )
-      )
-    ),
-    enc2utf8("\u5168\u89d2\u8a18\u53f7!?@#\u30cf\u30f3-\u30ab\u30af\u30ab\u30ca")
-  )
-})
-
-
 #### ngram_tokenizer ####
-test_that("Check ngram_tokenizer", {
+test_that("ngram_tokenizer works", {
   expect_type(ngram_tokenizer(3L), "closure")
   expect_type(
     ngram_tokenizer(2L)(NA_character_),

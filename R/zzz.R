@@ -1,6 +1,6 @@
 #' Standard Tagger
 #'
-#' Store the rJava binding to the tagger.
+#' Stores the rJava binding to the tagger.
 #'
 #' @noRd
 #' @param obj An rJava binding object to be stored.

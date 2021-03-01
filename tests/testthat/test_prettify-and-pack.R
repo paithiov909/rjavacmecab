@@ -23,12 +23,12 @@ res2 <- pack(res1)
 
 
 #### prettify ####
-test_that("Check prettify", {
+test_that("prettify works", {
   expect_s3_class(res1, "data.frame")
 })
 
 
 #### pack ####
-test_that("Check pack", {
+test_that("oack works", {
   expect_s3_class(res2, "data.frame")
 })

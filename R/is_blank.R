@@ -1,4 +1,4 @@
-#' Check if scalars are blank
+#' Checks if scalars are blank
 #'
 #' A port of \code{rapportools::is.empty()}.
 #'

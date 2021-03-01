@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{fastestword}
 \alias{fastestword}
-\title{Call mecab command directly}
+\title{Calls mecab command directly}
 \usage{
 fastestword(
   chr,

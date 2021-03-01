@@ -16,7 +16,6 @@ reference:
         - rebuild_tagger
         - prettify
         - pack
-        - normalize
         - ngram_tokenizer
         - tokenize
         - escape

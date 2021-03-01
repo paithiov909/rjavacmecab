@@ -2,7 +2,7 @@
 % Please edit documentation in R/is_blank.R
 \name{is_blank}
 \alias{is_blank}
-\title{Check if scalars are blank}
+\title{Checks if scalars are blank}
 \usage{
 is_blank(x, trim = TRUE, ...)
 }

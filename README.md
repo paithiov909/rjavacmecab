@@ -179,11 +179,6 @@ rjavacmecab::cmecab(str, "-d /MeCab/dic/mecab-ipadic-neologd")
     MeCab](https://github.com/IshidaMotohiro/RMeCab)
 -   [junhewk/RcppMeCab: RcppMeCab: Rcpp Interface of CJK Morpheme
     Analyzer MeCab](https://github.com/junhewk/RcppMeCab)
--   [paithiov909/tangela: rJava Interface to
-    atilika/kuromoji](https://github.com/paithiov909/tangela)
--   [paithiov909/krikinton: rJava wrapper of Kintoki (a port of the
-    CaboCha to Java) and
-    Sudachi](https://github.com/paithiov909/krikinton)
 
 ## Code of Conduct
 

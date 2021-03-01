@@ -1,4 +1,4 @@
-#' Prettify cmecab output
+#' Prettifies cmecab output
 #'
 #' @param list List that comes out of \code{rjavacmecab::cmecab()}.
 #' @param sep Character scalar that is used as separators

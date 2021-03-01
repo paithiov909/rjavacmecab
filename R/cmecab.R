@@ -1,10 +1,10 @@
-#' Rebuild CMeCab tagger
+#' Rebuilds CMeCab tagger
 #'
-#' Rebuild instance of tagger using provided options.
+#' Rebuilds instance of tagger using provided options.
 #'
 #' @param opt character vector.
 #'
-#' @return return the stored tagger instance invisibly.
+#' @return returns the stored tagger instance invisibly.
 #'
 #' @import rJava
 #' @export
@@ -16,7 +16,7 @@ rebuild_tagger <- function(opt = "") {
   return(invisible(standard_tagger()))
 }
 
-#' Call CMeCab tagger
+#' Calls CMeCab tagger
 #'
 #' @param chr Character vector to be tokenized.
 #' @param opt Character scalar to be passed as tagger options (ex. "-d").

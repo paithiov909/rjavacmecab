@@ -2,7 +2,7 @@
 % Please edit documentation in R/is_dyn_available.R
 \name{is_dyn_available}
 \alias{is_dyn_available}
-\title{Check if the mecab dynamic library is available}
+\title{Checks if the mecab dynamic library is available}
 \usage{
 is_dyn_available(dynlib = "libmecab")
 }
@@ -13,5 +13,5 @@ is_dyn_available(dynlib = "libmecab")
 Logical.
 }
 \description{
-Check if the mecab dynamic library is available
+Checks if the mecab dynamic library is available
 }

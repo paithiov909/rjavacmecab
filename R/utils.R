@@ -1,4 +1,4 @@
-#' Call mecab command directly
+#' Calls mecab command directly
 #'
 #' Calls mecab command directly via \code{base::system()}.
 #'
@@ -35,40 +35,6 @@ fastestword <- function(chr,
 
   unlink(desc)
   return(invisible(outfile))
-}
-
-
-#' Normalize Japanese text
-#'
-#' Normalize text into neologd-like-style.
-#'
-#' @seealso \url{https://github.com/neologd/mecab-ipadic-neologd/wiki/Regexp}
-#'
-#' @param str Character vector.
-#'
-#' @return Normalized text.
-#'
-#' @import stringr
-#' @import stringi
-#' @export
-normalize <- function(str) {
-  res <- str %>%
-    stringi::stri_trans_nfkc() %>%
-    stringr::str_replace_all("\u2019", "\'") %>%
-    stringr::str_replace_all("\u201d", "\"") %>%
-    stringr::str_replace_all("[\\-\u02d7\u058a\u2010\u2011\u2012\u2013\u2043\u207b\u208b\u2212]+", "-") %>%
-    stringr::str_replace_all("[\ufe63\uff0d\uff70\u2014\u2015\u2500\u2501\u30fc]+", enc2utf8("\u30fc")) %>%
-    stringr::str_replace_all("([:blank:]){2,}", " ") %>%
-    stringr::str_replace_all(
-      paste0(
-        "([\uff10-\uff19\u3041-\u3093\u30a1-\u30f6\u30fc\u4e00-\u9fa0[:punct:]]*)",
-        "[[:blank:]]+",
-        "([\uff10-\uff19\u3041-\u3093\u30a1-\u30f6\u30fc\u4e00-\u9fa0[:punct:]]+)"
-      ),
-      "\\1\\2") %>%
-    stringr::str_remove_all("[~\u223c\u223e\u301c\u3030\uff5e]+") %>%
-    stringr::str_remove_all("[[:cntrl:]]+")
-  return(res)
 }
 
 

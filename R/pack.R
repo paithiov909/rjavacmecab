@@ -1,4 +1,4 @@
-#' Pack prettified output
+#' Packs prettified output
 #'
 #' @param df Output of \code{rjavacmecab::prettify}
 #' @param pull Column name to be packed into data.frame. Default value is `token`.
