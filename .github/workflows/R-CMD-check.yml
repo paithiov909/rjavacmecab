@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         platform: [ubuntu-latest]
-        java: [8]
+        java: [11]
         r-version: ['4.0.0']
     runs-on: ${{ matrix.platform }}
     steps:
@@ -39,8 +39,7 @@ jobs:
         run: sudo R CMD javareconf
       - name: Install dependencies
         run: |
-          install.packages(c("remotes", "rcmdcheck"))
-          install.packages("rJava", type = "source")
+          install.packages(c("remotes", "rcmdcheck", "rJava"))
           remotes::install_github("r-lib/covr")
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
