@@ -1,18 +1,15 @@
 #' Utility for handling CSV-like string
 #'
-#' Parses a CSV-row-like string something like `"a,b,c"`.
+#' Parse a CSV-row-like string something like `"a,b,c"`.
 #'
 #' @param str Character scalar.
 #' @param max Limitation of column size.
+#' @return Character vector.
 #'
-#' @return Character vector
-#'
-#' @import rJava
 #' @export
 tokenize <- function(str, max = 99L) {
   if (!is.character(str) || length(str) != 1L || is.na(str)) {
-    message("Invalid string provided. String must be a character scalar, not NA_character_.")
-    stop()
+    rlang::abort("Invalid string provided. String must be a character scalar, not NA_character_.")
   } else {
     arr <- rJava::J("net.moraleboost.util.CSVUtil")$tokenize(str, as.integer(max))
     return(arr)
@@ -21,18 +18,15 @@ tokenize <- function(str, max = 99L) {
 
 #' Utility for handling CSV-like string
 #'
-#' Escapes space, tab, `"` and `,` in string.
+#' Escape space, tab, `"` and `,` in string.
 #'
 #' @param str Character scalar.
-#'
 #' @return Character scalar.
 #'
-#' @import rJava
 #' @export
 escape <- function(str) {
   if (!is.character(str) || length(str) != 1L || is.na(str)) {
-    message("Invalid string provided. String must be a character scalar, not NA_character_.")
-    stop()
+    rlang::abort("Invalid string provided. String must be a character scalar, not NA_character_.")
   } else {
     str <- rJava::J("net.moraleboost.util.CSVUtil")$escape(str)
     return(str)
@@ -44,10 +38,8 @@ escape <- function(str) {
 #' Equivalent to \code{paste(chr, collapse = ",")}.
 #'
 #' @param chr Character vector.
-#'
 #' @return Character scalar.
 #'
-#' @import rJava
 #' @export
 join <- function(chr) {
   stopifnot(is.character(chr), !is.na(chr))

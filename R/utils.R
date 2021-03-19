@@ -1,6 +1,6 @@
-#' Calls mecab command directly
+#' Call mecab command directly
 #'
-#' Calls mecab command directly via \code{base::system()}.
+#' Call mecab command directly via \code{base::system()}.
 #'
 #' @details It is useful especially when just tokenizing loads of text.
 #' Since `mecab -Owakati` command is specially-tuned,
@@ -40,7 +40,7 @@ fastestword <- function(chr,
 
 #' Ngrams tokenizer
 #'
-#' Makes N-gram tokenizer function.
+#' Make N-gram tokenizer function.
 #'
 #' @seealso \url{https://rpubs.com/brianzive/textmining}
 #'
@@ -50,7 +50,6 @@ fastestword <- function(chr,
 #'
 #' @return N-gram tokenizer function.
 #'
-#' @import stringi
 #' @export
 ngram_tokenizer <- function(n = 1L, skip_word_none = TRUE, locale = NULL) {
   stopifnot(is.numeric(n), is.finite(n), n > 0)

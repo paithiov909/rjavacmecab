@@ -1,4 +1,4 @@
-#' Checks if scalars are blank
+#' Check if scalars are blank
 #'
 #' A port of \code{rapportools::is.empty()}.
 #'
@@ -8,8 +8,6 @@
 #'
 #' @return Logical values.
 #'
-#' @import dplyr
-#' @import stringr
 #' @export
 is_blank <- function(x, trim = TRUE, ...) {
   if (!is.list(x) && length(x) <= 1) {

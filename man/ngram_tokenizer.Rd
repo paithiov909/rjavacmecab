@@ -17,7 +17,7 @@ ngram_tokenizer(n = 1L, skip_word_none = TRUE, locale = NULL)
 N-gram tokenizer function.
 }
 \description{
-Makes N-gram tokenizer function.
+Make N-gram tokenizer function.
 }
 \seealso{
 \url{https://rpubs.com/brianzive/textmining}

@@ -53,6 +53,7 @@ print(res)
 
 If you use IPA-styled dictionary, the output has these columns.
 
+- sentence_id: 文番号
 - token: 表層形（surface form）
 - POS1~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3
 - X5StageUse1: 活用型（ex. 五段, 下二段...）
@@ -70,29 +71,10 @@ print(res)
 
 ### Change Dictionary
 
-``` r
+```{r cmecab_4}
 str <- "きゃりーぱみゅぱみゅ"
 rjavacmecab::cmecab(str)
-#> [[1]]
-#> [1] "きゃ 動詞,非自立,*,*,五段・カ行促音便,仮定縮約１,く,キャ,キャ"
-#> 
-#> [[2]]
-#> [1] "り 助動詞,*,*,*,文語・リ,基本形,り,リ,リ"
-#> 
-#> [[3]]
-#> [1] "ー 名詞,固有名詞,一般,*,*,*,*"
-#> 
-#> [[4]]
-#> [1] "ぱみゅぱみゅ 名詞,一般,*,*,*,*,*"
-#> 
-#> [[5]]
-#> [1] "EOS"
-rjavacmecab::cmecab(str, "-d /MeCab/dic/mecab-ipadic-neologd")
-#> [[1]]
-#> [1] "きゃりーぱみゅぱみゅ 名詞,固有名詞,人名,一般,*,*,きゃりーぱみゅぱみゅ,キャリーパミュパミュ,キャリーパミュパミュ"
-#> 
-#> [[2]]
-#> [1] "EOS"
+rjavacmecab::cmecab(str, "-d /MeCab/ipadic-neologd")
 ```
 
 ## Related Products

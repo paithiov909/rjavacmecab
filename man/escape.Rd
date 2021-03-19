@@ -13,5 +13,5 @@ escape(str)
 Character scalar.
 }
 \description{
-Escapes space, tab, \verb{"} and \verb{,} in string.
+Escape space, tab, \verb{"} and \verb{,} in string.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/cmecab.R
 \name{cmecab}
 \alias{cmecab}
-\title{Calls CMeCab tagger}
+\title{Call CMeCab tagger}
 \usage{
 cmecab(chr, opt = "", sep = " ")
 }
@@ -18,5 +18,5 @@ with which the function replaces tab.}
 List.
 }
 \description{
-Calls CMeCab tagger
+Call CMeCab tagger
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{fastestword}
 \alias{fastestword}
-\title{Calls mecab command directly}
+\title{Call mecab command directly}
 \usage{
 fastestword(
   chr,
@@ -27,7 +27,7 @@ fastestword(
 The function returns the value passed to \code{outfile} argument invisibly.
 }
 \description{
-Calls mecab command directly via \code{base::system()}.
+Call mecab command directly via \code{base::system()}.
 }
 \details{
 It is useful especially when just tokenizing loads of text.

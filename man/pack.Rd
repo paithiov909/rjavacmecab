@@ -2,12 +2,12 @@
 % Please edit documentation in R/pack.R
 \name{pack}
 \alias{pack}
-\title{Packs prettified output}
+\title{Pack prettified output}
 \usage{
 pack(df, pull = "token", .collapse = " ")
 }
 \arguments{
-\item{df}{Output of \code{rjavacmecab::prettify}}
+\item{df}{Output of \code{rjavacmecab::prettify}.}
 
 \item{pull}{Column name to be packed into data.frame. Default value is \code{token}.}
 
@@ -17,5 +17,5 @@ pack(df, pull = "token", .collapse = " ")
 data.frame.
 }
 \description{
-Packs prettified output
+Pack prettified output
 }

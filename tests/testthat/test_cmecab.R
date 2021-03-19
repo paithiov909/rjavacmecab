@@ -43,6 +43,6 @@ describe("Check cmecab", {
         "\u30d5\u30ea\u30e0\u30af,\u30d5\u30ea\u30e0\u30af"
       )
     )
-    expect_equal(res[[2]], res2)
+    expect_equal(res[[1]][2], res2)
   })
 })

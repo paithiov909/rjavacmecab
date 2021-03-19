@@ -12,8 +12,8 @@ tokenize(str, max = 99L)
 \item{max}{Limitation of column size.}
 }
 \value{
-Character vector
+Character vector.
 }
 \description{
-Parses a CSV-row-like string something like \code{"a,b,c"}.
+Parse a CSV-row-like string something like \code{"a,b,c"}.
 }

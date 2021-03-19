@@ -1,25 +1,27 @@
+#' Environment for internal use
+#'
+#' @noRd
+#' @keywords internal
+.pkgenv <- rlang::env(instance = NULL)
+
 #' Standard Tagger
 #'
-#' Stores the rJava binding to the tagger.
+#' For internal use. This function stores an rJava binding as tagger instance.
 #'
 #' @noRd
 #' @param obj An rJava binding object to be stored.
 #' @return Reference to <net.moraleboost.mecab.impl.StandardTagger> class instance.
 #' @keywords internal
-standard_tagger <- (function() {
-  if (!exists("instance")) instance <- NULL
-  function(obj = NULL) {
-    if (!is.null(obj)) instance <<- obj
-    return(instance)
-  }
-})()
+standard_tagger <- function(obj = NULL) {
+  if (!is.null(obj)) rlang::env_bind(.pkgenv, instance = obj)
+  return(.pkgenv[["instance"]])
+}
 
-#' onLoad
+#' On load
 #'
 #' @noRd
 #' @param libname libname
 #' @param pkgname pkgname
-#' @import rJava
 #' @keywords internal
 .onLoad <- function(libname, pkgname) {
   rJava::.jpackage(pkgname,
@@ -30,5 +32,7 @@ standard_tagger <- (function() {
     lib.loc = libname
   )
   ## Initialize
-  rebuild_tagger(opt = "")
+  if (is_dyn_available()) {
+    rebuild_tagger()
+  }
 }

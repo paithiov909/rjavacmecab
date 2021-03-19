@@ -1,12 +1,11 @@
-#' Rebuilds CMeCab tagger
+#' Rebuild CMeCab tagger
 #'
-#' Rebuilds instance of tagger using provided options.
+#' Rebuild an instance of tagger using provided options.
+#' The tagger instance is stored in the package internal environment.
 #'
-#' @param opt character vector.
+#' @param opt Character vector.
+#' @return The stored tagger instance is returned invisibly.
 #'
-#' @return returns the stored tagger instance invisibly.
-#'
-#' @import rJava
 #' @export
 rebuild_tagger <- function(opt = "") {
   standard_tagger(rJava::.jnew(
@@ -16,43 +15,45 @@ rebuild_tagger <- function(opt = "") {
   return(invisible(standard_tagger()))
 }
 
-#' Calls CMeCab tagger
+#' Call CMeCab tagger
 #'
 #' @param chr Character vector to be tokenized.
 #' @param opt Character scalar to be passed as tagger options (ex. "-d").
 #' @param sep Character scalar to be used as separator
 #' with which the function replaces tab.
-#'
 #' @return List.
 #'
-#' @import purrr
-#' @import stringr
-#' @import stringi
 #' @export
 cmecab <- function(chr, opt = "", sep = " ") {
   stopifnot(
-    is.character(chr),
-    is.character(opt),
-    is.character(sep),
+    rlang::is_character(chr),
+    rlang::is_character(opt),
+    rlang::is_character(sep),
     is_dyn_available()
   )
   if (!is_blank(opt)) {
     rebuild_tagger(opt = opt)
   }
+  if (!rlang::env_has(.pkgenv, "instance")) rlang::abort("There is no tagger instance available. Please `rebuild_tagger` at first.")
+
   lattice <- standard_tagger()$createLattice()
 
-  lattice$setSentence(paste(stringi::stri_enc_toutf8(chr), collapse = "\n"))
-  standard_tagger()$parse(lattice)
-
-  parsed <- lattice$toString()
+  parsed <- purrr::map_chr(stringi::stri_enc_toutf8(chr), function(str) {
+    str <- tidyr::replace_na(chr, "")
+    lattice$setSentence(str)
+    standard_tagger()$parse(lattice)
+    return(lattice$toString())
+  })
 
   lattice$destroy()
 
   Encoding(parsed) <- "UTF-8"
   parsed <- stringr::str_replace_all(parsed, stringr::fixed("\t"), sep)
   parsed <- stringr::str_split(parsed, pattern = "\n")
-  res <- purrr::flatten(parsed)
-  len <- length(res) - 1L
+  res <- purrr::map(parsed, function(li) {
+    len <- length(li) - 1L
+    return(li[1:len])
+  })
 
-  return(res[1:len])
+  return(res)
 }

@@ -1,4 +1,4 @@
-#' Checks if the mecab dynamic library is available
+#' Check if the mecab dynamic library is available
 #'
 #' @param dynlib Default value is 'libmecab'.
 #' @return Logical.

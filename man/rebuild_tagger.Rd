@@ -2,16 +2,17 @@
 % Please edit documentation in R/cmecab.R
 \name{rebuild_tagger}
 \alias{rebuild_tagger}
-\title{Rebuilds CMeCab tagger}
+\title{Rebuild CMeCab tagger}
 \usage{
 rebuild_tagger(opt = "")
 }
 \arguments{
-\item{opt}{character vector.}
+\item{opt}{Character vector.}
 }
 \value{
-returns the stored tagger instance invisibly.
+The stored tagger instance is returned invisibly.
 }
 \description{
-Rebuilds instance of tagger using provided options.
+Rebuild an instance of tagger using provided options.
+The tagger instance is stored in the package internal environment.
 }

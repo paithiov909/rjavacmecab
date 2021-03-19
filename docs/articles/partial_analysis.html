@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rjavacmecab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -95,12 +95,12 @@
 
       
 
-      </header><script src="partial_analysis_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
+      </header><script src="partial_analysis_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Practice: Example of Partial Analysis</h1>
             
-            <h4 class="date">2021-02-20</h4>
+            <h4 class="date">2021-03-19</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/paithiov909/rjavacmecab/blob/master/vignettes/partial_analysis.Rmd"><code>vignettes/partial_analysis.Rmd</code></a></small>
       <div class="hidden name"><code>partial_analysis.Rmd</code></div>
@@ -327,16 +327,16 @@
   <span class="op">)</span>
 <span class="va">out</span>
 <span class="co">#&gt; # A tibble: 8 x 10</span>
-<span class="co">#&gt;   X1    品詞  品詞細分類1 品詞細分類2 品詞細分類3 活用型 活用形 原形  読み </span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;</span>
-<span class="co">#&gt; 1 くぅ～~ 感動詞~ &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span>
-<span class="co">#&gt; 2 きゃりー~ 名詞  固有名詞    人名        一般        *      *      *     &lt;NA&gt; </span>
-<span class="co">#&gt; 3 たそ  名詞  接尾        人名        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span>
-<span class="co">#&gt; 4 のぴーぶ~ 名詞  一般        *           *           *      *      *     &lt;NA&gt; </span>
-<span class="co">#&gt; 5 ぐうかわ~ 名詞  形容動詞語幹~ &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span>
-<span class="co">#&gt; 6 っす  助動詞~ *           *           *           特殊・デス~ 基本形 っす  ッス </span>
-<span class="co">#&gt; 7 よ    助詞  終助詞      *           *           *      *      よ    ヨ   </span>
-<span class="co">#&gt; 8 ～    記号  一般        *           *           *      *      ～    ～   </span>
+<span class="co">#&gt;   X1        品詞   品詞細分類1 品詞細分類2 品詞細分類3 活用型 活用形 原形  読み </span>
+<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;</span>
+<span class="co">#&gt; 1 くぅ～    感動詞 &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span>
+<span class="co">#&gt; 2 きゃりーぱみゅぱ~ 名詞   固有名詞    人名        一般        *      *      *     &lt;NA&gt; </span>
+<span class="co">#&gt; 3 たそ      名詞   接尾        人名        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span>
+<span class="co">#&gt; 4 のぴーぶい~ 名詞   一般        *           *           *      *      *     &lt;NA&gt; </span>
+<span class="co">#&gt; 5 ぐうかわ  名詞   形容動詞語幹~ &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span>
+<span class="co">#&gt; 6 っす      助動詞 *           *           *           特殊・デス~ 基本形 っす  ッス </span>
+<span class="co">#&gt; 7 よ        助詞   終助詞      *           *           *      *      よ    ヨ   </span>
+<span class="co">#&gt; 8 ～        記号   一般        *           *           *      *      ～    ～   </span>
 <span class="co">#&gt; # ... with 1 more variable: 発音 &lt;chr&gt;</span></code></pre></div>
 <p>また、形態素断片の素性パターンにワイルドカードを使うとその単語を切り出しながら品詞については適当なものを付与させることができます。以下では「の」と「ぴーぶい」については常に単語として切り出しながら、品詞は適当なものを付与させています。ユーザー辞書で未知語を定義する場合と比べて、形態素としての区切りは与えながらも品詞の推定はMeCabにやらせたいという場合に使うことができます。</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -382,17 +382,17 @@
   <span class="op">)</span>
 <span class="va">out</span>
 <span class="co">#&gt; # A tibble: 9 x 10</span>
-<span class="co">#&gt;   X1    品詞  品詞細分類1 品詞細分類2 品詞細分類3 活用型 活用形 原形  読み </span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;</span>
-<span class="co">#&gt; 1 くぅ～~ 感動詞~ &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span>
-<span class="co">#&gt; 2 きゃりー~ 名詞  固有名詞    人名        一般        *      *      *     &lt;NA&gt; </span>
-<span class="co">#&gt; 3 たそ  名詞  接尾        人名        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span>
-<span class="co">#&gt; 4 の    助詞  連体化      *           *           *      *      の    ノ   </span>
-<span class="co">#&gt; 5 ぴーぶい~ 名詞  一般        *           *           *      *      *     &lt;NA&gt; </span>
-<span class="co">#&gt; 6 ぐうかわ~ 名詞  形容動詞語幹~ &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span>
-<span class="co">#&gt; 7 っす  助動詞~ *           *           *           特殊・デス~ 基本形 っす  ッス </span>
-<span class="co">#&gt; 8 よ    助詞  終助詞      *           *           *      *      よ    ヨ   </span>
-<span class="co">#&gt; 9 ～    記号  一般        *           *           *      *      ～    ～   </span>
+<span class="co">#&gt;   X1        品詞   品詞細分類1 品詞細分類2 品詞細分類3 活用型 活用形 原形  読み </span>
+<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;</span>
+<span class="co">#&gt; 1 くぅ～    感動詞 &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span>
+<span class="co">#&gt; 2 きゃりーぱみゅぱ~ 名詞   固有名詞    人名        一般        *      *      *     &lt;NA&gt; </span>
+<span class="co">#&gt; 3 たそ      名詞   接尾        人名        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span>
+<span class="co">#&gt; 4 の        助詞   連体化      *           *           *      *      の    ノ   </span>
+<span class="co">#&gt; 5 ぴーぶい  名詞   一般        *           *           *      *      *     &lt;NA&gt; </span>
+<span class="co">#&gt; 6 ぐうかわ  名詞   形容動詞語幹~ &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span>
+<span class="co">#&gt; 7 っす      助動詞 *           *           *           特殊・デス~ 基本形 っす  ッス </span>
+<span class="co">#&gt; 8 よ        助詞   終助詞      *           *           *      *      よ    ヨ   </span>
+<span class="co">#&gt; 9 ～        記号   一般        *           *           *      *      ～    ～   </span>
 <span class="co">#&gt; # ... with 1 more variable: 発音 &lt;chr&gt;</span></code></pre></div>
 </div>
 </div>
@@ -419,24 +419,25 @@
 <span class="co">#&gt;  collate  Japanese_Japan.932          </span>
 <span class="co">#&gt;  ctype    Japanese_Japan.932          </span>
 <span class="co">#&gt;  tz       Asia/Tokyo                  </span>
-<span class="co">#&gt;  date     2021-02-20                  </span>
+<span class="co">#&gt;  date     2021-03-19                  </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; - Packages -------------------------------------------------------------------</span>
 <span class="co">#&gt;  ! package     * version date       lib source        </span>
 <span class="co">#&gt;    assertthat    0.2.1   2019-03-21 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    backports     1.2.1   2020-12-09 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    broom         0.7.4   2021-01-29 [2] CRAN (R 4.0.2)</span>
+<span class="co">#&gt;    broom         0.7.5   2021-02-19 [2] CRAN (R 4.0.2)</span>
+<span class="co">#&gt;    bslib         0.2.4   2021-01-25 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    cachem        1.0.4   2021-02-13 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    cellranger    1.1.0   2016-07-27 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    cli           2.3.0   2021-01-31 [2] CRAN (R 4.0.2)</span>
+<span class="co">#&gt;    cli           2.3.1   2021-02-23 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    codetools     0.2-18  2020-11-04 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    colorspace    2.0-0   2020-11-11 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    crayon        1.4.1   2021-02-08 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    DBI           1.1.1   2021-01-15 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    dbplyr        2.1.0   2021-02-03 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    desc          1.2.0   2018-05-01 [2] CRAN (R 4.0.2)</span>
+<span class="co">#&gt;    desc          1.3.0   2021-03-05 [2] CRAN (R 4.0.4)</span>
 <span class="co">#&gt;    digest        0.6.27  2020-10-24 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    dplyr       * 1.0.4   2021-02-02 [2] CRAN (R 4.0.3)</span>
+<span class="co">#&gt;    dplyr       * 1.0.5   2021-03-05 [2] CRAN (R 4.0.4)</span>
 <span class="co">#&gt;    ellipsis      0.3.1   2020-05-15 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    evaluate      0.14    2019-05-28 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    fansi         0.4.2   2021-01-15 [2] CRAN (R 4.0.3)</span>
@@ -454,58 +455,59 @@
 <span class="co">#&gt;    hms           1.0.0   2021-01-13 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    htmltools     0.5.1.1 2021-01-22 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    httr          1.4.2   2020-07-20 [2] CRAN (R 4.0.3)</span>
+<span class="co">#&gt;    jquerylib     0.1.3   2020-12-17 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    jsonlite      1.7.2   2020-12-09 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    knitr         1.31    2021-01-27 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    lifecycle     1.0.0   2021-02-15 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    listenv       0.8.0   2019-12-05 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    lubridate     1.7.9.2 2020-11-13 [2] CRAN (R 4.0.3)</span>
+<span class="co">#&gt;    lubridate     1.7.10  2021-02-26 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    magrittr      2.0.1   2020-11-17 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    memoise       2.0.0   2021-01-26 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    modelr        0.1.8   2020-05-19 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    munsell       0.5.0   2018-06-12 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    parallelly    1.23.0  2021-01-04 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    pillar        1.4.7   2020-11-20 [2] CRAN (R 4.0.3)</span>
+<span class="co">#&gt;    parallelly    1.24.0  2021-03-14 [2] CRAN (R 4.0.4)</span>
+<span class="co">#&gt;    pillar        1.5.1   2021-03-05 [2] CRAN (R 4.0.4)</span>
 <span class="co">#&gt;    pkgconfig     2.0.3   2019-09-22 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    pkgdown       1.6.1   2020-09-12 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    ps            1.5.0   2020-12-05 [2] CRAN (R 4.0.3)</span>
+<span class="co">#&gt;    ps            1.6.0   2021-02-28 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    purrr       * 0.3.4   2020-04-17 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    R.cache       0.14.0  2019-12-06 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    R.methodsS3   1.8.1   2020-08-26 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    R.oo          1.24.0  2020-08-26 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    R.utils       2.10.1  2020-08-26 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    R6            2.5.0   2020-10-28 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    ragg          1.1.0   2021-02-15 [2] CRAN (R 4.0.2)</span>
+<span class="co">#&gt;    ragg          1.1.2   2021-03-17 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    Rcpp          1.0.6   2021-01-15 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    readr       * 1.4.0   2020-10-05 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    readxl        1.3.1   2019-03-13 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    rematch2      2.1.2   2020-05-01 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    reprex        1.0.0   2021-01-27 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;  D rJava         0.9-13  2020-07-06 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    rjavacmecab * 0.2.2   2021-02-19 [1] local         </span>
+<span class="co">#&gt;    rjavacmecab * 0.3.0   2021-03-19 [2] local         </span>
 <span class="co">#&gt;    rlang         0.4.10  2020-12-30 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    rmarkdown     2.6     2020-12-14 [2] CRAN (R 4.0.3)</span>
+<span class="co">#&gt;    rmarkdown     2.7     2021-02-19 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    rprojroot     2.0.2   2020-11-15 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    rstudioapi    0.13    2020-11-12 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    rvest         0.3.6   2020-07-25 [2] CRAN (R 4.0.3)</span>
+<span class="co">#&gt;    rvest         1.0.0   2021-03-09 [2] CRAN (R 4.0.2)</span>
+<span class="co">#&gt;    sass          0.3.1   2021-01-24 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    scales        1.1.1   2020-05-11 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    sessioninfo   1.1.1   2018-11-05 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    stringi       1.5.3   2020-09-09 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    stringr     * 1.4.0   2019-02-10 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    styler        1.3.2   2020-02-23 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    systemfonts   1.0.1   2021-02-09 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    textshaping   0.3.0   2021-02-10 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    tibble      * 3.0.6   2021-01-29 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    tidyr       * 1.1.2   2020-08-27 [2] CRAN (R 4.0.3)</span>
+<span class="co">#&gt;    textshaping   0.3.3   2021-03-16 [2] CRAN (R 4.0.2)</span>
+<span class="co">#&gt;    tibble      * 3.1.0   2021-02-25 [2] CRAN (R 4.0.2)</span>
+<span class="co">#&gt;    tidyr       * 1.1.3   2021-03-03 [2] CRAN (R 4.0.4)</span>
 <span class="co">#&gt;    tidyselect    1.1.0   2020-05-11 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    tidyverse   * 1.3.0   2019-11-21 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    utf8          1.1.4   2018-05-24 [2] CRAN (R 4.0.2)</span>
+<span class="co">#&gt;    utf8          1.2.1   2021-03-12 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    vctrs         0.3.6   2020-12-17 [2] CRAN (R 4.0.3)</span>
 <span class="co">#&gt;    withr         2.4.1   2021-01-26 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    xfun          0.21    2021-02-10 [2] CRAN (R 4.0.2)</span>
+<span class="co">#&gt;    xfun          0.22    2021-03-11 [2] CRAN (R 4.0.4)</span>
 <span class="co">#&gt;    xml2          1.3.2   2020-04-23 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;    yaml          2.2.1   2020-02-01 [2] CRAN (R 4.0.0)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; [1] C:/Users/user/AppData/Local/Temp/Rtmpk7D9Et/temp_libpath18a07df94ac0</span>
+<span class="co">#&gt; [1] C:/Users/user/AppData/Local/Temp/RtmpuiMMZ5/temp_libpath53c2213373d</span>
 <span class="co">#&gt; [2] C:/Users/user/Documents/R/win-library/4.0</span>
 <span class="co">#&gt; [3] C:/Program Files/R/R-4.0.2/library</span>
 <span class="co">#&gt; </span>
