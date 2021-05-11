@@ -1,7 +1,7 @@
 Package: rjavacmecab
 Type: Package
 Title: rJava Interface to CMeCab
-Version: 0.3.0
+Version: 0.3.0.900
 Authors@R: c(
     person("Akiru", "Kato", email = "paithiov909@gmail.com", role = c("aut", "cre")))
 Maintainer: Kato Akiru <paithiov909@gmail.com>
@@ -20,17 +20,13 @@ Language: en-US
 Suggests:
     knitr,
     rmarkdown,
-    sessioninfo,
     spelling,
-    testthat,
-    DT
+    testthat
 Imports:
     dplyr,
-    furrr,
     purrr,
     rJava,
     rlang,
     stringi,
     stringr,
-    tibble,
     tidyr

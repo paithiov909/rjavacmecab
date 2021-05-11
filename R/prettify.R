@@ -22,10 +22,13 @@ prettify <- function(list,
                        "Yomi1",
                        "Yomi2"
                      )) {
-  stopifnot(is.list(list), is.character(sep))
+  stopifnot(
+    is.list(list),
+    is.character(sep)
+  )
   res <- purrr::imap_dfr(list, function(li, i) {
     len <- length(li) - 1L
-    furrr::future_map_dfr(li[1:len], function(elem) {
+    purrr::map_dfr(li[1:len], function(elem) {
       split <- stringr::str_split_fixed(elem, sep, 2L)
       words <- data.frame(token = split[1, 1], stringsAsFactors = FALSE)
       info <- tidyr::separate(

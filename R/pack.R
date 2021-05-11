@@ -13,7 +13,6 @@ pack <- function(df, pull = "token", .collapse = " ") {
       ~ dplyr::pull(.x, {{ pull }}) %>%
         stringr::str_c(collapse = .collapse)
     ) %>%
-    furrr::future_map_dfr(~ data.frame(text = .)) %>%
-    tibble::rowid_to_column("doc_id")
+    purrr::imap_dfr(~ data.frame(doc_id = .y, text = .x))
   return(res)
 }

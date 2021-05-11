@@ -10,7 +10,7 @@
 rebuild_tagger <- function(opt = "") {
   standard_tagger(rJava::.jnew(
     "net.moraleboost.mecab.impl.StandardTagger",
-    paste(opt, collapse = " ")
+    stringr::str_c(opt, collapse = " ")
   ))
   return(invisible(standard_tagger()))
 }
@@ -50,7 +50,7 @@ cmecab <- function(chr, opt = "", sep = " ") {
   Encoding(parsed) <- "UTF-8"
   parsed <- stringr::str_replace_all(parsed, stringr::fixed("\t"), sep)
   parsed <- stringr::str_split(parsed, pattern = "\n")
-  res <- purrr::map(parsed, function(li) {
+  res <- lapply(parsed, function(li) {
     len <- length(li) - 1L
     return(li[1:len])
   })
