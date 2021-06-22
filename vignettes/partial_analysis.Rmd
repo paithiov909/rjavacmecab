@@ -1,11 +1,11 @@
 ---
-title: "Practice: Example of Partial Analysis"
+title: "Example of partial analysis"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 header-includes:
   - \usepackage[utf8]{inputenc}
 vignette: >
-  %\VignetteIndexEntry{Practice: Example of Partial Analysis}
+  %\VignetteIndexEntry{Example of partial analysis}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 stopifnot(
-  require(tidyverse),
+  require(magrittr),
   require(rjavacmecab)
 )
 ```
@@ -30,7 +30,7 @@ stopifnot(
 
 ```{r wakati}
 output_path <- rjavacmecab::fastestword(
-  "みなさまが、焼き餃子だと居間で噂するクラッチを持たせていただきました",
+  "キャラクターはシルエットだけで読者に見分けがつくように描き分けよう",
   opt = "-Owakati", ## equal to default.
   encoding = "UTF-8"
 )
@@ -41,7 +41,7 @@ readLines(output_path, encoding = "UTF-8")
 
 ```{r yomi}
 output_path <- rjavacmecab::fastestword(
-  "みなさまが、焼き餃子だと居間で噂するクラッチを持たせていただきました",
+  "キャラクターはシルエットだけで読者に見分けがつくように描き分けよう",
   opt = "-Oyomi",
   encoding = "UTF-8"
 )
@@ -52,7 +52,7 @@ readLines(output_path, encoding = "UTF-8")
 
 ```{r chasen}
 output_path <- rjavacmecab::fastestword(
-  "みなさまが、焼き餃子だと居間で噂するクラッチを持たせていただきました",
+  "キャラクターはシルエットだけで読者に見分けがつくように描き分けよう",
   opt = "-Ochasen",
   encoding = "UTF-8"
 )
@@ -73,44 +73,42 @@ MeCabのやや発展的な使い方のひとつとして、[制約付き解析](
 >
 > たとえば、「にわにはにわにわとりがいる。」という文に対して、 「はにわ」の部分が名詞であるとか、「にわとり」の部分が一つの形態素 であるというように指定した上で解析することができます。このとき、 制約に反する4文字目の「は」が単独で形態素となったり、「にわとり」が「にわ」と「とり」 に分割されるような解析候補は排除されます。
 
-ここでは「くぅ～きゃりーぱみゅぱみゅたそのぴーぶいぐうかわっすよ～」（意訳：うわー、きゃりーぱみゅぱみゅちゃんのPVはすごくかわいいなぁ）という文を意図どおりに解析させることを試みます。
+ここでは「うんちをしています」「あぁ\^～心がぴょんぴょんするんじゃぁ\^～」という文を意図の通りに解析させることを試みます。
 
 ### IPA辞書による素の解析の場合
 
 標準のIPA辞書で解析するとうまく解析されていません。
 
 ```{r partial_1}
-input_text <- c("くぅ～きゃりーぱみゅぱみゅたそのぴーぶいぐうかわっすよ～")
+input_text <- c(
+　"うんちをしています",
+  "あぁ^～心がぴょんぴょんするんじゃぁ^～"
+)
 output_path <- rjavacmecab::fastestword(
   input_text,
   opt = "", ## MeCab標準の形式で出力させるために空文字をオプションとして渡す
   encoding = "UTF-8"
 )
-file <- readLines(output_path, encoding = "UTF-8")
-readr::read_tsv(
-  file,
-  col_names = FALSE,
-  quote = "",
-  n_max = length(file) - 1L
-)
+readLines(output_path, encoding = "UTF-8")
 ```
 
-MeCabはデフォルトだと未知語についても品詞推定をおこないますが、推定された未知語の多くは名詞一般になります。未知語と判定された形態素について品詞推定をせず、特定の素性パターンを表示させるには次のようにします。
+ちなみに、Neoglod辞書でもこれらの文は必ずしも期待通りに解析されません。
+
+```{r cmecab_neologd}
+rjavacmecab::cmecab(input_text, "-d /MeCab/ipadic-neologd")
+```
+
+### 未知語の品詞推定の制御
+
+MeCabはデフォルトだと未知語についても品詞推定をおこないますが、推定された未知語の多くは名詞になります。未知語と判定された形態素について品詞推定をせず、特定の素性パターンを表示させるには次のようにします。
 
 ```{r partial_2}
-input_text <- c("くぅ～きゃりーぱみゅぱみゅたそのぴーぶいぐうかわっすよ～")
 output_path <- rjavacmecab::fastestword(
-  input_text,
+  input_text[2],
   opt = "--unk-feature Unknown",
   encoding = "UTF-8"
 )
-file <- readLines(output_path, encoding = "UTF-8")
-readr::read_tsv(
-  file,
-  col_names = FALSE,
-  quote = "",
-  n_max = length(file) - 1L
-)
+readLines(output_path, encoding = "UTF-8")
 ```
 
 ### 制約付き解析の場合
@@ -119,9 +117,11 @@ readr::read_tsv(
 
 ```{r partial_3}
 input_text <- c(
-  "くぅ～\t感動詞", ## 形態素断片とその素性パターンは"\t"で区切る
-  "きゃりーぱみゅぱみゅたそのぴーぶいぐうかわっすよ～", ## 通常の文字列は文断片として処理される
-  "EOS" ## 改行を含む文を部分解析モードで解析する場合、文末記号として"EOS"を与える
+  "うんち\tウンチ", ## 形態素断片とその素性パターンは"\t"で区切る
+  "をしています", ## 通常の文字列は文断片として処理される
+  "EOS", ## 改行を含む文章を部分解析モードで解析する場合、文末記号として"EOS"を与える
+  "あぁ^～心がぴょんぴょんするんじゃぁ^～",
+  "EOS"
 )
 
 output_path <- rjavacmecab::fastestword(
@@ -129,104 +129,26 @@ output_path <- rjavacmecab::fastestword(
   opt = "--partial --unk-feature Unknown",
   encoding = "UTF-8"
 )
-file <- readLines(output_path, encoding = "UTF-8")
-readr::read_tsv(
-  file,
-  col_names = FALSE,
-  quote = "",
-  n_max = length(file) - 1L
-)
+readLines(output_path, encoding = "UTF-8")
 ```
 
-実用的には、たとえば次のように使うことができます。
+また、形態素断片の素性パターンにワイルドカードを使うとその単語を切り出しながら品詞については適当なものを付与させることができます。以下では「うんち」については常に単語として切り出しながら、品詞は適当なものを付与させています。この使い方は、ユーザー辞書で未知語を定義する場合と比べて、形態素としての区切りは与えながらも品詞の推定はMeCabにやらせたい場合に便利です。
 
 ```{r partial_4}
-input_text <- c("くぅ～きゃりーぱみゅぱみゅたそのぴーぶいぐうかわっすよ～") %>%
-  purrr::map_chr(function(str) {
-    str %>%
-      stringr::str_replace_all("くぅ～", "くぅ～\t感動詞\n") %>%
-      stringr::str_replace_all("きゃりーぱみゅぱみゅ", "きゃりーぱみゅぱみゅ\t名詞,固有名詞,人名,一般\n") %>%
-      stringr::str_replace_all("たそ", "たそ\t名詞,接尾,人名\n") %>%
-      stringr::str_replace_all("ぴーぶい", "ぴーぶい\t名詞,一般\n") %>%
-      stringr::str_replace_all("ぐうかわ", "ぐうかわ\t名詞,形容動詞語幹\n")
-  }) %>%
-  c("EOS")
+input_text <- c(
+  "うんち\t*", ## "*"はワイルドカード
+  "をしています",
+  "EOS",
+  "あぁ^～心がぴょんぴょんするんじゃぁ^～",
+  "EOS"
+)
 
 output_path <- rjavacmecab::fastestword(
   input_text,
   opt = "--partial",
   encoding = "UTF-8"
 )
-file <- readLines(output_path, encoding = "UTF-8")
-out <- file %>%
-  readr::read_tsv(
-    col_names = FALSE,
-    quote = "",
-    n_max = length(file) - 1L
-  ) %>%
-  tidyr::separate(
-    col = X2,
-    into = c(
-      "品詞",
-      "品詞細分類1",
-      "品詞細分類2",
-      "品詞細分類3",
-      "活用型",
-      "活用形",
-      "原形",
-      "読み",
-      "発音"
-    ),
-    sep = ",",
-    fill = "right"
-  )
-out
-```
-
-また、形態素断片の素性パターンにワイルドカードを使うとその単語を切り出しながら品詞については適当なものを付与させることができます。以下では「の」と「ぴーぶい」については常に単語として切り出しながら、品詞は適当なものを付与させています。ユーザー辞書で未知語を定義する場合と比べて、形態素としての区切りは与えながらも品詞の推定はMeCabにやらせたいという場合に使うことができます。
-
-```{r partial_5}
-input_text <- c("くぅ～きゃりーぱみゅぱみゅたそのぴーぶいぐうかわっすよ～") %>%
-  purrr::map_chr(function(str) {
-    str %>%
-      stringr::str_replace_all("くぅ～", "くぅ～\t感動詞\n") %>%
-      stringr::str_replace_all("きゃりーぱみゅぱみゅ", "きゃりーぱみゅぱみゅ\t名詞,固有名詞,人名,一般\n") %>%
-      stringr::str_replace_all("たそ", "たそ\t名詞,接尾,人名\n") %>%
-      stringr::str_replace_all("の", "の\t*\n") %>%
-      stringr::str_replace_all("ぴーぶい", "ぴーぶい\t*\n") %>%
-      stringr::str_replace_all("ぐうかわ", "ぐうかわ\t名詞,形容動詞語幹\n")
-  }) %>%
-  c("EOS")
-
-output_path <- rjavacmecab::fastestword(
-  input_text,
-  opt = "--partial",
-  encoding = "UTF-8"
-)
-file <- readLines(output_path, encoding ="UTF-8")
-out <- file %>%
-  readr::read_tsv(
-    col_names = FALSE,
-    quote = "",
-    n_max = length(file) - 1L
-  ) %>%
-  tidyr::separate(
-    col = X2,
-    into = c(
-      "品詞",
-      "品詞細分類1",
-      "品詞細分類2",
-      "品詞細分類3",
-      "活用型",
-      "活用形",
-      "原形",
-      "読み",
-      "発音"
-    ),
-    sep = ",",
-    fill = "right"
-  )
-out
+readLines(output_path, encoding = "UTF-8")
 ```
 
 ## 参考
@@ -239,5 +161,3 @@ out
 ```{r session_info}
 sessioninfo::session_info()
 ```
-
-

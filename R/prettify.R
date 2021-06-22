@@ -29,21 +29,22 @@ prettify <- function(list,
   res <- purrr::imap_dfr(list, function(li, i) {
     len <- length(li) - 1L
     purrr::map_dfr(li[1:len], function(elem) {
-      split <- stringr::str_split_fixed(elem, sep, 2L)
-      words <- data.frame(token = split[1, 1], stringsAsFactors = FALSE)
-      info <- tidyr::separate(
-        data.frame(Features = c(split[1, 2]), stringsAsFactors = FALSE),
-        col = "Features",
-        into = into,
-        sep = ",",
-        fill = "right"
-      )
+      split <- stringi::stri_split_regex(elem, sep, 2L)
       return(data.frame(
         sentence_id = i,
-        as.data.frame(words, stringsAsFactors = FALSE),
-        dplyr::summarise_all(info, ~ dplyr::na_if(., "*"))
+        token = purrr::map_chr(split, ~ purrr::pluck(., 1)),
+        Features = purrr::map_chr(split, ~ purrr::pluck(., 2))
       ))
     })
   })
+  res <-
+    tidyr::separate(
+      res,
+      col = "Features",
+      into = into,
+      sep = ",",
+      fill = "right"
+    ) %>%
+      dplyr::mutate_if(is.character, ~ dplyr::na_if(., "*"))
   return(res)
 }

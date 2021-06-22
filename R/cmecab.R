@@ -10,7 +10,7 @@
 rebuild_tagger <- function(opt = "") {
   standard_tagger(rJava::.jnew(
     "net.moraleboost.mecab.impl.StandardTagger",
-    stringr::str_c(opt, collapse = " ")
+    stringi::stri_c(opt, collapse = " ")
   ))
   return(invisible(standard_tagger()))
 }
@@ -39,7 +39,7 @@ cmecab <- function(chr, opt = "", sep = " ") {
   lattice <- standard_tagger()$createLattice()
 
   parsed <- purrr::map_chr(stringi::stri_enc_toutf8(chr), function(str) {
-    str <- tidyr::replace_na(chr, "")
+    str <- tidyr::replace_na(str, "")
     lattice$setSentence(str)
     standard_tagger()$parse(lattice)
     return(lattice$toString())
@@ -48,8 +48,8 @@ cmecab <- function(chr, opt = "", sep = " ") {
   lattice$destroy()
 
   Encoding(parsed) <- "UTF-8"
-  parsed <- stringr::str_replace_all(parsed, stringr::fixed("\t"), sep)
-  parsed <- stringr::str_split(parsed, pattern = "\n")
+  parsed <- stringi::stri_replace_all_fixed(parsed, "\t", sep)
+  parsed <- stringi::stri_split_fixed(parsed, pattern = "\n")
   res <- lapply(parsed, function(li) {
     len <- length(li) - 1L
     return(li[1:len])

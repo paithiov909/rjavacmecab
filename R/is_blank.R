@@ -17,7 +17,7 @@ is_blank <- function(x, trim = TRUE, ...) {
     dplyr::case_when(
       is.na(x) ~ TRUE,
       is.nan(x) ~ TRUE,
-      is.character(x) && nchar(ifelse(trim, stringr::str_trim(x), x)) == 0 ~ TRUE,
+      is.character(x) && nchar(ifelse(trim, stringi::stri_trim(x), x)) == 0 ~ TRUE,
       TRUE ~ FALSE
     )
   } else {

@@ -3,8 +3,9 @@ destination: docs
 url: https://paithiov909.github.io/rjavacmecab
 
 template:
+  package: preferably
   params:
-    ganalytics: UA-73417314-25
+    toggle: manual
 
 reference:
     - title: "Tokenizer"

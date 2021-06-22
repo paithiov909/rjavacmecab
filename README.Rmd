@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# rjavacmecab <a href='https://paithiov909.github.io/rjavacmecab'><img src='https://raw.githack.com/paithiov909/rjavacmecab/master/man/figures/logo.png' align="right" height="139" /></a>
+# rjavacmecab <a href='https://paithiov909.github.io/rjavacmecab'><img src='https://rawcdn.githack.com/paithiov909/rjavacmecab/3075fa2aee8ec83c8f35a482cab1cf137de50d24/man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 [![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/rjavacmecab)](#)
@@ -40,7 +40,7 @@ remotes::install_github("paithiov909/rjavacmecab")
 ### Call Tagger
 
 ```{r cmecab_1}
-res <- rjavacmecab::cmecab("キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください")
+res <- rjavacmecab::cmecab(c("長期的自己実現で福楽は得られない", "幸せは刹那の中にあり"))
 str(res)
 ```
 
@@ -48,7 +48,7 @@ str(res)
 
 ```{r cmecab_2}
 res <- rjavacmecab::prettify(res)
-print(res)
+str(res)
 ```
 
 If you use IPA-styled dictionary, the output has these columns.
@@ -72,9 +72,9 @@ print(res)
 ### Change Dictionary
 
 ```{r cmecab_4}
-str <- "きゃりーぱみゅぱみゅ"
-rjavacmecab::cmecab(str)
-rjavacmecab::cmecab(str, "-d /MeCab/ipadic-neologd")
+str <- c("Fate/Grand Order", "田村ゆかりのいたずら黒うさぎ")
+rjavacmecab::cmecab(str, sep = "\t")
+rjavacmecab::cmecab(str, "-d /MeCab/ipadic-neologd", sep = "\t")
 ```
 
 ## Related Products
@@ -82,15 +82,11 @@ rjavacmecab::cmecab(str, "-d /MeCab/ipadic-neologd")
 - [IshidaMotohiro/RMeCab: Interface to MeCab](https://github.com/IshidaMotohiro/RMeCab)
 - [junhewk/RcppMeCab: RcppMeCab: Rcpp Interface of CJK Morpheme Analyzer MeCab](https://github.com/junhewk/RcppMeCab)
 
-## Code of Conduct
-
-Please note that the rjavacmecab project is released with a [Contributor Code of Conduct](https://paithiov909.github.io/rjavacmecab/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
-
-## Licenses
+## License
 
 MIT license.
 
-This software includes works that are distributed in Public Domain and New BSD License. See https://github.com/takscape/cmecab-java/blob/master/README.txt for more details. 
+This software includes works that are distributed in Public Domain and New BSD License.
+See https://github.com/takscape/cmecab-java/blob/master/README.txt for more details. 
 
 Icons made by [Vectors Market](https://www.flaticon.com/authors/vectors-market) from [Flaticon](https://www.flaticon.com/).
-

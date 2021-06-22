@@ -5,31 +5,42 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Practice: Example of Partial Analysis • rjavacmecab</title>
+<!-- Inform modern browsers that this page supports both dark and light color schemes,
+  and the page author prefers light. --><meta name="color-scheme" content="dark light">
+<script>
+  // If `prefers-color-scheme` is not supported, fall back to light mode.
+  // i.e. In this case, inject the `light` CSS before the others, with
+  // no media filter so that it will be downloaded with highest priority.
+  if (window.matchMedia("(prefers-color-scheme: dark)").media === "not all") {
+    document.documentElement.style.display = "none";
+    document.head.insertAdjacentHTML(
+      "beforeend",
+      "<link id=\"css\" rel=\"stylesheet\" href=\"https://bootswatch.com/3/flatly/bootstrap.css\" onload=\"document.documentElement.style.display = ''\">"
+    );
+  }
+</script><title>Example of partial analysis • rjavacmecab</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- Flatly Theme - Light  --><link id="css-light" rel="stylesheet" href="https://bootswatch.com/3/flatly/bootstrap.css" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)">
+<!-- Darkly Theme - Dark --><link id="css-dark" rel="stylesheet" href="https://bootswatch.com/3/darkly/bootstrap.css" media="(prefers-color-scheme: dark)">
+<!-- preferably CSS --><link rel="stylesheet" href="../preferably.css">
+<link id="css-code-light" rel="stylesheet" href="../code-color-scheme-light.css" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)">
+<link id="css-code-dark" rel="stylesheet" href="../code-color-scheme-dark.css" media="(prefers-color-scheme: dark)">
+<script src="../darkswitch.js"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Practice: Example of Partial Analysis">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Example of partial analysis">
 <meta property="og:description" content="rjavacmecab">
 <meta property="og:image" content="https://paithiov909.github.io/rjavacmecab/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]--><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-73417314-25"></script><script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-73417314-25');
-</script>
+<![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
@@ -44,7 +55,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rjavacmecab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1.9000</span>
       </span>
     </div>
 
@@ -55,6 +66,9 @@
     <span class="fas fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/rjavacmecab.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -70,21 +84,28 @@
       <a href="../articles/datasets.html">Explore datasets</a>
     </li>
     <li>
-      <a href="../articles/partial_analysis.html">Practice: Example of Partial Analysis</a>
-    </li>
-    <li>
-      <a href="../articles/readme_ja.html">About rjavacmecab package</a>
+      <a href="../articles/partial_analysis.html">Example of partial analysis</a>
     </li>
   </ul>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
+          <a href="#" id="css-toggle-btn">
+            <span class="fas fa-adjust fa-lg"></span>
+          </a>
+        </li>
+        
+        <li>
   <a href="https://github.com/paithiov909/rjavacmecab/">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
+        
+        
+
+
       </ul>
 </div>
 <!--/.nav-collapse -->
@@ -95,12 +116,12 @@
 
       
 
-      </header><script src="partial_analysis_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
+      </header><script src="partial_analysis_files/header-attrs-2.9/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Practice: Example of Partial Analysis</h1>
+      <h1 data-toc-skip>Example of partial analysis</h1>
             
-            <h4 class="date">2021-03-19</h4>
+            <h4 class="date">2021-06-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/paithiov909/rjavacmecab/blob/master/vignettes/partial_analysis.Rmd"><code>vignettes/partial_analysis.Rmd</code></a></small>
       <div class="hidden name"><code>partial_analysis.Rmd</code></div>
@@ -118,31 +139,31 @@
 <a href="#owakati" class="anchor"></a>-Owakati</h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">output_path</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/fastestword.html">fastestword</a></span><span class="op">(</span>
-  <span class="st">"みなさまが、焼き餃子だと居間で噂するクラッチを持たせていただきました"</span>,
+  <span class="st">"キャラクターはシルエットだけで読者に見分けがつくように描き分けよう"</span>,
   opt <span class="op">=</span> <span class="st">"-Owakati"</span>, <span class="co">## equal to default.</span>
   encoding <span class="op">=</span> <span class="st">"UTF-8"</span>
 <span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="va">output_path</span>, encoding <span class="op">=</span> <span class="st">"UTF-8"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "みなさま が 、 焼き 餃子 だ と 居間 で 噂 する クラッチ を 持た せ て いただき まし た "</span></code></pre></div>
+<span class="co">#&gt; [1] "キャラクター は シルエット だけ で 読者 に 見分け が つく よう に 描き 分けよ う "</span></code></pre></div>
 </div>
 <div id="oyomi" class="section level3">
 <h3 class="hasAnchor">
 <a href="#oyomi" class="anchor"></a>-Oyomi</h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">output_path</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/fastestword.html">fastestword</a></span><span class="op">(</span>
-  <span class="st">"みなさまが、焼き餃子だと居間で噂するクラッチを持たせていただきました"</span>,
+  <span class="st">"キャラクターはシルエットだけで読者に見分けがつくように描き分けよう"</span>,
   opt <span class="op">=</span> <span class="st">"-Oyomi"</span>,
   encoding <span class="op">=</span> <span class="st">"UTF-8"</span>
 <span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="va">output_path</span>, encoding <span class="op">=</span> <span class="st">"UTF-8"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "ミナサマガ、ヤキギョウザダトイマデウワサスルクラッチヲモタセテイタダキマシタ"</span></code></pre></div>
+<span class="co">#&gt; [1] "キャラクターハシルエットダケデドクシャニミワケガツクヨウニエガキワケヨウ"</span></code></pre></div>
 </div>
 <div id="ochasen" class="section level3">
 <h3 class="hasAnchor">
 <a href="#ochasen" class="anchor"></a>-Ochasen</h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">output_path</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/fastestword.html">fastestword</a></span><span class="op">(</span>
-  <span class="st">"みなさまが、焼き餃子だと居間で噂するクラッチを持たせていただきました"</span>,
+  <span class="st">"キャラクターはシルエットだけで読者に見分けがつくように描き分けよう"</span>,
   opt <span class="op">=</span> <span class="st">"-Ochasen"</span>,
   encoding <span class="op">=</span> <span class="st">"UTF-8"</span>
 <span class="op">)</span>
@@ -153,28 +174,24 @@
   quote <span class="op">=</span> <span class="st">""</span>,
   n_max <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1L</span> <span class="co">## Suppress warning message that EOS line can't be parsed.</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 19 x 6</span>
-<span class="co">#&gt;    X1       X2       X3       X4               X5               X6    </span>
-<span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt; </span>
-<span class="co">#&gt;  1 みなさま ミナサマ みなさま 名詞-代名詞-一般 &lt;NA&gt;             &lt;NA&gt;  </span>
-<span class="co">#&gt;  2 が       ガ       が       助詞-格助詞-一般 &lt;NA&gt;             &lt;NA&gt;  </span>
-<span class="co">#&gt;  3 、       、       、       記号-読点        &lt;NA&gt;             &lt;NA&gt;  </span>
-<span class="co">#&gt;  4 焼き     ヤキ     焼く     動詞-自立        五段・カ行イ音便 連用形</span>
-<span class="co">#&gt;  5 餃子     ギョウザ 餃子     名詞-一般        &lt;NA&gt;             &lt;NA&gt;  </span>
-<span class="co">#&gt;  6 だ       ダ       だ       助動詞           特殊・ダ         基本形</span>
-<span class="co">#&gt;  7 と       ト       と       助詞-格助詞-引用 &lt;NA&gt;             &lt;NA&gt;  </span>
-<span class="co">#&gt;  8 居間     イマ     居間     名詞-一般        &lt;NA&gt;             &lt;NA&gt;  </span>
-<span class="co">#&gt;  9 で       デ       で       助詞-格助詞-一般 &lt;NA&gt;             &lt;NA&gt;  </span>
-<span class="co">#&gt; 10 噂       ウワサ   噂       名詞-サ変接続    &lt;NA&gt;             &lt;NA&gt;  </span>
-<span class="co">#&gt; 11 する     スル     する     動詞-自立        サ変・スル       基本形</span>
-<span class="co">#&gt; 12 クラッチ クラッチ クラッチ 名詞-一般        &lt;NA&gt;             &lt;NA&gt;  </span>
-<span class="co">#&gt; 13 を       ヲ       を       助詞-格助詞-一般 &lt;NA&gt;             &lt;NA&gt;  </span>
-<span class="co">#&gt; 14 持た     モタ     持つ     動詞-自立        五段・タ行       未然形</span>
-<span class="co">#&gt; 15 せ       セ       せる     動詞-接尾        一段             連用形</span>
-<span class="co">#&gt; 16 て       テ       て       助詞-接続助詞    &lt;NA&gt;             &lt;NA&gt;  </span>
-<span class="co">#&gt; 17 いただき イタダキ いただく 動詞-非自立      五段・カ行イ音便 連用形</span>
-<span class="co">#&gt; 18 まし     マシ     ます     助動詞           特殊・マス       連用形</span>
-<span class="co">#&gt; 19 た       タ       た       助動詞           特殊・タ         基本形</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 15 x 6</span>
+<span class="co">#&gt;    X1          X2          X3          X4                 X5            X6      </span>
+<span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;              &lt;chr&gt;         &lt;chr&gt;   </span>
+<span class="co">#&gt;  1 キャラクタ~ キャラクタ~ キャラクタ~ 名詞-一般          &lt;NA&gt;          &lt;NA&gt;    </span>
+<span class="co">#&gt;  2 は          ハ          は          助詞-係助詞        &lt;NA&gt;          &lt;NA&gt;    </span>
+<span class="co">#&gt;  3 シルエット  シルエット  シルエット  名詞-一般          &lt;NA&gt;          &lt;NA&gt;    </span>
+<span class="co">#&gt;  4 だけ        ダケ        だけ        助詞-副助詞        &lt;NA&gt;          &lt;NA&gt;    </span>
+<span class="co">#&gt;  5 で          デ          で          助詞-格助詞-一般   &lt;NA&gt;          &lt;NA&gt;    </span>
+<span class="co">#&gt;  6 読者        ドクシャ    読者        名詞-一般          &lt;NA&gt;          &lt;NA&gt;    </span>
+<span class="co">#&gt;  7 に          ニ          に          助詞-格助詞-一般   &lt;NA&gt;          &lt;NA&gt;    </span>
+<span class="co">#&gt;  8 見分け      ミワケ      見分け      名詞-一般          &lt;NA&gt;          &lt;NA&gt;    </span>
+<span class="co">#&gt;  9 が          ガ          が          助詞-格助詞-一般   &lt;NA&gt;          &lt;NA&gt;    </span>
+<span class="co">#&gt; 10 つく        ツク        つく        動詞-自立          五段・カ行イ~ 基本形  </span>
+<span class="co">#&gt; 11 よう        ヨウ        よう        名詞-非自立-助動~  &lt;NA&gt;          &lt;NA&gt;    </span>
+<span class="co">#&gt; 12 に          ニ          に          助詞-副詞化        &lt;NA&gt;          &lt;NA&gt;    </span>
+<span class="co">#&gt; 13 描き        エガキ      描く        動詞-自立          五段・カ行イ~ 連用形  </span>
+<span class="co">#&gt; 14 分けよ      ワケヨ      分ける      動詞-自立          一段          未然ウ~ </span>
+<span class="co">#&gt; 15 う          ウ          う          助動詞             不変化型      基本形</span></code></pre></div>
 </div>
 </div>
 <div id="制約付き解析部分解析の一例" class="section level2">
@@ -185,78 +202,88 @@
 <p>入力文の一部の形態素情報が既知である、あるいは境界がわかっているときに、 それを満たすように解析する機能です。</p>
 <p>たとえば、「にわにはにわにわとりがいる。」という文に対して、 「はにわ」の部分が名詞であるとか、「にわとり」の部分が一つの形態素 であるというように指定した上で解析することができます。このとき、 制約に反する4文字目の「は」が単独で形態素となったり、「にわとり」が「にわ」と「とり」 に分割されるような解析候補は排除されます。</p>
 </blockquote>
-<p>ここでは「くぅ～きゃりーぱみゅぱみゅたそのぴーぶいぐうかわっすよ～」（意訳：うわー、きゃりーぱみゅぱみゅちゃんのPVはすごくかわいいなぁ）という文を意図どおりに解析させることを試みます。</p>
+<p>ここでは「うんちをしています」「あぁ^～心がぴょんぴょんするんじゃぁ^～」という文を意図の通りに解析させることを試みます。</p>
 <div id="ipa辞書による素の解析の場合" class="section level3">
 <h3 class="hasAnchor">
 <a href="#ipa%E8%BE%9E%E6%9B%B8%E3%81%AB%E3%82%88%E3%82%8B%E7%B4%A0%E3%81%AE%E8%A7%A3%E6%9E%90%E3%81%AE%E5%A0%B4%E5%90%88" class="anchor"></a>IPA辞書による素の解析の場合</h3>
 <p>標準のIPA辞書で解析するとうまく解析されていません。</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">input_text</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"くぅ～きゃりーぱみゅぱみゅたそのぴーぶいぐうかわっすよ～"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">input_text</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+  <span class="st">"うんちをしています"</span>,
+  <span class="st">"あぁ^～心がぴょんぴょんするんじゃぁ^～"</span>
+<span class="op">)</span>
 <span class="va">output_path</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/fastestword.html">fastestword</a></span><span class="op">(</span>
   <span class="va">input_text</span>,
   opt <span class="op">=</span> <span class="st">""</span>, <span class="co">## MeCab標準の形式で出力させるために空文字をオプションとして渡す</span>
   encoding <span class="op">=</span> <span class="st">"UTF-8"</span>
 <span class="op">)</span>
-<span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="va">output_path</span>, encoding <span class="op">=</span> <span class="st">"UTF-8"</span><span class="op">)</span>
-<span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv</a></span><span class="op">(</span>
-  <span class="va">file</span>,
-  col_names <span class="op">=</span> <span class="cn">FALSE</span>,
-  quote <span class="op">=</span> <span class="st">""</span>,
-  n_max <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1L</span>
-<span class="op">)</span>
-<span class="co">#&gt; # A tibble: 11 x 2</span>
-<span class="co">#&gt;    X1                  X2                                                       </span>
-<span class="co">#&gt;    &lt;chr&gt;               &lt;chr&gt;                                                    </span>
-<span class="co">#&gt;  1 くぅ                形容詞,自立,*,*,形容詞・アウオ段,連用ゴザイ接続,くい,クゥ,クー~</span>
-<span class="co">#&gt;  2 ～                  記号,一般,*,*,*,*,～,～,～                               </span>
-<span class="co">#&gt;  3 き                  動詞,自立,*,*,カ変・クル,連用形,くる,キ,キ               </span>
-<span class="co">#&gt;  4 ゃり                名詞,一般,*,*,*,*,*                                      </span>
-<span class="co">#&gt;  5 ー                  名詞,一般,*,*,*,*,*                                      </span>
-<span class="co">#&gt;  6 ぱみゅぱみゅたそのぴ~ 名詞,一般,*,*,*,*,*                                      </span>
-<span class="co">#&gt;  7 ー                  名詞,一般,*,*,*,*,*                                      </span>
-<span class="co">#&gt;  8 ぶ                  動詞,自立,*,*,五段・ラ行,体言接続特殊２,ぶる,ブ,ブ       </span>
-<span class="co">#&gt;  9 い                  動詞,非自立,*,*,一段,連用形,いる,イ,イ                   </span>
-<span class="co">#&gt; 10 ぐうかわっすよ      名詞,一般,*,*,*,*,*                                      </span>
-<span class="co">#&gt; 11 ～                  記号,一般,*,*,*,*,～,～,～</span></code></pre></div>
-<p>MeCabはデフォルトだと未知語についても品詞推定をおこないますが、推定された未知語の多くは名詞一般になります。未知語と判定された形態素について品詞推定をせず、特定の素性パターンを表示させるには次のようにします。</p>
+<span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="va">output_path</span>, encoding <span class="op">=</span> <span class="st">"UTF-8"</span><span class="op">)</span>
+<span class="co">#&gt;  [1] "うん\t感動詞,*,*,*,*,*,うん,ウン,ウン"                                 </span>
+<span class="co">#&gt;  [2] "ち\t動詞,自立,*,*,五段・ラ行,体言接続特殊２,ちる,チ,チ"                </span>
+<span class="co">#&gt;  [3] "を\t助詞,格助詞,一般,*,*,*,を,ヲ,ヲ"                                   </span>
+<span class="co">#&gt;  [4] "し\t動詞,自立,*,*,サ変・スル,連用形,する,シ,シ"                        </span>
+<span class="co">#&gt;  [5] "て\t助詞,接続助詞,*,*,*,*,て,テ,テ"                                    </span>
+<span class="co">#&gt;  [6] "い\t動詞,非自立,*,*,一段,連用形,いる,イ,イ"                            </span>
+<span class="co">#&gt;  [7] "ます\t助動詞,*,*,*,特殊・マス,基本形,ます,マス,マス"                   </span>
+<span class="co">#&gt;  [8] "EOS"                                                                   </span>
+<span class="co">#&gt;  [9] "あぁ\t感動詞,*,*,*,*,*,あぁ,アァ,アー"                                 </span>
+<span class="co">#&gt; [10] "^～\t名詞,サ変接続,*,*,*,*,*"                                          </span>
+<span class="co">#&gt; [11] "心\t名詞,接尾,一般,*,*,*,心,シン,シン"                                 </span>
+<span class="co">#&gt; [12] "が\t助詞,格助詞,一般,*,*,*,が,ガ,ガ"                                   </span>
+<span class="co">#&gt; [13] "ぴょんぴょん\t副詞,一般,*,*,*,*,ぴょんぴょん,ピョンピョン,ピョンピョン"</span>
+<span class="co">#&gt; [14] "する\t動詞,自立,*,*,サ変・スル,基本形,する,スル,スル"                  </span>
+<span class="co">#&gt; [15] "ん\t助動詞,*,*,*,不変化型,基本形,ん,ン,ン"                             </span>
+<span class="co">#&gt; [16] "じゃぁ\t感動詞,*,*,*,*,*,じゃぁ,ジャァ,ジャー"                         </span>
+<span class="co">#&gt; [17] "^～\t名詞,サ変接続,*,*,*,*,*"                                          </span>
+<span class="co">#&gt; [18] "EOS"</span></code></pre></div>
+<p>ちなみに、Neoglod辞書でもこれらの文は必ずしも期待通りに解析されません。</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">input_text</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"くぅ～きゃりーぱみゅぱみゅたそのぴーぶいぐうかわっすよ～"</span><span class="op">)</span>
-<span class="va">output_path</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/fastestword.html">fastestword</a></span><span class="op">(</span>
-  <span class="va">input_text</span>,
+<code class="sourceCode R"><span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/cmecab.html">cmecab</a></span><span class="op">(</span><span class="va">input_text</span>, <span class="st">"-d /MeCab/ipadic-neologd"</span><span class="op">)</span>
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] "うんちをしています 名詞,一般,*,*,*,*,*"</span>
+<span class="co">#&gt; [2] "EOS"                                   </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt; [1] "あぁ 名詞,一般,*,*,*,*,*"                      </span>
+<span class="co">#&gt; [2] "^～ 記号,一般,*,*,*,*,*"                       </span>
+<span class="co">#&gt; [3] "心 名詞,固有名詞,組織,*,*,*,*"                 </span>
+<span class="co">#&gt; [4] "がぴょんぴょんするんじゃぁ 名詞,一般,*,*,*,*,*"</span>
+<span class="co">#&gt; [5] "^～ 記号,一般,*,*,*,*,*"                       </span>
+<span class="co">#&gt; [6] "EOS"</span></code></pre></div>
+</div>
+<div id="未知語の品詞推定の制御" class="section level3">
+<h3 class="hasAnchor">
+<a href="#%E6%9C%AA%E7%9F%A5%E8%AA%9E%E3%81%AE%E5%93%81%E8%A9%9E%E6%8E%A8%E5%AE%9A%E3%81%AE%E5%88%B6%E5%BE%A1" class="anchor"></a>未知語の品詞推定の制御</h3>
+<p>MeCabはデフォルトだと未知語についても品詞推定をおこないますが、推定された未知語の多くは名詞になります。未知語と判定された形態素について品詞推定をせず、特定の素性パターンを表示させるには次のようにします。</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">output_path</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/fastestword.html">fastestword</a></span><span class="op">(</span>
+  <span class="va">input_text</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>,
   opt <span class="op">=</span> <span class="st">"--unk-feature Unknown"</span>,
   encoding <span class="op">=</span> <span class="st">"UTF-8"</span>
 <span class="op">)</span>
-<span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="va">output_path</span>, encoding <span class="op">=</span> <span class="st">"UTF-8"</span><span class="op">)</span>
-<span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv</a></span><span class="op">(</span>
-  <span class="va">file</span>,
-  col_names <span class="op">=</span> <span class="cn">FALSE</span>,
-  quote <span class="op">=</span> <span class="st">""</span>,
-  n_max <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1L</span>
-<span class="op">)</span>
-<span class="co">#&gt; # A tibble: 11 x 2</span>
-<span class="co">#&gt;    X1                  X2                                                       </span>
-<span class="co">#&gt;    &lt;chr&gt;               &lt;chr&gt;                                                    </span>
-<span class="co">#&gt;  1 くぅ                形容詞,自立,*,*,形容詞・アウオ段,連用ゴザイ接続,くい,クゥ,クー~</span>
-<span class="co">#&gt;  2 ～                  記号,一般,*,*,*,*,～,～,～                               </span>
-<span class="co">#&gt;  3 き                  動詞,自立,*,*,カ変・クル,連用形,くる,キ,キ               </span>
-<span class="co">#&gt;  4 ゃり                Unknown                                                  </span>
-<span class="co">#&gt;  5 ー                  Unknown                                                  </span>
-<span class="co">#&gt;  6 ぱみゅぱみゅたそのぴ~ Unknown                                                  </span>
-<span class="co">#&gt;  7 ー                  Unknown                                                  </span>
-<span class="co">#&gt;  8 ぶ                  動詞,自立,*,*,五段・ラ行,体言接続特殊２,ぶる,ブ,ブ       </span>
-<span class="co">#&gt;  9 い                  動詞,非自立,*,*,一段,連用形,いる,イ,イ                   </span>
-<span class="co">#&gt; 10 ぐうかわっすよ      Unknown                                                  </span>
-<span class="co">#&gt; 11 ～                  記号,一般,*,*,*,*,～,～,～</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="va">output_path</span>, encoding <span class="op">=</span> <span class="st">"UTF-8"</span><span class="op">)</span>
+<span class="co">#&gt;  [1] "あぁ\t感動詞,*,*,*,*,*,あぁ,アァ,アー"                                 </span>
+<span class="co">#&gt;  [2] "^～\tUnknown"                                                          </span>
+<span class="co">#&gt;  [3] "心\t名詞,接尾,一般,*,*,*,心,シン,シン"                                 </span>
+<span class="co">#&gt;  [4] "が\t助詞,格助詞,一般,*,*,*,が,ガ,ガ"                                   </span>
+<span class="co">#&gt;  [5] "ぴょんぴょん\t副詞,一般,*,*,*,*,ぴょんぴょん,ピョンピョン,ピョンピョン"</span>
+<span class="co">#&gt;  [6] "する\t動詞,自立,*,*,サ変・スル,基本形,する,スル,スル"                  </span>
+<span class="co">#&gt;  [7] "ん\t助動詞,*,*,*,不変化型,基本形,ん,ン,ン"                             </span>
+<span class="co">#&gt;  [8] "じゃぁ\t感動詞,*,*,*,*,*,じゃぁ,ジャァ,ジャー"                         </span>
+<span class="co">#&gt;  [9] "^～\tUnknown"                                                          </span>
+<span class="co">#&gt; [10] "EOS"</span></code></pre></div>
 </div>
 <div id="制約付き解析の場合" class="section level3">
 <h3 class="hasAnchor">
 <a href="#%E5%88%B6%E7%B4%84%E4%BB%98%E3%81%8D%E8%A7%A3%E6%9E%90%E3%81%AE%E5%A0%B4%E5%90%88" class="anchor"></a>制約付き解析の場合</h3>
 <p><code><a href="../reference/fastestword.html">rjavacmecab::fastestword</a></code>は与えられた文字列ベクトルをそのまま<code><a href="https://rdrr.io/r/base/writeLines.html">base::writeLines</a></code>に渡し、書き出したファイルをMeCabに解析させます。<code><a href="https://rdrr.io/r/base/writeLines.html">base::writeLines</a></code>に渡された文字列ベクトルは要素ごとにsepで指定した文字で区切られて書き出される（デフォルトでは改行で区切られる）ため、制約付き解析をする場合は以下のような形式の文字列を用意します。</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">input_text</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
-  <span class="st">"くぅ～\t感動詞"</span>, <span class="co">## 形態素断片とその素性パターンは"\t"で区切る</span>
-  <span class="st">"きゃりーぱみゅぱみゅたそのぴーぶいぐうかわっすよ～"</span>, <span class="co">## 通常の文字列は文断片として処理される</span>
-  <span class="st">"EOS"</span> <span class="co">## 改行を含む文を部分解析モードで解析する場合、文末記号として"EOS"を与える</span>
+  <span class="st">"うんち\tウンチ"</span>, <span class="co">## 形態素断片とその素性パターンは"\t"で区切る</span>
+  <span class="st">"をしています"</span>, <span class="co">## 通常の文字列は文断片として処理される</span>
+  <span class="st">"EOS"</span>, <span class="co">## 改行を含む文章を部分解析モードで解析する場合、文末記号として"EOS"を与える</span>
+  <span class="st">"あぁ^～心がぴょんぴょんするんじゃぁ^～"</span>,
+  <span class="st">"EOS"</span>
 <span class="op">)</span>
 
 <span class="va">output_path</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/fastestword.html">fastestword</a></span><span class="op">(</span>
@@ -264,136 +291,57 @@
   opt <span class="op">=</span> <span class="st">"--partial --unk-feature Unknown"</span>,
   encoding <span class="op">=</span> <span class="st">"UTF-8"</span>
 <span class="op">)</span>
-<span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="va">output_path</span>, encoding <span class="op">=</span> <span class="st">"UTF-8"</span><span class="op">)</span>
-<span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv</a></span><span class="op">(</span>
-  <span class="va">file</span>,
-  col_names <span class="op">=</span> <span class="cn">FALSE</span>,
-  quote <span class="op">=</span> <span class="st">""</span>,
-  n_max <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1L</span>
-<span class="op">)</span>
-<span class="co">#&gt; # A tibble: 10 x 2</span>
-<span class="co">#&gt;    X1                   X2                                                      </span>
-<span class="co">#&gt;    &lt;chr&gt;                &lt;chr&gt;                                                   </span>
-<span class="co">#&gt;  1 くぅ～               感動詞                                                  </span>
-<span class="co">#&gt;  2 きゃ                 動詞,非自立,*,*,五段・カ行促音便,仮定縮約１,く,キャ,キャ</span>
-<span class="co">#&gt;  3 り                   助動詞,*,*,*,文語・リ,基本形,り,リ,リ                   </span>
-<span class="co">#&gt;  4 ー                   Unknown                                                 </span>
-<span class="co">#&gt;  5 ぱみゅぱみゅたそのぴ Unknown                                                 </span>
-<span class="co">#&gt;  6 ー                   Unknown                                                 </span>
-<span class="co">#&gt;  7 ぶ                   動詞,自立,*,*,五段・ラ行,体言接続特殊２,ぶる,ブ,ブ      </span>
-<span class="co">#&gt;  8 い                   動詞,非自立,*,*,一段,連用形,いる,イ,イ                  </span>
-<span class="co">#&gt;  9 ぐうかわっすよ       Unknown                                                 </span>
-<span class="co">#&gt; 10 ～                   記号,一般,*,*,*,*,～,～,～</span></code></pre></div>
-<p>実用的には、たとえば次のように使うことができます。</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">input_text</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"くぅ～きゃりーぱみゅぱみゅたそのぴーぶいぐうかわっすよ～"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">str</span><span class="op">)</span> <span class="op">{</span>
-    <span class="va">str</span> <span class="op">%&gt;%</span>
-      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="st">"くぅ～"</span>, <span class="st">"くぅ～\t感動詞\n"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="st">"きゃりーぱみゅぱみゅ"</span>, <span class="st">"きゃりーぱみゅぱみゅ\t名詞,固有名詞,人名,一般\n"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="st">"たそ"</span>, <span class="st">"たそ\t名詞,接尾,人名\n"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="st">"ぴーぶい"</span>, <span class="st">"ぴーぶい\t名詞,一般\n"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="st">"ぐうかわ"</span>, <span class="st">"ぐうかわ\t名詞,形容動詞語幹\n"</span><span class="op">)</span>
-  <span class="op">}</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"EOS"</span><span class="op">)</span>
-
-<span class="va">output_path</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/fastestword.html">fastestword</a></span><span class="op">(</span>
-  <span class="va">input_text</span>,
-  opt <span class="op">=</span> <span class="st">"--partial"</span>,
-  encoding <span class="op">=</span> <span class="st">"UTF-8"</span>
-<span class="op">)</span>
-<span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="va">output_path</span>, encoding <span class="op">=</span> <span class="st">"UTF-8"</span><span class="op">)</span>
-<span class="va">out</span> <span class="op">&lt;-</span> <span class="va">file</span> <span class="op">%&gt;%</span>
-  <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv</a></span><span class="op">(</span>
-    col_names <span class="op">=</span> <span class="cn">FALSE</span>,
-    quote <span class="op">=</span> <span class="st">""</span>,
-    n_max <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1L</span>
-  <span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span>
-    col <span class="op">=</span> <span class="va">X2</span>,
-    into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
-      <span class="st">"品詞"</span>,
-      <span class="st">"品詞細分類1"</span>,
-      <span class="st">"品詞細分類2"</span>,
-      <span class="st">"品詞細分類3"</span>,
-      <span class="st">"活用型"</span>,
-      <span class="st">"活用形"</span>,
-      <span class="st">"原形"</span>,
-      <span class="st">"読み"</span>,
-      <span class="st">"発音"</span>
-    <span class="op">)</span>,
-    sep <span class="op">=</span> <span class="st">","</span>,
-    fill <span class="op">=</span> <span class="st">"right"</span>
-  <span class="op">)</span>
-<span class="va">out</span>
-<span class="co">#&gt; # A tibble: 8 x 10</span>
-<span class="co">#&gt;   X1        品詞   品詞細分類1 品詞細分類2 品詞細分類3 活用型 活用形 原形  読み </span>
-<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;</span>
-<span class="co">#&gt; 1 くぅ～    感動詞 &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span>
-<span class="co">#&gt; 2 きゃりーぱみゅぱ~ 名詞   固有名詞    人名        一般        *      *      *     &lt;NA&gt; </span>
-<span class="co">#&gt; 3 たそ      名詞   接尾        人名        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span>
-<span class="co">#&gt; 4 のぴーぶい~ 名詞   一般        *           *           *      *      *     &lt;NA&gt; </span>
-<span class="co">#&gt; 5 ぐうかわ  名詞   形容動詞語幹~ &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span>
-<span class="co">#&gt; 6 っす      助動詞 *           *           *           特殊・デス~ 基本形 っす  ッス </span>
-<span class="co">#&gt; 7 よ        助詞   終助詞      *           *           *      *      よ    ヨ   </span>
-<span class="co">#&gt; 8 ～        記号   一般        *           *           *      *      ～    ～   </span>
-<span class="co">#&gt; # ... with 1 more variable: 発音 &lt;chr&gt;</span></code></pre></div>
-<p>また、形態素断片の素性パターンにワイルドカードを使うとその単語を切り出しながら品詞については適当なものを付与させることができます。以下では「の」と「ぴーぶい」については常に単語として切り出しながら、品詞は適当なものを付与させています。ユーザー辞書で未知語を定義する場合と比べて、形態素としての区切りは与えながらも品詞の推定はMeCabにやらせたいという場合に使うことができます。</p>
+<span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="va">output_path</span>, encoding <span class="op">=</span> <span class="st">"UTF-8"</span><span class="op">)</span>
+<span class="co">#&gt;  [1] "うんち\tウンチ"                                                        </span>
+<span class="co">#&gt;  [2] "を\t助詞,格助詞,一般,*,*,*,を,ヲ,ヲ"                                   </span>
+<span class="co">#&gt;  [3] "し\t動詞,自立,*,*,サ変・スル,連用形,する,シ,シ"                        </span>
+<span class="co">#&gt;  [4] "て\t助詞,接続助詞,*,*,*,*,て,テ,テ"                                    </span>
+<span class="co">#&gt;  [5] "い\t動詞,非自立,*,*,一段,連用形,いる,イ,イ"                            </span>
+<span class="co">#&gt;  [6] "ます\t助動詞,*,*,*,特殊・マス,基本形,ます,マス,マス"                   </span>
+<span class="co">#&gt;  [7] "EOS"                                                                   </span>
+<span class="co">#&gt;  [8] "あぁ\t感動詞,*,*,*,*,*,あぁ,アァ,アー"                                 </span>
+<span class="co">#&gt;  [9] "^～\tUnknown"                                                          </span>
+<span class="co">#&gt; [10] "心\t名詞,接尾,一般,*,*,*,心,シン,シン"                                 </span>
+<span class="co">#&gt; [11] "が\t助詞,格助詞,一般,*,*,*,が,ガ,ガ"                                   </span>
+<span class="co">#&gt; [12] "ぴょんぴょん\t副詞,一般,*,*,*,*,ぴょんぴょん,ピョンピョン,ピョンピョン"</span>
+<span class="co">#&gt; [13] "する\t動詞,自立,*,*,サ変・スル,基本形,する,スル,スル"                  </span>
+<span class="co">#&gt; [14] "ん\t助動詞,*,*,*,不変化型,基本形,ん,ン,ン"                             </span>
+<span class="co">#&gt; [15] "じゃぁ\t感動詞,*,*,*,*,*,じゃぁ,ジャァ,ジャー"                         </span>
+<span class="co">#&gt; [16] "^～\tUnknown"                                                          </span>
+<span class="co">#&gt; [17] "EOS"</span></code></pre></div>
+<p>また、形態素断片の素性パターンにワイルドカードを使うとその単語を切り出しながら品詞については適当なものを付与させることができます。以下では「うんち」については常に単語として切り出しながら、品詞は適当なものを付与させています。この使い方は、ユーザー辞書で未知語を定義する場合と比べて、形態素としての区切りは与えながらも品詞の推定はMeCabにやらせたい場合に便利です。</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">input_text</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"くぅ～きゃりーぱみゅぱみゅたそのぴーぶいぐうかわっすよ～"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">str</span><span class="op">)</span> <span class="op">{</span>
-    <span class="va">str</span> <span class="op">%&gt;%</span>
-      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="st">"くぅ～"</span>, <span class="st">"くぅ～\t感動詞\n"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="st">"きゃりーぱみゅぱみゅ"</span>, <span class="st">"きゃりーぱみゅぱみゅ\t名詞,固有名詞,人名,一般\n"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="st">"たそ"</span>, <span class="st">"たそ\t名詞,接尾,人名\n"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="st">"の"</span>, <span class="st">"の\t*\n"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="st">"ぴーぶい"</span>, <span class="st">"ぴーぶい\t*\n"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="st">"ぐうかわ"</span>, <span class="st">"ぐうかわ\t名詞,形容動詞語幹\n"</span><span class="op">)</span>
-  <span class="op">}</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"EOS"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">input_text</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+  <span class="st">"うんち\t*"</span>, <span class="co">## "*"はワイルドカード</span>
+  <span class="st">"をしています"</span>,
+  <span class="st">"EOS"</span>,
+  <span class="st">"あぁ^～心がぴょんぴょんするんじゃぁ^～"</span>,
+  <span class="st">"EOS"</span>
+<span class="op">)</span>
 
 <span class="va">output_path</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/fastestword.html">fastestword</a></span><span class="op">(</span>
   <span class="va">input_text</span>,
   opt <span class="op">=</span> <span class="st">"--partial"</span>,
   encoding <span class="op">=</span> <span class="st">"UTF-8"</span>
 <span class="op">)</span>
-<span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="va">output_path</span>, encoding <span class="op">=</span> <span class="st">"UTF-8"</span><span class="op">)</span>
-<span class="va">out</span> <span class="op">&lt;-</span> <span class="va">file</span> <span class="op">%&gt;%</span>
-  <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv</a></span><span class="op">(</span>
-    col_names <span class="op">=</span> <span class="cn">FALSE</span>,
-    quote <span class="op">=</span> <span class="st">""</span>,
-    n_max <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1L</span>
-  <span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span>
-    col <span class="op">=</span> <span class="va">X2</span>,
-    into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
-      <span class="st">"品詞"</span>,
-      <span class="st">"品詞細分類1"</span>,
-      <span class="st">"品詞細分類2"</span>,
-      <span class="st">"品詞細分類3"</span>,
-      <span class="st">"活用型"</span>,
-      <span class="st">"活用形"</span>,
-      <span class="st">"原形"</span>,
-      <span class="st">"読み"</span>,
-      <span class="st">"発音"</span>
-    <span class="op">)</span>,
-    sep <span class="op">=</span> <span class="st">","</span>,
-    fill <span class="op">=</span> <span class="st">"right"</span>
-  <span class="op">)</span>
-<span class="va">out</span>
-<span class="co">#&gt; # A tibble: 9 x 10</span>
-<span class="co">#&gt;   X1        品詞   品詞細分類1 品詞細分類2 品詞細分類3 活用型 活用形 原形  読み </span>
-<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;</span>
-<span class="co">#&gt; 1 くぅ～    感動詞 &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span>
-<span class="co">#&gt; 2 きゃりーぱみゅぱ~ 名詞   固有名詞    人名        一般        *      *      *     &lt;NA&gt; </span>
-<span class="co">#&gt; 3 たそ      名詞   接尾        人名        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span>
-<span class="co">#&gt; 4 の        助詞   連体化      *           *           *      *      の    ノ   </span>
-<span class="co">#&gt; 5 ぴーぶい  名詞   一般        *           *           *      *      *     &lt;NA&gt; </span>
-<span class="co">#&gt; 6 ぐうかわ  名詞   形容動詞語幹~ &lt;NA&gt;        &lt;NA&gt;        &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt; </span>
-<span class="co">#&gt; 7 っす      助動詞 *           *           *           特殊・デス~ 基本形 っす  ッス </span>
-<span class="co">#&gt; 8 よ        助詞   終助詞      *           *           *      *      よ    ヨ   </span>
-<span class="co">#&gt; 9 ～        記号   一般        *           *           *      *      ～    ～   </span>
-<span class="co">#&gt; # ... with 1 more variable: 発音 &lt;chr&gt;</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="va">output_path</span>, encoding <span class="op">=</span> <span class="st">"UTF-8"</span><span class="op">)</span>
+<span class="co">#&gt;  [1] "うんち\t名詞,一般,*,*,*,*,*"                                           </span>
+<span class="co">#&gt;  [2] "を\t助詞,格助詞,一般,*,*,*,を,ヲ,ヲ"                                   </span>
+<span class="co">#&gt;  [3] "し\t動詞,自立,*,*,サ変・スル,連用形,する,シ,シ"                        </span>
+<span class="co">#&gt;  [4] "て\t助詞,接続助詞,*,*,*,*,て,テ,テ"                                    </span>
+<span class="co">#&gt;  [5] "い\t動詞,非自立,*,*,一段,連用形,いる,イ,イ"                            </span>
+<span class="co">#&gt;  [6] "ます\t助動詞,*,*,*,特殊・マス,基本形,ます,マス,マス"                   </span>
+<span class="co">#&gt;  [7] "EOS"                                                                   </span>
+<span class="co">#&gt;  [8] "あぁ\t感動詞,*,*,*,*,*,あぁ,アァ,アー"                                 </span>
+<span class="co">#&gt;  [9] "^～\t名詞,サ変接続,*,*,*,*,*"                                          </span>
+<span class="co">#&gt; [10] "心\t名詞,接尾,一般,*,*,*,心,シン,シン"                                 </span>
+<span class="co">#&gt; [11] "が\t助詞,格助詞,一般,*,*,*,が,ガ,ガ"                                   </span>
+<span class="co">#&gt; [12] "ぴょんぴょん\t副詞,一般,*,*,*,*,ぴょんぴょん,ピョンピョン,ピョンピョン"</span>
+<span class="co">#&gt; [13] "する\t動詞,自立,*,*,サ変・スル,基本形,する,スル,スル"                  </span>
+<span class="co">#&gt; [14] "ん\t助動詞,*,*,*,不変化型,基本形,ん,ン,ン"                             </span>
+<span class="co">#&gt; [15] "じゃぁ\t感動詞,*,*,*,*,*,じゃぁ,ジャァ,ジャー"                         </span>
+<span class="co">#&gt; [16] "^～\t名詞,サ変接続,*,*,*,*,*"                                          </span>
+<span class="co">#&gt; [17] "EOS"</span></code></pre></div>
 </div>
 </div>
 <div id="参考" class="section level2">
@@ -419,95 +367,70 @@
 <span class="co">#&gt;  collate  Japanese_Japan.932          </span>
 <span class="co">#&gt;  ctype    Japanese_Japan.932          </span>
 <span class="co">#&gt;  tz       Asia/Tokyo                  </span>
-<span class="co">#&gt;  date     2021-03-19                  </span>
+<span class="co">#&gt;  date     2021-06-22                  </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; - Packages -------------------------------------------------------------------</span>
-<span class="co">#&gt;  ! package     * version date       lib source        </span>
-<span class="co">#&gt;    assertthat    0.2.1   2019-03-21 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    backports     1.2.1   2020-12-09 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    broom         0.7.5   2021-02-19 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    bslib         0.2.4   2021-01-25 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    cachem        1.0.4   2021-02-13 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    cellranger    1.1.0   2016-07-27 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    cli           2.3.1   2021-02-23 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    codetools     0.2-18  2020-11-04 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    colorspace    2.0-0   2020-11-11 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    crayon        1.4.1   2021-02-08 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    DBI           1.1.1   2021-01-15 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    dbplyr        2.1.0   2021-02-03 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    desc          1.3.0   2021-03-05 [2] CRAN (R 4.0.4)</span>
-<span class="co">#&gt;    digest        0.6.27  2020-10-24 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    dplyr       * 1.0.5   2021-03-05 [2] CRAN (R 4.0.4)</span>
-<span class="co">#&gt;    ellipsis      0.3.1   2020-05-15 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    evaluate      0.14    2019-05-28 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    fansi         0.4.2   2021-01-15 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    fastmap       1.1.0   2021-01-25 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    forcats     * 0.5.1   2021-01-27 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    fs            1.5.0   2020-07-31 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    furrr         0.2.2   2021-01-29 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    future        1.21.0  2020-12-10 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    generics      0.1.0   2020-10-31 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    ggplot2     * 3.3.3   2020-12-30 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    globals       0.14.0  2020-11-22 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    glue          1.4.2   2020-08-27 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    gtable        0.3.0   2019-03-25 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    haven         2.3.1   2020-06-01 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    hms           1.0.0   2021-01-13 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    htmltools     0.5.1.1 2021-01-22 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    httr          1.4.2   2020-07-20 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    jquerylib     0.1.3   2020-12-17 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    jsonlite      1.7.2   2020-12-09 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    knitr         1.31    2021-01-27 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    lifecycle     1.0.0   2021-02-15 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    listenv       0.8.0   2019-12-05 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    lubridate     1.7.10  2021-02-26 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    magrittr      2.0.1   2020-11-17 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    memoise       2.0.0   2021-01-26 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    modelr        0.1.8   2020-05-19 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    munsell       0.5.0   2018-06-12 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    parallelly    1.24.0  2021-03-14 [2] CRAN (R 4.0.4)</span>
-<span class="co">#&gt;    pillar        1.5.1   2021-03-05 [2] CRAN (R 4.0.4)</span>
-<span class="co">#&gt;    pkgconfig     2.0.3   2019-09-22 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    pkgdown       1.6.1   2020-09-12 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    ps            1.6.0   2021-02-28 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    purrr       * 0.3.4   2020-04-17 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    R.cache       0.14.0  2019-12-06 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    R.methodsS3   1.8.1   2020-08-26 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    R.oo          1.24.0  2020-08-26 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    R.utils       2.10.1  2020-08-26 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    R6            2.5.0   2020-10-28 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    ragg          1.1.2   2021-03-17 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    Rcpp          1.0.6   2021-01-15 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    readr       * 1.4.0   2020-10-05 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    readxl        1.3.1   2019-03-13 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    reprex        1.0.0   2021-01-27 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;  D rJava         0.9-13  2020-07-06 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    rjavacmecab * 0.3.0   2021-03-19 [2] local         </span>
-<span class="co">#&gt;    rlang         0.4.10  2020-12-30 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    rmarkdown     2.7     2021-02-19 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    rprojroot     2.0.2   2020-11-15 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    rstudioapi    0.13    2020-11-12 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    rvest         1.0.0   2021-03-09 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    sass          0.3.1   2021-01-24 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    scales        1.1.1   2020-05-11 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    sessioninfo   1.1.1   2018-11-05 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    stringi       1.5.3   2020-09-09 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    stringr     * 1.4.0   2019-02-10 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    styler        1.3.2   2020-02-23 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    systemfonts   1.0.1   2021-02-09 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    textshaping   0.3.3   2021-03-16 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    tibble      * 3.1.0   2021-02-25 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    tidyr       * 1.1.3   2021-03-03 [2] CRAN (R 4.0.4)</span>
-<span class="co">#&gt;    tidyselect    1.1.0   2020-05-11 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    tidyverse   * 1.3.0   2019-11-21 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    utf8          1.2.1   2021-03-12 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    vctrs         0.3.6   2020-12-17 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    withr         2.4.1   2021-01-26 [2] CRAN (R 4.0.3)</span>
-<span class="co">#&gt;    xfun          0.22    2021-03-11 [2] CRAN (R 4.0.4)</span>
-<span class="co">#&gt;    xml2          1.3.2   2020-04-23 [2] CRAN (R 4.0.2)</span>
-<span class="co">#&gt;    yaml          2.2.1   2020-02-01 [2] CRAN (R 4.0.0)</span>
+<span class="co">#&gt;  ! package     * version    date       lib source        </span>
+<span class="co">#&gt;    assertthat    0.2.1      2019-03-21 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    backports     1.2.1      2020-12-09 [2] CRAN (R 4.0.3)</span>
+<span class="co">#&gt;    bslib         0.2.5.1    2021-05-18 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    cachem        1.0.5      2021-05-15 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    cli           2.5.0      2021-04-26 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    crayon        1.4.1      2021-02-08 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    DBI           1.1.1      2021-01-15 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    desc          1.3.0      2021-03-05 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    digest        0.6.27     2020-10-24 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    dplyr         1.0.6      2021-05-05 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    ellipsis      0.3.2      2021-04-29 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    evaluate      0.14       2019-05-28 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    fansi         0.5.0      2021-05-25 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    fastmap       1.1.0      2021-01-25 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    fs            1.5.0      2020-07-31 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    generics      0.1.0      2020-10-31 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    glue          1.4.2      2020-08-27 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    hms           1.1.0      2021-05-17 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    htmltools     0.5.1.1    2021-01-22 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    jquerylib     0.1.4      2021-04-26 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    jsonlite      1.7.2      2020-12-09 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    knitr         1.33       2021-04-24 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    lifecycle     1.0.0      2021-02-15 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    magrittr    * 2.0.1      2020-11-17 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    memoise       2.0.0      2021-01-26 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    pillar        1.6.1      2021-05-16 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    pkgconfig     2.0.3      2019-09-22 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    pkgdown       1.6.1      2020-09-12 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    ps            1.6.0      2021-02-28 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    purrr         0.3.4      2020-04-17 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    R.cache       0.15.0     2021-04-30 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    R.methodsS3   1.8.1      2020-08-26 [2] CRAN (R 4.0.3)</span>
+<span class="co">#&gt;    R.oo          1.24.0     2020-08-26 [2] CRAN (R 4.0.3)</span>
+<span class="co">#&gt;    R.utils       2.10.1     2020-08-26 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    R6            2.5.0      2020-10-28 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    ragg          1.1.3      2021-06-09 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    readr         1.4.0      2020-10-05 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;  D rJava         1.0-4      2021-04-29 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    rjavacmecab * 0.3.1.9000 2021-06-22 [2] local         </span>
+<span class="co">#&gt;    rlang         0.4.11     2021-04-30 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    rmarkdown     2.9        2021-06-15 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    rprojroot     2.0.2      2020-11-15 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    rstudioapi    0.13       2020-11-12 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    sass          0.4.0      2021-05-12 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    sessioninfo   1.1.1      2018-11-05 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    stringi       1.5.3      2020-09-09 [2] CRAN (R 4.0.3)</span>
+<span class="co">#&gt;    stringr       1.4.0      2019-02-10 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    styler        1.4.1      2021-03-30 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    systemfonts   1.0.2      2021-05-11 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    textshaping   0.3.5      2021-06-09 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    tibble        3.1.2      2021-05-16 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    tidyr         1.1.3      2021-03-03 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    tidyselect    1.1.1      2021-04-30 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    utf8          1.2.1      2021-03-12 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    vctrs         0.3.8      2021-04-29 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    withr         2.4.2      2021-04-18 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    xfun          0.24       2021-06-15 [2] CRAN (R 4.0.5)</span>
+<span class="co">#&gt;    yaml          2.2.1      2020-02-01 [2] CRAN (R 4.0.5)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; [1] C:/Users/user/AppData/Local/Temp/RtmpuiMMZ5/temp_libpath53c2213373d</span>
+<span class="co">#&gt; [1] C:/Users/user/AppData/Local/Temp/RtmpQh0z0v/temp_libpath188475fb4f8c</span>
 <span class="co">#&gt; [2] C:/Users/user/Documents/R/win-library/4.0</span>
 <span class="co">#&gt; [3] C:/Program Files/R/R-4.0.2/library</span>
 <span class="co">#&gt; </span>
@@ -530,7 +453,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Made with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1, using <a href="https://preferably.amirmasoudabdol.name/?source=footer">preferably</a> template.</p>
 </div>
 
       </footer>

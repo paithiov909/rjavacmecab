@@ -78,13 +78,13 @@ rJavaの周辺は比較的問題が起こりやすく、たとえばパッケー
 ### cmecab-javaの呼び出し
 
 ```{r cmecab_1}
-res <- rjavacmecab::cmecab("キャピキャピ音が高くなってきたら、ほんとに出してくれの合図です！　しっかりここではコミュニケーションとってください")
+res <- rjavacmecab::cmecab(c("長期的自己実現で福楽は得られない", "幸せは刹那の中にあり"))
 str(res)
 ```
 
 ```{r cmecab_2}
 res <- rjavacmecab::prettify(res) ## データフレームに整形します
-print(res)
+str(res)
 ```
 
 整形されたデータフレームは次のカラムからなります。IPA辞書とは異なる品詞体系の辞書を使っている場合は、素性情報を`into`引数に渡してください。
@@ -107,10 +107,11 @@ print(res)
 
 確認できたかぎりでは`-d`オプションは動作します。
 
-```{r }
-str <- "きゃりーぱみゅぱみゅ"
-rjavacmecab::cmecab(str)
-rjavacmecab::cmecab(str, "-d /MeCab/ipadic-neologd")
+```{r cmecab_4}
+str <- c("Fate/Grand Order", "田村ゆかりのいたずら黒うさぎ")
+## Neologd辞書では半角スペースが含まれる単語が存在するため、そうした単語を解析する場合には`sep`にセパレータを指定するとよい
+rjavacmecab::cmecab(str, sep = "\t")
+rjavacmecab::cmecab(str, "-d /MeCab/ipadic-neologd", sep = "\t")
 ```
 
 ## Google Colaboratoryで試す方法
@@ -201,4 +202,3 @@ rjavacmecab::cmecab("こんにちは")
 ### 参考にした記事
 
 - [Google ColaboratoryでRを使う | marketechlabo](https://www.marketechlabo.com/google-colaboratory-with-r/)
-

@@ -2,7 +2,7 @@
 #'
 #' @param df Output of \code{rjavacmecab::prettify}.
 #' @param pull Column name to be packed into data.frame. Default value is `token`.
-#' @param .collapse This argument will be passed to \code{paste()}.
+#' @param .collapse This argument will be passed to \code{stringi::stri_c()}.
 #' @return data.frame.
 #'
 #' @export
@@ -11,7 +11,7 @@ pack <- function(df, pull = "token", .collapse = " ") {
     dplyr::group_by(sentence_id) %>%
     dplyr::group_map(
       ~ dplyr::pull(.x, {{ pull }}) %>%
-        stringr::str_c(collapse = .collapse)
+        stringi::stri_c(collapse = .collapse)
     ) %>%
     purrr::imap_dfr(~ data.frame(doc_id = .y, text = .x))
   return(res)

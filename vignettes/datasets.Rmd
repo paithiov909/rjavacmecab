@@ -17,7 +17,6 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 stopifnot(
-  require(dplyr),
   require(DT),
   require(rjavacmecab)
 )
