@@ -4,9 +4,9 @@
 ^\.github$
 ^cache/
 ^doc$
-^Meta$
 ^docs$
+^mecab$
+^Meta$
 ^pkgdown$
-^\.travis\.yml$
 ^codecov\.yml$
 ^README\.Rmd$
