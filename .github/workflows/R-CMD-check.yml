@@ -31,15 +31,24 @@ jobs:
         if: ${{ matrix.platform == 'ubuntu-latest' }}
         run: |
           sudo apt-get install -y libcurl4-openssl-dev
-          sudo apt install -y libmecab2 libmecab-dev mecab mecab-ipadic mecab-ipadic-utf8 mecab-utils
-          export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-          export PATH=/usr/local/bin:$PATH
+          git clone --depth=1 https://github.com/taku910/mecab.git
+          cd mecab/mecab
+          ./configure --enable-utf8-only
+          make
+          sudo make install
+          mecab-config --libs-only-L | sudo tee /etc/ld.so.conf.d/mecab.conf
+          sudo ldconfig
+          cd ../mecab-ipadic
+          ./configure --with-charset=utf8
+          make
+          sudo make install
+          cd ../../
+          export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
       - name: R CMD javareconf
         run: sudo R CMD javareconf
       - name: Install dependencies
         run: |
-          install.packages(c("remotes", "rcmdcheck", "rJava"))
-          remotes::install_github("r-lib/covr")
+          install.packages(c("remotes", "rcmdcheck", "covr", "rJava"))
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
       - name: Check
