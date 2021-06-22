@@ -30,11 +30,10 @@ jobs:
       - name: Install libraries
         if: ${{ matrix.platform == 'ubuntu-latest' }}
         run: |
-          sudo apt-get install libcurl4-openssl-dev
-          sudo apt install mecab
-          sudo apt install libmecab-dev
-          sudo apt install mecab-ipadic-utf8
-          export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
+          sudo apt-get install -y libcurl4-openssl-dev
+          sudo apt install -y libmecab2 libmecab-dev mecab mecab-ipadic mecab-ipadic-utf8 mecab-utils
+          export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+          export PATH=/usr/local/bin:$PATH
       - name: R CMD javareconf
         run: sudo R CMD javareconf
       - name: Install dependencies
@@ -44,7 +43,8 @@ jobs:
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
       - name: Check
-        run: rcmdcheck::rcmdcheck(args = c("--no-multiarch", "--no-vignettes", "--no-manual"), build_args = c("--no-build-vignettes", "--no-manual"), error_on = "error")
+        run: |
+          rcmdcheck::rcmdcheck(args = c("--no-multiarch", "--no-vignettes", "--no-manual"), build_args = c("--no-build-vignettes", "--no-manual"), error_on = "error")
         shell: Rscript {0}
       - name: Codecov
         run: covr::codecov()
