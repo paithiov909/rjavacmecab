@@ -22,7 +22,7 @@ reference:
         - escape
         - join
         - is_blank
-        - is_dyn_available
+        - is_mecab_available
     - title: "Dataset"
       contents:
         - StopWordsJp

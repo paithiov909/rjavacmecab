@@ -28,8 +28,7 @@ cmecab <- function(chr, opt = "", sep = " ") {
   stopifnot(
     rlang::is_character(chr),
     rlang::is_character(opt),
-    rlang::is_character(sep),
-    is_dyn_available()
+    rlang::is_character(sep)
   )
   if (!is_blank(opt)) {
     rebuild_tagger(opt = opt)

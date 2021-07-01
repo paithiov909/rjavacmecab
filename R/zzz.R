@@ -32,7 +32,7 @@ standard_tagger <- function(obj = NULL) {
     lib.loc = libname
   )
   ## Initialize
-  if (is_dyn_available()) {
+  if (is_mecab_available()) {
     rebuild_tagger()
   }
 }

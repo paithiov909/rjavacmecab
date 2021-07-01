@@ -43,7 +43,7 @@ jobs:
           make
           sudo make install
           cd ../../
-          export PATH=$PATH:/usr/local/lib
+          export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
       - name: R CMD javareconf
         run: sudo R CMD javareconf
       - name: Install dependencies
