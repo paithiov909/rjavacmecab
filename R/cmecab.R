@@ -33,7 +33,7 @@ cmecab <- function(chr, opt = "", sep = " ") {
   if (!is_blank(opt)) {
     rebuild_tagger(opt = opt)
   }
-  if (!rlang::env_has(.pkgenv, "instance")) rlang::abort("There is no tagger instance available. Please `rebuild_tagger` at first.")
+  if (is.null(.pkgenv[["instance"]]) rlang::abort("There is no tagger instance available. Please `rebuild_tagger` at first.")
 
   lattice <- standard_tagger()$createLattice()
 
