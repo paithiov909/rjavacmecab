@@ -8,7 +8,7 @@
 [![GitHub last
 commit](https://img.shields.io/github/last-commit/paithiov909/rjavacmecab)](#)
 [![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+stable](https://img.shields.io/badge/lifecycle-stable.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![R-CMD-check](https://github.com/paithiov909/rjavacmecab/actions/workflows/R-CMD-check.yml/badge.svg)](https://github.com/paithiov909/rjavacmecab/actions/workflows/R-CMD-check.yml)
 [![Codecov test
 coverage](https://codecov.io/gh/paithiov909/rjavacmecab/branch/main/graph/badge.svg)](https://codecov.io/gh/paithiov909/rjavacmecab?branch=main)
