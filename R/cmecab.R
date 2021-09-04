@@ -1,7 +1,7 @@
 #' Rebuild CMeCab tagger
 #'
-#' Rebuild an instance of tagger using provided options.
-#' The tagger instance is stored in the package internal environment.
+#' Rebuild an instance of standard tagger using provided options.
+#' The standard tagger instance is stored in the package internal environment.
 #'
 #' @param opt Character vector.
 #' @return The stored tagger instance is returned invisibly.
@@ -33,12 +33,12 @@ cmecab <- function(chr, opt = "", sep = " ") {
   if (!is_blank(opt)) {
     rebuild_tagger(opt = opt)
   }
-  if (is.null(.pkgenv[["instance"]])) rlang::abort("There is no tagger instance available. Please `rebuild_tagger` at first.")
+  if (is.null(standard_tagger())) rlang::abort("There is no tagger instance available. Please `rebuild_tagger` at first.")
 
   lattice <- standard_tagger()$createLattice()
+  chr <- tidyr::replace_na(chr, "")
 
   parsed <- purrr::map_chr(stringi::stri_enc_toutf8(chr), function(str) {
-    str <- tidyr::replace_na(str, "")
     lattice$setSentence(str)
     standard_tagger()$parse(lattice)
     return(lattice$toString())
@@ -47,12 +47,12 @@ cmecab <- function(chr, opt = "", sep = " ") {
   lattice$destroy()
 
   Encoding(parsed) <- "UTF-8"
-  parsed <- stringi::stri_replace_all_fixed(parsed, "\t", sep)
-  parsed <- stringi::stri_split_fixed(parsed, pattern = "\n")
-  res <- lapply(parsed, function(li) {
-    len <- length(li) - 1L
-    return(li[1:len])
-  })
-
+  res <- parsed %>%
+    stringi::stri_replace_all_fixed(pattern = "\t", replace = sep) %>%
+    stringi::stri_split_fixed(pattern = "\n") %>%
+    lapply(function(li) {
+      len <- length(li) - 1L
+      return(li[1:len])
+    })
   return(res)
 }

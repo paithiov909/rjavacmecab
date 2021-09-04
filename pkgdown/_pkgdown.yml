@@ -6,7 +6,7 @@ reference:
     - title: "Tokenizer"
       contents:
         - cmecab
-        - fastestword
+        - igo
     - title: "Utilities"
       contents:
         - rebuild_tagger

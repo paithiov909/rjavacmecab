@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>List of letters known as "Kishu-ison-moji" — ExtendedLettersJp • rjavacmecab</title>
+<title>Rebuild Igo tagger — rebuild_igo_tagger • rjavacmecab</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,9 @@
 
 
 
-<meta property="og:title" content="List of letters known as "Kishu-ison-moji" — ExtendedLettersJp" />
-<meta property="og:description" content="List of letters known as &quot;Kishu-ison-moji&quot;" />
+<meta property="og:title" content="Rebuild Igo tagger — rebuild_igo_tagger" />
+<meta property="og:description" content="Rebuild an instance of igo tagger using provided options.
+The igo tagger instance is stored in the package internal environment." />
 <meta property="og:image" content="https://paithiov909.github.io/rjavacmecab/logo.png" />
 
 
@@ -62,16 +63,6 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73417314-25"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-73417314-25');
-</script>
 
 
   </head>
@@ -90,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rjavacmecab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9000</span>
       </span>
     </div>
 
@@ -101,6 +92,9 @@
     <span class="fas fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/rjavacmecab.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -114,12 +108,6 @@
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/datasets.html">Explore datasets</a>
-    </li>
-    <li>
-      <a href="../articles/partial_analysis.html">Practice: Example of Partial Analysis</a>
-    </li>
-    <li>
-      <a href="../articles/readme_ja.html">About rjavacmecab package</a>
     </li>
   </ul>
 </li>
@@ -144,21 +132,32 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>List of letters known as "Kishu-ison-moji"</h1>
-    <small class="dont-index">Source: <a href='https://github.com/paithiov909/rjavacmecab/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>ExtendedLettersJp.Rd</code></div>
+    <h1>Rebuild Igo tagger</h1>
+    <small class="dont-index">Source: <a href='https://github.com/paithiov909/rjavacmecab/blob/master/R/igo.R'><code>R/igo.R</code></a></small>
+    <div class="hidden name"><code>rebuild_igo_tagger.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>List of letters known as "Kishu-ison-moji"</p>
+    <p>Rebuild an instance of igo tagger using provided options.
+The igo tagger instance is stored in the package internal environment.</p>
     </div>
 
-    <pre class="usage"><span class='va'>ExtendedLettersJp</span></pre>
+    <pre class="usage"><span class='fu'>rebuild_igo_tagger</span><span class='op'>(</span>
+  data_dir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"igo-ipadic"</span>, package <span class='op'>=</span> <span class='st'>"rjavacmecab"</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>data_dir</th>
+      <td><p>Character vector.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>tbl_df</code> (inherits from <code>tbl</code>, <code>data.frame</code>) with 457 rows and 2 columns.</p>
+    <p>The stored tagger instance is returned invisibly.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

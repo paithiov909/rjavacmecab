@@ -5,6 +5,7 @@
 ^data-raw$
 ^doc$
 ^docs$
+^mecab$
 ^Meta$
 ^pkgdown$
 ^codecov\.yml$

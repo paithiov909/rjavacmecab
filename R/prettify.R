@@ -27,8 +27,8 @@ prettify <- function(list,
     is.character(sep)
   )
   res <- purrr::imap_dfr(list, function(li, i) {
-    len <- length(li) - 1L
-    purrr::map_dfr(li[1:len], function(elem) {
+    li <- dplyr::na_if(li, "EOS")
+    purrr::map_dfr(stringi::stri_omit_na(li), function(elem) {
       split <- stringi::stri_split_regex(elem, sep, 2L)
       return(data.frame(
         sentence_id = i,
@@ -36,15 +36,13 @@ prettify <- function(list,
         Features = purrr::map_chr(split, ~ purrr::pluck(., 2))
       ))
     })
-  })
-  res <-
+  }) %>%
     tidyr::separate(
-      res,
       col = "Features",
       into = into,
       sep = ",",
       fill = "right"
     ) %>%
-      dplyr::mutate_if(is.character, ~ dplyr::na_if(., "*"))
+    dplyr::mutate_if(is.character, ~ dplyr::na_if(., "*"))
   return(res)
 }

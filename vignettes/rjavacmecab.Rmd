@@ -39,26 +39,9 @@ MeCabの辞書はUTF-8を指定してインストールされていることを�
 
 - [Release MeCab 0.996 64bit version · ikegami-yukino/mecab](https://github.com/ikegami-yukino/mecab/releases/tag/v0.996.2)
 
-***rjavacmecabはcmecab-javaのrJavaラッパーライブラリです。cmecab-javaを利用するためにはMeCabのダイナミックライブラリにパスが通っている必要があります。***
+rjavacmecabはcmecab-javaのrJavaラッパーです。cmecab-javaを利用するためにはMeCabのダイナミックライブラリにパスが通っている必要があります。
 
-Windowsの場合、インストールしたMeCabのディレクトリ以下の`bin`ディレクトリにパスを通します。LinuxやMacの場合、LD_LIBRARY_PATHに`libmecab.so`（Linuxの場合）や`libmecab.dylib`（Macの場合）のあるディレクトリを追加します。
-
-Ubuntuなどでaptを通じてMeCabを導入した場合、`libmecab.so`は`/usr/local/lib`以下にあるので、このディレクトリをLD_LIBRARY_PATHに追加します。
-
-``` bash
-$ sudo apt install mecab
-$ sudo apt install libmecab-dev
-$ sudo apt install mecab-ipadic-utf8
-$ export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
-```
-
-MacでHomebrewからMeCabを導入した場合だと、`libmecab.dylib`は`/usr/local/Cellar/mecab/0.996/lib`以下にあるので、このディレクトリをLD_LIBRARY_PATHに追加します。
-
-``` bash
-$ brew install mecab
-$ brew install mecab-ipadic
-$ export LD_LIBRARY_PATH="/usr/local/Cellar/mecab/0.996/lib:$LD_LIBRARY_PATH"
-```
+Windowsの場合、インストールしたMeCabのディレクトリ以下の`bin`ディレクトリにパスを通します。LinuxやMacの場合、LD_LIBRARY_PATHに`libmecab.so`（Linuxの場合）や`libmecab.dylib`（Macの場合）のあるディレクトリを追加してください。
 
 ### rJava周りで問題が発生する場合
 
@@ -112,6 +95,22 @@ str <- c("Fate/Grand Order", "田村ゆかりのいたずら黒うさぎ")
 ## Neologd辞書では半角スペースが含まれる単語が存在するため、そうした単語を解析する場合には`sep`にセパレータを指定するとよい
 rjavacmecab::cmecab(str, sep = "\t")
 rjavacmecab::cmecab(str, "-d /MeCab/ipadic-neologd", sep = "\t")
+```
+
+### Igoの呼び出し
+
+`rjavacmecab::cmecab`とほぼ同様のAPIから、パッケージに同梱されているIgo (v0.4.5, IPA辞書)を利用することも可能です。ただし、仕様上、MeCabとは解析結果が異なる可能性があります。詳細は[Igo](http://igo.osdn.jp/)のドキュメントを確認してください。
+
+```{r igo_parse}
+res <- rjavacmecab::igo("お前がそう思うんならそうなんだろう、お前ん中ではな")
+str(res)
+```
+
+`rjavacmecab::igo`については、分かち書きの機能も利用できます。
+
+```{r igo_wakati}
+res <- rjavacmecab::igo("お前がそう思うんならそうなんだろう、お前ん中ではな", mode = "wakati")
+str(res)
 ```
 
 ## Google Colaboratoryで試す方法

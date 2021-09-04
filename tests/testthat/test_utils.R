@@ -17,26 +17,6 @@ sentence <- enc2utf8(
   )
 )
 
-#### fastestword ####
-describe("Check fastestword", {
-  it("Stop properly?", {
-    expect_error(
-      fastestword(
-        NULL,
-        outfile = file.path(tempfile(fileext = ".txt"))
-      )
-    )
-  })
-  it("Valid output?", {
-    res <- fastestword(
-      sentence,
-      outfile = file.path(tempfile(fileext = ".txt"))
-    )
-    expect_type(readLines(res), "character")
-  })
-})
-
-
 #### ngram_tokenizer ####
 test_that("ngram_tokenizer works", {
   expect_type(ngram_tokenizer(3L), "closure")

@@ -4,4 +4,11 @@
 *.jar   binary
 *.png   binary
 *.svg   binary
-^inst/igo-ipadic/* filter=lfs diff=lfs merge=lfs -text
+# inst/igo-ipadic/*
+*.category	filter=lfs diff=lfs merge=lfs -text
+*.dat	filter=lfs diff=lfs merge=lfs -text
+*.inf	filter=lfs diff=lfs merge=lfs -text
+*.bin	filter=lfs diff=lfs merge=lfs -text
+*.idx	filter=lfs diff=lfs merge=lfs -text
+code2category	filter=lfs diff=lfs merge=lfs -text
+word2id	filter=lfs diff=lfs merge=lfs -text

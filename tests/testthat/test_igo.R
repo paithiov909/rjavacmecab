@@ -1,5 +1,3 @@
-skip_if_not(is_mecab_available())
-
 sentence <- enc2utf8(
   paste0(
     "\u3075\u3068\u632F\u308A\u5411\u304F\u3068\u3001\u305F\u304F",
@@ -19,16 +17,16 @@ sentence <- enc2utf8(
   )
 )
 
-describe("Check cmecab", {
+describe("Check igo", {
   it("Stop properly?", {
-    expect_error(cmecab(NA))
-    expect_error(cmecab(NULL))
-    expect_error(cmecab(NA_character_, NULL))
-    expect_error(cmecab(NA_character_, "", NULL))
+    expect_error(igo(NA))
+    expect_error(igo(NULL))
+    expect_error(igo(NA_character_, NULL))
+    expect_error(igo(NA_character_, "", NULL))
   })
   it("Output is list?", {
-    expect_type(cmecab(NA_character_), "list")
-    expect_type(cmecab(sentence), "list")
+    expect_type(igo(NA_character_), "list")
+    expect_type(igo(sentence), "list")
   })
   it("Valid output?", {
     res2 <- enc2utf8(
@@ -40,6 +38,6 @@ describe("Check cmecab", {
         "\u30d5\u30ea\u30e0\u30af,\u30d5\u30ea\u30e0\u30af"
       )
     )
-    expect_equal(cmecab(sentence)[[1]][2], res2)
+    expect_equal(igo(sentence)[[1]][2], res2)
   })
 })

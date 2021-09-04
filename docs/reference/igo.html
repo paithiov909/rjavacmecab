@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Normalize Japanese text — normalize • rjavacmecab</title>
+<title>Call Igo tagger — igo • rjavacmecab</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Normalize Japanese text — normalize" />
-<meta property="og:description" content="Normalize text into neologd-like-style." />
+<meta property="og:title" content="Call Igo tagger — igo" />
+<meta property="og:description" content="Call Igo tagger" />
 <meta property="og:image" content="https://paithiov909.github.io/rjavacmecab/logo.png" />
 
 
@@ -62,16 +62,6 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73417314-25"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-73417314-25');
-</script>
 
 
   </head>
@@ -90,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rjavacmecab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9000</span>
       </span>
     </div>
 
@@ -101,6 +91,9 @@
     <span class="fas fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/rjavacmecab.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -114,12 +107,6 @@
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/datasets.html">Explore datasets</a>
-    </li>
-    <li>
-      <a href="../articles/partial_analysis.html">Practice: Example of Partial Analysis</a>
-    </li>
-    <li>
-      <a href="../articles/readme_ja.html">About rjavacmecab package</a>
     </li>
   </ul>
 </li>
@@ -144,33 +131,57 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Normalize Japanese text</h1>
-    <small class="dont-index">Source: <a href='https://github.com/paithiov909/rjavacmecab/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>normalize.Rd</code></div>
+    <h1>Call Igo tagger</h1>
+    <small class="dont-index">Source: <a href='https://github.com/paithiov909/rjavacmecab/blob/master/R/igo.R'><code>R/igo.R</code></a></small>
+    <div class="hidden name"><code>igo.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Normalize text into neologd-like-style.</p>
+    <p>Call Igo tagger</p>
     </div>
 
-    <pre class="usage"><span class='fu'>normalize</span><span class='op'>(</span><span class='va'>str</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>igo</span><span class='op'>(</span><span class='va'>chr</span>, sep <span class='op'>=</span> <span class='st'>" "</span>, mode <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"parse"</span>, <span class='st'>"wakati"</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>str</th>
-      <td><p>Character vector.</p></td>
+      <th>chr</th>
+      <td><p>Character vector to be tokenized.</p></td>
+    </tr>
+    <tr>
+      <th>sep</th>
+      <td><p>Character scalar to be used as separator
+with which the function replaces tab.</p></td>
+    </tr>
+    <tr>
+      <th>mode</th>
+      <td><p>Charcter scalar.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Normalized text.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <p>List.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <div class='dont-index'><p><a href='https://github.com/neologd/mecab-ipadic-neologd/wiki/Regexp'>https://github.com/neologd/mecab-ipadic-neologd/wiki/Regexp</a></p></div>
+    <p>This function is a wapper of Igo (v0.4.5) that is a Java reimplementaion of MeCab.
+The Igo tagger has 2 methods, which are 'parse' and 'wakati', and both is available from this function.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>igo</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Encoding.html'>enc2utf8</a></span><span class='op'>(</span><span class='st'>"\u3053\u306e\u6728\u306a\u3093\u306e\u6728"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
+#&gt; [1] "&lt;U+3053&gt;&lt;U+306E&gt; &lt;U+9023&gt;&lt;U+4F53&gt;&lt;U+8A5E&gt;,*,*,*,*,*,&lt;U+3053&gt;&lt;U+306E&gt;,&lt;U+30B3&gt;&lt;U+30CE&gt;,&lt;U+30B3&gt;&lt;U+30CE&gt;"
+#&gt; [2] "&lt;U+6728&gt; &lt;U+540D&gt;&lt;U+8A5E&gt;,&lt;U+4E00&gt;&lt;U+822C&gt;,*,*,*,*,&lt;U+6728&gt;,&lt;U+30AD&gt;,&lt;U+30AD&gt;"
+#&gt; [3] "&lt;U+306A&gt; &lt;U+52A9&gt;&lt;U+52D5&gt;&lt;U+8A5E&gt;,*,*,*,&lt;U+7279&gt;&lt;U+6B8A&gt;·&lt;U+30C0&gt;,&lt;U+4F53&gt;&lt;U+8A00&gt;&lt;U+63A5&gt;&lt;U+7D9A&gt;,&lt;U+3060&gt;,&lt;U+30CA&gt;,&lt;U+30CA&gt;"
+#&gt; [4] "&lt;U+3093&gt; &lt;U+540D&gt;&lt;U+8A5E&gt;,&lt;U+975E&gt;&lt;U+81EA&gt;&lt;U+7ACB&gt;,&lt;U+4E00&gt;&lt;U+822C&gt;,*,*,*,&lt;U+3093&gt;,&lt;U+30F3&gt;,&lt;U+30F3&gt;"
+#&gt; [5] "&lt;U+306E&gt; &lt;U+52A9&gt;&lt;U+8A5E&gt;,&lt;U+9023&gt;&lt;U+4F53&gt;&lt;U+5316&gt;,*,*,*,*,&lt;U+306E&gt;,&lt;U+30CE&gt;,&lt;U+30CE&gt;"
+#&gt; [6] "&lt;U+6728&gt; &lt;U+540D&gt;&lt;U+8A5E&gt;,&lt;U+4E00&gt;&lt;U+822C&gt;,*,*,*,*,&lt;U+6728&gt;,&lt;U+30AD&gt;,&lt;U+30AD&gt;"
+#&gt; </div><div class='input'><span class='fu'>igo</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Encoding.html'>enc2utf8</a></span><span class='op'>(</span><span class='st'>"\u6c17\u306b\u306a\u308b\u6728"</span><span class='op'>)</span>, mode <span class='op'>=</span> <span class='st'>"wakati"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
+#&gt; [1] "&lt;U+6C17&gt;" "&lt;U+306B&gt;" "&lt;U+306A&gt;&lt;U+308B&gt;" "&lt;U+6728&gt;"
+#&gt; </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

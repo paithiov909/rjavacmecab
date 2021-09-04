@@ -12,19 +12,18 @@ License: MIT + file LICENSE
 URL: https://github.com/paithiov909/rjavacmecab
 BugReports: https://github.com/paithiov909/rjavacmecab/issues
 Encoding: UTF-8
-LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
-Language: en-US
 Suggests:
     knitr,
+    roxygen2,
     rmarkdown,
     testthat
 Imports:
     dplyr,
     purrr,
     rJava,
-    rlang,
+    rlang (>= 0.1.2),
     stringi,
     tidyr

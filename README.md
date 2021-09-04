@@ -8,7 +8,7 @@
 [![GitHub last
 commit](https://img.shields.io/github/last-commit/paithiov909/rjavacmecab)](#)
 [![Lifecycle:
-stable](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![R-CMD-check](https://github.com/paithiov909/rjavacmecab/actions/workflows/R-CMD-check.yml/badge.svg)](https://github.com/paithiov909/rjavacmecab/actions/workflows/R-CMD-check.yml)
 [![Codecov test
 coverage](https://codecov.io/gh/paithiov909/rjavacmecab/branch/main/graph/badge.svg)](https://codecov.io/gh/paithiov909/rjavacmecab?branch=main)
@@ -105,6 +105,18 @@ rjavacmecab::cmecab(str, "-d /MeCab/ipadic-neologd", sep = "\t")
 #> [[2]]
 #> [1] "田村ゆかりのいたずら黒うさぎ\t名詞,固有名詞,一般,*,*,*,田村ゆかりのいたずら黒うさぎ,タムラユカリノイタズラクロウサギ,タムラユカリノイタズラクロウサギ"
 #> [2] "EOS"
+```
+
+### Use Igo
+
+[Igo](http://igo.osdn.jp/) is a pure Java port of MeCab. rjavacmecab
+also provides a wrapper function of that.
+
+``` r
+res <- rjavacmecab::igo("お前がそう思うんならそうなんだろう、お前ん中ではな")
+str(res)
+#> List of 1
+#>  $ : chr [1:18] "お前 名詞,代名詞,一般,*,*,*,お前,オマエ,オマエ" "が 助詞,格助詞,一般,*,*,*,が,ガ,ガ" "そう 副詞,助詞類接続,*,*,*,*,そう,ソウ,ソー" "思う 動詞,自立,*,*,五段・ワ行促音便,基本形,思う,オモウ,オモウ" ...
 ```
 
 ## Related Products

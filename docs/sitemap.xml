@@ -10,13 +10,13 @@
     <loc>https://paithiov909.github.io/rjavacmecab/reference/escape.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/reference/fastestword.html</loc>
+    <loc>https://paithiov909.github.io/rjavacmecab/reference/igo.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/is_blank.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/reference/is_dyn_available.html</loc>
+    <loc>https://paithiov909.github.io/rjavacmecab/reference/is_mecab_available.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/join.html</loc>
@@ -34,6 +34,9 @@
     <loc>https://paithiov909.github.io/rjavacmecab/reference/prettify.html</loc>
   </url>
   <url>
+    <loc>https://paithiov909.github.io/rjavacmecab/reference/rebuild_igo_tagger.html</loc>
+  </url>
+  <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/rebuild_tagger.html</loc>
   </url>
   <url>
@@ -47,9 +50,6 @@
   </url>
   <url>
     <loc>https://paithiov909.github.io/rjavacmecab/articles/datasets.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/articles/partial_analysis.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/rjavacmecab/articles/rjavacmecab.html</loc>

@@ -77,6 +77,15 @@ rjavacmecab::cmecab(str, sep = "\t")
 rjavacmecab::cmecab(str, "-d /MeCab/ipadic-neologd", sep = "\t")
 ```
 
+### Use Igo
+
+[Igo](http://igo.osdn.jp/) is a pure Java port of MeCab. rjavacmecab also provides a wrapper function of that.
+
+```{r igo}
+res <- rjavacmecab::igo("お前がそう思うんならそうなんだろう、お前ん中ではな")
+str(res)
+```
+
 ## Related Products
 
 - [IshidaMotohiro/RMeCab: Interface to MeCab](https://github.com/IshidaMotohiro/RMeCab)

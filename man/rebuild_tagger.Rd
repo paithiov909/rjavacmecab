@@ -13,6 +13,6 @@ rebuild_tagger(opt = "")
 The stored tagger instance is returned invisibly.
 }
 \description{
-Rebuild an instance of tagger using provided options.
-The tagger instance is stored in the package internal environment.
+Rebuild an instance of standard tagger using provided options.
+The standard tagger instance is stored in the package internal environment.
 }
