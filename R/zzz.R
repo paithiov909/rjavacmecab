@@ -47,8 +47,9 @@ igo_tagger <- function(obj = NULL) {
   )
   # Initialize
   rlang::env_bind(
-        .pkgenv,
-        igodic = system.file("igo-ipadic", package = pkgname, lib.loc = libname))
+    .pkgenv,
+    igodic = system.file("igo-ipadic", package = pkgname, lib.loc = libname)
+  )
   if (is_mecab_available()) {
     rebuild_tagger()
   }

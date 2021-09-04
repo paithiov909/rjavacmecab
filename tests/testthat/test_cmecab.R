@@ -19,27 +19,27 @@ sentence <- enc2utf8(
   )
 )
 
-describe("Check cmecab", {
-  it("Stop properly?", {
-    expect_error(cmecab(NA))
-    expect_error(cmecab(NULL))
-    expect_error(cmecab(NA_character_, NULL))
-    expect_error(cmecab(NA_character_, "", NULL))
-  })
-  it("Output is list?", {
-    expect_type(cmecab(NA_character_), "list")
-    expect_type(cmecab(sentence), "list")
-  })
-  it("Valid output?", {
-    res2 <- enc2utf8(
-      paste0(
-        "\u632f\u308a\u5411\u304f ",
-        "\u52d5\u8a5e,\u81ea\u7acb,*,*,",
-        "\u4e94\u6bb5\u30fb\u30ab\u884c\u30a4\u97f3\u4fbf,",
-        "\u57fa\u672c\u5f62,\u632f\u308a\u5411\u304f,",
-        "\u30d5\u30ea\u30e0\u30af,\u30d5\u30ea\u30e0\u30af"
-      )
+test_that("cmecab stops", {
+  expect_error(cmecab(NA))
+  expect_error(cmecab(NULL))
+  expect_error(cmecab(NA_character_, NULL))
+  expect_error(cmecab(NA_character_, "", NULL))
+})
+
+test_that("cmecab output is list", {
+  expect_type(cmecab(NA_character_), "list")
+  expect_type(cmecab(sentence), "list")
+})
+
+test_that("cmecab output is valid", {
+  res <- enc2utf8(
+    paste0(
+      "\u632f\u308a\u5411\u304f ",
+      "\u52d5\u8a5e,\u81ea\u7acb,*,*,",
+      "\u4e94\u6bb5\u30fb\u30ab\u884c\u30a4\u97f3\u4fbf,",
+      "\u57fa\u672c\u5f62,\u632f\u308a\u5411\u304f,",
+      "\u30d5\u30ea\u30e0\u30af,\u30d5\u30ea\u30e0\u30af"
     )
-    expect_equal(cmecab(sentence)[[1]][2], res2)
-  })
+  )
+  expect_equal(cmecab(sentence)[[1]][2], res)
 })

@@ -27,8 +27,7 @@ test_that("prettify works", {
   expect_s3_class(res1, "data.frame")
 })
 
-
 #### pack ####
-test_that("oack works", {
+test_that("pack works", {
   expect_s3_class(res2, "data.frame")
 })

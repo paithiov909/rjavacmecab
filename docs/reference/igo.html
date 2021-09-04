@@ -171,17 +171,16 @@ The Igo tagger has 2 methods, which are 'parse' and 'wakati', and both is availa
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>igo</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Encoding.html'>enc2utf8</a></span><span class='op'>(</span><span class='st'>"\u3053\u306e\u6728\u306a\u3093\u306e\u6728"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [[1]]
-#&gt; [1] "&lt;U+3053&gt;&lt;U+306E&gt; &lt;U+9023&gt;&lt;U+4F53&gt;&lt;U+8A5E&gt;,*,*,*,*,*,&lt;U+3053&gt;&lt;U+306E&gt;,&lt;U+30B3&gt;&lt;U+30CE&gt;,&lt;U+30B3&gt;&lt;U+30CE&gt;"
-#&gt; [2] "&lt;U+6728&gt; &lt;U+540D&gt;&lt;U+8A5E&gt;,&lt;U+4E00&gt;&lt;U+822C&gt;,*,*,*,*,&lt;U+6728&gt;,&lt;U+30AD&gt;,&lt;U+30AD&gt;"
-#&gt; [3] "&lt;U+306A&gt; &lt;U+52A9&gt;&lt;U+52D5&gt;&lt;U+8A5E&gt;,*,*,*,&lt;U+7279&gt;&lt;U+6B8A&gt;·&lt;U+30C0&gt;,&lt;U+4F53&gt;&lt;U+8A00&gt;&lt;U+63A5&gt;&lt;U+7D9A&gt;,&lt;U+3060&gt;,&lt;U+30CA&gt;,&lt;U+30CA&gt;"
-#&gt; [4] "&lt;U+3093&gt; &lt;U+540D&gt;&lt;U+8A5E&gt;,&lt;U+975E&gt;&lt;U+81EA&gt;&lt;U+7ACB&gt;,&lt;U+4E00&gt;&lt;U+822C&gt;,*,*,*,&lt;U+3093&gt;,&lt;U+30F3&gt;,&lt;U+30F3&gt;"
-#&gt; [5] "&lt;U+306E&gt; &lt;U+52A9&gt;&lt;U+8A5E&gt;,&lt;U+9023&gt;&lt;U+4F53&gt;&lt;U+5316&gt;,*,*,*,*,&lt;U+306E&gt;,&lt;U+30CE&gt;,&lt;U+30CE&gt;"
-#&gt; [6] "&lt;U+6728&gt; &lt;U+540D&gt;&lt;U+8A5E&gt;,&lt;U+4E00&gt;&lt;U+822C&gt;,*,*,*,*,&lt;U+6728&gt;,&lt;U+30AD&gt;,&lt;U+30AD&gt;"
+#&gt; [1] "この 連体詞,*,*,*,*,*,この,コノ,コノ"      
+#&gt; [2] "木 名詞,一般,*,*,*,*,木,キ,キ"             
+#&gt; [3] "な 助動詞,*,*,*,特殊・ダ,体言接続,だ,ナ,ナ"
+#&gt; [4] "ん 名詞,非自立,一般,*,*,*,ん,ン,ン"        
+#&gt; [5] "の 助詞,連体化,*,*,*,*,の,ノ,ノ"           
+#&gt; [6] "木 名詞,一般,*,*,*,*,木,キ,キ"             
 #&gt; </div><div class='input'><span class='fu'>igo</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Encoding.html'>enc2utf8</a></span><span class='op'>(</span><span class='st'>"\u6c17\u306b\u306a\u308b\u6728"</span><span class='op'>)</span>, mode <span class='op'>=</span> <span class='st'>"wakati"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [[1]]
-#&gt; [1] "&lt;U+6C17&gt;" "&lt;U+306B&gt;" "&lt;U+306A&gt;&lt;U+308B&gt;" "&lt;U+6728&gt;"
-#&gt; </div><div class='input'>
-</div></pre>
+#&gt; [1] "気"   "に"   "なる" "木"  
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

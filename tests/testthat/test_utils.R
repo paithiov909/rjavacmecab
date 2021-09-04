@@ -29,3 +29,10 @@ test_that("ngram_tokenizer works", {
     c("a b", "b c", "c d")
   )
 })
+
+#### is_blank ####
+test_that("is_blank works", {
+  expect_true(is_blank(character(0)))
+  expect_true(is_blank(NULL))
+  expect_true(c("", NA_character_))
+})
