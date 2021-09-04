@@ -2,11 +2,6 @@ destination: docs
 
 url: https://paithiov909.github.io/rjavacmecab
 
-template:
-  package: preferably
-  params:
-    toggle: manual
-
 reference:
     - title: "Tokenizer"
       contents:
