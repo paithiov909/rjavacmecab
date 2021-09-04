@@ -18,15 +18,14 @@ sentence <- enc2utf8(
     "\u671D\u306E\u3053\u3068\u3067\u3057\u305F"
   )
 )
+
 res1 <- prettify(cmecab(sentence))
 res2 <- pack(res1)
-
 
 #### prettify ####
 test_that("prettify works", {
   expect_s3_class(res1, "data.frame")
 })
-
 #### pack ####
 test_that("pack works", {
   expect_s3_class(res2, "data.frame")

@@ -25,12 +25,10 @@ test_that("cmecab stops", {
   expect_error(cmecab(NA_character_, NULL))
   expect_error(cmecab(NA_character_, "", NULL))
 })
-
 test_that("cmecab output is list", {
   expect_type(cmecab(NA_character_), "list")
   expect_type(cmecab(sentence), "list")
 })
-
 test_that("cmecab output is valid", {
   res <- enc2utf8(
     paste0(

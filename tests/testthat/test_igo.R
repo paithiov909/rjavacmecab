@@ -38,5 +38,5 @@ test_that("igo output are valid", {
     )
   )
   expect_equal(igo(sentence)[[1]][2], res)
-  expect_equal(igo(sentence)[[1]][2], enc2utf8("\u632f\u308a\u5411\u304f"))
+  expect_equal(igo(sentence, mode = "wakati")[[1]][2], enc2utf8("\u632f\u308a\u5411\u304f"))
 })
