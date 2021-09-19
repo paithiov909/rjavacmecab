@@ -37,20 +37,24 @@ cmecab <- function(chr, opt = "", sep = " ", split = TRUE) {
   }
   if (is.null(standard_tagger())) rlang::abort("There is no tagger instance available. Please `rebuild_tagger` at first.")
 
+  # create lattice
   lattice <- standard_tagger()$createLattice()
+  on.exit(lattice$destroy())
+
+  # modify chracter vector
   chr <- tidyr::replace_na(stringi::stri_enc_toutf8(chr), "")
   if (split) {
     chr <- unlist(tokenizers::tokenize_sentences(chr))
   }
 
+  # analyze character vector
   parsed <- purrr::map_chr(chr, function(str) {
     lattice$setSentence(str)
     standard_tagger()$parse(lattice)
     return(lattice$toString())
   })
 
-  lattice$destroy()
-
+  # make result
   Encoding(parsed) <- "UTF-8"
   res <- parsed %>%
     stringi::stri_replace_all_fixed(pattern = "\t", replace = sep) %>%
@@ -59,5 +63,6 @@ cmecab <- function(chr, opt = "", sep = " ", split = TRUE) {
       len <- length(li) - 1L
       return(li[1:len])
     })
+
   return(res)
 }

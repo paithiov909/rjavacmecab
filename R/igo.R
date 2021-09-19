@@ -43,9 +43,11 @@ igo <- function(chr, sep = " ", split = TRUE, mode = c("parse", "wakati")) {
     rebuild_igo_tagger()
   }
   mode <- rlang::arg_match(mode, c("parse", "wakati"))
+
+  # modify chracter vector
   chr <- tidyr::replace_na(stringi::stri_enc_toutf8(chr), "")
   if (split) {
-      chr <- unlist(tokenizers::tokenize_sentences(chr))
+    chr <- unlist(tokenizers::tokenize_sentences(chr))
   }
 
   if (identical(mode, "wakati")) {
@@ -70,5 +72,6 @@ igo <- function(chr, sep = " ", split = TRUE, mode = c("parse", "wakati")) {
       })
     })
   }
+
   return(res)
 }
