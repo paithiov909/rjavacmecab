@@ -5,10 +5,10 @@
 *.png   binary
 *.svg   binary
 # inst/igo-ipadic/*
-*.category	binary
-*.dat	binary
-*.inf	binary
-*.bin	binary
-*.idx	binary
-code2category	binary
-word2id	binary
+*.category   binary
+*.dat   binary
+*.inf   binary
+*.bin   binary
+*.idx   binary
+code2category   binary
+word2id   binary

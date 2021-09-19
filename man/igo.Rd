@@ -4,13 +4,16 @@
 \alias{igo}
 \title{Call Igo tagger}
 \usage{
-igo(chr, sep = " ", mode = c("parse", "wakati"))
+igo(chr, sep = " ", split = TRUE, mode = c("parse", "wakati"))
 }
 \arguments{
 \item{chr}{Character vector to be tokenized.}
 
 \item{sep}{Character scalar to be used as separator
 with which the function replaces tab.}
+
+\item{split}{Logical. If true (by default), the function splits character vector
+into sentences using \code{tokenizers::tokenize_sentences} before analyzing them.}
 
 \item{mode}{Charcter scalar.}
 }

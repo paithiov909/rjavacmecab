@@ -4,7 +4,7 @@
 \alias{cmecab}
 \title{Call CMeCab tagger}
 \usage{
-cmecab(chr, opt = "", sep = " ")
+cmecab(chr, opt = "", sep = " ", split = TRUE)
 }
 \arguments{
 \item{chr}{Character vector to be tokenized.}
@@ -13,6 +13,9 @@ cmecab(chr, opt = "", sep = " ")
 
 \item{sep}{Character scalar to be used as separator
 with which the function replaces tab.}
+
+\item{split}{Logical. If true (by default), the function splits character vector
+into sentences using \code{tokenizers::tokenize_sentences} before analyzing them.}
 }
 \value{
 List.
