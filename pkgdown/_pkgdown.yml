@@ -13,9 +13,9 @@ reference:
         - prettify
         - pack
         - ngram_tokenizer
-        - tokenize
-        - escape
-        - join
+        - csvutil_tokenize
+        - csvutil_escape
+        - csvutil_join
         - is_blank
         - is_mecab_available
     - title: "Dataset"

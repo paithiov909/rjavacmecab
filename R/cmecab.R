@@ -21,10 +21,12 @@ rebuild_tagger <- function(opt = "") {
 #' @param opt Character scalar to be passed as tagger options (ex. "-d").
 #' @param sep Character scalar to be used as separator
 #' with which the function replaces tab.
+#' @param split Logical. If true (by default), the function splits character vector
+#' into sentences using `tokenizers::tokenize_sentences` before analyzing them.
 #' @return List.
 #'
 #' @export
-cmecab <- function(chr, opt = "", sep = " ") {
+cmecab <- function(chr, opt = "", sep = " ", split = TRUE) {
   stopifnot(
     rlang::is_character(chr),
     rlang::is_character(opt),
@@ -35,17 +37,24 @@ cmecab <- function(chr, opt = "", sep = " ") {
   }
   if (is.null(standard_tagger())) rlang::abort("There is no tagger instance available. Please `rebuild_tagger` at first.")
 
+  # create lattice
   lattice <- standard_tagger()$createLattice()
-  chr <- tidyr::replace_na(chr, "")
+  on.exit(lattice$destroy())
 
-  parsed <- purrr::map_chr(stringi::stri_enc_toutf8(chr), function(str) {
+  # modify chracter vector
+  chr <- tidyr::replace_na(stringi::stri_enc_toutf8(chr), "")
+  if (split) {
+    chr <- unlist(tokenizers::tokenize_sentences(chr))
+  }
+
+  # analyze character vector
+  parsed <- purrr::map_chr(chr, function(str) {
     lattice$setSentence(str)
     standard_tagger()$parse(lattice)
     return(lattice$toString())
   })
 
-  lattice$destroy()
-
+  # make result
   Encoding(parsed) <- "UTF-8"
   res <- parsed %>%
     stringi::stri_replace_all_fixed(pattern = "\t", replace = sep) %>%
@@ -54,5 +63,6 @@ cmecab <- function(chr, opt = "", sep = " ") {
       len <- length(li) - 1L
       return(li[1:len])
     })
+
   return(res)
 }

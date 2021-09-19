@@ -140,7 +140,7 @@
     <p>Call Igo tagger</p>
     </div>
 
-    <pre class="usage"><span class='fu'>igo</span><span class='op'>(</span><span class='va'>chr</span>, sep <span class='op'>=</span> <span class='st'>" "</span>, mode <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"parse"</span>, <span class='st'>"wakati"</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>igo</span><span class='op'>(</span><span class='va'>chr</span>, sep <span class='op'>=</span> <span class='st'>" "</span>, split <span class='op'>=</span> <span class='cn'>TRUE</span>, mode <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"parse"</span>, <span class='st'>"wakati"</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,6 +153,11 @@
       <th>sep</th>
       <td><p>Character scalar to be used as separator
 with which the function replaces tab.</p></td>
+    </tr>
+    <tr>
+      <th>split</th>
+      <td><p>Logical. If true (by default), the function splits character vector
+into sentences using <code><a href='https://lincolnmullen.com/software/tokenizers/reference/basic-tokenizers.html'>tokenizers::tokenize_sentences</a></code> before analyzing them.</p></td>
     </tr>
     <tr>
       <th>mode</th>

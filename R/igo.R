@@ -24,6 +24,8 @@ rebuild_igo_tagger <- function(data_dir = .pkgenv[["igodic"]]) {
 #' @param chr Character vector to be tokenized.
 #' @param sep Character scalar to be used as separator
 #' with which the function replaces tab.
+#' @param split Logical. If true (by default), the function splits character vector
+#' into sentences using `tokenizers::tokenize_sentences` before analyzing them.
 #' @param mode Charcter scalar.
 #' @return List.
 #'
@@ -31,7 +33,7 @@ rebuild_igo_tagger <- function(data_dir = .pkgenv[["igodic"]]) {
 #' igo(enc2utf8("\u3053\u306e\u6728\u306a\u3093\u306e\u6728"))
 #' igo(enc2utf8("\u6c17\u306b\u306a\u308b\u6728"), mode = "wakati")
 #' @export
-igo <- function(chr, sep = " ", mode = c("parse", "wakati")) {
+igo <- function(chr, sep = " ", split = TRUE, mode = c("parse", "wakati")) {
   stopifnot(
     rlang::is_character(chr),
     rlang::is_character(sep),
@@ -42,9 +44,15 @@ igo <- function(chr, sep = " ", mode = c("parse", "wakati")) {
   }
   mode <- rlang::arg_match(mode, c("parse", "wakati"))
 
+  # modify chracter vector
+  chr <- tidyr::replace_na(stringi::stri_enc_toutf8(chr), "")
+  if (split) {
+    chr <- unlist(tokenizers::tokenize_sentences(chr))
+  }
+
   if (identical(mode, "wakati")) {
-    res <- lapply(stringi::stri_enc_toutf8(chr), function(str) {
-      li <- igo_tagger()$wakati(tidyr::replace_na(str, ""))
+    res <- lapply(chr, function(str) {
+      li <- igo_tagger()$wakati(str)
       purrr::map_chr(seq_len(li$size()), function(itr) {
         return(stringi::stri_c(
           li$get(as.integer(itr - 1)),
@@ -53,8 +61,8 @@ igo <- function(chr, sep = " ", mode = c("parse", "wakati")) {
       })
     })
   } else {
-    res <- lapply(stringi::stri_enc_toutf8(chr), function(str) {
-      morphs <- igo_tagger()$parse(tidyr::replace_na(str, ""))
+    res <- lapply(chr, function(str) {
+      morphs <- igo_tagger()$parse(str)
       purrr::map_chr(seq_len(morphs$size()), function(itr) {
         return(stringi::stri_c(
           morphs$get(as.integer(itr - 1))$surface,
@@ -64,5 +72,6 @@ igo <- function(chr, sep = " ", mode = c("parse", "wakati")) {
       })
     })
   }
+
   return(res)
 }

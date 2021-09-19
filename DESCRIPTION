@@ -14,7 +14,7 @@ BugReports: https://github.com/paithiov909/rjavacmecab/issues
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 Suggests:
     knitr,
@@ -27,4 +27,5 @@ Imports:
     rJava,
     rlang (>= 0.1.2),
     stringi,
-    tidyr
+    tidyr,
+    tokenizers

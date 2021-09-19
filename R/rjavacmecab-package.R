@@ -7,5 +7,6 @@
 #' @import stringi
 #' @importFrom purrr map_chr map_dfr imap_dfr pluck
 #' @importFrom tidyr separate replace_na
+#' @importFrom tokenizers tokenize_sentences
 #' @keywords internal
 "_PACKAGE"
