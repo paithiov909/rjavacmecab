@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          lfs: true
+          lfs: false
       - name: Pull LFS objects
         run: git lfs pull
       - name: Set up JDK ${{ matrix.java }}
