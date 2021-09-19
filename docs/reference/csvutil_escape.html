@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Call CMeCab tagger — cmecab • rjavacmecab</title>
+<title>Utility for handling CSV-like string — csvutil_escape • rjavacmecab</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Call CMeCab tagger — cmecab" />
-<meta property="og:description" content="Call CMeCab tagger" />
+<meta property="og:title" content="Utility for handling CSV-like string — csvutil_escape" />
+<meta property="og:description" content="Escape space, tab, &quot; and , in string." />
 <meta property="og:image" content="https://paithiov909.github.io/rjavacmecab/logo.png" />
 
 
@@ -131,43 +131,29 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Call CMeCab tagger</h1>
-    <small class="dont-index">Source: <a href='https://github.com/paithiov909/rjavacmecab/blob/master/R/cmecab.R'><code>R/cmecab.R</code></a></small>
-    <div class="hidden name"><code>cmecab.Rd</code></div>
+    <h1>Utility for handling CSV-like string</h1>
+    <small class="dont-index">Source: <a href='https://github.com/paithiov909/rjavacmecab/blob/master/R/utils-for-csv.R'><code>R/utils-for-csv.R</code></a></small>
+    <div class="hidden name"><code>csvutil_escape.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Call CMeCab tagger</p>
+    <p>Escape space, tab, <code>"</code> and <code>,</code> in string.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>cmecab</span><span class='op'>(</span><span class='va'>chr</span>, opt <span class='op'>=</span> <span class='st'>""</span>, sep <span class='op'>=</span> <span class='st'>" "</span>, split <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>csvutil_escape</span><span class='op'>(</span><span class='va'>str</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>chr</th>
-      <td><p>Character vector to be tokenized.</p></td>
-    </tr>
-    <tr>
-      <th>opt</th>
-      <td><p>Character scalar to be passed as tagger options (ex. "-d").</p></td>
-    </tr>
-    <tr>
-      <th>sep</th>
-      <td><p>Character scalar to be used as separator
-with which the function replaces tab.</p></td>
-    </tr>
-    <tr>
-      <th>split</th>
-      <td><p>Logical. If true (by default), the function splits character vector
-into sentences using <code><a href='https://lincolnmullen.com/software/tokenizers/reference/basic-tokenizers.html'>tokenizers::tokenize_sentences</a></code> before analyzing them.</p></td>
+      <th>str</th>
+      <td><p>Character scalar.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>List.</p>
+    <p>Character scalar.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

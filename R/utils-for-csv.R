@@ -7,7 +7,7 @@
 #' @return Character vector.
 #'
 #' @export
-tokenize <- function(str, max = 99L) {
+csvutil_tokenize <- function(str, max = 99L) {
   if (!is.character(str) || length(str) != 1L || is.na(str)) {
     rlang::abort("Invalid string provided. String must be a character scalar, not NA_character_.")
   } else {
@@ -24,7 +24,7 @@ tokenize <- function(str, max = 99L) {
 #' @return Character scalar.
 #'
 #' @export
-escape <- function(str) {
+csvutil_escape <- function(str) {
   if (!is.character(str) || length(str) != 1L || is.na(str)) {
     rlang::abort("Invalid string provided. String must be a character scalar, not NA_character_.")
   } else {
@@ -41,7 +41,7 @@ escape <- function(str) {
 #' @return Character scalar.
 #'
 #' @export
-join <- function(chr) {
+csvutil_join <- function(chr) {
   stopifnot(is.character(chr), !is.na(chr))
   arr <- rJava::J("net.moraleboost.util.CSVUtil")$join(rJava::.jarray(chr))
   return(arr)
