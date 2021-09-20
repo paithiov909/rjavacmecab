@@ -1,6 +1,7 @@
-#' Prettify cmecab output
+#' Prettify tokenized output
 #'
-#' @param list List that comes out of \code{rjavacmecab::cmecab()}.
+#' @param list List that comes out of \code{rjavacmecab::cmecab()}
+#' or \code{rjavacmecab::igo(mode = "parse")}.
 #' @param sep Character scalar that is used as separators
 #' with which the function replaces tab.
 #' @param into Character vector that is used as column names of

@@ -173,19 +173,6 @@ into sentences using <code><a href='https://lincolnmullen.com/software/tokenizer
     <p>This function is a wapper of Igo (v0.4.5) that is a Java reimplementaion of MeCab.
 The Igo tagger has 2 methods, which are 'parse' and 'wakati', and both is available from this function.</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>igo</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Encoding.html'>enc2utf8</a></span><span class='op'>(</span><span class='st'>"\u3053\u306e\u6728\u306a\u3093\u306e\u6728"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [[1]]
-#&gt; [1] "この 連体詞,*,*,*,*,*,この,コノ,コノ"      
-#&gt; [2] "木 名詞,一般,*,*,*,*,木,キ,キ"             
-#&gt; [3] "な 助動詞,*,*,*,特殊・ダ,体言接続,だ,ナ,ナ"
-#&gt; [4] "ん 名詞,非自立,一般,*,*,*,ん,ン,ン"        
-#&gt; [5] "の 助詞,連体化,*,*,*,*,の,ノ,ノ"           
-#&gt; [6] "木 名詞,一般,*,*,*,*,木,キ,キ"             
-#&gt; </div><div class='input'><span class='fu'>igo</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Encoding.html'>enc2utf8</a></span><span class='op'>(</span><span class='st'>"\u6c17\u306b\u306a\u308b\u6728"</span><span class='op'>)</span>, mode <span class='op'>=</span> <span class='st'>"wakati"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [[1]]
-#&gt; [1] "気"   "に"   "なる" "木"  
-#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

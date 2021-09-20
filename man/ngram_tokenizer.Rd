@@ -9,15 +9,15 @@ ngram_tokenizer(n = 1L, skip_word_none = TRUE, locale = NULL)
 \arguments{
 \item{n}{Integer.}
 
-\item{skip_word_none}{Boolean.}
+\item{skip_word_none}{Logical.}
 
-\item{locale}{Character scalar, NULL or "" for default locale.}
+\item{locale}{Character scalar. Pass a \code{NULL} or an empty string for default locale.}
 }
 \value{
 N-gram tokenizer function.
 }
 \description{
-Make N-gram tokenizer function.
+Make an N-gram tokenizer function.
 }
 \seealso{
 \url{https://rpubs.com/brianzive/textmining}

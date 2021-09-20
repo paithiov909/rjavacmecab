@@ -25,13 +25,10 @@ rebuild_igo_tagger <- function(data_dir = .pkgenv[["igodic"]]) {
 #' @param sep Character scalar to be used as separator
 #' with which the function replaces tab.
 #' @param split Logical. If true (by default), the function splits character vector
-#' into sentences using `tokenizers::tokenize_sentences` before analyzing them.
+#' into sentences using \code{tokenizers::tokenize_sentences} before analyzing them.
 #' @param mode Charcter scalar.
 #' @return List.
 #'
-#' @examples
-#' igo(enc2utf8("\u3053\u306e\u6728\u306a\u3093\u306e\u6728"))
-#' igo(enc2utf8("\u6c17\u306b\u306a\u308b\u6728"), mode = "wakati")
 #' @export
 igo <- function(chr, sep = " ", split = TRUE, mode = c("parse", "wakati")) {
   stopifnot(

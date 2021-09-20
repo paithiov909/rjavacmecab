@@ -22,7 +22,7 @@ rebuild_tagger <- function(opt = "") {
 #' @param sep Character scalar to be used as separator
 #' with which the function replaces tab.
 #' @param split Logical. If true (by default), the function splits character vector
-#' into sentences using `tokenizers::tokenize_sentences` before analyzing them.
+#' into sentences using \code{tokenizers::tokenize_sentences} before analyzing them.
 #' @return List.
 #'
 #' @export

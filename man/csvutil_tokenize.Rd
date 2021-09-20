@@ -9,7 +9,7 @@ csvutil_tokenize(str, max = 99L)
 \arguments{
 \item{str}{Character scalar.}
 
-\item{max}{Limitation of column size.}
+\item{max}{Integer (column size limit).}
 }
 \value{
 Character vector.

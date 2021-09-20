@@ -14,7 +14,7 @@ is_blank(x, trim = TRUE, ...)
 \item{...}{Additional arguments for \code{base::sapply()}.}
 }
 \value{
-Logical values.
+Logical.
 }
 \description{
 A port of \code{rapportools::is.empty()}.

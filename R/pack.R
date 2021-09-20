@@ -2,7 +2,7 @@
 #'
 #' @param df Output of \code{rjavacmecab::prettify}.
 #' @param pull Column name to be packed into data.frame. Default value is `token`.
-#' @param .collapse This argument will be passed to \code{stringi::stri_c()}.
+#' @param .collapse This argument is passed to \code{stringi::stri_c()}.
 #' @return data.frame.
 #'
 #' @export

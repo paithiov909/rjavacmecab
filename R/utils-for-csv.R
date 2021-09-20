@@ -3,7 +3,7 @@
 #' Parse a CSV-row-like string something like `"a,b,c"`.
 #'
 #' @param str Character scalar.
-#' @param max Limitation of column size.
+#' @param max Integer (column size limit).
 #' @return Character vector.
 #'
 #' @export

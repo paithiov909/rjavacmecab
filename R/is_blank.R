@@ -6,7 +6,7 @@
 #' @param trim Logical.
 #' @param ... Additional arguments for \code{base::sapply()}.
 #'
-#' @return Logical values.
+#' @return Logical.
 #'
 #' @export
 is_blank <- function(x, trim = TRUE, ...) {

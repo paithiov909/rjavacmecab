@@ -1,12 +1,12 @@
 #' Ngrams tokenizer
 #'
-#' Make N-gram tokenizer function.
+#' Make an N-gram tokenizer function.
 #'
 #' @seealso \url{https://rpubs.com/brianzive/textmining}
 #'
 #' @param n Integer.
-#' @param skip_word_none Boolean.
-#' @param locale Character scalar, NULL or "" for default locale.
+#' @param skip_word_none Logical.
+#' @param locale Character scalar. Pass a `NULL` or an empty string for default locale.
 #'
 #' @return N-gram tokenizer function.
 #'

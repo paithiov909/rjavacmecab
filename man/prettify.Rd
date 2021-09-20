@@ -2,7 +2,7 @@
 % Please edit documentation in R/prettify.R
 \name{prettify}
 \alias{prettify}
-\title{Prettify cmecab output}
+\title{Prettify tokenized output}
 \usage{
 prettify(
   list,
@@ -12,7 +12,8 @@ prettify(
 )
 }
 \arguments{
-\item{list}{List that comes out of \code{rjavacmecab::cmecab()}.}
+\item{list}{List that comes out of \code{rjavacmecab::cmecab()}
+or \code{rjavacmecab::igo(mode = "parse")}.}
 
 \item{sep}{Character scalar that is used as separators
 with which the function replaces tab.}
@@ -24,5 +25,5 @@ features.}
 data.frame.
 }
 \description{
-Prettify cmecab output
+Prettify tokenized output
 }

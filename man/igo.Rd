@@ -27,7 +27,3 @@ Call Igo tagger
 This function is a wapper of Igo (v0.4.5) that is a Java reimplementaion of MeCab.
 The Igo tagger has 2 methods, which are 'parse' and 'wakati', and both is available from this function.
 }
-\examples{
-igo(enc2utf8("\u3053\u306e\u6728\u306a\u3093\u306e\u6728"))
-igo(enc2utf8("\u6c17\u306b\u306a\u308b\u6728"), mode = "wakati")
-}
