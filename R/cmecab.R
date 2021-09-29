@@ -42,13 +42,13 @@ cmecab <- function(chr, opt = "", sep = " ", split = TRUE) {
   on.exit(lattice$destroy())
 
   # modify chracter vector
-  chr <- tidyr::replace_na(stringi::stri_enc_toutf8(chr), "")
+  chr <- replace_na(stringi::stri_enc_toutf8(chr), "")
   if (split) {
     chr <- unlist(tokenizers::tokenize_sentences(chr))
   }
 
   # analyze character vector
-  parsed <- purrr::map_chr(chr, function(str) {
+  parsed <- map_chr(chr, function(str) {
     lattice$setSentence(str)
     standard_tagger()$parse(lattice)
     return(lattice$toString())

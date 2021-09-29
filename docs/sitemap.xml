@@ -7,7 +7,13 @@
     <loc>https://paithiov909.github.io/rjavacmecab/reference/cmecab.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/reference/escape.html</loc>
+    <loc>https://paithiov909.github.io/rjavacmecab/reference/csvutil_escape.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/rjavacmecab/reference/csvutil_join.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/rjavacmecab/reference/csvutil_tokenize.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/igo.html</loc>
@@ -17,9 +23,6 @@
   </url>
   <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/is_mecab_available.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/reference/join.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/ngram_tokenizer.html</loc>
@@ -46,7 +49,7 @@
     <loc>https://paithiov909.github.io/rjavacmecab/reference/StopWordsJp.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/reference/tokenize.html</loc>
+    <loc>https://paithiov909.github.io/rjavacmecab/reference/tidyeval.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/rjavacmecab/articles/datasets.html</loc>

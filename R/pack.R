@@ -8,11 +8,11 @@
 #' @export
 pack <- function(df, pull = "token", .collapse = " ") {
   res <- df %>%
-    dplyr::group_by(sentence_id) %>%
-    dplyr::group_map(
-      ~ dplyr::pull(.x, {{ pull }}) %>%
+    group_by(!!sym("sentence_id")) %>%
+    group_map(
+      ~ pull(.x, {{ pull }}) %>%
         stringi::stri_c(collapse = .collapse)
     ) %>%
-    purrr::imap_dfr(~ data.frame(doc_id = .y, text = .x))
+    imap_dfr(~ data.frame(doc_id = .y, text = .x))
   return(res)
 }

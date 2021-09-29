@@ -42,7 +42,7 @@ igo <- function(chr, sep = " ", split = TRUE, mode = c("parse", "wakati")) {
   mode <- rlang::arg_match(mode, c("parse", "wakati"))
 
   # modify chracter vector
-  chr <- tidyr::replace_na(stringi::stri_enc_toutf8(chr), "")
+  chr <- replace_na(stringi::stri_enc_toutf8(chr), "")
   if (split) {
     chr <- unlist(tokenizers::tokenize_sentences(chr))
   }
@@ -50,7 +50,7 @@ igo <- function(chr, sep = " ", split = TRUE, mode = c("parse", "wakati")) {
   if (identical(mode, "wakati")) {
     res <- lapply(chr, function(str) {
       li <- igo_tagger()$wakati(str)
-      purrr::map_chr(seq_len(li$size()), function(itr) {
+      map_chr(seq_len(li$size()), function(itr) {
         return(stringi::stri_c(
           li$get(as.integer(itr - 1)),
           sep = sep
@@ -60,7 +60,7 @@ igo <- function(chr, sep = " ", split = TRUE, mode = c("parse", "wakati")) {
   } else {
     res <- lapply(chr, function(str) {
       morphs <- igo_tagger()$parse(str)
-      purrr::map_chr(seq_len(morphs$size()), function(itr) {
+      map_chr(seq_len(morphs$size()), function(itr) {
         return(stringi::stri_c(
           morphs$get(as.integer(itr - 1))$surface,
           morphs$get(as.integer(itr - 1))$feature,

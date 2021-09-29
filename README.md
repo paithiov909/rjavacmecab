@@ -119,7 +119,7 @@ str(res)
 #>  $ : chr [1:18] "お前 名詞,代名詞,一般,*,*,*,お前,オマエ,オマエ" "が 助詞,格助詞,一般,*,*,*,が,ガ,ガ" "そう 副詞,助詞類接続,*,*,*,*,そう,ソウ,ソー" "思う 動詞,自立,*,*,五段・ワ行促音便,基本形,思う,オモウ,オモウ" ...
 ```
 
-## Related Products
+## Alternatives
 
 -   [IshidaMotohiro/RMeCab: Interface to
     MeCab](https://github.com/IshidaMotohiro/RMeCab)

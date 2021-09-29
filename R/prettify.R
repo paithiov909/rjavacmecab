@@ -24,26 +24,26 @@ prettify <- function(list,
                        "Yomi2"
                      )) {
   stopifnot(
-    is.list(list),
-    is.character(sep)
+    rlang::is_list(list),
+    rlang::is_character(sep)
   )
-  res <- purrr::imap_dfr(list, function(li, i) {
-    li <- dplyr::na_if(li, "EOS")
-    purrr::map_dfr(stringi::stri_omit_na(li), function(elem) {
+  res <- imap_dfr(list, function(li, i) {
+    li <- na_if(li, "EOS")
+    map_dfr(stringi::stri_omit_na(li), function(elem) {
       split <- stringi::stri_split_regex(elem, sep, 2L)
       return(data.frame(
         sentence_id = i,
-        token = purrr::map_chr(split, ~ purrr::pluck(., 1)),
-        Features = purrr::map_chr(split, ~ purrr::pluck(., 2))
+        token = map_chr(split, ~ pluck(., 1)),
+        Features = map_chr(split, ~ pluck(., 2))
       ))
     })
   }) %>%
-    tidyr::separate(
+    separate(
       col = "Features",
       into = into,
       sep = ",",
       fill = "right"
     ) %>%
-    dplyr::mutate_if(is.character, ~ dplyr::na_if(., "*"))
+    mutate_if(is.character, ~ na_if(., "*"))
   return(res)
 }

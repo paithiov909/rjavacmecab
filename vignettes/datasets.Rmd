@@ -17,15 +17,13 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 stopifnot(
-  require(DT),
-  require(rjavacmecab)
+  require(DT)
 )
 ```
 
 ## StopWordsJp
 
 ```{r}
-data("StopWordsJp")
-DT::datatable(StopWordsJp, style = "bootstrap")
+DT::datatable(rjavacmecab::StopWordsJp, style = "bootstrap")
 ```
 
