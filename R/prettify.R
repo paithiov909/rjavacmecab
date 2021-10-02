@@ -33,12 +33,12 @@ prettify <- function(list,
       split <- stringi::stri_split_regex(elem, sep, 2L)
       return(data.frame(
         sentence_id = i,
-        token = map_chr(split, ~ pluck(., 1)),
-        Features = map_chr(split, ~ pluck(., 2))
+        token = map_chr(split, ~ purrr::pluck(., 1)),
+        Features = map_chr(split, ~ purrr::pluck(., 2))
       ))
     })
   }) %>%
-    separate(
+    tidyr::separate(
       col = "Features",
       into = into,
       sep = ",",

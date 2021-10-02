@@ -97,23 +97,28 @@
 <blockquote>
 <p>rJava Interface to CMeCab</p>
 </blockquote>
+<p>rjavacmecab is an rJava interface to <a href="https://github.com/takscape/cmecab-java">takscape/cmecab-java</a> that is a Java binding for MeCab.</p>
+<p>The goal of this package is to provide the simplest way to help use ‘MeCab’ from R over alternatives (<a href="https://github.com/IshidaMotohiro/RMeCab">RMeCab</a> and <a href="https://github.com/junhewk/RcppMeCab">RcppMeCab</a>).</p>
+<p>rjavacmecab is yet slower, but it should be easier to use because…</p>
+<ol>
+<li>There is no need to build from C/C++.</li>
+<li>It returns all features of each nodes accessible via cmecab-java.</li>
+</ol>
 <div id="system-requirements" class="section level2">
 <h2 class="hasAnchor">
 <a href="#system-requirements" class="anchor"></a>System Requirements</h2>
-<ul>
-<li>MeCab</li>
-<li>Java</li>
-</ul>
-</div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"paithiov909/rjavacmecab"</span><span class="op">)</span></code></pre></div>
+<p>rjavacmecab requires ‘MeCab’ (mecab, libmecab-dev and mecab-ipadic-utf8) and JDK. Please note that they are installed and available before you use rjavacmecab.</p>
+<p>In case using base R and JDK for 32/64bit under Windows, you need 32/64bit build of libmecab.</p>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
+<div id="installation" class="section level3">
+<h3 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h3>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"paithiov909/rjavacmecab"</span><span class="op">)</span></code></pre></div>
+</div>
 <div id="call-tagger" class="section level3">
 <h3 class="hasAnchor">
 <a href="#call-tagger" class="anchor"></a>Call Tagger</h3>
@@ -202,14 +207,6 @@
 <span class="co">#&gt; List of 1</span>
 <span class="co">#&gt;  $ : chr [1:18] "お前 名詞,代名詞,一般,*,*,*,お前,オマエ,オマエ" "が 助詞,格助詞,一般,*,*,*,が,ガ,ガ" "そう 副詞,助詞類接続,*,*,*,*,そう,ソウ,ソー" "思う 動詞,自立,*,*,五段・ワ行促音便,基本形,思う,オモウ,オモウ" ...</span></code></pre></div>
 </div>
-</div>
-<div id="alternatives" class="section level2">
-<h2 class="hasAnchor">
-<a href="#alternatives" class="anchor"></a>Alternatives</h2>
-<ul>
-<li><a href="https://github.com/IshidaMotohiro/RMeCab">IshidaMotohiro/RMeCab: Interface to MeCab</a></li>
-<li><a href="https://github.com/junhewk/RcppMeCab">junhewk/RcppMeCab: RcppMeCab: Rcpp Interface of CJK Morpheme Analyzer MeCab</a></li>
-</ul>
 </div>
 <div id="license" class="section level2">
 <h2 class="hasAnchor">

@@ -3,10 +3,7 @@
 #' @name rjavacmecab
 #' @import dplyr
 #' @import rJava
-#' @import rlang
-#' @import stringi
-#' @importFrom purrr map_chr map_dfr imap_dfr pluck
-#' @importFrom tidyr separate replace_na
+#' @importFrom purrr map map_chr map_dfr imap_dfr
 #' @importFrom tokenizers tokenize_sentences
 #' @keywords internal
 "_PACKAGE"

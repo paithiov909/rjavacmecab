@@ -42,9 +42,9 @@ igo <- function(chr, sep = " ", split = TRUE, mode = c("parse", "wakati")) {
   mode <- rlang::arg_match(mode, c("parse", "wakati"))
 
   # modify chracter vector
-  chr <- replace_na(stringi::stri_enc_toutf8(chr), "")
+  chr <- stringi::stri_omit_na(chr)
   if (split) {
-    chr <- unlist(tokenizers::tokenize_sentences(chr))
+    chr <- purrr::flatten_chr(tokenizers::tokenize_sentences(chr))
   }
 
   if (identical(mode, "wakati")) {

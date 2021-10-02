@@ -8,7 +8,7 @@
 #'
 #' @export
 rebuild_tagger <- function(opt = "") {
-  standard_tagger(rJava::.jnew(
+  standard_tagger(.jnew(
     "net.moraleboost.mecab.impl.StandardTagger",
     stringi::stri_c(opt, collapse = " ")
   ))
@@ -42,9 +42,9 @@ cmecab <- function(chr, opt = "", sep = " ", split = TRUE) {
   on.exit(lattice$destroy())
 
   # modify chracter vector
-  chr <- replace_na(stringi::stri_enc_toutf8(chr), "")
+  chr <- stringi::stri_omit_na(chr)
   if (split) {
-    chr <- unlist(tokenizers::tokenize_sentences(chr))
+    chr <- purrr::flatten_chr(tokenize_sentences(chr))
   }
 
   # analyze character vector
@@ -59,7 +59,7 @@ cmecab <- function(chr, opt = "", sep = " ", split = TRUE) {
   res <- parsed %>%
     stringi::stri_replace_all_fixed(pattern = "\t", replace = sep) %>%
     stringi::stri_split_fixed(pattern = "\n") %>%
-    lapply(function(li) {
+    map(function(li) {
       len <- length(li) - 1L
       return(li[1:len])
     })

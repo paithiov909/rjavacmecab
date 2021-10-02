@@ -16,18 +16,36 @@ coverage](https://codecov.io/gh/paithiov909/rjavacmecab/branch/main/graph/badge.
 
 > rJava Interface to CMeCab
 
+rjavacmecab is an rJava interface to
+[takscape/cmecab-java](https://github.com/takscape/cmecab-java) that is
+a Java binding for MeCab.
+
+The goal of this package is to provide the simplest way to help use
+‘MeCab’ from R over alternatives
+([RMeCab](https://github.com/IshidaMotohiro/RMeCab) and
+[RcppMeCab](https://github.com/junhewk/RcppMeCab)).
+
+rjavacmecab is yet slower, but it should be easier to use because…
+
+1.  There is no need to build from C/C++.
+2.  It returns all features of each nodes accessible via cmecab-java.
+
 ## System Requirements
 
--   MeCab
--   Java
+rjavacmecab requires ‘MeCab’ (mecab, libmecab-dev and mecab-ipadic-utf8)
+and JDK. Please note that they are installed and available before you
+use rjavacmecab.
 
-## Installation
+In case using base R and JDK for 32/64bit under Windows, you need
+32/64bit build of libmecab.
+
+## Usage
+
+### Installation
 
 ``` r
 remotes::install_github("paithiov909/rjavacmecab")
 ```
-
-## Usage
 
 ### Call Tagger
 
@@ -118,13 +136,6 @@ str(res)
 #> List of 1
 #>  $ : chr [1:18] "お前 名詞,代名詞,一般,*,*,*,お前,オマエ,オマエ" "が 助詞,格助詞,一般,*,*,*,が,ガ,ガ" "そう 副詞,助詞類接続,*,*,*,*,そう,ソウ,ソー" "思う 動詞,自立,*,*,五段・ワ行促音便,基本形,思う,オモウ,オモウ" ...
 ```
-
-## Alternatives
-
--   [IshidaMotohiro/RMeCab: Interface to
-    MeCab](https://github.com/IshidaMotohiro/RMeCab)
--   [junhewk/RcppMeCab: RcppMeCab: Rcpp Interface of CJK Morpheme
-    Analyzer MeCab](https://github.com/junhewk/RcppMeCab)
 
 ## License
 

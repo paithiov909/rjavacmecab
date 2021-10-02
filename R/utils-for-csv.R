@@ -11,7 +11,7 @@ csvutil_tokenize <- function(str, max = 99L) {
   if (!is.character(str) || length(str) != 1L || is.na(str)) {
     rlang::abort("Invalid string provided. String must be a character scalar, not NA_character_.")
   } else {
-    arr <- rJava::J("net.moraleboost.util.CSVUtil")$tokenize(str, as.integer(max))
+    arr <- J("net.moraleboost.util.CSVUtil")$tokenize(str, as.integer(max))
     return(arr)
   }
 }
@@ -28,7 +28,7 @@ csvutil_escape <- function(str) {
   if (!is.character(str) || length(str) != 1L || is.na(str)) {
     rlang::abort("Invalid string provided. String must be a character scalar, not NA_character_.")
   } else {
-    str <- rJava::J("net.moraleboost.util.CSVUtil")$escape(str)
+    str <- J("net.moraleboost.util.CSVUtil")$escape(str)
     return(str)
   }
 }
@@ -43,6 +43,6 @@ csvutil_escape <- function(str) {
 #' @export
 csvutil_join <- function(chr) {
   stopifnot(is.character(chr), !is.na(chr))
-  arr <- rJava::J("net.moraleboost.util.CSVUtil")$join(rJava::.jarray(chr))
+  arr <- J("net.moraleboost.util.CSVUtil")$join(.jarray(chr))
   return(arr)
 }

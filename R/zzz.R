@@ -37,7 +37,7 @@ igo_tagger <- function(obj = NULL) {
 #' @param pkgname pkgname
 #' @keywords internal
 .onLoad <- function(libname, pkgname) {
-  rJava::.jpackage(pkgname,
+  .jpackage(pkgname,
     morePaths = c(
       "inst/java/bridj-0.7.0.jar",
       "inst/java/cmecab-java-2.1.0.jar",

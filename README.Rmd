@@ -24,18 +24,28 @@ knitr::opts_chunk$set(
 
 > rJava Interface to CMeCab
 
+rjavacmecab is an rJava interface to [takscape/cmecab-java](https://github.com/takscape/cmecab-java) that is a Java binding for MeCab.
+
+The goal of this package is to provide the simplest way to help use 'MeCab' from R over  alternatives ([RMeCab](https://github.com/IshidaMotohiro/RMeCab) and [RcppMeCab](https://github.com/junhewk/RcppMeCab)).
+
+rjavacmecab is yet slower, but it should be easier to use because...
+
+1. There is no need to build from C/C++. 
+2. It returns all features of each nodes accessible via cmecab-java. 
+
 ## System Requirements
 
-- MeCab
-- Java
+rjavacmecab requires 'MeCab' (mecab, libmecab-dev and mecab-ipadic-utf8) and JDK. Please note that they are installed and available before you use rjavacmecab.
 
-## Installation
+In case using base R and JDK for 32/64bit under Windows, you need 32/64bit build of libmecab.
+
+## Usage
+
+### Installation
 
 ``` r
 remotes::install_github("paithiov909/rjavacmecab")
 ```
-
-## Usage
 
 ### Call Tagger
 
@@ -105,11 +115,6 @@ rjavacmecab::cmecab(str, "-d /MeCab/ipadic-neologd", sep = "\t")
 res <- rjavacmecab::igo("お前がそう思うんならそうなんだろう、お前ん中ではな")
 str(res)
 ```
-
-## Alternatives
-
-- [IshidaMotohiro/RMeCab: Interface to MeCab](https://github.com/IshidaMotohiro/RMeCab)
-- [junhewk/RcppMeCab: RcppMeCab: Rcpp Interface of CJK Morpheme Analyzer MeCab](https://github.com/junhewk/RcppMeCab)
 
 ## License
 
