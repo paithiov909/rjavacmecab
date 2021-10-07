@@ -4,14 +4,14 @@
 \alias{csvutil_escape}
 \title{Utility for handling CSV-like string}
 \usage{
-csvutil_escape(str)
+csvutil_escape(chr)
 }
 \arguments{
-\item{str}{Character scalar.}
+\item{chr}{Character vector.}
 }
 \value{
-Character scalar.
+Character vector.
 }
 \description{
-Escape space, tab, \verb{"} and \verb{,} in string.
+Escape space, tab, \verb{"} and \verb{,} in strings.
 }

@@ -18,18 +18,20 @@ csvutil_tokenize <- function(str, max = 99L) {
 
 #' Utility for handling CSV-like string
 #'
-#' Escape space, tab, `"` and `,` in string.
+#' Escape space, tab, `"` and `,` in strings.
 #'
-#' @param str Character scalar.
-#' @return Character scalar.
+#' @param chr Character vector.
+#' @return Character vector.
 #'
 #' @export
-csvutil_escape <- function(str) {
-  if (!is.character(str) || length(str) != 1L || is.na(str)) {
-    rlang::abort("Invalid string provided. String must be a character scalar, not NA_character_.")
+csvutil_escape <- function(chr) {
+  if (!is.character(chr) || is.na(chr)) {
+    rlang::abort("Invalid string provided. String must be a character vector, not NA_character_.")
   } else {
-    str <- J("net.moraleboost.util.CSVUtil")$escape(str)
-    return(str)
+    arr <- sapply(chr, function(str) {
+      J("net.moraleboost.util.CSVUtil")$escape(str)
+    }, USE.NAMES = FALSE)
+    return(arr)
   }
 }
 
@@ -42,7 +44,10 @@ csvutil_escape <- function(str) {
 #'
 #' @export
 csvutil_join <- function(chr) {
-  stopifnot(is.character(chr), !is.na(chr))
-  arr <- J("net.moraleboost.util.CSVUtil")$join(.jarray(chr))
-  return(arr)
+  if (!is.character(chr) || is.na(chr)) {
+    rlang::abort("Invalid string provided. String must be a character vector, not NA_character_.")
+  } else {
+    arr <- J("net.moraleboost.util.CSVUtil")$join(.jarray(chr))
+    return(arr)
+  }
 }

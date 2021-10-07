@@ -10,7 +10,10 @@ test_that("tokenize output is valid", {
 #### escape ####
 test_that("escape stops properly", {
   expect_error(csvutil_escape(list()))
-  expect_error(csvutil_escape(c("a", "b")))
+  expect_error(csvutil_escape(NA_character_))
+})
+test_that("escape output is valid", {
+  expect_type(csvutil_escape("a,b,c"), "character")
 })
 
 #### join ####
