@@ -3,6 +3,7 @@ name: R-CMD-check
 on:
   push:
     branches:
+      - main
       - dev
   pull_request:
     branches:
@@ -48,6 +49,8 @@ jobs:
       - name: R CMD javareconf
         run: sudo R CMD javareconf
       - name: Install dependencies
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
         run: |
           install.packages(c("remotes", "rcmdcheck", "covr", "rJava"))
           remotes::install_deps(dependencies = TRUE)
