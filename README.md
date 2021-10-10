@@ -27,7 +27,7 @@ The goal of this package is to provide the simplest way to help use
 
 rjavacmecab is yet slower, but it should be easier to use because…
 
-1.  There is no need to build from C/C++.
+1.  There is no need to build from C/C++ source.
 2.  It returns all features of each nodes accessible via cmecab-java.
 
 ## System Requirements
@@ -63,7 +63,7 @@ str(res)
 res <- rjavacmecab::prettify(res)
 str(res)
 #> 'data.frame':    18 obs. of  11 variables:
-#>  $ sentence_id: int  1 1 1 1 1 1 1 1 1 1 ...
+#>  $ doc_id     : int  1 1 1 1 1 1 1 1 1 1 ...
 #>  $ token      : chr  "長期" "的" "自己" "実現" ...
 #>  $ POS1       : chr  "名詞" "名詞" "名詞" "名詞" ...
 #>  $ POS2       : chr  "一般" "接尾" "一般" "サ変接続" ...
@@ -78,7 +78,7 @@ str(res)
 
 If you use IPA-styled dictionary, the output has these columns.
 
--   sentence\_id: 文番号
+-   doc\_id: 文番号
 -   token: 表層形（surface form）
 -   POS1\~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3
 -   X5StageUse1: 活用型（ex. 五段, 下二段…）
@@ -92,9 +92,9 @@ If you use IPA-styled dictionary, the output has these columns.
 ``` r
 res <- rjavacmecab::pack(res)
 print(res)
-#>   doc_id                                       text
-#> 1      1 長期 的 自己 実現 で 福 楽 は 得 られ ない
-#> 2      2                 幸せ は 刹那 の 中 に あり
+#>   doc_id                                        text
+#> 1      1 長期 的 自己 実現 で 福 楽 は 得 ら れ ない
+#> 2      2                  幸せ は 刹那 の 中 に あり
 ```
 
 ### Change Dictionary

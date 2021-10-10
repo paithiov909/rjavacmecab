@@ -17,5 +17,5 @@ is_blank(x, trim = TRUE, ...)
 Logical.
 }
 \description{
-A port of \code{rapportools::is.empty()}.
+Check if scalars are blank
 }

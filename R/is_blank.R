@@ -1,7 +1,5 @@
 #' Check if scalars are blank
 #'
-#' A port of \code{rapportools::is.empty()}.
-#'
 #' @param x Object to check its emptiness.
 #' @param trim Logical.
 #' @param ... Additional arguments for \code{base::sapply()}.

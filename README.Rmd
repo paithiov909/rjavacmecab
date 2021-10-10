@@ -11,6 +11,7 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+pkgload::load_all()
 ```
 
 # rjavacmecab <a href='https://paithiov909.github.io/rjavacmecab'><img src='https://rawcdn.githack.com/paithiov909/rjavacmecab/3075fa2aee8ec83c8f35a482cab1cf137de50d24/man/figures/logo.png' align="right" height="139" /></a>
@@ -30,7 +31,7 @@ The goal of this package is to provide the simplest way to help use 'MeCab' from
 
 rjavacmecab is yet slower, but it should be easier to use because...
 
-1. There is no need to build from C/C++. 
+1. There is no need to build from C/C++ source. 
 2. It returns all features of each nodes accessible via cmecab-java. 
 
 ## System Requirements
@@ -63,7 +64,7 @@ str(res)
 
 If you use IPA-styled dictionary, the output has these columns.
 
-- sentence_id: 文番号
+- doc_id: 文番号
 - token: 表層形（surface form）
 - POS1~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3
 - X5StageUse1: 活用型（ex. 五段, 下二段...）

@@ -2,20 +2,29 @@
 % Please edit documentation in R/pack.R
 \name{pack}
 \alias{pack}
-\title{Pack prettified output}
+\title{Pack prettified data.frame of tokens}
 \usage{
-pack(df, pull = "token", .collapse = " ")
+pack(df, n = 1L, pull = "token", sep = "-", .collapse = " ")
 }
 \arguments{
-\item{df}{Output of \code{rjavacmecab::prettify}.}
+\item{df}{Prettified data.frame of tokens.}
 
-\item{pull}{Column name to be packed into data.frame. Default value is \code{token}.}
+\item{n}{Integer internally passed to Ngrams tokenizer function
+created of \code{rjavacmecab::ngram_tokenizer()}}
 
-\item{.collapse}{This argument is passed to \code{stringi::stri_c()}.}
+\item{pull}{Column to be packed into text or ngrams body. Default value is \code{token}.}
+
+\item{sep}{Character scalar internally used as the concatenator of ngrams.}
+
+\item{.collapse}{Character scalar passed to \code{stringi::stri_c()}.}
 }
 \value{
-data.frame.
+data.frame
 }
 \description{
-Pack prettified output
+Pack prettified data.frame of tokens into a new data.frame of corpus
+compatible with the Text Interchange Formats.
+}
+\seealso{
+\url{https://github.com/ropensci/tif}
 }

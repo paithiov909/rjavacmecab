@@ -32,7 +32,7 @@ prettify <- function(list,
     map_dfr(stringi::stri_omit_na(li), function(elem) {
       split <- stringi::stri_split_regex(elem, sep, 2L)
       return(data.frame(
-        sentence_id = i,
+        doc_id = i,
         token = map_chr(split, ~ purrr::pluck(., 1)),
         Features = map_chr(split, ~ purrr::pluck(., 2))
       ))

@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rjavacmecab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1.9000</span>
       </span>
     </div>
 
@@ -55,18 +55,6 @@
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/datasets.html">Explore datasets</a>
-    </li>
-  </ul>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -91,7 +79,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>About rjavacmecab package</h1>
             
-            <h4 class="date">2021-10-02</h4>
+            <h4 class="date">2021-10-11</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/paithiov909/rjavacmecab/blob/master/vignettes/rjavacmecab.Rmd"><code>vignettes/rjavacmecab.Rmd</code></a></small>
       <div class="hidden name"><code>rjavacmecab.Rmd</code></div>
@@ -151,29 +139,20 @@
 <h3 class="hasAnchor">
 <a href="#cmecab-java%E3%81%AE%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97" class="anchor"></a>cmecab-javaの呼び出し</h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/cmecab.html">cmecab</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"長期的自己実現で福楽は得られない"</span>, <span class="st">"幸せは刹那の中にあり"</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/cmecab.html">cmecab</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"長期的自己実現で福楽は得られない"</span>NA<span class="st">"幸せは刹那の中にあり"</span>NA<span class="op">)</span>NA<span class="op">)</span>NA<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
 <span class="co">#&gt; List of 2</span>
-<span class="co">#&gt;  $ : chr [1:12] "長期 名詞,一般,*,*,*,*,長期,チョウキ,チョーキ" "的 名詞,接尾,形容動詞語幹,*,*,*,的,テキ,テキ" "自己 名詞,一般,*,*,*,*,自己,ジコ,ジコ" "実現 名詞,サ変接続,*,*,*,*,実現,ジツゲン,ジツゲン" ...</span>
-<span class="co">#&gt;  $ : chr [1:8] "幸せ 名詞,形容動詞語幹,*,*,*,*,幸せ,シアワセ,シアワセ" "は 助詞,係助詞,*,*,*,*,は,ハ,ワ" "刹那 名詞,副詞可能,*,*,*,*,刹那,セツナ,セツナ" "の 助詞,連体化,*,*,*,*,の,ノ,ノ" ...</span></code></pre></div>
+<span class="co">#&gt;  $ : chr [1:12] "長期 名詞,一般,*,*,*,*,長期,チョウキ,チョーキ" "的 名詞,接尾,形容動詞語幹,*,*,*,的,テキ,テキ" "自己 名詞,一般,*,*,*,*,自己,ジコ,ジコ" "実現 名詞,サ変接続,*,*,*,*,実現,ジツゲン,ジツゲン" ...</span>NA<span class="co">#&gt;  $ : chr [1:8] "幸せ 名詞,形容動詞語幹,*,*,*,*,幸せ,シアワセ,シアワセ" "は 助詞,係助詞,*,*,*,*,は,ハ,ワ" "刹那 名詞,副詞可能,*,*,*,*,刹那,セツナ,セツナ" "の 助詞,連体化,*,*,*,*,の,ノ,ノ" ...</span>NA</code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/prettify.html">prettify</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span> <span class="co">## データフレームに整形します</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/prettify.html">prettify</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span> <span class="co">## データフレームに整形します</span>NA<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
 <span class="co">#&gt; 'data.frame':    18 obs. of  11 variables:</span>
-<span class="co">#&gt;  $ sentence_id: int  1 1 1 1 1 1 1 1 1 1 ...</span>
-<span class="co">#&gt;  $ token      : chr  "長期" "的" "自己" "実現" ...</span>
-<span class="co">#&gt;  $ POS1       : chr  "名詞" "名詞" "名詞" "名詞" ...</span>
-<span class="co">#&gt;  $ POS2       : chr  "一般" "接尾" "一般" "サ変接続" ...</span>
-<span class="co">#&gt;  $ POS3       : chr  NA "形容動詞語幹" NA NA ...</span>
-<span class="co">#&gt;  $ POS4       : chr  NA NA NA NA ...</span>
+<span class="co">#&gt;  $ doc_id     : int  1 1 1 1 1 1 1 1 1 1 ...</span>
+<span class="co">#&gt;  $ token      : chr  "長期" "的" "自己" "実現" ...</span>NA<span class="co">#&gt;  $ POS1       : chr  "名詞" "名詞" "名詞" "名詞" ...</span>NA<span class="co">#&gt;  $ POS2       : chr  "一般" "接尾" "一般" "サ変接続" ...</span>NA<span class="co">#&gt;  $ POS3       : chr  NA "形容動詞語幹" NA NA ...</span>NA<span class="co">#&gt;  $ POS4       : chr  NA NA NA NA ...</span>
 <span class="co">#&gt;  $ X5StageUse1: chr  NA NA NA NA ...</span>
 <span class="co">#&gt;  $ X5StageUse2: chr  NA NA NA NA ...</span>
-<span class="co">#&gt;  $ Original   : chr  "長期" "的" "自己" "実現" ...</span>
-<span class="co">#&gt;  $ Yomi1      : chr  "チョウキ" "テキ" "ジコ" "ジツゲン" ...</span>
-<span class="co">#&gt;  $ Yomi2      : chr  "チョーキ" "テキ" "ジコ" "ジツゲン" ...</span></code></pre></div>
+<span class="co">#&gt;  $ Original   : chr  "長期" "的" "自己" "実現" ...</span>NA<span class="co">#&gt;  $ Yomi1      : chr  "チョウキ" "テキ" "ジコ" "ジツゲン" ...</span>NA<span class="co">#&gt;  $ Yomi2      : chr  "チョーキ" "テキ" "ジコ" "ジツゲン" ...</span>NA</code></pre></div>
 <p>整形されたデータフレームは次のカラムからなります。IPA辞書とは異なる品詞体系の辞書を使っている場合は、素性情報を<code>into</code>引数に渡してください。</p>
 <ul>
-<li>sentence_id: 文番号</li>
+<li>doc_id: 文番号</li>
 <li>token: 表層形（surface form）</li>
 <li>POS1~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3</li>
 <li>X5StageUse1: 活用型（ex. 五段, 下二段…）</li>
@@ -183,11 +162,9 @@
 <li>Yomi2: 発音（pronunciation）</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/pack.html">pack</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span> <span class="co">## さらに整形して分かち書きにします</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
-<span class="co">#&gt;   doc_id                                       text</span>
-<span class="co">#&gt; 1      1 長期 的 自己 実現 で 福 楽 は 得 られ ない</span>
-<span class="co">#&gt; 2      2                 幸せ は 刹那 の 中 に あり</span></code></pre></div>
+<code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/pack.html">pack</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span> <span class="co">## さらに整形して分かち書きにします</span>NA<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
+<span class="co">#&gt;   doc_id                                        text</span>
+<span class="co">#&gt; 1      1 長期 的 自己 実現 で 福 楽 は 得 ら れ ない</span>NA<span class="co">#&gt; 2      2                  幸せ は 刹那 の 中 に あり</span>NA</code></pre></div>
 </div>
 <div id="辞書の差し替え" class="section level3">
 <h3 class="hasAnchor">
@@ -199,16 +176,14 @@
 <a href="#igo%E3%81%AE%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97" class="anchor"></a>Igoの呼び出し</h3>
 <p><code><a href="../reference/cmecab.html">rjavacmecab::cmecab</a></code>とほぼ同様のAPIから、パッケージに同梱されているIgo (v0.4.5, IPA辞書)を利用することも可能です。ただし、仕様上、MeCabとは解析結果が異なる可能性があります。詳細は<a href="http://igo.osdn.jp/">Igo</a>のドキュメントを確認してください。</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/igo.html">igo</a></span><span class="op">(</span><span class="st">"お前がそう思うんならそうなんだろう、お前ん中ではな"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/igo.html">igo</a></span><span class="op">(</span><span class="st">"お前がそう思うんならそうなんだろう、お前ん中ではな"</span>NA<span class="op">)</span>NA<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
 <span class="co">#&gt; List of 1</span>
-<span class="co">#&gt;  $ : chr [1:18] "お前 名詞,代名詞,一般,*,*,*,お前,オマエ,オマエ" "が 助詞,格助詞,一般,*,*,*,が,ガ,ガ" "そう 副詞,助詞類接続,*,*,*,*,そう,ソウ,ソー" "思う 動詞,自立,*,*,五段・ワ行促音便,基本形,思う,オモウ,オモウ" ...</span></code></pre></div>
+<span class="co">#&gt;  $ : chr [1:18] "お前 名詞,代名詞,一般,*,*,*,お前,オマエ,オマエ" "が 助詞,格助詞,一般,*,*,*,が,ガ,ガ" "そう 副詞,助詞類接続,*,*,*,*,そう,ソウ,ソー" "思う 動詞,自立,*,*,五段・ワ行促音便,基本形,思う,オモウ,オモウ" ...</span>NA</code></pre></div>
 <p><code><a href="../reference/igo.html">rjavacmecab::igo</a></code>については、分かち書きの機能も利用できます。</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/igo.html">igo</a></span><span class="op">(</span><span class="st">"お前がそう思うんならそうなんだろう、お前ん中ではな"</span>, mode <span class="op">=</span> <span class="st">"wakati"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/igo.html">igo</a></span><span class="op">(</span><span class="st">"お前がそう思うんならそうなんだろう、お前ん中ではな"</span>NA<span class="op">=</span>NA<span class="st">"wakati"</span>NA<span class="op">)</span>NA<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
 <span class="co">#&gt; List of 1</span>
-<span class="co">#&gt;  $ : chr [1:18] "お前" "が" "そう" "思う" ...</span></code></pre></div>
+<span class="co">#&gt;  $ : chr [1:18] "お前" "が" "そう" "思う" ...</span>NA</code></pre></div>
 </div>
 </div>
 <div id="google-colaboratoryで試す方法" class="section level2">
@@ -243,9 +218,8 @@
 <h4 class="hasAnchor">
 <a href="#java%E3%81%AE%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88" class="anchor"></a>Javaのアップデート</h4>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%%bash</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install default-jre</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install default-jdk</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">java</span> <span class="at">-version</span>   <span class="co"># check java version</span></span></code></pre></div>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> install default-jre default-jdk</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">java</span> <span class="at">-version</span>   <span class="co"># check java version</span></span></code></pre></div>
 </div>
 <div id="java_homeの設定" class="section level4">
 <h4 class="hasAnchor">
@@ -265,7 +239,7 @@
 <a href="#rjava%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" class="anchor"></a>rJavaのインストール</h4>
 <p>aptから入れることができます。</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%%bash</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install r-cran-rjava</span></code></pre></div>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> install r-cran-rjava</span></code></pre></div>
 <p>Rの<code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>から入れる場合、libjvm.soを<code><a href="https://rdrr.io/r/base/dynload.html">dyn.load()</a></code>で明示的に指定して読み込まないとパッケージのインストールに失敗するため、先に<code><a href="https://rdrr.io/r/base/dynload.html">dyn.load()</a></code>を呼びます。</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="sc">%%</span>R   <span class="co"># このマジックコマンドをコードブロックの先頭に付けるとそのブロックにRが書ける</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dyn.load</span>(<span class="st">"/usr/lib/jvm/java-11-openjdk-amd64/lib/server/libjvm.so"</span>)</span>

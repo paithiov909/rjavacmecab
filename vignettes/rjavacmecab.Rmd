@@ -76,7 +76,7 @@ str(res)
 
 整形されたデータフレームは次のカラムからなります。IPA辞書とは異なる品詞体系の辞書を使っている場合は、素性情報を`into`引数に渡してください。
 
-- sentence_id: 文番号
+- doc_id: 文番号
 - token: 表層形（surface form）
 - POS1~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3
 - X5StageUse1: 活用型（ex. 五段, 下二段...）
@@ -144,8 +144,7 @@ apt install mecab libmecab-dev mecab-ipadic-utf8
 
 ``` bash
 %%bash
-apt-get install default-jre
-apt-get install default-jdk
+apt install default-jre default-jdk
 java -version   # check java version
 ```
 
@@ -171,7 +170,7 @@ aptから入れることができます。
 
 ``` bash
 %%bash
-apt-get install r-cran-rjava
+apt install r-cran-rjava
 ```
 
 Rの`install.packages()`から入れる場合、libjvm.soを`dyn.load()`で明示的に指定して読み込まないとパッケージのインストールに失敗するため、先に`dyn.load()`を呼びます。

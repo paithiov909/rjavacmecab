@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rjavacmecab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1.9000</span>
       </span>
     </div>
 
@@ -55,18 +55,6 @@
 </li>
 <li>
   <a href="reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="articles/datasets.html">Explore datasets</a>
-    </li>
-  </ul>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -101,7 +89,7 @@
 <p>The goal of this package is to provide the simplest way to help use ‘MeCab’ from R over alternatives (<a href="https://github.com/IshidaMotohiro/RMeCab">RMeCab</a> and <a href="https://github.com/junhewk/RcppMeCab">RcppMeCab</a>).</p>
 <p>rjavacmecab is yet slower, but it should be easier to use because…</p>
 <ol>
-<li>There is no need to build from C/C++.</li>
+<li>There is no need to build from C/C++ source.</li>
 <li>It returns all features of each nodes accessible via cmecab-java.</li>
 </ol>
 <div id="system-requirements" class="section level2">
@@ -123,11 +111,9 @@
 <h3 class="hasAnchor">
 <a href="#call-tagger" class="anchor"></a>Call Tagger</h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="reference/cmecab.html">cmecab</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"長期的自己実現で福楽は得られない"</span>, <span class="st">"幸せは刹那の中にあり"</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="reference/cmecab.html">cmecab</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"長期的自己実現で福楽は得られない"</span>NA<span class="st">"幸せは刹那の中にあり"</span>NA<span class="op">)</span>NA<span class="op">)</span>NA<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
 <span class="co">#&gt; List of 2</span>
-<span class="co">#&gt;  $ : chr [1:12] "長期 名詞,一般,*,*,*,*,長期,チョウキ,チョーキ" "的 名詞,接尾,形容動詞語幹,*,*,*,的,テキ,テキ" "自己 名詞,一般,*,*,*,*,自己,ジコ,ジコ" "実現 名詞,サ変接続,*,*,*,*,実現,ジツゲン,ジツゲン" ...</span>
-<span class="co">#&gt;  $ : chr [1:8] "幸せ 名詞,形容動詞語幹,*,*,*,*,幸せ,シアワセ,シアワセ" "は 助詞,係助詞,*,*,*,*,は,ハ,ワ" "刹那 名詞,副詞可能,*,*,*,*,刹那,セツナ,セツナ" "の 助詞,連体化,*,*,*,*,の,ノ,ノ" ...</span></code></pre></div>
+<span class="co">#&gt;  $ : chr [1:12] "長期 名詞,一般,*,*,*,*,長期,チョウキ,チョーキ" "的 名詞,接尾,形容動詞語幹,*,*,*,的,テキ,テキ" "自己 名詞,一般,*,*,*,*,自己,ジコ,ジコ" "実現 名詞,サ変接続,*,*,*,*,実現,ジツゲン,ジツゲン" ...</span>NA<span class="co">#&gt;  $ : chr [1:8] "幸せ 名詞,形容動詞語幹,*,*,*,*,幸せ,シアワセ,シアワセ" "は 助詞,係助詞,*,*,*,*,は,ハ,ワ" "刹那 名詞,副詞可能,*,*,*,*,刹那,セツナ,セツナ" "の 助詞,連体化,*,*,*,*,の,ノ,ノ" ...</span>NA</code></pre></div>
 </div>
 <div id="prettify-output" class="section level3">
 <h3 class="hasAnchor">
@@ -136,20 +122,14 @@
 <code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="reference/prettify.html">prettify</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
 <span class="co">#&gt; 'data.frame':    18 obs. of  11 variables:</span>
-<span class="co">#&gt;  $ sentence_id: int  1 1 1 1 1 1 1 1 1 1 ...</span>
-<span class="co">#&gt;  $ token      : chr  "長期" "的" "自己" "実現" ...</span>
-<span class="co">#&gt;  $ POS1       : chr  "名詞" "名詞" "名詞" "名詞" ...</span>
-<span class="co">#&gt;  $ POS2       : chr  "一般" "接尾" "一般" "サ変接続" ...</span>
-<span class="co">#&gt;  $ POS3       : chr  NA "形容動詞語幹" NA NA ...</span>
-<span class="co">#&gt;  $ POS4       : chr  NA NA NA NA ...</span>
+<span class="co">#&gt;  $ doc_id     : int  1 1 1 1 1 1 1 1 1 1 ...</span>
+<span class="co">#&gt;  $ token      : chr  "長期" "的" "自己" "実現" ...</span>NA<span class="co">#&gt;  $ POS1       : chr  "名詞" "名詞" "名詞" "名詞" ...</span>NA<span class="co">#&gt;  $ POS2       : chr  "一般" "接尾" "一般" "サ変接続" ...</span>NA<span class="co">#&gt;  $ POS3       : chr  NA "形容動詞語幹" NA NA ...</span>NA<span class="co">#&gt;  $ POS4       : chr  NA NA NA NA ...</span>
 <span class="co">#&gt;  $ X5StageUse1: chr  NA NA NA NA ...</span>
 <span class="co">#&gt;  $ X5StageUse2: chr  NA NA NA NA ...</span>
-<span class="co">#&gt;  $ Original   : chr  "長期" "的" "自己" "実現" ...</span>
-<span class="co">#&gt;  $ Yomi1      : chr  "チョウキ" "テキ" "ジコ" "ジツゲン" ...</span>
-<span class="co">#&gt;  $ Yomi2      : chr  "チョーキ" "テキ" "ジコ" "ジツゲン" ...</span></code></pre></div>
+<span class="co">#&gt;  $ Original   : chr  "長期" "的" "自己" "実現" ...</span>NA<span class="co">#&gt;  $ Yomi1      : chr  "チョウキ" "テキ" "ジコ" "ジツゲン" ...</span>NA<span class="co">#&gt;  $ Yomi2      : chr  "チョーキ" "テキ" "ジコ" "ジツゲン" ...</span>NA</code></pre></div>
 <p>If you use IPA-styled dictionary, the output has these columns.</p>
 <ul>
-<li>sentence_id: 文番号</li>
+<li>doc_id: 文番号</li>
 <li>token: 表層形（surface form）</li>
 <li>POS1~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3</li>
 <li>X5StageUse1: 活用型（ex. 五段, 下二段…）</li>
@@ -165,47 +145,34 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="reference/pack.html">pack</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
-<span class="co">#&gt;   doc_id                                       text</span>
-<span class="co">#&gt; 1      1 長期 的 自己 実現 で 福 楽 は 得 られ ない</span>
-<span class="co">#&gt; 2      2                 幸せ は 刹那 の 中 に あり</span></code></pre></div>
+<span class="co">#&gt;   doc_id                                        text</span>
+<span class="co">#&gt; 1      1 長期 的 自己 実現 で 福 楽 は 得 ら れ ない</span>NA<span class="co">#&gt; 2      2                  幸せ は 刹那 の 中 に あり</span>NA</code></pre></div>
 </div>
 <div id="change-dictionary" class="section level3">
 <h3 class="hasAnchor">
 <a href="#change-dictionary" class="anchor"></a>Change Dictionary</h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">str</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Fate/Grand Order"</span>, <span class="st">"田村ゆかりのいたずら黒うさぎ"</span><span class="op">)</span>
-<span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="reference/cmecab.html">cmecab</a></span><span class="op">(</span><span class="va">str</span>, sep <span class="op">=</span> <span class="st">"\t"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">str</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Fate/Grand Order"</span>, <span class="st">"田村ゆかりのいたずら黒うさぎ"</span>NA<span class="op">)</span>NA<span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="reference/cmecab.html">cmecab</a></span><span class="op">(</span><span class="va">str</span>, sep <span class="op">=</span> <span class="st">"\t"</span><span class="op">)</span>
 <span class="co">#&gt; [[1]]</span>
-<span class="co">#&gt; [1] "Fate\t名詞,固有名詞,組織,*,*,*,*"  "/\t名詞,サ変接続,*,*,*,*,*"       </span>
-<span class="co">#&gt; [3] "Grand\t名詞,一般,*,*,*,*,*"        "Order\t名詞,固有名詞,組織,*,*,*,*"</span>
-<span class="co">#&gt; [5] "EOS"                              </span>
+<span class="co">#&gt; [1] "Fate\t名詞,固有名詞,組織,*,*,*,*"  "/\t名詞,サ変接続,*,*,*,*,*"       </span>NA<span class="co">#&gt; [3] "Grand\t名詞,一般,*,*,*,*,*"        "Order\t名詞,固有名詞,組織,*,*,*,*"</span>NA<span class="co">#&gt; [5] "EOS"                              </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[2]]</span>
-<span class="co">#&gt; [1] "田村\t名詞,固有名詞,人名,姓,*,*,田村,タムラ,タムラ"        </span>
-<span class="co">#&gt; [2] "ゆかり\t名詞,固有名詞,人名,名,*,*,ゆかり,ユカリ,ユカリ"    </span>
-<span class="co">#&gt; [3] "の\t助詞,連体化,*,*,*,*,の,ノ,ノ"                          </span>
-<span class="co">#&gt; [4] "いたずら\t名詞,サ変接続,*,*,*,*,いたずら,イタズラ,イタズラ"</span>
-<span class="co">#&gt; [5] "黒\t名詞,一般,*,*,*,*,黒,クロ,クロ"                        </span>
-<span class="co">#&gt; [6] "うさぎ\t名詞,一般,*,*,*,*,うさぎ,ウサギ,ウサギ"            </span>
-<span class="co">#&gt; [7] "EOS"</span>
+<span class="co">#&gt; [1] "田村\t名詞,固有名詞,人名,姓,*,*,田村,タムラ,タムラ"        </span>NA<span class="co">#&gt; [2] "ゆかり\t名詞,固有名詞,人名,名,*,*,ゆかり,ユカリ,ユカリ"    </span>NA<span class="co">#&gt; [3] "の\t助詞,連体化,*,*,*,*,の,ノ,ノ"                          </span>NA<span class="co">#&gt; [4] "いたずら\t名詞,サ変接続,*,*,*,*,いたずら,イタズラ,イタズラ"</span>NA<span class="co">#&gt; [5] "黒\t名詞,一般,*,*,*,*,黒,クロ,クロ"                        </span>NA<span class="co">#&gt; [6] "うさぎ\t名詞,一般,*,*,*,*,うさぎ,ウサギ,ウサギ"            </span>NA<span class="co">#&gt; [7] "EOS"</span>
 <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="reference/cmecab.html">cmecab</a></span><span class="op">(</span><span class="va">str</span>, <span class="st">"-d /MeCab/ipadic-neologd"</span>, sep <span class="op">=</span> <span class="st">"\t"</span><span class="op">)</span>
 <span class="co">#&gt; [[1]]</span>
-<span class="co">#&gt; [1] "Fate/Grand Order\t名詞,固有名詞,一般,*,*,*,Fate/Grand Order,フェイトグランドオーダー,フェイトグランドオーダー"</span>
-<span class="co">#&gt; [2] "EOS"                                                                                                          </span>
+<span class="co">#&gt; [1] "Fate/Grand Order\t名詞,固有名詞,一般,*,*,*,Fate/Grand Order,フェイトグランドオーダー,フェイトグランドオーダー"</span>NA<span class="co">#&gt; [2] "EOS"                                                                                                          </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[2]]</span>
-<span class="co">#&gt; [1] "田村ゆかりのいたずら黒うさぎ\t名詞,固有名詞,一般,*,*,*,田村ゆかりのいたずら黒うさぎ,タムラユカリノイタズラクロウサギ,タムラユカリノイタズラクロウサギ"</span>
-<span class="co">#&gt; [2] "EOS"</span></code></pre></div>
+<span class="co">#&gt; [1] "田村ゆかりのいたずら黒うさぎ\t名詞,固有名詞,一般,*,*,*,田村ゆかりのいたずら黒うさぎ,タムラユカリノイタズラクロウサギ,タムラユカリノイタズラクロウサギ"</span>NA<span class="co">#&gt; [2] "EOS"</span></code></pre></div>
 </div>
 <div id="use-igo" class="section level3">
 <h3 class="hasAnchor">
 <a href="#use-igo" class="anchor"></a>Use Igo</h3>
 <p><a href="http://igo.osdn.jp/">Igo</a> is a pure Java port of MeCab. rjavacmecab also provides a wrapper function of that.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="reference/igo.html">igo</a></span><span class="op">(</span><span class="st">"お前がそう思うんならそうなんだろう、お前ん中ではな"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="reference/igo.html">igo</a></span><span class="op">(</span><span class="st">"お前がそう思うんならそうなんだろう、お前ん中ではな"</span>NA<span class="op">)</span>NA<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
 <span class="co">#&gt; List of 1</span>
-<span class="co">#&gt;  $ : chr [1:18] "お前 名詞,代名詞,一般,*,*,*,お前,オマエ,オマエ" "が 助詞,格助詞,一般,*,*,*,が,ガ,ガ" "そう 副詞,助詞類接続,*,*,*,*,そう,ソウ,ソー" "思う 動詞,自立,*,*,五段・ワ行促音便,基本形,思う,オモウ,オモウ" ...</span></code></pre></div>
+<span class="co">#&gt;  $ : chr [1:18] "お前 名詞,代名詞,一般,*,*,*,お前,オマエ,オマエ" "が 助詞,格助詞,一般,*,*,*,が,ガ,ガ" "そう 副詞,助詞類接続,*,*,*,*,そう,ソウ,ソー" "思う 動詞,自立,*,*,五段・ワ行促音便,基本形,思う,オモウ,オモウ" ...</span>NA</code></pre></div>
 </div>
 </div>
 <div id="license" class="section level2">
