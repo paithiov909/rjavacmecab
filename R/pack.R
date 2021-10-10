@@ -45,7 +45,7 @@ ngram_tokenizer <- function(n = 1L, skip_word_none = TRUE, locale = NULL) {
     skip_word_none = skip_word_none
   )
 
-  func <- function(x, sep = "-") {
+  func <- function(x, sep = " ") {
     stopifnot(is.character(x))
 
     # Split into word tokens
