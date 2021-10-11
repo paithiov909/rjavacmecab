@@ -6,7 +6,7 @@
 #' @seealso \url{https://github.com/ropensci/tif}
 #'
 #' @param df Prettified data.frame of tokens.
-#' @param n Integer internally passed to Ngrams tokenizer function
+#' @param n Integer internally passed to ngrams tokenizer function
 #' created of \code{rjavacmecab::ngram_tokenizer()}
 #' @param pull Column to be packed into text or ngrams body. Default value is `token`.
 #' @param sep Character scalar internally used as the concatenator of ngrams.

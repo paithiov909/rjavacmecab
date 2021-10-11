@@ -44,7 +44,7 @@ igo <- function(chr, sep = " ", split = TRUE, mode = c("parse", "wakati")) {
   # modify chracter vector
   chr <- stringi::stri_omit_na(chr)
   if (split) {
-    chr <- purrr::flatten_chr(tokenizers::tokenize_sentences(chr))
+    chr <- purrr::flatten_chr(tokenize_sentences(chr))
   }
 
   if (identical(mode, "wakati")) {

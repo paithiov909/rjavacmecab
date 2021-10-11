@@ -18,6 +18,3 @@ reference:
         - csvutil_join
         - is_blank
         - is_mecab_available
-    - title: "Dataset"
-      contents:
-        - StopWordsJp
