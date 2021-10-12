@@ -1,0 +1,52 @@
+# Workflow derived from https://github.com/r-lib/actions/tree/master/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+on:
+  push:
+    branches: [main]
+    tags: ['*']
+
+name: pkgdown
+
+jobs:
+  pkgdown:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: false
+      - uses: r-lib/actions/setup-pandoc@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          use-public-rspm: true
+      - name: Install libraries
+        run: |
+          sudo apt install -y libcurl4-openssl-dev
+          git clone --depth=1 https://github.com/taku910/mecab.git
+          cd mecab/mecab
+          ./configure --enable-utf8-only
+          make
+          sudo make install
+          mecab-config --libs-only-L | sudo tee /etc/ld.so.conf.d/mecab.conf
+          sudo ldconfig
+          cd ../mecab-ipadic
+          ./configure --with-charset=utf8
+          make
+          sudo make install
+          cd ../../
+          export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+      - name: R CMD javareconf
+        run: sudo R CMD javareconf
+      - uses: r-lib/actions/setup-r-dependencies@v1
+        with:
+          extra-packages: pkgdown
+          needs: website
+      - name: Deploy package
+        run: |
+          git config --local user.name "$GITHUB_ACTOR"
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'

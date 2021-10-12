@@ -9,7 +9,7 @@ Description: A simple rJava interface to cmecab-java.
 Depends: R (>= 4.0.0)
 SystemRequirements: MeCab, Java
 License: MIT + file LICENSE
-URL: https://github.com/paithiov909/rjavacmecab
+URL: https://paithiov909.github.io/rjavacmecab, https://github.com/paithiov909/rjavacmecab
 BugReports: https://github.com/paithiov909/rjavacmecab/issues
 Encoding: UTF-8
 LazyData: true
