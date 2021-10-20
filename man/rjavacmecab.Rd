@@ -13,6 +13,7 @@ A simple rJava interface to cmecab-java.
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://paithiov909.github.io/rjavacmecab}
   \item \url{https://github.com/paithiov909/rjavacmecab}
   \item Report bugs at \url{https://github.com/paithiov909/rjavacmecab/issues}
 }

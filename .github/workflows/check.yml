@@ -15,7 +15,7 @@ jobs:
       matrix:
         platform: [ubuntu-latest]
         java: [11]
-        r-version: ['4.1.1']
+        r-version: ['release']
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v2
@@ -58,7 +58,7 @@ jobs:
         shell: Rscript {0}
       - name: Check
         run: |
-          rcmdcheck::rcmdcheck(args = c("--no-vignettes", "--no-manual"), build_args = c("--no-build-vignettes", "--no-manual"), error_on = "error")
+          rcmdcheck::rcmdcheck(args = c("--no-vignettes", "--no-manual"*), build_args = c("--no-build-vignettes", "--no-manual"), error_on = "error")
         shell: Rscript {0}
       - name: Codecov
         run: covr::codecov()
