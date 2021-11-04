@@ -16,7 +16,7 @@
 #' @export
 pack <- function(df, n = 1L, pull = "token", sep = "-", .collapse = " ") {
   res <- df %>%
-    group_by(!!sym("doc_id")) %>%
+    group_by(.data$doc_id) %>%
     group_map(
       ~ ngram_tokenizer(n)(dplyr::pull(.x, {{ pull }}), sep = sep) %>%
         stringi::stri_c(collapse = .collapse)

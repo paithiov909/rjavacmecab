@@ -28,9 +28,9 @@ csvutil_escape <- function(chr) {
   if (!is.character(chr) || anyNA(chr)) {
     rlang::abort("Invalid string provided. String must be a character vector, not NA_character_.")
   } else {
-    arr <- sapply(chr, function(str) {
+    arr <- map_chr(chr, function(str) {
       J("net.moraleboost.util.CSVUtil")$escape(str)
-    }, USE.NAMES = FALSE)
+    })
     return(arr)
   }
 }
