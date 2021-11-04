@@ -82,7 +82,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>About rjavacmecab package</h1>
             
-            <h4 class="date">2021-10-20</h4>
+            <h4 class="date">2021-11-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/paithiov909/rjavacmecab/blob/master/vignettes/rjavacmecab.Rmd"><code>vignettes/rjavacmecab.Rmd</code></a></small>
       <div class="hidden name"><code>rjavacmecab.Rmd</code></div>
@@ -119,7 +119,7 @@
 <div id="rjava周りで問題が発生する場合" class="section level3">
 <h3 class="hasAnchor">
 <a href="#rjava%E5%91%A8%E3%82%8A%E3%81%A7%E5%95%8F%E9%A1%8C%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88" class="anchor"></a>rJava周りで問題が発生する場合</h3>
-<p>環境によってはrJavaパッケージはソースからビルドされている必要があります。rJavaをソースからビルドするには、多くの場合はJavaを適切にインストールしたあとに<code>R CMD javareconf</code>を実行したうえで、R上で<code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("rJava", type="source")</a></code>などとすれば解決します。</p>
+<p>環境によってはrJavaパッケージはソースからビルドされている必要があります。rJavaをソースからビルドするには、多くの場合はJavaを適切にインストールしたあとに<code>R CMD javareconf</code>を実行したうえで、R上で<code>install.packages("rJava", type="source")</code>などとすれば解決します。</p>
 <p>rJavaの周辺は比較的問題が起こりやすく、たとえばパッケージの読みこみ時に<code>jvm</code>のロードに失敗したりするといったことがあります（古いバージョンのRStudioを使用している場合などに発生することが報告されています）。こうした場合は<code><a href="https://rdrr.io/r/base/dynload.html">dyn.load()</a></code>関数に使用したいJREに付属しているダイナミックライブラリを明示的に渡すか、rJavaが読みにいっているファイルにシンボリックリンクを上書きするなどして対処します。</p>
 <p>また、パッケージのビルド時に<code>clang: error: unsupported option '-fopenmp</code>が発生してビルドに失敗する場合、Rパッケージのビルドに使用されるコンパイラの設定をしなおす必要があります。詳しくは以下に挙げる記事などを参考にしてください。</p>
 <ul>
@@ -183,7 +183,7 @@
 <div id="辞書の差し替え" class="section level3">
 <h3 class="hasAnchor">
 <a href="#%E8%BE%9E%E6%9B%B8%E3%81%AE%E5%B7%AE%E3%81%97%E6%9B%BF%E3%81%88" class="anchor"></a>辞書の差し替え</h3>
-<p>確認できたかぎりでは<code>-d</code>オプションは動作します。<code><a href="../reference/cmecab.html">rjavacmecab::cmecab(str, "-d /MeCab/ipadic-neologd", sep = "\t")</a></code>のようにしてオプションを渡してください。</p>
+<p>確認できたかぎりでは<code>-d</code>オプションは動作します。<code>rjavacmecab::cmecab(str, "-d /MeCab/ipadic-neologd", sep = "\t")</code>のようにしてオプションを渡してください。</p>
 </div>
 <div id="igoの呼び出し" class="section level3">
 <h3 class="hasAnchor">
