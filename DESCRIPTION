@@ -20,12 +20,14 @@ Suggests:
     knitr,
     roxygen2,
     rmarkdown,
+    spelling,
     testthat
 Imports:
     dplyr,
+    magrittr,
     purrr,
     rJava,
     rlang (>= 0.1.2),
     stringi,
-    tidyr,
-    tokenizers
+    tidyr
+Language: en-US

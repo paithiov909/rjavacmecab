@@ -13,9 +13,10 @@ igo(chr, sep = " ", split = TRUE, mode = c("parse", "wakati"))
 with which the function replaces tab.}
 
 \item{split}{Logical. If true (by default), the function splits character vector
-into sentences using \code{tokenizers::tokenize_sentences} before analyzing them.}
+into sentences using \code{stringi::stri_split_boudaries(type = "sentence")}
+before analyzing them.}
 
-\item{mode}{Charcter scalar.}
+\item{mode}{Character scalar.}
 }
 \value{
 List.
@@ -24,6 +25,6 @@ List.
 Call Igo tagger
 }
 \details{
-This function is a wapper of Igo (v0.4.5) that is a Java reimplementaion of MeCab.
+This function is a wrapper of Igo (v0.4.5) that is a Java reimplementaion of MeCab.
 The Igo tagger has 2 methods, which are 'parse' and 'wakati', and both is available from this function.
 }

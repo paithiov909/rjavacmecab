@@ -28,7 +28,7 @@ prettify <- function(list,
     rlang::is_character(sep)
   )
   res <- imap_dfr(list, function(li, i) {
-    li <- na_if(li, "EOS")
+    li <- dplyr::na_if(li, "EOS")
     map_dfr(stringi::stri_omit_na(li), function(elem) {
       split <- stringi::stri_split_regex(elem, sep, 2L)
       return(data.frame(
@@ -44,6 +44,6 @@ prettify <- function(list,
       sep = ",",
       fill = "right"
     ) %>%
-    mutate_if(is.character, ~ na_if(., "*"))
+    dplyr::mutate_if(is.character, ~ dplyr::na_if(., "*"))
   return(res)
 }

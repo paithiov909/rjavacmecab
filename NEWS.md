@@ -1,6 +1,7 @@
 # rjavacmecab 0.4.1
 
 * Added a `NEWS.md` file to track changes to the package.
+* Clean package dependencies.
 
 # rjavacmecab 0.4.0
 

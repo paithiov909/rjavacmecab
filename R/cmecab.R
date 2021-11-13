@@ -44,7 +44,7 @@ cmecab <- function(chr, opt = "", sep = " ", split = TRUE) {
   # modify chracter vector
   chr <- stringi::stri_omit_na(chr)
   if (split) {
-    chr <- purrr::flatten_chr(tokenize_sentences(chr))
+    chr <- purrr::flatten_chr(stringi::stri_split_boundaries(chr, type = "sentence"))
   }
 
   # analyze character vector
