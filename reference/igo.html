@@ -148,11 +148,12 @@ with which the function replaces tab.</p></td>
     <tr>
       <th>split</th>
       <td><p>Logical. If true (by default), the function splits character vector
-into sentences using <code><a href='https://lincolnmullen.com/software/tokenizers/reference/basic-tokenizers.html'>tokenizers::tokenize_sentences</a></code> before analyzing them.</p></td>
+into sentences using <code>stringi::stri_split_boudaries(type = "sentence")</code>
+before analyzing them.</p></td>
     </tr>
     <tr>
       <th>mode</th>
-      <td><p>Charcter scalar.</p></td>
+      <td><p>Character scalar.</p></td>
     </tr>
     </table>
 
@@ -161,7 +162,7 @@ into sentences using <code><a href='https://lincolnmullen.com/software/tokenizer
     <p>List.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function is a wapper of Igo (v0.4.5) that is a Java reimplementaion of MeCab.
+    <p>This function is a wrapper of Igo (v0.4.5) that is a Java reimplementaion of MeCab.
 The Igo tagger has 2 methods, which are 'parse' and 'wakati', and both is available from this function.</p>
 
   </div>
