@@ -29,13 +29,23 @@
 #' @returns A data.frame.
 #' @export
 pack <- function(df, n = 1L, pull = "token", sep = "-", .collapse = " ") {
-  res <- df %>%
-    dplyr::group_by(.data$doc_id) %>%
-    dplyr::group_map(
-      ~ ngram_tokenizer(n)(dplyr::pull(.x, {{ pull }}), sep = sep) %>%
-        stringi::stri_join(collapse = .collapse)
-    ) %>%
-    imap_dfr(~ data.frame(doc_id = .y, text = .x))
+  if (n < 2L) {
+    res <- df %>%
+      dplyr::group_by(.data$doc_id) %>%
+      dplyr::group_map(
+        ~ dplyr::pull(.x, {{ pull }}) %>%
+          stringi::stri_join(collapse = .collapse)
+      ) %>%
+      purrr::imap_dfr(~ data.frame(doc_id = .y, text = .x))
+  } else {
+    res <- df %>%
+      dplyr::group_by(.data$doc_id) %>%
+      dplyr::group_map(
+        ~ ngram_tokenizer(n)(dplyr::pull(.x, {{ pull }}), sep = sep) %>%
+          stringi::stri_join(collapse = .collapse)
+      ) %>%
+      imap_dfr(~ data.frame(doc_id = .y, text = .x))
+  }
   return(res)
 }
 
