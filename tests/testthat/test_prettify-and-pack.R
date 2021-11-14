@@ -21,7 +21,7 @@ sentence <- enc2utf8(
 
 res1 <- prettify(cmecab(sentence))
 res2 <- pack(res1)
-res3 <- pack(res1)
+res3 <- pack(res1, n = 2L)
 
 #### prettify ####
 test_that("prettify works", {
