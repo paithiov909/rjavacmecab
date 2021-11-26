@@ -26,12 +26,9 @@ test_that("gbs_c works", {
   )
 })
 
-test_that("gbs_freq works", {
-  expect_equal(as.data.frame(gbs_freq(res1))[1, 1], enc2utf8("\u3001"))
-})
-
 test_that("other outputs are valid", {
   expect_type(gbs_as_tokens(res1), "list")
+  expect_s3_class(gbs_freq(res1), "tbl_df")
   expect_s4_class(gbs_dfm(res1), "dfm")
   expect_s4_class(gbs_collocate(res1), "fcm")
 })

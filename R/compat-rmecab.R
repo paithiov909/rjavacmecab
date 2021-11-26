@@ -44,9 +44,6 @@ gbs_freq <- function(df, ..., .name_repair = TRUE) {
 #' @return A list of named vectors.
 #' @family gibasa
 #' @export
-#' @examples
-#' xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
-#' head(gbs_c(xml)[[1]])
 gbs_c <- function(df, pull = "token", names = "POS1") {
   pull <- rlang::arg_match(pull)
   re <- df %>%
@@ -65,9 +62,6 @@ gbs_c <- function(df, pull = "token", names = "POS1") {
 #' @return A quanteda 'token' class object.
 #' @family gibasa
 #' @export
-#' @examples
-#' xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
-#' gbs_as_tokens(xml)
 gbs_as_tokens <- function(df, pull = "token", n = 1L, sep = "-", what = "fastestword", ...) {
   df <-
     pack(df, pull = pull, n = n, sep = sep) %>%
@@ -85,10 +79,6 @@ gbs_as_tokens <- function(df, pull = "token", n = 1L, sep = "-", what = "fastest
 #' @inheritParams gbs_as_tokens
 #' @returns A quanteda 'dfm' object.
 #' @family gibasa
-#' @export
-#' @examples
-#' xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
-#' gbs_dfm(xml)
 gbs_dfm <- function(df, pull = "token", n = 1L, sep = "-", what = "fastestword", ...) {
   res <-
     gbs_as_tokens(df, pull = pull, n = n, sep = sep, what = what, ...) %>%
