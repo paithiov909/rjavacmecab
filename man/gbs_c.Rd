@@ -19,10 +19,6 @@ A list of named vectors.
 \description{
 An alternative of RMeCabC
 }
-\examples{
-xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
-head(gbs_c(xml)[[1]])
-}
 \seealso{
 Other gibasa: 
 \code{\link{gbs_as_tokens}()},

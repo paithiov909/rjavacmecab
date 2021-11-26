@@ -28,10 +28,6 @@ Create a sparse document-feature matrix.
 This function is a shorthand of
 \code{rjavacmecab::gbs_as_tokens()} and then \code{quatenda::dfm()}.
 }
-\examples{
-xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
-gbs_dfm(xml)
-}
 \seealso{
 Other gibasa: 
 \code{\link{gbs_as_tokens}()},

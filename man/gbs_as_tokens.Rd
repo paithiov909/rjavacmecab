@@ -26,10 +26,6 @@ A quanteda 'token' class object.
 \description{
 Pack prettified output as quanteda tokens
 }
-\examples{
-xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
-gbs_as_tokens(xml)
-}
 \seealso{
 Other gibasa: 
 \code{\link{gbs_collocate}()},
