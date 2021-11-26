@@ -10,7 +10,7 @@
 rebuild_tagger <- function(opt = "") {
   standard_tagger(.jnew(
     "net.moraleboost.mecab.impl.StandardTagger",
-    stringi::stri_c(opt, collapse = " ")
+    stringi::stri_join(opt, collapse = " ")
   ))
   return(invisible(standard_tagger()))
 }
@@ -18,21 +18,21 @@ rebuild_tagger <- function(opt = "") {
 #' Call CMeCab tagger
 #'
 #' @param chr Character vector to be tokenized.
+#' @param opt Character scalar to be passed as tagger options (ex. "-d").
 #' @param sep Character scalar to be used as separator
 #' with which the function replaces tab.
 #' @param split Logical. If true (by default), the function splits character vector
 #' into sentences using \code{stringi::stri_split_boundaries(type = "sentence")} before analyzing them.
 #' @param mode Character scalar.
-#' @param opt Character scalar to be passed as tagger options (ex. "-d").
 #' @return List.
 #'
 #' @export
-cmecab <- function(chr, sep = " ", split = TRUE,  mode = c("parse", "wakati"), opt = "") {
+cmecab <- function(chr, opt = "", sep = " ", split = TRUE,  mode = c("parse", "wakati")) {
   stopifnot(
     rlang::is_character(chr),
+    rlang::is_character(opt),
     rlang::is_character(sep),
-    rlang::is_character(mode),
-    rlang::is_character(opt)
+    rlang::is_character(mode)
   )
   mode <- rlang::arg_match(mode, c("parse", "wakati"))
 
@@ -48,7 +48,7 @@ cmecab <- function(chr, sep = " ", split = TRUE,  mode = c("parse", "wakati"), o
   # modify character vector
   if (split) {
     chr <- chr %>%
-      stringi::stri_omit_na() %>%
+      stringi::stri_omit_empty_na() %>%
       stringi::stri_split_boundaries(type = "sentence") %>%
       purrr::flatten_chr()
   }

@@ -24,7 +24,7 @@ rjavacmecabは、[takscape/cmecab-java](https://github.com/takscape/cmecab-java)
 
 このパッケージの開発のモチベーションは、既存のRパッケージよりも、比較的利用しやすい形態素解析の選択肢を提供することです。
 
-rjavacmecabは[RMeCab](https://github.com/IshidaMotohiro/RMeCab)や[RcppMeCab](https://github.com/junhewk/RcppMeCab)を代替するものではありません。あいだにJavaを経由することから、解析速度は他のパッケージよりも遅い一方で、次にあげるようなアドバンテージがあります。
+rjavacmecabは[RMeCab](https://github.com/IshidaMotohiro/RMeCab)や[RcppMeCab](https://github.com/junhewk/RcppMeCab)を代替するものではありません。あいだにJavaを経由することから、解析速度は他のパッケージよりも遅い一方で、このパッケージには次にあげるようなアドバンテージがあります。
 
 1. C/C++をビルドする必要がないため、ソースパッケージからのインストールが容易。
 2. 他のパッケージでは利用しづらいものを含む、MeCabから返される全ての素性情報を利用できる。

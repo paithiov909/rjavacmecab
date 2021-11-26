@@ -45,7 +45,7 @@ igo <- function(chr, sep = " ", split = TRUE, mode = c("parse", "wakati")) {
   # modify character vector
   if (split) {
     chr <- chr %>%
-      stringi::stri_omit_na() %>%
+      stringi::stri_omit_empty_na() %>%
       stringi::stri_split_boundaries(type = "sentence") %>%
       purrr::flatten_chr()
   }

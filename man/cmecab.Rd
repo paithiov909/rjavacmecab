@@ -4,10 +4,12 @@
 \alias{cmecab}
 \title{Call CMeCab tagger}
 \usage{
-cmecab(chr, sep = " ", split = TRUE, mode = c("parse", "wakati"), opt = "")
+cmecab(chr, opt = "", sep = " ", split = TRUE, mode = c("parse", "wakati"))
 }
 \arguments{
 \item{chr}{Character vector to be tokenized.}
+
+\item{opt}{Character scalar to be passed as tagger options (ex. "-d").}
 
 \item{sep}{Character scalar to be used as separator
 with which the function replaces tab.}
@@ -16,8 +18,6 @@ with which the function replaces tab.}
 into sentences using \code{stringi::stri_split_boundaries(type = "sentence")} before analyzing them.}
 
 \item{mode}{Character scalar.}
-
-\item{opt}{Character scalar to be passed as tagger options (ex. "-d").}
 }
 \value{
 List.

@@ -21,7 +21,7 @@ test_that("igo stops properly", {
   expect_error(igo(NA))
   expect_error(igo(NULL))
   expect_error(igo(NA_character_, NULL))
-  expect_error(igo(NA_character_, "", NULL))
+  expect_error(igo("", NULL))
 })
 test_that("igo output are list", {
   expect_type(igo(NA_character_), "list")

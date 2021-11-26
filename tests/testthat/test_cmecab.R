@@ -23,7 +23,7 @@ test_that("cmecab stops", {
   expect_error(cmecab(NA))
   expect_error(cmecab(NULL))
   expect_error(cmecab(NA_character_, NULL))
-  expect_error(cmecab(NA_character_, "", NULL))
+  expect_error(cmecab("", NULL))
 })
 test_that("cmecab output is list", {
   expect_type(cmecab(NA_character_), "list")
