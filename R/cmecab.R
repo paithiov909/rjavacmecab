@@ -18,20 +18,24 @@ rebuild_tagger <- function(opt = "") {
 #' Call CMeCab tagger
 #'
 #' @param chr Character vector to be tokenized.
-#' @param opt Character scalar to be passed as tagger options (ex. "-d").
 #' @param sep Character scalar to be used as separator
 #' with which the function replaces tab.
 #' @param split Logical. If true (by default), the function splits character vector
-#' into sentences using \code{tokenizers::tokenize_sentences} before analyzing them.
+#' into sentences using \code{stringi::stri_split_boundaries(type = "sentence")} before analyzing them.
+#' @param mode Character scalar.
+#' @param opt Character scalar to be passed as tagger options (ex. "-d").
 #' @return List.
 #'
 #' @export
-cmecab <- function(chr, opt = "", sep = " ", split = TRUE) {
+cmecab <- function(chr, sep = " ", split = TRUE,  mode = c("parse", "wakati"), opt = "") {
   stopifnot(
     rlang::is_character(chr),
-    rlang::is_character(opt),
-    rlang::is_character(sep)
+    rlang::is_character(sep),
+    rlang::is_character(mode),
+    rlang::is_character(opt)
   )
+  mode <- rlang::arg_match(mode, c("parse", "wakati"))
+
   if (!is_blank(opt)) {
     rebuild_tagger(opt = opt)
   }
@@ -60,17 +64,27 @@ cmecab <- function(chr, opt = "", sep = " ", split = TRUE) {
     standard_tagger()$parse(lattice)
     return(lattice$toString())
   })
-
-  # make result
   Encoding(parsed) <- "UTF-8"
-  res <- parsed %>%
-    stringi::stri_replace_all_fixed(pattern = "\t", replace = sep) %>%
-    stringi::stri_split_fixed(pattern = "\n") %>%
-    map(function(li) {
-      len <- length(li) - 1L
-      return(li[1:len])
-    }) %>%
-    purrr::set_names(nm)
 
-  return(res)
+  if (identical(mode, "wakati")) {
+    res <- parsed %>%
+      stringi::stri_replace_all_fixed(pattern = "\t", replace = sep) %>%
+      stringi::stri_split_fixed(pattern = "\n") %>%
+      map(function(li) {
+        len <- length(li) - 2L
+        tokens <-  li[1:len] %>%
+          stringi::stri_split_fixed(pattern = sep) %>%
+          purrr::map_chr(~ purrr::pluck(., 1L))
+        return(tokens)
+      })
+  } else {
+    res <- parsed %>%
+      stringi::stri_replace_all_fixed(pattern = "\t", replace = sep) %>%
+      stringi::stri_split_fixed(pattern = "\n") %>%
+      map(function(li) {
+        len <- length(li) - 2L
+        return(li[1:len])
+      })
+  }
+  return(purrr::set_names(res, nm))
 }

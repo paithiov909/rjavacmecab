@@ -77,6 +77,5 @@ igo <- function(chr, sep = " ", split = TRUE, mode = c("parse", "wakati")) {
       })
     })
   }
-
   return(purrr::set_names(res, nm))
 }

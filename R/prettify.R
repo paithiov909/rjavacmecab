@@ -29,9 +29,6 @@ prettify <- function(list,
   )
   res <-
     imap_dfr(list, function(elem, idx) {
-      elem <- elem %>%
-        dplyr::na_if("EOS") %>%
-        stringi::stri_omit_na()
       split <- stringi::stri_split_regex(elem, sep, 2L)
       return(data.frame(
         doc_id = idx,

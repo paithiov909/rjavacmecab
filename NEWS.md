@@ -3,7 +3,10 @@
 * Added a `NEWS.md` file to track changes to the package.
 * Clean package dependencies.
 * `pack(n = 1L)`のときには`ngram_tokenizer`を使用しないように修正
-* `cmecab(split = FALSE)`に名前付きベクトルを与えた際、戻り値に名前を保持するように変更
+* `cmecab`の挙動の変更
+  * `mode ="wakati"`を追加
+  * `mode = "parse"`で`"EOS"`を出力しないように修正
+  * `cmecab(split = FALSE)`に名前付きベクトルを与えた際、戻り値に名前を保持する
 
 # rjavacmecab 0.4.0
 
