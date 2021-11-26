@@ -145,8 +145,8 @@
 <code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/cmecab.html">cmecab</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"長期的自己実現で福楽は得られない"</span>, <span class="st">"幸せは刹那の中にあり"</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
 <span class="co">#&gt; List of 2</span>
-<span class="co">#&gt;  $ 1: chr [1:12] "長期 名詞,一般,*,*,*,*,長期,チョウキ,チョーキ" "的 名詞,接尾,形容動詞語幹,*,*,*,的,テキ,テキ" "自己 名詞,一般,*,*,*,*,自己,ジコ,ジコ" "実現 名詞,サ変接続,*,*,*,*,実現,ジツゲン,ジツゲン" ...</span>
-<span class="co">#&gt;  $ 2: chr [1:8] "幸せ 名詞,形容動詞語幹,*,*,*,*,幸せ,シアワセ,シアワセ" "は 助詞,係助詞,*,*,*,*,は,ハ,ワ" "刹那 名詞,副詞可能,*,*,*,*,刹那,セツナ,セツナ" "の 助詞,連体化,*,*,*,*,の,ノ,ノ" ...</span></code></pre></div>
+<span class="co">#&gt;  $ 1: chr [1:11] "長期 名詞,一般,*,*,*,*,長期,チョウキ,チョーキ" "的 名詞,接尾,形容動詞語幹,*,*,*,的,テキ,テキ" "自己 名詞,一般,*,*,*,*,自己,ジコ,ジコ" "実現 名詞,サ変接続,*,*,*,*,実現,ジツゲン,ジツゲン" ...</span>
+<span class="co">#&gt;  $ 2: chr [1:7] "幸せ 名詞,形容動詞語幹,*,*,*,*,幸せ,シアワセ,シアワセ" "は 助詞,係助詞,*,*,*,*,は,ハ,ワ" "刹那 名詞,副詞可能,*,*,*,*,刹那,セツナ,セツナ" "の 助詞,連体化,*,*,*,*,の,ノ,ノ" ...</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="../reference/prettify.html">prettify</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span> <span class="co">## データフレームに整形します</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>

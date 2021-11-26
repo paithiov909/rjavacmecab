@@ -117,8 +117,8 @@
 <code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="reference/cmecab.html">cmecab</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"長期的自己実現で福楽は得られない"</span>, <span class="st">"幸せは刹那の中にあり"</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
 <span class="co">#&gt; List of 2</span>
-<span class="co">#&gt;  $ 1: chr [1:12] "長期 名詞,一般,*,*,*,*,長期,チョウキ,チョーキ" "的 名詞,接尾,形容動詞語幹,*,*,*,的,テキ,テキ" "自己 名詞,一般,*,*,*,*,自己,ジコ,ジコ" "実現 名詞,サ変接続,*,*,*,*,実現,ジツゲン,ジツゲン" ...</span>
-<span class="co">#&gt;  $ 2: chr [1:8] "幸せ 名詞,形容動詞語幹,*,*,*,*,幸せ,シアワセ,シアワセ" "は 助詞,係助詞,*,*,*,*,は,ハ,ワ" "刹那 名詞,副詞可能,*,*,*,*,刹那,セツナ,セツナ" "の 助詞,連体化,*,*,*,*,の,ノ,ノ" ...</span></code></pre></div>
+<span class="co">#&gt;  $ 1: chr [1:11] "長期 名詞,一般,*,*,*,*,長期,チョウキ,チョーキ" "的 名詞,接尾,形容動詞語幹,*,*,*,的,テキ,テキ" "自己 名詞,一般,*,*,*,*,自己,ジコ,ジコ" "実現 名詞,サ変接続,*,*,*,*,実現,ジツゲン,ジツゲン" ...</span>
+<span class="co">#&gt;  $ 2: chr [1:7] "幸せ 名詞,形容動詞語幹,*,*,*,*,幸せ,シアワセ,シアワセ" "は 助詞,係助詞,*,*,*,*,は,ハ,ワ" "刹那 名詞,副詞可能,*,*,*,*,刹那,セツナ,セツナ" "の 助詞,連体化,*,*,*,*,の,ノ,ノ" ...</span></code></pre></div>
 </div>
 <div id="prettify-output" class="section level3">
 <h3 class="hasAnchor">
@@ -169,7 +169,6 @@
 <span class="co">#&gt; $`1`</span>
 <span class="co">#&gt; [1] "Fate\t名詞,固有名詞,組織,*,*,*,*"  "/\t名詞,サ変接続,*,*,*,*,*"       </span>
 <span class="co">#&gt; [3] "Grand\t名詞,一般,*,*,*,*,*"        "Order\t名詞,固有名詞,組織,*,*,*,*"</span>
-<span class="co">#&gt; [5] "EOS"                              </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $`2`</span>
 <span class="co">#&gt; [1] "田村\t名詞,固有名詞,人名,姓,*,*,田村,タムラ,タムラ"        </span>
@@ -178,15 +177,12 @@
 <span class="co">#&gt; [4] "いたずら\t名詞,サ変接続,*,*,*,*,いたずら,イタズラ,イタズラ"</span>
 <span class="co">#&gt; [5] "黒\t名詞,一般,*,*,*,*,黒,クロ,クロ"                        </span>
 <span class="co">#&gt; [6] "うさぎ\t名詞,一般,*,*,*,*,うさぎ,ウサギ,ウサギ"            </span>
-<span class="co">#&gt; [7] "EOS"</span>
 <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="reference/cmecab.html">cmecab</a></span><span class="op">(</span><span class="va">str</span>, <span class="st">"-d /MeCab/ipadic-neologd"</span>, sep <span class="op">=</span> <span class="st">"\t"</span><span class="op">)</span>
 <span class="co">#&gt; $`1`</span>
 <span class="co">#&gt; [1] "Fate/Grand Order\t名詞,固有名詞,一般,*,*,*,Fate/Grand Order,フェイトグランドオーダー,フェイトグランドオーダー"</span>
-<span class="co">#&gt; [2] "EOS"                                                                                                          </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $`2`</span>
-<span class="co">#&gt; [1] "田村ゆかりのいたずら黒うさぎ\t名詞,固有名詞,一般,*,*,*,田村ゆかりのいたずら黒うさぎ,タムラユカリノイタズラクロウサギ,タムラユカリノイタズラクロウサギ"</span>
-<span class="co">#&gt; [2] "EOS"</span></code></pre></div>
+<span class="co">#&gt; [1] "田村ゆかりのいたずら黒うさぎ\t名詞,固有名詞,一般,*,*,*,田村ゆかりのいたずら黒うさぎ,タムラユカリノイタズラクロウサギ,タムラユカリノイタズラクロウサギ"</span></code></pre></div>
 </div>
 <div id="use-igo" class="section level3">
 <h3 class="hasAnchor">
