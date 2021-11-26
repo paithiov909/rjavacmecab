@@ -42,10 +42,17 @@ igo <- function(chr, sep = " ", split = TRUE, mode = c("parse", "wakati")) {
   }
   mode <- rlang::arg_match(mode, c("parse", "wakati"))
 
-  # modify chracter vector
-  chr <- stringi::stri_omit_na(chr)
+  # modify character vector
   if (split) {
-    chr <- purrr::flatten_chr(stringi::stri_split_boundaries(chr, type = "sentence"))
+    chr <- chr %>%
+      stringi::stri_omit_na() %>%
+      stringi::stri_split_boundaries(type = "sentence") %>%
+      purrr::flatten_chr()
+  }
+  # keep names
+  nm <- names(chr)
+  if (identical(nm, NULL)) {
+    nm <- seq_along(chr)
   }
 
   if (identical(mode, "wakati")) {
@@ -71,5 +78,5 @@ igo <- function(chr, sep = " ", split = TRUE, mode = c("parse", "wakati")) {
     })
   }
 
-  return(res)
+  return(purrr::set_names(res, nm))
 }

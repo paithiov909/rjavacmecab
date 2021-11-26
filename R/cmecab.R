@@ -41,10 +41,17 @@ cmecab <- function(chr, opt = "", sep = " ", split = TRUE) {
   lattice <- standard_tagger()$createLattice()
   on.exit(lattice$destroy())
 
-  # modify chracter vector
-  chr <- stringi::stri_omit_na(chr)
+  # modify character vector
   if (split) {
-    chr <- purrr::flatten_chr(stringi::stri_split_boundaries(chr, type = "sentence"))
+    chr <- chr %>%
+      stringi::stri_omit_na() %>%
+      stringi::stri_split_boundaries(type = "sentence") %>%
+      purrr::flatten_chr()
+  }
+  # keep names
+  nm <- names(chr)
+  if (identical(nm, NULL)) {
+    nm <- seq_along(chr)
   }
 
   # analyze character vector
@@ -62,7 +69,8 @@ cmecab <- function(chr, opt = "", sep = " ", split = TRUE) {
     map(function(li) {
       len <- length(li) - 1L
       return(li[1:len])
-    })
+    }) %>%
+    purrr::set_names(nm)
 
   return(res)
 }

@@ -4,7 +4,7 @@
 \alias{ngram_tokenizer}
 \title{Ngrams tokenizer}
 \usage{
-ngram_tokenizer(n = 1L, skip_word_none = TRUE, locale = NULL)
+ngram_tokenizer(n = 1L, skip_word_none = FALSE, locale = NULL)
 }
 \arguments{
 \item{n}{Integer.}

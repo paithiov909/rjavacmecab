@@ -34,16 +34,20 @@ pack <- function(df, n = 1L, pull = "token", sep = "-", .collapse = " ") {
       dplyr::group_by(.data$doc_id) %>%
       dplyr::group_map(
         ~ dplyr::pull(.x, {{ pull }}) %>%
-          stringi::stri_join(collapse = .collapse)
+          stringi::stri_join(collapse = .collapse) %>%
+          purrr::set_names(.y$doc_id)
       ) %>%
-      purrr::imap_dfr(~ data.frame(doc_id = .y, text = .x))
+      purrr::flatten_chr() %>%
+      imap_dfr(~ data.frame(doc_id = .y, text = .x))
   } else {
     res <- df %>%
       dplyr::group_by(.data$doc_id) %>%
       dplyr::group_map(
         ~ ngram_tokenizer(n)(dplyr::pull(.x, {{ pull }}), sep = sep) %>%
-          stringi::stri_join(collapse = .collapse)
+          stringi::stri_join(collapse = .collapse) %>%
+          purrr::set_names(.y$doc_id)
       ) %>%
+      purrr::flatten_chr() %>%
       imap_dfr(~ data.frame(doc_id = .y, text = .x))
   }
   return(res)
@@ -60,7 +64,7 @@ pack <- function(df, n = 1L, pull = "token", sep = "-", .collapse = " ") {
 #' @return ngram tokenizer function
 #'
 #' @export
-ngram_tokenizer <- function(n = 1L, skip_word_none = TRUE, locale = NULL) {
+ngram_tokenizer <- function(n = 1L, skip_word_none = FALSE, locale = NULL) {
   stopifnot(is.numeric(n), is.finite(n), n > 0)
 
   options <- stringi::stri_opts_brkiter(

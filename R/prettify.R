@@ -27,17 +27,18 @@ prettify <- function(list,
     rlang::is_list(list),
     rlang::is_character(sep)
   )
-  res <- imap_dfr(list, function(li, i) {
-    li <- dplyr::na_if(li, "EOS")
-    map_dfr(stringi::stri_omit_na(li), function(elem) {
+  res <-
+    imap_dfr(list, function(elem, idx) {
+      elem <- elem %>%
+        dplyr::na_if("EOS") %>%
+        stringi::stri_omit_na()
       split <- stringi::stri_split_regex(elem, sep, 2L)
       return(data.frame(
-        doc_id = i,
+        doc_id = idx,
         token = map_chr(split, ~ purrr::pluck(., 1)),
         Features = map_chr(split, ~ purrr::pluck(., 2))
       ))
-    })
-  }) %>%
+    }) %>%
     tidyr::separate(
       col = "Features",
       into = into,
