@@ -1,6 +1,7 @@
 # rjavacmecab 0.4.1
 
 * Added a `NEWS.md` file to track changes to the package.
+* Added 'Gibasa' function family (experimental).
 * Clean package dependencies.
 * `pack(n = 1L)`のときには`ngram_tokenizer`を使用しないように修正
 * `cmecab`の挙動の変更

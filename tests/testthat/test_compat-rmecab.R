@@ -17,26 +17,21 @@ sentence <- enc2utf8(
   )
 )
 
-test_that("igo stops", {
-  expect_error(igo(NA))
-  expect_error(igo(NULL))
-  expect_error(igo(NA_character_, NULL))
-  expect_error(igo("", NULL))
-})
-test_that("igo output are list", {
-  expect_type(igo(NA_character_), "list")
-  expect_type(igo(sentence), "list")
-})
-test_that("igo output are valid", {
-  res <- enc2utf8(
-    paste0(
-      "\u632f\u308a\u5411\u304f ",
-      "\u52d5\u8a5e,\u81ea\u7acb,*,*,",
-      "\u4e94\u6bb5\u30fb\u30ab\u884c\u30a4\u97f3\u4fbf,",
-      "\u57fa\u672c\u5f62,\u632f\u308a\u5411\u304f,",
-      "\u30d5\u30ea\u30e0\u30af,\u30d5\u30ea\u30e0\u30af"
-    )
+res1 <- prettify(igo(sentence))
+
+test_that("gbs_c works", {
+  expect_equal(
+    gbs_c(res1)[[1]][2],
+    purrr::set_names(enc2utf8("\u632f\u308a\u5411\u304f"), "\u52d5\u8a5e")
   )
-  expect_equal(igo(sentence)[[1]][2], res)
-  expect_equal(igo(sentence, mode = "wakati")[[1]][2], enc2utf8("\u632f\u308a\u5411\u304f"))
+})
+
+test_that("gbs_freq works", {
+  expect_equal(as.data.frame(gbs_freq(res1))[1, 1], enc2utf8("\u3001"))
+})
+
+test_that("other outputs are valid", {
+  expect_type(gbs_as_tokens(res1), "list")
+  expect_s4_class(gbs_dfm(res1), "dfm")
+  expect_s4_class(gbs_collocate(res1), "fcm")
 })
