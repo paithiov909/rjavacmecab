@@ -131,7 +131,7 @@
     <p>Call CMeCab tagger</p>
     </div>
 
-    <pre class="usage"><span class='fu'>cmecab</span><span class='op'>(</span><span class='va'>chr</span>, sep <span class='op'>=</span> <span class='st'>" "</span>, split <span class='op'>=</span> <span class='cn'>TRUE</span>, mode <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"parse"</span>, <span class='st'>"wakati"</span><span class='op'>)</span>, opt <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>cmecab</span><span class='op'>(</span><span class='va'>chr</span>, opt <span class='op'>=</span> <span class='st'>""</span>, sep <span class='op'>=</span> <span class='st'>" "</span>, split <span class='op'>=</span> <span class='cn'>TRUE</span>, mode <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"parse"</span>, <span class='st'>"wakati"</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -139,6 +139,10 @@
     <tr>
       <th>chr</th>
       <td><p>Character vector to be tokenized.</p></td>
+    </tr>
+    <tr>
+      <th>opt</th>
+      <td><p>Character scalar to be passed as tagger options (ex. "-d").</p></td>
     </tr>
     <tr>
       <th>sep</th>
@@ -153,10 +157,6 @@ into sentences using <code>stringi::stri_split_boundaries(type = "sentence")</co
     <tr>
       <th>mode</th>
       <td><p>Character scalar.</p></td>
-    </tr>
-    <tr>
-      <th>opt</th>
-      <td><p>Character scalar to be passed as tagger options (ex. "-d").</p></td>
     </tr>
     </table>
 
