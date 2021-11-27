@@ -55,6 +55,9 @@
     <loc>https://paithiov909.github.io/rjavacmecab/reference/prettify.html</loc>
   </url>
   <url>
+    <loc>https://paithiov909.github.io/rjavacmecab/reference/read_rewrite_def.html</loc>
+  </url>
+  <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/rebuild_igo_tagger.html</loc>
   </url>
   <url>
@@ -62,6 +65,15 @@
   </url>
   <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/rjavacmecab.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/rjavacmecab/reference/strj_fill_iter_mark.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/rjavacmecab/reference/strj_normalize.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/rjavacmecab/reference/strj_rewrite_as_def.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/tidyeval.html</loc>
