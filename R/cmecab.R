@@ -45,46 +45,50 @@ cmecab <- function(chr, opt = "", sep = " ", split = TRUE,  mode = c("parse", "w
   lattice <- standard_tagger()$createLattice()
   on.exit(lattice$destroy())
 
-  # modify character vector
-  if (split) {
-    chr <- chr %>%
-      stringi::stri_omit_empty_na() %>%
-      stringi::stri_split_boundaries(type = "sentence") %>%
-      purrr::flatten_chr()
-  }
   # keep names
   nm <- names(chr)
   if (identical(nm, NULL)) {
     nm <- seq_along(chr)
   }
 
-  # analyze character vector
-  parsed <- map_chr(chr, function(str) {
-    lattice$setSentence(str)
-    standard_tagger()$parse(lattice)
-    return(lattice$toString())
-  })
-  Encoding(parsed) <- "UTF-8"
+  res <- chr %>%
+    tidyr::replace_na("") %>%
+    purrr::map(function(elem) {
+      if (split) {
+        elem <- elem %>%
+          stringi::stri_split_boundaries(type = "sentence") %>%
+          purrr::flatten_chr()
+      }
+      lines <- purrr::map_chr(elem, function(str) {
+        lattice$setSentence(str)
+        standard_tagger()$parse(lattice)
+        lattice$toString()
+      })
+      Encoding(lines) <- "UTF-8"
 
-  if (identical(mode, "wakati")) {
-    res <- parsed %>%
-      stringi::stri_replace_all_fixed(pattern = "\t", replace = sep) %>%
-      stringi::stri_split_fixed(pattern = "\n") %>%
-      map(function(li) {
-        len <- length(li) - 2L
-        tokens <-  li[1:len] %>%
-          stringi::stri_split_fixed(pattern = sep) %>%
-          purrr::map_chr(~ purrr::pluck(., 1L))
-        return(tokens)
-      })
-  } else {
-    res <- parsed %>%
-      stringi::stri_replace_all_fixed(pattern = "\t", replace = sep) %>%
-      stringi::stri_split_fixed(pattern = "\n") %>%
-      map(function(li) {
-        len <- length(li) - 2L
-        return(li[1:len])
-      })
-  }
+      if (identical(mode, "wakati")) {
+       parsed <- lines %>%
+          stringi::stri_replace_all_fixed(pattern = "\t", replace = sep) %>%
+          stringi::stri_split_fixed(pattern = "\n") %>%
+          purrr::map(function(li) {
+            li %>%
+              stringi::stri_split_fixed(pattern = sep) %>%
+              purrr::map_chr(~ purrr::pluck(., 1L)) %>%
+              dplyr::na_if("EOS") %>%
+              stringi::stri_omit_empty_na()
+          })
+      } else {
+        parsed <- lines %>%
+          stringi::stri_replace_all_fixed(pattern = "\t", replace = sep) %>%
+          stringi::stri_split_fixed(pattern = "\n") %>%
+          purrr::map(function(li) {
+            li %>%
+              dplyr::na_if("EOS") %>%
+              stringi::stri_omit_empty_na()
+          })
+      }
+      purrr::flatten_chr(parsed)
+    })
+
   return(purrr::set_names(res, nm))
 }

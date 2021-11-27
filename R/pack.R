@@ -38,7 +38,7 @@ pack <- function(df, n = 1L, pull = "token", sep = "-", .collapse = " ") {
           purrr::set_names(.y$doc_id)
       ) %>%
       purrr::flatten_chr() %>%
-      imap_dfr(~ data.frame(doc_id = .y, text = .x))
+      purrr::imap_dfr(~ data.frame(doc_id = .y, text = .x))
   } else {
     res <- df %>%
       dplyr::group_by(.data$doc_id) %>%
@@ -48,7 +48,7 @@ pack <- function(df, n = 1L, pull = "token", sep = "-", .collapse = " ") {
           purrr::set_names(.y$doc_id)
       ) %>%
       purrr::flatten_chr() %>%
-      imap_dfr(~ data.frame(doc_id = .y, text = .x))
+      purrr::imap_dfr(~ data.frame(doc_id = .y, text = .x))
   }
   return(res)
 }

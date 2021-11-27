@@ -27,14 +27,15 @@ prettify <- function(list,
     rlang::is_list(list),
     rlang::is_character(sep)
   )
-  res <-
-    imap_dfr(list, function(elem, idx) {
+  res <- list %>%
+    purrr::discard(~ purrr::is_empty(.)) %>%
+    purrr::imap_dfr(function(elem, idx) {
       split <- stringi::stri_split_regex(elem, sep, 2L)
-      return(data.frame(
+      data.frame(
         doc_id = idx,
-        token = map_chr(split, ~ purrr::pluck(., 1)),
-        Features = map_chr(split, ~ purrr::pluck(., 2))
-      ))
+        token = purrr::map_chr(split, ~ purrr::pluck(., 1)),
+        Features = purrr::map_chr(split, ~ purrr::pluck(., 2))
+      )
     }) %>%
     tidyr::separate(
       col = "Features",

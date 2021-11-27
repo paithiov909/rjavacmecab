@@ -42,40 +42,46 @@ igo <- function(chr, sep = " ", split = TRUE, mode = c("parse", "wakati")) {
   }
   mode <- rlang::arg_match(mode, c("parse", "wakati"))
 
-  # modify character vector
-  if (split) {
-    chr <- chr %>%
-      stringi::stri_omit_empty_na() %>%
-      stringi::stri_split_boundaries(type = "sentence") %>%
-      purrr::flatten_chr()
-  }
   # keep names
   nm <- names(chr)
   if (identical(nm, NULL)) {
     nm <- seq_along(chr)
   }
 
-  if (identical(mode, "wakati")) {
-    res <- lapply(chr, function(str) {
-      li <- igo_tagger()$wakati(str)
-      map_chr(seq_len(li$size()), function(itr) {
-        return(stringi::stri_join(
-          li$get(as.integer(itr - 1)),
-          sep = sep
-        ))
-      })
+  res <- chr %>%
+    tidyr::replace_na("") %>%
+    purrr::map(function(elem) {
+      if (split) {
+        elem <- elem %>%
+          stringi::stri_split_boundaries(type = "sentence") %>%
+          purrr::flatten_chr()
+      }
+      if (identical(mode, "wakati")) {
+        parsed <-
+          purrr::map(elem, function(str) {
+            li <- igo_tagger()$wakati(str)
+            purrr::map_chr(seq_len(li$size()), function(itr) {
+              return(stringi::stri_join(
+                li$get(as.integer(itr - 1)),
+                sep = sep
+              ))
+            })
+          })
+      } else {
+        parsed <-
+          purrr::map(elem, function(str) {
+            morphs <- igo_tagger()$parse(str)
+            purrr::map_chr(seq_len(morphs$size()), function(itr) {
+              return(stringi::stri_join(
+                morphs$get(as.integer(itr - 1))$surface,
+                morphs$get(as.integer(itr - 1))$feature,
+                sep = sep
+              ))
+            })
+          })
+      }
+      return(purrr::flatten_chr(parsed))
     })
-  } else {
-    res <- lapply(chr, function(str) {
-      morphs <- igo_tagger()$parse(str)
-      map_chr(seq_len(morphs$size()), function(itr) {
-        return(stringi::stri_join(
-          morphs$get(as.integer(itr - 1))$surface,
-          morphs$get(as.integer(itr - 1))$feature,
-          sep = sep
-        ))
-      })
-    })
-  }
+
   return(purrr::set_names(res, nm))
 }
