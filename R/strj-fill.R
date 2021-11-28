@@ -75,12 +75,19 @@ fill_iter_mark_double <- function(text) {
       df <- df %>%
         dplyr::mutate(
           V3 = dplyr::if_else(
-            stringi::stri_detect_regex(V3, "(\u3033)"),
+            stringi::stri_detect_regex(V3, "[\u3033]"),
             V1,
             V3
           ),
           V4 = dplyr::if_else(
-            stringi::stri_detect_regex(V4, "(\u3035)"),
+            stringi::stri_detect_regex(V4, "[\u3033]"),
+            V2,
+            V4
+          )
+        ) %>%
+        dplyr::mutate(
+          V4 = dplyr::if_else(
+            stringi::stri_detect_regex(V4, "[\u3035]"),
             V2,
             V4
           )
@@ -102,19 +109,19 @@ fill_iter_mark_double2 <- function(text) {
       df <- df %>%
         dplyr::mutate(
           V3 = dplyr::if_else(
-            stringi::stri_detect_regex(V3, "(\u3034)"),
+            stringi::stri_detect_regex(V3, "[\u3034]"),
             paste0(V1, enc2utf8("\uff9e")),
             V3
           ),
           V4 = dplyr::if_else(
-            stringi::stri_detect_regex(V4, "(\u3034)"),
+            stringi::stri_detect_regex(V4, "[\u3034]"),
             paste0(V2, enc2utf8("\uff9e")),
             V4
           )
         ) %>%
         dplyr::mutate(
           V4 = dplyr::if_else(
-            stringi::stri_detect_regex(V4, "(\u3035)"),
+            stringi::stri_detect_regex(V4, "[\u3035]"),
             V2,
             V4
           )

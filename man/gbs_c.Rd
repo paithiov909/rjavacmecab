@@ -4,7 +4,7 @@
 \alias{gbs_c}
 \title{An alternative of RMeCabC}
 \usage{
-gbs_c(df, pull = "token", names = "POS1")
+gbs_c(df, pull = c("token", "Original"), names = "POS1")
 }
 \arguments{
 \item{df}{A prettified data.frame of tokenized sentences.}

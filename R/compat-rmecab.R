@@ -44,7 +44,7 @@ gbs_freq <- function(df, ..., .name_repair = TRUE) {
 #' @return A list of named vectors.
 #' @family gibasa
 #' @export
-gbs_c <- function(df, pull = "token", names = "POS1") {
+gbs_c <- function(df, pull = c("token", "Original"), names = "POS1") {
   pull <- rlang::arg_match(pull)
   re <- df %>%
     dplyr::group_by(.data$doc_id) %>%
@@ -79,6 +79,7 @@ gbs_as_tokens <- function(df, pull = "token", n = 1L, sep = "-", what = "fastest
 #' @inheritParams gbs_as_tokens
 #' @returns A quanteda 'dfm' object.
 #' @family gibasa
+#' @export
 gbs_dfm <- function(df, pull = "token", n = 1L, sep = "-", what = "fastestword", ...) {
   res <-
     gbs_as_tokens(df, pull = pull, n = n, sep = sep, what = what, ...) %>%
@@ -86,7 +87,7 @@ gbs_dfm <- function(df, pull = "token", n = 1L, sep = "-", what = "fastestword",
   return(res)
 }
 
-#' A mimic of collocate
+#' Create a feature co-occurrence matrix
 #'
 #' Create a sparse feature co-occurrence matrix.
 #' This function is a shorthand of

@@ -2,7 +2,7 @@
 % Please edit documentation in R/compat-rmecab.R
 \name{gbs_collocate}
 \alias{gbs_collocate}
-\title{A mimic of collocate}
+\title{Create a feature co-occurrence matrix}
 \usage{
 gbs_collocate(df, pull = "token", n = 1L, sep = "-", what = "fastestword", ...)
 }
