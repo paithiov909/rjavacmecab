@@ -20,6 +20,7 @@ Suggests:
     knitr,
     roxygen2,
     rmarkdown,
+    spelling,
     testthat
 Imports:
     dplyr,
