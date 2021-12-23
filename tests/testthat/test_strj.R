@@ -1,12 +1,16 @@
 test_that("strj_fill works", {
   expect_equal(
     strj_fill_iter_mark(
-      c(NA_character_, NULL, "", ## expected to be just skipped.
+      c(
+        NA_character_, NULL, "", ## expected to be just skipped.
         "\u91d1\u5b50\u307f\u3059\u309e",
-        "\u3057\u308d\uff0f\u2033\uff3c\u3068")
+        "\u3057\u308d\uff0f\u2033\uff3c\u3068"
+      )
     ),
-    c(enc2utf8("\u91d1\u5b50\u307f\u3059\u3059\uff9e"),
-      enc2utf8("\u3057\u308d\u3057\uff9e\u308d\u3068"))
+    c(
+      enc2utf8("\u91d1\u5b50\u307f\u3059\u3059\uff9e"),
+      enc2utf8("\u3057\u308d\u3057\uff9e\u308d\u3068")
+    )
   )
 })
 
@@ -30,18 +34,22 @@ test_that("strj_noramalize works", {
         "\u5357\u30a2\u30eb\u30d7\u30b9\u306e\u3000\u5929\u7136\u6c34",
         "-\u3000\uff33\uff50\uff41\uff52\uff4b\uff49\uff4e\uff47\u3000",
         "\uff2c\uff45\uff4d\uff4f\uff4e\u3000",
-        "\u30ec\u30e2\u30f3\u4e00\u7d5e\u308a")
+        "\u30ec\u30e2\u30f3\u4e00\u7d5e\u308a"
+      )
     ),
     paste0(
       "\u5357\u30a2\u30eb\u30d7\u30b9\u306e\u5929\u7136\u6c34",
-      "-Sparking Lemon\u30ec\u30e2\u30f3\u4e00\u7d5e\u308a")
+      "-Sparking Lemon\u30ec\u30e2\u30f3\u4e00\u7d5e\u308a"
+    )
   )
 })
 
 test_that("strj_rewrite works", {
   expect_equal(
     strj_rewrite_as_def(c(NA_character_, "\u2160\u2161\u2162")),
-    c("NA", ## this is expected behavior.
-      "\u2160\u2161\u2162")
+    c(
+      "NA", ## this is expected behavior.
+      "\u2160\u2161\u2162"
+    )
   )
 })

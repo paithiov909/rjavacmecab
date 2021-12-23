@@ -41,5 +41,4 @@ test_that("cmecab output is valid", {
   )
   expect_equal(cmecab(sentence)[[1]][2], res)
   expect_equal(cmecab(sentence, mode = "wakati")[[1]][2], enc2utf8("\u632f\u308a\u5411\u304f"))
-
 })

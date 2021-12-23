@@ -27,7 +27,7 @@ rebuild_tagger <- function(opt = "") {
 #' @return List.
 #'
 #' @export
-cmecab <- function(chr, opt = "", sep = " ", split = TRUE,  mode = c("parse", "wakati")) {
+cmecab <- function(chr, opt = "", sep = " ", split = TRUE, mode = c("parse", "wakati")) {
   stopifnot(
     rlang::is_character(chr),
     rlang::is_character(opt),
@@ -67,7 +67,7 @@ cmecab <- function(chr, opt = "", sep = " ", split = TRUE,  mode = c("parse", "w
       Encoding(lines) <- "UTF-8"
 
       if (identical(mode, "wakati")) {
-       parsed <- lines %>%
+        parsed <- lines %>%
           stringi::stri_replace_all_fixed(pattern = "\t", replace = sep) %>%
           stringi::stri_split_fixed(pattern = "\n") %>%
           purrr::map(function(li) {

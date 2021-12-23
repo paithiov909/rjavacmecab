@@ -25,16 +25,25 @@ strj_rewrite_as_def <- function(text, as = read_rewrite_def()) {
 #' @returns List.
 #' @export
 read_rewrite_def <- function(def_path = system.file("def/rewrite.def", package = "rjavacmecab")) {
-  cols <- def_path %>%
-    readr::read_lines() %>%
-    purrr::discard(~ stringi::stri_detect_fixed(., "#")) %>%
-    stringi::stri_split_fixed("\t")
-  return(
-    list(
-      ignore = purrr::discard(cols, ~ length(.) > 1),
-      replace = purrr::discard(cols, ~ length(.) < 2)
+  res <-
+    rlang::env_get(.pkgenv, "read_def", default = read_rewrite_def_impl())(def_path)
+  return(res)
+}
+
+#' @noRd
+read_rewrite_def_impl <- function() {
+  function(def_path) {
+    cols <- def_path %>%
+      readr::read_lines() %>%
+      purrr::discard(~ stringi::stri_detect_fixed(., "#")) %>%
+      stringi::stri_split_fixed("\t")
+    return(
+      list(
+        ignore = purrr::discard(cols, ~ length(.) > 1),
+        replace = purrr::discard(cols, ~ length(.) < 2)
+      )
     )
-  )
+  }
 }
 
 #' @noRd

@@ -1,3 +1,7 @@
+# rjavacmecab 0.4.1.900
+
+* Memoise `read_rewrite_def`.
+
 # rjavacmecab 0.4.1
 
 * Added a `NEWS.md` file to track changes to the package.

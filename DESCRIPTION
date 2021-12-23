@@ -25,6 +25,7 @@ Suggests:
 Imports:
     dplyr,
     magrittr,
+    memoise,
     purrr,
     quanteda,
     readr,

@@ -2,7 +2,12 @@
 #'
 #' @noRd
 #' @keywords internal
-.pkgenv <- rlang::env(igodic = NULL, stdtagger = NULL, igotagger = NULL)
+.pkgenv <- rlang::env(
+  igodic = NULL,
+  stdtagger = NULL,
+  igotagger = NULL,
+  read_def = NULL
+)
 
 #' Standard Tagger
 #'
@@ -48,7 +53,8 @@ igo_tagger <- function(obj = NULL) {
   # Initialize
   rlang::env_bind(
     .pkgenv,
-    igodic = system.file("igo-ipadic", package = pkgname, lib.loc = libname)
+    igodic = system.file("igo-ipadic", package = pkgname, lib.loc = libname),
+    read_def = memoise::memoise(read_rewrite_def_impl())
   )
   if (is_mecab_available()) {
     rebuild_tagger()
