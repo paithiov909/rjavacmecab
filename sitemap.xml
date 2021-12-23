@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://paithiov909.github.io/rjavacmecab/404.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/rjavacmecab/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/rjavacmecab/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/rjavacmecab/articles/rjavacmecab.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/rjavacmecab/authors.html</loc>
+  </url>
+  <url>
     <loc>https://paithiov909.github.io/rjavacmecab/index.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/rjavacmecab/news/index.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/cmecab.html</loc>
@@ -35,6 +53,9 @@
   </url>
   <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/igo.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/rjavacmecab/reference/index.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/is_blank.html</loc>
@@ -77,8 +98,5 @@
   </url>
   <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/tidyeval.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/articles/rjavacmecab.html</loc>
   </url>
 </urlset>
