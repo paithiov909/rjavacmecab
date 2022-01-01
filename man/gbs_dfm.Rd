@@ -29,10 +29,10 @@ This function is a shorthand of
 \code{rjavacmecab::gbs_as_tokens()} and then \code{quatenda::dfm()}.
 }
 \seealso{
-Other gibasa: 
+Other gbs: 
 \code{\link{gbs_as_tokens}()},
 \code{\link{gbs_collocate}()},
 \code{\link{gbs_c}()},
 \code{\link{gbs_freq}()}
 }
-\concept{gibasa}
+\concept{gbs}

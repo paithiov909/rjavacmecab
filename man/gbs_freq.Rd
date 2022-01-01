@@ -21,10 +21,10 @@ A data.frame.
 An alternative of RMeCabFreq
 }
 \seealso{
-Other gibasa: 
+Other gbs: 
 \code{\link{gbs_as_tokens}()},
 \code{\link{gbs_collocate}()},
 \code{\link{gbs_c}()},
 \code{\link{gbs_dfm}()}
 }
-\concept{gibasa}
+\concept{gbs}

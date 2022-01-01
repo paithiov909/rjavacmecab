@@ -27,10 +27,10 @@ A quanteda 'token' class object.
 Pack prettified output as quanteda tokens
 }
 \seealso{
-Other gibasa: 
+Other gbs: 
 \code{\link{gbs_collocate}()},
 \code{\link{gbs_c}()},
 \code{\link{gbs_dfm}()},
 \code{\link{gbs_freq}()}
 }
-\concept{gibasa}
+\concept{gbs}

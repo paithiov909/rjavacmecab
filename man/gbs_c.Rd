@@ -20,10 +20,10 @@ A list of named vectors.
 An alternative of RMeCabC
 }
 \seealso{
-Other gibasa: 
+Other gbs: 
 \code{\link{gbs_as_tokens}()},
 \code{\link{gbs_collocate}()},
 \code{\link{gbs_dfm}()},
 \code{\link{gbs_freq}()}
 }
-\concept{gibasa}
+\concept{gbs}
