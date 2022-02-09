@@ -135,7 +135,7 @@ str(res)
 
 ## License
 
-MIT license.
+BSD 3-clause License.
 
 This software includes works that are distributed in Public Domain and
 New BSD License. See

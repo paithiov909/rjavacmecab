@@ -1,5 +1,6 @@
-# rjavacmecab 0.4.1.900
+# rjavacmecab 0.4.2.900
 
+* Relicense as the BSD 3-clause License.
 * Memoise `read_rewrite_def`.
 
 # rjavacmecab 0.4.1

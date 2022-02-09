@@ -3,12 +3,15 @@ Type: Package
 Title: rJava Interface to CMeCab
 Version: 0.4.1.900
 Authors@R: c(
-    person("Akiru", "Kato", email = "paithiov909@gmail.com", role = c("aut", "cre")))
+    person("Akiru", "Kato", email = "paithiov909@gmail.com", role = c("aut", "cre")),
+    person("Kohei", "Takeda", role = "cph", comment = "Author of cmecab-java"),
+    person("Takeru", "Ohta", role = "cph", comment = "Author of igo"),
+    person("Olivier", "Chafik", role = "cph", comment = "Author of BridJ"))
 Maintainer: Akiru Kato <paithiov909@gmail.com>
 Description: A simple rJava interface to cmecab-java.
 Depends: R (>= 4.0.0)
 SystemRequirements: MeCab, Java
-License: MIT + file LICENSE
+License: BSD_3_clause + file LICENSE
 URL: https://paithiov909.github.io/rjavacmecab/, https://github.com/paithiov909/rjavacmecab
 BugReports: https://github.com/paithiov909/rjavacmecab/issues
 Encoding: UTF-8

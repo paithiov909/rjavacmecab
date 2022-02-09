@@ -22,5 +22,12 @@ Useful links:
 \author{
 \strong{Maintainer}: Akiru Kato \email{paithiov909@gmail.com}
 
+Other contributors:
+\itemize{
+  \item Kohei Takeda (Author of cmecab-java) [copyright holder]
+  \item Takeru Ohta (Author of igo) [copyright holder]
+  \item Olivier Chafik (Author of BridJ) [copyright holder]
+}
+
 }
 \keyword{internal}
