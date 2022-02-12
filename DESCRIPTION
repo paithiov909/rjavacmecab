@@ -1,30 +1,24 @@
-Package: rjavacmecab
 Type: Package
+Package: rjavacmecab
 Title: rJava Interface to CMeCab
 Version: 0.4.1.900
 Authors@R: c(
-    person("Akiru", "Kato", email = "paithiov909@gmail.com", role = c("aut", "cre")),
-    person("Kohei", "Takeda", role = "cph", comment = "Author of cmecab-java"),
-    person("Takeru", "Ohta", role = "cph", comment = "Author of igo"),
-    person("Olivier", "Chafik", role = "cph", comment = "Author of BridJ"))
+    person("Akiru", "Kato", , "paithiov909@gmail.com", role = c("aut", "cre")),
+    person("Kohei", "Takeda", role = "cph",
+           comment = "Author of cmecab-java"),
+    person("Takeru", "Ohta", role = "cph",
+           comment = "Author of igo"),
+    person("Olivier", "Chafik", role = "cph",
+           comment = "Author of BridJ")
+  )
 Maintainer: Akiru Kato <paithiov909@gmail.com>
 Description: A simple rJava interface to cmecab-java.
-Depends: R (>= 4.0.0)
-SystemRequirements: MeCab, Java
 License: BSD_3_clause + file LICENSE
-URL: https://paithiov909.github.io/rjavacmecab/, https://github.com/paithiov909/rjavacmecab
+URL: https://paithiov909.github.io/rjavacmecab/,
+    https://github.com/paithiov909/rjavacmecab
 BugReports: https://github.com/paithiov909/rjavacmecab/issues
-Encoding: UTF-8
-LazyData: true
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
-VignetteBuilder: knitr
-Suggests:
-    knitr,
-    roxygen2,
-    rmarkdown,
-    spelling,
-    testthat
+Depends: 
+    R (>= 4.0.0)
 Imports:
     dplyr,
     magrittr,
@@ -36,4 +30,17 @@ Imports:
     rlang (>= 0.1.2),
     stringi,
     tidyr
+Suggests:
+    knitr,
+    rmarkdown,
+    roxygen2,
+    spelling,
+    testthat
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
 Language: en-US
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+SystemRequirements: MeCab, Java
