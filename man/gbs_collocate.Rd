@@ -12,7 +12,7 @@ gbs_collocate(df, pull = "token", n = 1L, sep = "-", what = "fastestword", ...)
 \item{pull}{Column to be packed into text or ngrams body. Default value is \code{token}.}
 
 \item{n}{Integer internally passed to ngrams tokenizer function
-created of \code{rjavacmecab::ngram_tokenizer()}}
+created of \code{audubon::ngram_tokenizer()}}
 
 \item{sep}{Character scalar internally used as the concatenator of ngrams.}
 

@@ -20,6 +20,7 @@ BugReports: https://github.com/paithiov909/rjavacmecab/issues
 Depends: 
     R (>= 4.0.0)
 Imports:
+    audubon,
     dplyr,
     magrittr,
     memoise,
@@ -27,7 +28,7 @@ Imports:
     quanteda,
     readr,
     rJava,
-    rlang (>= 0.1.2),
+    rlang (>= 0.4.11),
     stringi,
     tidyr
 Suggests:
