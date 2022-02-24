@@ -65,13 +65,17 @@ rJavaの周辺は比較的問題が起こりやすく、たとえばパッケー
 ### cmecab-javaの呼び出し
 
 ```{r cmecab_1}
-res <- rjavacmecab::cmecab(c("長期的自己実現で福楽は得られない", "幸せは刹那の中にあり"))
-str(res)
+if (rjavacmecab::is_mecab_available()) {
+  res <- rjavacmecab::cmecab(c("長期的自己実現で福楽は得られない", "幸せは刹那の中にあり"))
+  str(res)
+}
 ```
 
 ```{r cmecab_2}
-res <- rjavacmecab::prettify(res) ## データフレームに整形します
-str(res)
+if (rjavacmecab::is_mecab_available()) {
+  res <- rjavacmecab::prettify(res) ## データフレームに整形します
+  str(res)
+}
 ```
 
 整形されたデータフレームは次のカラムからなります。IPA辞書とは異なる品詞体系の辞書を使っている場合は、素性情報を`into`引数に渡してください。
@@ -86,8 +90,10 @@ str(res)
 - Yomi2: 発音（pronunciation）
 
 ```{r cmecab_3}
-res <- rjavacmecab::pack(res) ## さらに整形して分かち書きにします
-print(res)
+if (rjavacmecab::is_mecab_available()) {
+  res <- rjavacmecab::pack(res) ## さらに整形して分かち書きにします
+  print(res)
+}
 ```
 
 ### 辞書の差し替え

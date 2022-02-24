@@ -27,7 +27,7 @@ pkgload::load_all()
 
 rjavacmecab is an rJava interface to [takscape/cmecab-java](https://github.com/takscape/cmecab-java) that is a Java binding for MeCab.
 
-The goal of this package is to provide the simplest way to help use 'MeCab' from R over  alternatives ([RMeCab](https://github.com/IshidaMotohiro/RMeCab) and [RcppMeCab](https://github.com/junhewk/RcppMeCab)).
+The goal of this package is to provide the simplest way to help use 'MeCab' from R than alternatives ([RMeCab](https://github.com/IshidaMotohiro/RMeCab) and [RcppMeCab](https://github.com/junhewk/RcppMeCab)).
 
 rjavacmecab is yet slower, but it should be easier to use because...
 

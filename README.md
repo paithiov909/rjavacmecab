@@ -21,7 +21,7 @@ rjavacmecab is an rJava interface to
 a Java binding for MeCab.
 
 The goal of this package is to provide the simplest way to help use
-‘MeCab’ from R over alternatives
+‘MeCab’ from R than alternatives
 ([RMeCab](https://github.com/IshidaMotohiro/RMeCab) and
 [RcppMeCab](https://github.com/junhewk/RcppMeCab)).
 
