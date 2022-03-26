@@ -61,10 +61,10 @@ igo <- function(chr, sep = " ", split = TRUE, mode = c("parse", "wakati")) {
           purrr::map(elem, function(str) {
             li <- igo_tagger()$wakati(str)
             purrr::map_chr(seq_len(li$size()), function(itr) {
-              return(stringi::stri_join(
+              stringi::stri_join(
                 li$get(as.integer(itr - 1)),
                 sep = sep
-              ))
+              )
             })
           })
       } else {
@@ -72,16 +72,16 @@ igo <- function(chr, sep = " ", split = TRUE, mode = c("parse", "wakati")) {
           purrr::map(elem, function(str) {
             morphs <- igo_tagger()$parse(str)
             purrr::map_chr(seq_len(morphs$size()), function(itr) {
-              return(stringi::stri_join(
+              stringi::stri_join(
                 morphs$get(as.integer(itr - 1))$surface,
                 morphs$get(as.integer(itr - 1))$feature,
                 sep = sep
-              ))
+              )
             })
           })
       }
-      return(purrr::flatten_chr(parsed))
+      purrr::flatten_chr(parsed)
     })
 
-  return(purrr::set_names(res, nm))
+  purrr::set_names(res, nm)
 }

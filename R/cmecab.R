@@ -90,5 +90,5 @@ cmecab <- function(chr, opt = "", sep = " ", split = TRUE, mode = c("parse", "wa
       purrr::flatten_chr(parsed)
     })
 
-  return(purrr::set_names(res, nm))
+  purrr::set_names(res, nm)
 }

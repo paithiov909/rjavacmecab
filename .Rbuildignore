@@ -8,5 +8,6 @@
 ^mecab$
 ^Meta$
 ^pkgdown$
+^unidic$
 ^codecov\.yml$
 ^README\.Rmd$

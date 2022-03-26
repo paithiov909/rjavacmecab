@@ -38,5 +38,6 @@ rsconnect/
 doc
 inst/doc
 Meta
+unidic
 
 *.log

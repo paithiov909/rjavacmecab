@@ -13,6 +13,7 @@ reference:
     - title: "Utilities"
       contents:
         - rebuild_tagger
+        - get_dict_features
         - prettify
         - pack
         - csvutil_tokenize
@@ -20,6 +21,8 @@ reference:
         - csvutil_join
         - is_blank
         - is_mecab_available
+        - unidic_availables
+        - download_unidic
     - title: "Gibasa: RMeCab-compatible functionalities"
       contents:
         - gibasa

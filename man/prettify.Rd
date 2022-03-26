@@ -4,12 +4,7 @@
 \alias{prettify}
 \title{Prettify tokenized output}
 \usage{
-prettify(
-  list,
-  sep = " ",
-  into = c("POS1", "POS2", "POS3", "POS4", "X5StageUse1", "X5StageUse2", "Original",
-    "Yomi1", "Yomi2")
-)
+prettify(list, sep = " ", into = get_dict_features("ipa"))
 }
 \arguments{
 \item{list}{List that comes out of \code{rjavacmecab::cmecab()}

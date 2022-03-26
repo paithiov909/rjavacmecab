@@ -11,8 +11,7 @@ csvutil_tokenize <- function(str, max = 99L) {
   if (!is.character(str) || length(str) != 1L || anyNA(str)) {
     rlang::abort("Invalid string provided. String must be a character scalar, not NA_character_.")
   } else {
-    arr <- J("net.moraleboost.util.CSVUtil")$tokenize(str, as.integer(max))
-    return(arr)
+    J("net.moraleboost.util.CSVUtil")$tokenize(str, as.integer(max))
   }
 }
 
@@ -28,10 +27,9 @@ csvutil_escape <- function(chr) {
   if (!is.character(chr) || anyNA(chr)) {
     rlang::abort("Invalid string provided. String must be a character vector, not NA_character_.")
   } else {
-    arr <- purrr::map_chr(chr, function(str) {
+    purrr::map_chr(chr, function(str) {
       J("net.moraleboost.util.CSVUtil")$escape(str)
     })
-    return(arr)
   }
 }
 
@@ -47,7 +45,6 @@ csvutil_join <- function(chr) {
   if (!is.character(chr) || anyNA(chr)) {
     rlang::abort("Invalid string provided. String must be a character vector, not NA_character_.")
   } else {
-    arr <- J("net.moraleboost.util.CSVUtil")$join(.jarray(chr))
-    return(arr)
+    J("net.moraleboost.util.CSVUtil")$join(.jarray(chr))
   }
 }
