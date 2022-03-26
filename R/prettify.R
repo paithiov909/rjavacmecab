@@ -27,15 +27,10 @@ prettify <- function(list,
         Features = purrr::map_chr(split, ~ purrr::pluck(., 2))
       )
     }) %>%
-    dplyr::mutate(
-      Features = .data$Features %>%
-        stringi::stri_replace_all_regex("\\\"", "") %>%
-        stringi::stri_replace_all_regex("(\\d+),", "$1 ")
-    ) %>%
     tidyr::separate(
       col = "Features",
       into = into,
-      sep = ",",
+      sep = ",(?=(?:[^\\\"]*\"[^\\\"]*\\\")*(?![^\\\"]*\\\"))",,
       fill = "right"
     ) %>%
     dplyr::mutate_if(is.character, ~ dplyr::na_if(., "*"))

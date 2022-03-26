@@ -1,3 +1,8 @@
+# rjavacmecab 0.4.3
+
+* `prettify` now supports UniDic features.
+* Added installer scirpts for UniDic.
+
 # rjavacmecab 0.4.2
 
 * Relicense as the BSD 3-clause License.
