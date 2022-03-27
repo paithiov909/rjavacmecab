@@ -22,15 +22,12 @@ Depends:
 Imports:
     audubon,
     dplyr,
-    jsonlite,
     purrr,
     quanteda,
     rJava,
     rlang (>= 0.4.11),
     stringi,
-    tidyr,
-    utils,
-    yesno
+    tidyr
 Suggests:
     knitr,
     rmarkdown,

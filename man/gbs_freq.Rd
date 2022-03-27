@@ -11,7 +11,7 @@ gbs_freq(df, ..., .name_repair = TRUE)
 
 \item{...}{Other arguments are passed to \code{dplyr::tally()}.}
 
-\item{.name_repair}{Logical:
+\item{.name_repair}{Logical.
 If true, then rename the column names as RMeCabFreq-compatible style.}
 }
 \value{

@@ -1,4 +1,5 @@
 BridJ
+CEDICT
 CMeCab
 Gibasa
 Igo
@@ -8,18 +9,19 @@ RMeCabC
 RMeCabFreq
 TIF
 UniDic
+cedict
 cmecab
 concatenator
 dfm
+dic
 docDF
 fcm
 gbs
 igo
 ipa
+ko
 mecab
 ngrams
-polm
-py
 quanteda
 rJava
 reimplementaion

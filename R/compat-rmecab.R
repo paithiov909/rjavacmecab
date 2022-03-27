@@ -13,7 +13,7 @@ NULL
 #'
 #' @param df A prettified data.frame of tokenized sentences.
 #' @param ... Other arguments are passed to \code{dplyr::tally()}.
-#' @param .name_repair Logical:
+#' @param .name_repair Logical.
 #' If true, then rename the column names as RMeCabFreq-compatible style.
 #' @return A data.frame.
 #' @family gbs

@@ -1,7 +1,6 @@
 # rjavacmecab 0.4.3
 
-* `prettify` now supports UniDic features.
-* Added installer scirpts for UniDic.
+* `prettify` now supports UniDic and other dictionaries' features.
 
 # rjavacmecab 0.4.2
 

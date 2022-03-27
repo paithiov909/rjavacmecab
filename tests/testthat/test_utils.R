@@ -11,4 +11,6 @@ test_that("get_dict_features works", {
   expect_equal(length(get_dict_features("unidic17")), 17L)
   expect_equal(length(get_dict_features("unidic26")), 26L)
   expect_equal(length(get_dict_features("unidic29")), 29L)
+  expect_equal(length(get_dict_features("cc-cedict")), 8L)
+  expect_equal(length(get_dict_features("ko-dic")), 8L)
 })
