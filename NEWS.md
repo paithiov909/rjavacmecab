@@ -1,6 +1,7 @@
-# rjavacmecab 0.4.3
+# rjavacmecab 0.5.0
 
 * `prettify` now supports UniDic and other dictionaries' features.
+* Removed 'Gibasa' function family.
 
 # rjavacmecab 0.4.2
 
