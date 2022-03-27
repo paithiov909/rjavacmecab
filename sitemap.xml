@@ -34,9 +34,6 @@
     <loc>https://paithiov909.github.io/rjavacmecab/reference/csvutil_tokenize.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/reference/download_unidic.html</loc>
-  </url>
-  <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/gbs_as_tokens.html</loc>
   </url>
   <url>
@@ -86,8 +83,5 @@
   </url>
   <url>
     <loc>https://paithiov909.github.io/rjavacmecab/reference/rjavacmecab.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/rjavacmecab/reference/unidic_availables.html</loc>
   </url>
 </urlset>
