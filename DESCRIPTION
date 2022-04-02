@@ -1,7 +1,7 @@
 Type: Package
 Package: rjavacmecab
 Title: rJava Interface to CMeCab
-Version: 0.5.0
+Version: 0.5.1
 Authors@R: c(
     person("Akiru", "Kato", , "paithiov909@gmail.com", role = c("aut", "cre")),
     person("Kohei", "Takeda", role = "cph",
