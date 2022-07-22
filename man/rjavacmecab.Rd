@@ -6,7 +6,7 @@
 \alias{rjavacmecab-package}
 \title{rjavacmecab: rJava Interface to CMeCab}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
 A simple rJava interface to cmecab-java.
 }

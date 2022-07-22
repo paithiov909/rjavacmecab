@@ -7,8 +7,7 @@
 
 [![GitHub last
 commit](https://img.shields.io/github/last-commit/paithiov909/rjavacmecab)](#)
-[![Lifecycle:
-stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![Lifecycle: superseded](https://img.shields.io/badge/lifecycle-superseded-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#superseded)
 [![R-CMD-check](https://github.com/paithiov909/rjavacmecab/actions/workflows/check.yml/badge.svg)](https://github.com/paithiov909/rjavacmecab/actions/workflows/check.yml)
 [![Codecov test
 coverage](https://codecov.io/gh/paithiov909/rjavacmecab/branch/main/graph/badge.svg)](https://app.codecov.io/gh/paithiov909/rjavacmecab?branch=main)
