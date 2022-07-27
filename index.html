@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="index.html">rjavacmecab</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -106,9 +106,10 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="reference/cmecab.html">cmecab</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"長期的自己実現で福楽は得られない"</span>, <span class="st">"幸せは刹那の中にあり"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
-<span><span class="co">#&gt; List of 2</span></span>
-<span><span class="co">#&gt;  $ 1: chr [1:11] "長期 名詞,一般,*,*,*,*,長期,チョウキ,チョーキ" "的 名詞,接尾,形容動詞語幹,*,*,*,的,テキ,テキ" "自己 名詞,一般,*,*,*,*,自己,ジコ,ジコ" "実現 名詞,サ変接続,*,*,*,*,実現,ジツゲン,ジツゲン" ...</span></span>
-<span><span class="co">#&gt;  $ 2: chr [1:7] "幸せ 名詞,形容動詞語幹,*,*,*,*,幸せ,シアワセ,シアワセ" "は 助詞,係助詞,*,*,*,*,は,ハ,ワ" "刹那 名詞,副詞可能,*,*,*,*,刹那,セツナ,セツナ" "の 助詞,連体化,*,*,*,*,の,ノ,ノ" ...</span></span></code></pre></div>
+<span><span class="co">#&gt; tibble [18 × 3] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ doc_id : int [1:18] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ token  : chr [1:18] "長期" "的" "自己" "実現" ...</span></span>
+<span><span class="co">#&gt;  $ feature: chr [1:18] "名詞,一般,*,*,*,*,長期,チョウキ,チョーキ" "名詞,接尾,形容動詞語幹,*,*,*,的,テキ,テキ" "名詞,一般,*,*,*,*,自己,ジコ,ジコ" "名詞,サ変接続,*,*,*,*,実現,ジツゲン,ジツゲン" ...</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="prettify-output">Prettify Output<a class="anchor" aria-label="anchor" href="#prettify-output"></a>
@@ -116,18 +117,18 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="reference/prettify.html">prettify</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
-<span><span class="co">#&gt; 'data.frame':    18 obs. of  11 variables:</span></span>
-<span><span class="co">#&gt;  $ doc_id     : chr  "1" "1" "1" "1" ...</span></span>
-<span><span class="co">#&gt;  $ token      : chr  "長期" "的" "自己" "実現" ...</span></span>
-<span><span class="co">#&gt;  $ POS1       : chr  "名詞" "名詞" "名詞" "名詞" ...</span></span>
-<span><span class="co">#&gt;  $ POS2       : chr  "一般" "接尾" "一般" "サ変接続" ...</span></span>
-<span><span class="co">#&gt;  $ POS3       : chr  NA "形容動詞語幹" NA NA ...</span></span>
-<span><span class="co">#&gt;  $ POS4       : chr  NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ X5StageUse1: chr  NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ X5StageUse2: chr  NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ Original   : chr  "長期" "的" "自己" "実現" ...</span></span>
-<span><span class="co">#&gt;  $ Yomi1      : chr  "チョウキ" "テキ" "ジコ" "ジツゲン" ...</span></span>
-<span><span class="co">#&gt;  $ Yomi2      : chr  "チョーキ" "テキ" "ジコ" "ジツゲン" ...</span></span></code></pre></div>
+<span><span class="co">#&gt; tibble [18 × 11] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ doc_id     : int [1:18] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ token      : chr [1:18] "長期" "的" "自己" "実現" ...</span></span>
+<span><span class="co">#&gt;  $ POS1       : chr [1:18] "名詞" "名詞" "名詞" "名詞" ...</span></span>
+<span><span class="co">#&gt;  $ POS2       : chr [1:18] "一般" "接尾" "一般" "サ変接続" ...</span></span>
+<span><span class="co">#&gt;  $ POS3       : chr [1:18] NA "形容動詞語幹" NA NA ...</span></span>
+<span><span class="co">#&gt;  $ POS4       : chr [1:18] NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ X5StageUse1: chr [1:18] NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ X5StageUse2: chr [1:18] NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ Original   : chr [1:18] "長期" "的" "自己" "実現" ...</span></span>
+<span><span class="co">#&gt;  $ Yomi1      : chr [1:18] "チョウキ" "テキ" "ジコ" "ジツゲン" ...</span></span>
+<span><span class="co">#&gt;  $ Yomi2      : chr [1:18] "チョーキ" "テキ" "ジコ" "ジツゲン" ...</span></span></code></pre></div>
 <p>If you use IPA-styled dictionary, the output has these columns.</p>
 <ul>
 <li>doc_id: 文番号</li>
@@ -151,38 +152,16 @@
 <span><span class="co">#&gt; 2      2                 幸せ は 刹那 の 中 に あり</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="change-dictionary">Change Dictionary<a class="anchor" aria-label="anchor" href="#change-dictionary"></a>
-</h3>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">str</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Fate/Grand Order"</span>, <span class="st">"田村ゆかりのいたずら黒うさぎ"</span><span class="op">)</span></span>
-<span><span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="reference/cmecab.html">cmecab</a></span><span class="op">(</span><span class="va">str</span>, sep <span class="op">=</span> <span class="st">"\t"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; $`1`</span></span>
-<span><span class="co">#&gt; [1] "Fate\t名詞,固有名詞,組織,*,*,*,*"  "/\t名詞,サ変接続,*,*,*,*,*"       </span></span>
-<span><span class="co">#&gt; [3] "Grand\t名詞,一般,*,*,*,*,*"        "Order\t名詞,固有名詞,組織,*,*,*,*"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`2`</span></span>
-<span><span class="co">#&gt; [1] "田村\t名詞,固有名詞,人名,姓,*,*,田村,タムラ,タムラ"        </span></span>
-<span><span class="co">#&gt; [2] "ゆかり\t名詞,固有名詞,人名,名,*,*,ゆかり,ユカリ,ユカリ"    </span></span>
-<span><span class="co">#&gt; [3] "の\t助詞,連体化,*,*,*,*,の,ノ,ノ"                          </span></span>
-<span><span class="co">#&gt; [4] "いたずら\t名詞,サ変接続,*,*,*,*,いたずら,イタズラ,イタズラ"</span></span>
-<span><span class="co">#&gt; [5] "黒\t名詞,一般,*,*,*,*,黒,クロ,クロ"                        </span></span>
-<span><span class="co">#&gt; [6] "うさぎ\t名詞,一般,*,*,*,*,うさぎ,ウサギ,ウサギ"            </span></span>
-<span><span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="reference/cmecab.html">cmecab</a></span><span class="op">(</span><span class="va">str</span>, <span class="st">"-d /MeCab/ipadic-neologd"</span>, sep <span class="op">=</span> <span class="st">"\t"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; $`1`</span></span>
-<span><span class="co">#&gt; [1] "Fate/Grand Order\t名詞,固有名詞,一般,*,*,*,Fate/Grand Order,フェイトグランドオーダー,フェイトグランドオーダー"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`2`</span></span>
-<span><span class="co">#&gt; [1] "田村ゆかりのいたずら黒うさぎ\t名詞,固有名詞,一般,*,*,*,田村ゆかりのいたずら黒うさぎ,タムラユカリノイタズラクロウサギ,タムラユカリノイタズラクロウサギ"</span></span></code></pre></div>
-</div>
-<div class="section level3">
 <h3 id="use-igo">Use Igo<a class="anchor" aria-label="anchor" href="#use-igo"></a>
 </h3>
 <p><a href="http://igo.osdn.jp/" class="external-link">Igo</a> is a pure Java port of MeCab. rjavacmecab also provides a wrapper function of that.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rjavacmecab</span><span class="fu">::</span><span class="fu"><a href="reference/igo.html">igo</a></span><span class="op">(</span><span class="st">"お前がそう思うんならそうなんだろう、お前ん中ではな"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
-<span><span class="co">#&gt; List of 1</span></span>
-<span><span class="co">#&gt;  $ 1: chr [1:18] "お前 名詞,代名詞,一般,*,*,*,お前,オマエ,オマエ" "が 助詞,格助詞,一般,*,*,*,が,ガ,ガ" "そう 副詞,助詞類接続,*,*,*,*,そう,ソウ,ソー" "思う 動詞,自立,*,*,五段・ワ行促音便,基本形,思う,オモウ,オモウ" ...</span></span></code></pre></div>
+<span><span class="co">#&gt; tibble [18 × 3] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ doc_id : int [1:18] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ token  : chr [1:18] "お前" "が" "そう" "思う" ...</span></span>
+<span><span class="co">#&gt;  $ feature: chr [1:18] "名詞,代名詞,一般,*,*,*,お前,オマエ,オマエ" "助詞,格助詞,一般,*,*,*,が,ガ,ガ" "副詞,助詞類接続,*,*,*,*,そう,ソウ,ソー" "動詞,自立,*,*,五段・ワ行促音便,基本形,思う,オモウ,オモウ" ...</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
