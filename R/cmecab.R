@@ -19,19 +19,17 @@ rebuild_tagger <- function(opt = "") {
 #'
 #' @param chr Character vector to be tokenized.
 #' @param opt Character scalar to be passed as tagger options (ex. "-d").
-#' @param sep Character scalar to be used as separator
-#' with which the function replaces tab.
 #' @param split Logical. If true (by default), the function splits character vector
 #' into sentences using \code{stringi::stri_split_boundaries(type = "sentence")} before analyzing them.
 #' @param mode Character scalar.
-#' @return List.
+#' @return A tibble.
 #'
 #' @export
-cmecab <- function(chr, opt = "", sep = " ", split = TRUE, mode = c("parse", "wakati")) {
+cmecab <- function(chr, opt = "", split = FALSE, mode = c("parse", "wakati")) {
   stopifnot(
     rlang::is_character(chr),
     rlang::is_character(opt),
-    rlang::is_character(sep),
+    rlang::is_logical(split),
     rlang::is_character(mode)
   )
   mode <- rlang::arg_match(mode, c("parse", "wakati"))
@@ -51,44 +49,45 @@ cmecab <- function(chr, opt = "", sep = " ", split = TRUE, mode = c("parse", "wa
     nm <- seq_along(chr)
   }
 
-  res <- chr %>%
-    tidyr::replace_na("") %>%
-    purrr::map(function(elem) {
+  res <-
+    data.frame(doc_id = nm, value = chr) %>%
+    dplyr::filter(!is_blank(.data$value)) %>%
+    dplyr::group_by(.data$doc_id) %>%
+    dplyr::mutate(value = purrr::map(.data$value, function(str) {
       if (split) {
-        elem <- elem %>%
+        str <- str %>%
           stringi::stri_split_boundaries(type = "sentence") %>%
           purrr::flatten_chr()
       }
-      lines <- purrr::map_chr(elem, function(str) {
-        lattice$setSentence(str)
+      lines <- purrr::map_chr(str, function(elem) {
+        lattice$setSentence(elem)
         standard_tagger()$parse(lattice)
         lattice$toString()
       })
       Encoding(lines) <- "UTF-8"
+      lines %>%
+        stringi::stri_split_lines(omit_empty = TRUE) %>%
+        purrr::flatten_chr() %>%
+        stringi::stri_replace_all_fixed("EOS", "") %>%
+        stringi::stri_omit_empty_na() %>%
+        stringi::stri_split_regex("\\t") %>%
+        purrr::map_dfr(
+          ~ data.frame(
+            token = .[1],
+            feature = .[2]
+          )
+        )
+    })) %>%
+    dplyr::ungroup() %>%
+    tidyr::unnest(.data$value)
 
-      if (identical(mode, "wakati")) {
-        parsed <- lines %>%
-          stringi::stri_replace_all_fixed(pattern = "\t", replace = sep) %>%
-          stringi::stri_split_fixed(pattern = "\n") %>%
-          purrr::map(function(li) {
-            li %>%
-              stringi::stri_split_fixed(pattern = sep) %>%
-              purrr::map_chr(~ purrr::pluck(., 1L)) %>%
-              dplyr::na_if("EOS") %>%
-              stringi::stri_omit_empty_na()
-          })
-      } else {
-        parsed <- lines %>%
-          stringi::stri_replace_all_fixed(pattern = "\t", replace = sep) %>%
-          stringi::stri_split_fixed(pattern = "\n") %>%
-          purrr::map(function(li) {
-            li %>%
-              dplyr::na_if("EOS") %>%
-              stringi::stri_omit_empty_na()
-          })
-      }
-      purrr::flatten_chr(parsed)
-    })
-
-  purrr::set_names(res, nm)
+  if (identical(mode, "wakati")) {
+    res <- res %>%
+      dplyr::group_by(.data$doc_id) %>%
+      dplyr::group_map(
+        ~ purrr::set_names(list(.x$token), .y$doc_id)
+      ) %>%
+      purrr::flatten()
+  }
+  return(res)
 }

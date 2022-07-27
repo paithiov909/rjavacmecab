@@ -9,5 +9,6 @@
 ^Meta$
 ^pkgdown$
 ^unidic$
+^vignettes$
 ^codecov\.yml$
 ^README\.Rmd$

@@ -1,3 +1,7 @@
+# rjavacmecab 1.0.0
+
+* Changed output structure of `cmecab` and `igo`.
+
 # rjavacmecab 0.5.0
 
 * `prettify` now supports UniDic and other dictionaries' features.
