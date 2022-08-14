@@ -1,5 +1,7 @@
 skip_if_not(is_mecab_available())
 
+rebuild_tagger()
+
 sentence <- enc2utf8(
   paste0(
     "\u3075\u3068\u632F\u308A\u5411\u304F\u3068\u3001\u305F\u304F",
