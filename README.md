@@ -49,7 +49,11 @@ remotes::install_github("paithiov909/rjavacmecab")
 
 ### Call Tagger
 
+To make cmecab tagger available, `rebuild_tagger` at first.
+
 ``` r
+rjavacmecab::rebuild_tagger()
+
 res <- rjavacmecab::cmecab(c("長期的自己実現で福楽は得られない", "幸せは刹那の中にあり"))
 str(res)
 #> tibble [18 × 3] (S3: tbl_df/tbl/data.frame)
@@ -79,14 +83,14 @@ str(res)
 
 If you use IPA-styled dictionary, the output has these columns.
 
--   doc_id: 文番号
--   token: 表層形（surface form）
--   POS1\~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3
--   X5StageUse1: 活用型（ex. 五段, 下二段…）
--   X5StageUse2: 活用形（ex. 連用形, 基本形…）
--   Original: 原形（lemmatised form）
--   Yomi1: 読み（readings）
--   Yomi2: 発音（pronunciation）
+- doc_id: 文番号
+- token: 表層形（surface form）
+- POS1\~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3
+- X5StageUse1: 活用型（ex. 五段, 下二段…）
+- X5StageUse2: 活用形（ex. 連用形, 基本形…）
+- Original: 原形（lemmatised form）
+- Yomi1: 読み（readings）
+- Yomi2: 発音（pronunciation）
 
 ### Pack Output
 

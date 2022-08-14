@@ -54,7 +54,4 @@ igo_tagger <- function(obj = NULL) {
     .pkgenv,
     igodic = system.file("igo-ipadic", package = pkgname, lib.loc = libname)
   )
-  if (is_mecab_available()) {
-    rebuild_tagger()
-  }
 }

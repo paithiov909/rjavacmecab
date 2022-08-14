@@ -66,6 +66,7 @@ rJavaの周辺は比較的問題が起こりやすく、たとえばパッケー
 
 ```{r cmecab_1}
 if (rjavacmecab::is_mecab_available()) {
+  rjavacmecab::rebuild_tagger()
   res <- rjavacmecab::cmecab(c("長期的自己実現で福楽は得られない", "幸せは刹那の中にあり"))
   str(res)
 }

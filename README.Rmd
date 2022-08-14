@@ -50,7 +50,11 @@ remotes::install_github("paithiov909/rjavacmecab")
 
 ### Call Tagger
 
+To make cmecab tagger available, `rebuild_tagger` at first.
+
 ```{r cmecab_1}
+rjavacmecab::rebuild_tagger()
+
 res <- rjavacmecab::cmecab(c("長期的自己実現で福楽は得られない", "幸せは刹那の中にあり"))
 str(res)
 ```
