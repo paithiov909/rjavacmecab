@@ -3,7 +3,7 @@ pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   rjavacmecab: rjavacmecab.html
-last_built: 2022-08-14T23:29Z
+last_built: 2022-08-14T23:37Z
 urls:
   reference: https://paithiov909.github.io/rjavacmecab/reference
   article: https://paithiov909.github.io/rjavacmecab/articles
