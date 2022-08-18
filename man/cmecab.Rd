@@ -4,7 +4,7 @@
 \alias{cmecab}
 \title{Call CMeCab tagger}
 \usage{
-cmecab(chr, opt = "", split = TRUE, mode = c("parse", "wakati"))
+cmecab(chr, opt = "", split = FALSE, mode = c("parse", "wakati"))
 }
 \arguments{
 \item{chr}{Character vector to be tokenized.}

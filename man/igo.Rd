@@ -4,7 +4,7 @@
 \alias{igo}
 \title{Call Igo tagger}
 \usage{
-igo(chr, split = TRUE, mode = c("parse", "wakati"))
+igo(chr, split = FALSE, mode = c("parse", "wakati"))
 }
 \arguments{
 \item{chr}{Character vector to be tokenized.}
