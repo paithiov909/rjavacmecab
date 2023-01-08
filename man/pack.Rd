@@ -49,5 +49,5 @@ The feature columns must contain at least \code{token} itself.
 }
 
 \seealso{
-\url{https://github.com/ropensci/tif}
+\url{https://github.com/ropenscilabs/tif}
 }

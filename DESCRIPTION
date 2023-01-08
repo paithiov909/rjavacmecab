@@ -1,7 +1,7 @@
 Type: Package
 Package: rjavacmecab
 Title: rJava Interface to CMeCab
-Version: 1.0.1
+Version: 1.0.2
 Authors@R: c(
     person("Akiru", "Kato", , "paithiov909@gmail.com", role = c("aut", "cre")),
     person("Kohei", "Takeda", role = "cph",
@@ -36,5 +36,5 @@ Suggests:
 Encoding: UTF-8
 Language: en-US
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 SystemRequirements: MeCab, Java
