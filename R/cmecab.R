@@ -79,7 +79,7 @@ cmecab <- function(chr, opt = "", split = FALSE, mode = c("parse", "wakati")) {
         )
     })) %>%
     dplyr::ungroup() %>%
-    tidyr::unnest(.data$value)
+    tidyr::unnest("value")
 
   if (identical(mode, "wakati")) {
     res <- res %>%
