@@ -44,8 +44,7 @@ jobs:
         run: sudo R CMD javareconf
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: pkgdown
-          needs: website
+          extra-packages: any::pkgdown
       - name: Deploy package
         run: |
           git config --local user.name "$GITHUB_ACTOR"
